@@ -41,7 +41,7 @@ const PushNotifications = () => {
                         </div>
                     </div>
 
-                    <p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-2 px-4 inline-block">
+                    <p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 min-w-max">
                         -300,000.00
                     </p>
                 </div>
@@ -61,7 +61,7 @@ const PushNotifications = () => {
                         </div>
                     </div>
 
-                    <p className="rounded-3xl bg-notification-red/5 text-notification-green text-wite font-medium text-xs py-2 px-4 inline-block">
+                    <p className="rounded-3xl bg-notification-green  text-white font-medium text-xs py-3 px-4 min-w-max">
                         +90,000.00
                     </p>
                 </div>
@@ -81,7 +81,7 @@ const PushNotifications = () => {
                         </div>
                     </div>
 
-                    <p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-2 px-4 inline-block">
+                    <p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 min-w-max">
                         -1,200.00
                     </p>
                 </div>

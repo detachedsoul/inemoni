@@ -38,7 +38,7 @@ const Footer = () => {
             linkGroup: "Developers",
             links: [
                 {
-                    linkName: "Api Documentation",
+                    linkName: "API Documentation",
                     isLink: true,
                     route: "/"
                 },
