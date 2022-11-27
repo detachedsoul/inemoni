@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .header {
+        @apply font-millik text-6xl leading-[4.688rem]
+    }
+
+    .header-secondary {
+        @apply font-DMSerifDisplay font-bold text-5xl leading-[4.688rem]
+    }
+
+    .fr {
+        @apply relative top-1
+    }
+
+    .btn {
+        @apply rounded-lg py-2.5 px-4
+    }
+}
