@@ -17,9 +17,7 @@ const Header = () => {
 	};
 
 	const handleDropdownClick = (dropdown) => {
-		const dropdownClasses = [
-			'scale-0',
-		];
+		const dropdownClasses = ["animate-slideUp"];
 
 		// Close all dropdowns that is not the one currently clicked
 		const dropdowns = [
@@ -29,11 +27,15 @@ const Header = () => {
 
 		dropdowns.forEach(dropdownElement => {
 			if (dropdownElement !== dropdown.current) {
-				dropdownElement.classList.add(dropdownClasses);
+				dropdownElement.classList.replace("animate-slideUp", "animate-slideDown");
 			}
 		});
 
-		dropdown.current.classList.toggle(dropdownClasses);
+		if (dropdown.current.classList.contains("animate-slideDown")) {
+			dropdown.current.classList.replace("animate-slideDown", "animate-slideUp");
+		} else {
+			dropdown.current.classList.replace("animate-slideUp", "animate-slideDown");
+		}
 	};
 
     return (
@@ -63,7 +65,7 @@ const Header = () => {
 						</button>
 
 						<div
-							className="bg-white grid grid-cols-1 lg:grid-cols-12 gap-4 rounded-xl p-4 absolute top-[calc(100%+.5rem)] lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto lg:py-8 lg:px-12 lg:gap-8 lg:shadow-2xl transition-transform ease-linear duration-500 scale-0 z-50"
+							className="bg-white grid grid-cols-1 lg:grid-cols-12 gap-4 rounded-xl p-4 absolute lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto lg:py-8 lg:px-12 lg:gap-8 lg:shadow-2xl transition-transform ease-linear duration-500 z-50 animate-slideDown origin-[0_0]"
 							ref={paymentRef}
 						>
 							<Link
@@ -156,7 +158,7 @@ const Header = () => {
 						</button>
 
 						<div
-							className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-xl p-4 absolute top-[calc(100%+.5rem)] lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto lg:py-8 lg:px-12 lg:gap-8 lg:shadow-2xl transition-transform ease-linear duration-500 scale-0 z-50"
+							className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-xl p-4 absolute lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto lg:py-8 lg:px-12 lg:gap-8 lg:shadow-2xl transition-transform ease-linear duration-500 z-50 animate-slideDown origin-[0_0]"
 							ref={companyRef}
 						>
 							<Link
