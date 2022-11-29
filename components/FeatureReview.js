@@ -5,8 +5,8 @@ import SamsungGalaxy from "@assets/img/samsung-galaxy.svg";
 const FeatureReview = () => {
     return (
 		<section className="grid grid-cols-3 gap-8 items-center">
-			<div className="space-y-4">
-				<h3 className="font-bold text-xl">Bills Payment</h3>
+			<div className="space-y-3">
+				<h2 className="font-bold text-xl">Bills Payment</h2>
 
 				<p>
 					Life could be hard but making payments shouldn’t. Pay for
@@ -16,7 +16,7 @@ const FeatureReview = () => {
 				</p>
 
 				<Link
-					className="bg-brand-dark-purple hover:bg-brand-navlink text-white btn inline-block transition-colors duration-300 ease-in"
+					className="bg-brand-dark-purple hover:bg-brand-dark-purple/90 text-white btn inline-block transition-colors duration-300 ease-in"
 					href="/"
 				>
 					Download App
@@ -31,8 +31,8 @@ const FeatureReview = () => {
 			/>
 
 			<div className="space-y-8">
-				<div className="space-y-4">
-					<h3 className="font-bold text-xl">Accept Payments</h3>
+				<div className="space-y-3">
+					<h2 className="font-bold text-xl">Accept Payments</h2>
 
 					<p>
 						Easily receive money from anyone, anytime and anywhere
@@ -48,8 +48,8 @@ const FeatureReview = () => {
 					</Link>
 				</div>
 
-				<div className="space-y-4">
-					<h3 className="font-bold text-xl">Money Transfer</h3>
+				<div className="space-y-3">
+					<h2 className="font-bold text-xl">Money Transfer</h2>
 
 					<p>
 						Make single or bulk transfers to bank accounts from your

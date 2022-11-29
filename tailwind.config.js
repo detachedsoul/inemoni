@@ -12,12 +12,14 @@ module.exports = {
 				"brand-dark-purple": "#0a0e27",
 				"notification-red": "#ff0000",
 				"notification-green": "#29c57a",
-				"footer-border": "#c3c3c3"
+				"footer-border": "#c3c3c3",
+				"dropdown-hover": "rgba(105, 18, 170, 0.05)",
+				"dropdown-shadow": "0px 5px 20px 10px rgba(0, 0, 10, 0.05)"
 			},
 			fontFamily: {
 				moderat: ["var(--font-moderat)"],
 				millik: ["var(--font-millik)"],
-				"DMSerifDisplay": ["var(--font-dm-serif-display)"],
+				DMSerifDisplay: ["var(--font-dm-serif-display)"],
 			},
 		},
 	},

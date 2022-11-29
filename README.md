@@ -1,1 +1,1 @@
-# Repo for Inemonic's website
+# Repo for Inemoni's website
