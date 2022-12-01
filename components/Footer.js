@@ -1,138 +1,273 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import NigeriaFlag from "@assets/img/nigeria-flag.svg";;
+import NigeriaFlag from "@assets/img/nigeria-flag.svg";
+import { useRef } from "react";
 
 const Footer = () => {
-    const footerLinks = [
-        {
-            linkGroup: "Company",
-            links: [
-                {
-                    linkName: "Cash Withdrawal",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Money Transfer",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Pay Bills",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Savings",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Careers",
-                    isLink: true,
-                    route: "/"
-                }
-            ]
-        },
-        {
-            linkGroup: "Developers",
-            links: [
-                {
-                    linkName: "API Documentation",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "API Status",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "API Reference",
-                    isLink: true,
-                    route: "/"
-                }
-            ]
-        },
-        {
-            linkGroup: "Support",
-            links: [
-                {
-                    linkName: "Give Us Feedback",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Help Center",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Live Chat",
-                    isLink: true,
-                    route: "/"
-                }
-            ]
-        },
-        {
-            linkGroup: "Resources",
-            links: [
-                {
-                    linkName: "FAQ",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "Blog",
-                    isLink: true,
-                    route: "/"
-                }
-            ]
-        },
-        {
-            linkGroup: "Contact",
-            links: [
-                {
-                    linkName: "support@inemoni.com",
-                    isLink: true,
-                    route: "/"
-                },
-                {
-                    linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
-                    isLink: false,
-                    route: null
-                }
-            ]
-        }
-    ];
+	const footerLinks = [
+		{
+			linkGroup: "Company",
+			isDesktopLink: true,
+			links: [
+				{
+					linkName: "Cash Withdrawal",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Money Transfer",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Pay Bills",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Savings",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Careers",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+		{
+			linkGroup: "Developers",
+			isDesktopLink: true,
+			links: [
+				{
+					linkName: "API Documentation",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "API Status",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "API Reference",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+		{
+			linkGroup: "Support",
+			isDesktopLink: true,
+			links: [
+				{
+					linkName: "Give Us Feedback",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Help Center",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Live Chat",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+		{
+			linkGroup: "Resources",
+			isDesktopLink: true,
+			links: [
+				{
+					linkName: "FAQ",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Blog",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+		{
+			linkGroup: "Contact",
+			isDesktopLink: true,
+			links: [
+				{
+					linkName: "support@inemoni.com",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
+					isLink: false,
+					route: null,
+				},
+			],
+		},
+		{
+			linkGroup: "Legal",
+			isDesktopLink: false,
+			links: [
+				{
+					linkName: "Privacy Policy",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Terms of Use",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Cookie Policy",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+		{
+			linkGroup: "Contact",
+			isDesktopLink: false,
+			links: [
+				{
+					linkName: "support@inemoni.com",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
+					isLink: false,
+					route: null,
+				},
+			],
+		},
+		{
+			linkGroup: "Social",
+			isDesktopLink: false,
+			links: [
+				{
+					linkName: "Twitter",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Instagram",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "Facebook",
+					isLink: true,
+					route: "/",
+				},
+				{
+					linkName: "LinkedIn",
+					isLink: true,
+					route: "/",
+				},
+			],
+		},
+	];
 
-    return (
+    const parentElement = useRef(null);
+
+    const toggleMobileFooter = (e) => {
+		const elementsToTraverse = parentElement.current.childNodes;
+
+		elementsToTraverse.forEach((elements) => {
+			if (elements.firstElementChild !== e.currentTarget) {
+				if (elements.firstElementChild.nextElementSibling.classList.contains("max-h-full")) {
+					elements.firstElementChild.nextElementSibling.classList.replace("max-h-full", "max-h-0");
+
+					elements.firstElementChild.lastElementChild.classList.replace("fi-rr-angle-small-up", "fi-rr-angle-small-down");
+				}
+			}
+		})
+
+		if (e.currentTarget.nextElementSibling.classList.contains("max-h-full")) {
+			e.currentTarget.nextElementSibling.classList.replace("max-h-full", "max-h-0");
+
+			e.currentTarget.lastElementChild.classList.replace("fi-rr-angle-small-up", "fi-rr-angle-small-down");
+		} else {
+			e.currentTarget.nextElementSibling.classList.replace("max-h-0", "max-h-full");
+
+			e.currentTarget.lastElementChild.classList.replace("fi-rr-angle-small-down", "fi-rr-angle-small-up");
+		}
+    };
+
+	return (
 		<footer className="p-[5%] bg-white">
-			<div className="grid grid-cols-5 gap-4 border-b border-footer-border pb-8">
+			<div className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid" ref={parentElement}>
 				{footerLinks.map((footerLink, id) => (
-					<div className="space-y-3" key={id}>
-						<h3 className="font-semibold">
-							{footerLink.linkGroup}
-						</h3>
+                    <div
+                        className="space-y-3 border-b border-footer-border pb-1.5 last:border-none"
+                        key={id}
+                    >
+                        <button className="flex items-center justify-between gap-4 w-full py-1" type="button" onClick={(e) => toggleMobileFooter(e)}>
+                            <span className="font-semibold text-lg">
+                                {footerLink.linkGroup}
+                            </span>
 
-						<ul className="space-y-2">
-							{footerLink.links.map((link, id) =>
-								link.isLink ? (
-									<li key={id}>
-										<Link
-											className="hover:text-brand-navlink"
-											href={link.route}
-										>
-											{link.linkName}
-										</Link>
-									</li>
-								) : (
-									<li key={id}>{link.linkName}</li>
-								),
-							)}
-						</ul>
-					</div>
-				))}
+                            <i className="fr fi-rr-angle-small-down"></i>
+                        </button>
+
+                        <ul className="space-y-4 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
+            				{footerLink.links.map((link, id) =>
+                                link.isLink ? (
+                                    <li key={id}>
+                                        <Link
+                                            className="hover:text-brand-navlink"
+                                            href={link.route}
+                                        >
+                                            {link.linkName}
+                                        </Link>
+                                    </li>
+                                ) : (
+                                    <li key={id}>{link.linkName}</li>
+                                ),
+                            )}
+                        </ul>
+                    </div>
+                ))}
+			</div>
+
+			<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-8 hidden not-sr-only">
+				{footerLinks.map((footerLink, id) =>
+					footerLink.isDesktopLink ? (
+						<div className="space-y-3" key={id}>
+							<h3 className="font-semibold">
+								{footerLink.linkGroup}
+							</h3>
+
+							<ul className="space-y-2">
+								{footerLink.links.map((link, id) =>
+									link.isLink ? (
+										<li key={id}>
+											<Link
+												className="hover:text-brand-navlink"
+												href={link.route}
+											>
+												{link.linkName}
+											</Link>
+										</li>
+									) : (
+										<li key={id}>{link.linkName}</li>
+									),
+								)}
+							</ul>
+						</div>
+					) : (
+						""
+					),
+				)}
 			</div>
 
 			<div className="flex items-center justify-between gap-4 py-4">
@@ -145,7 +280,7 @@ const Footer = () => {
 					Nigeria
 				</span>
 
-				<ul className="flex items-center gap-8">
+				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
 					<li>
 						<Link className="hover:text-brand-navlink" href="/">
 							Twitter
@@ -166,7 +301,7 @@ const Footer = () => {
 
 					<li>
 						<Link className="hover:text-brand-navlink" href="/">
-							Linkedin
+							LinkedIn
 						</Link>
 					</li>
 				</ul>
@@ -177,7 +312,7 @@ const Footer = () => {
 					&copy; 2022 Inemoni. All right reserved.
 				</span>
 
-				<ul className="flex items-center gap-8">
+				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
 					<li>
 						<Link className="hover:text-brand-navlink" href="/">
 							Privacy Policy
@@ -187,6 +322,12 @@ const Footer = () => {
 					<li>
 						<Link className="hover:text-brand-navlink" href="/">
 							Terms of Use
+						</Link>
+					</li>
+
+					<li>
+						<Link className="hover:text-brand-navlink" href="/">
+							Cookie Policy
 						</Link>
 					</li>
 				</ul>

@@ -8,7 +8,7 @@ const HeroText = () => {
             </h1>
 
             <p>
-                Inemoni gives you free and eass access to financial services. Our watchword while creating an avenue for our agents to make money using our amazing services.
+                Inemoni gives you free and easy access to financial services. Our watchword while creating an avenue for our agents to make money using our amazing services.
             </p>
 
             <div className="flex items-center gap-4">

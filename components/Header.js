@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import Logo from "@assets/img/logo.svg";
-import {useRef, useState, useEffect} from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef, useState } from "react";
 
 const Header = () => {
 	const navRef = useRef(null);
@@ -40,8 +40,8 @@ const Header = () => {
 
     return (
 		<header
-			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] border-b border-brand-gray lg:bg-white/90 lg:backdrop-blur ${
-				navIsOpen ? "bg-white" : "bg-white/90 backdrop-blur"
+			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] border-b border-brand-gray lg:bg-white/95 lg:backdrop-blur ${
+				navIsOpen ? "bg-white" : "bg-white/95 backdrop-blur"
 			}`}
 		>
 			<Link href="/">
@@ -70,7 +70,7 @@ const Header = () => {
 						>
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									Cash Withdrawal
@@ -84,7 +84,7 @@ const Header = () => {
 
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">Savings</span>
 
@@ -96,7 +96,7 @@ const Header = () => {
 
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									Money Transfer
@@ -110,7 +110,7 @@ const Header = () => {
 
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									Pay Bills
@@ -139,7 +139,7 @@ const Header = () => {
 
 									<Link
 										className="text-brand-purple inline-block"
-										href=""
+										href="/"
 									>
 										Read More
 										<i className="fr fi-rr-arrow-right ml-2"></i>
@@ -163,7 +163,7 @@ const Header = () => {
 						>
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									About Us
@@ -177,7 +177,7 @@ const Header = () => {
 
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									Terms of Use
@@ -191,7 +191,7 @@ const Header = () => {
 
 							<Link
 								className="hover:bg-dropdown-hover text-brand-black btn space-y-2"
-								href=""
+								href="/"
 							>
 								<span className="block font-bold">
 									Contact Us
@@ -230,7 +230,7 @@ const Header = () => {
 			<div className="flex items-center gap-4">
 				<Link
 					className="btn text-brand-navlink font-medium bg-brand-gray hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in hidden lg:block"
-					href=""
+					href="/"
 				>
 					Get Started
 				</Link>
