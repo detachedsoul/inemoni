@@ -3,15 +3,17 @@ import FeatureReview from "@components/FeatureReview";
 import TrackExpenses from "@components/TrackExpenses";
 import PushNotifications from "@components/PushNotifications";
 import GetStarted from "@components/GetStarted";
+import Partners from "@components/Partners";
 
 const Index = () => {
     return (
-        <main className="p-[5%] space-y-[10%]">
+        <main className="space-y-[10%]">
             <HeroText />
             <FeatureReview />
             <TrackExpenses />
             <PushNotifications />
             <GetStarted />
+            <Partners />
         </main>
     );
 };

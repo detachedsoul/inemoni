@@ -40,12 +40,12 @@ const Header = () => {
 
     return (
 		<header
-			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] border-b border-brand-gray lg:bg-white/95 lg:backdrop-blur ${
+			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] lg:bg-white/95 lg:backdrop-blur ${
 				navIsOpen ? "bg-white" : "bg-white/95 backdrop-blur"
 			}`}
 		>
 			<Link href="/">
-				<Image src={Logo} alt="Inemoni" priority />
+				<Image src={Logo} alt="Inemoni" quality={100} priority={true} />
 			</Link>
 
 			<nav
@@ -54,7 +54,7 @@ const Header = () => {
 				} min-h-screen lg:min-h-0`}
 				ref={navRef}
 			>
-				<ul className="flex lg:items-center flex-col gap-4 lg:gap-12 lg:justify-between lg:flex-row overflow-y-auto min-h-[calc(100vh-4.5rem)] lg:min-h-0 p-4 lg:p-0 overscroll-contain">
+				<ul className="flex lg:items-center flex-col gap-4 lg:gap-12 lg:justify-between lg:flex-row overflow-y-auto min-h-[calc(100vh-4.5rem)] lg:min-h-0 p-4 lg:p-0 overscroll-contain lg:overflow-hidden">
 					<li className="relative">
 						<button
 							className="text-brand-navlink font-medium hover:bg-dropdown-hover btn hover:text-brand-black block w-full lg:hover:bg-transparent text-left"

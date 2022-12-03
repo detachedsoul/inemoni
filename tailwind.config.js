@@ -26,25 +26,24 @@ module.exports = {
 					"0%": {
 						top: "calc(100%+5rem)",
 						opacity: "0",
-						"pointer-events": "none",
-						"tabindex": "-1"
+						"pointer-events": "none"
 					},
 					"100%": {
 						transform: "scale(1)",
 						top: "calc(100%+.5rem)",
-						"pointer-events": "click",
+						"pointer-events": "click"
 					},
 				},
 				slideDown: {
 					"0%": {
 						transform: "scale(1)",
 						top: "calc(100%+.5rem)",
-						"pointer-events": "click",
+						"pointer-events": "click"
 					},
 					"100%": {
 						top: "calc(100%+5rem)",
 						opacity: "0",
-						"pointer-events": "none",
+						"pointer-events": "none"
 					},
 				},
 			},
