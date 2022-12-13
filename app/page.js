@@ -2,7 +2,6 @@ import HeroText from "@components/HeroText";
 import FeatureReview from "@components/FeatureReview";
 import TrackExpenses from "@components/TrackExpenses";
 import PushNotifications from "@components/PushNotifications";
-import GetStarted from "@components/GetStarted";
 import Partners from "@components/Partners";
 
 const Index = () => {
@@ -12,7 +11,6 @@ const Index = () => {
             <FeatureReview />
             <TrackExpenses />
             <PushNotifications />
-            <GetStarted />
             <Partners />
         </main>
     );

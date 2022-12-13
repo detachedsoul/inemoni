@@ -1,5 +1,6 @@
 "use client";
 
+import GetStarted from "./GetStarted";
 import Image from "next/image";
 import Link from "next/link";
 import NigeriaFlag from "@assets/img/nigeria-flag.svg";
@@ -107,8 +108,8 @@ const Footer = () => {
 				},
 				{
 					linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
-					isLink: false,
-					route: null,
+					isLink: true,
+					route: "https://www.google.com/maps/place/IneMoni/@9.1434533,7.3461676,17z/data=!3m1!4b1!4m5!3m4!1s0x104dd95894592a27:0xda8cb3efddd08cda!8m2!3d9.143448!4d7.3483563?shorturl=1",
 				},
 			],
 		},
@@ -204,55 +205,30 @@ const Footer = () => {
     };
 
 	return (
-		<footer className="p-[5%] bg-white">
-			<div className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid" ref={parentElement}>
-				{footerLinks.map((footerLink, id) => (
-                    <div
-                        className="space-y-3 border-b border-footer-border pb-1.5 last:border-none"
-                        key={id}
-                    >
-                        <button className="flex items-center justify-between gap-4 w-full py-1" type="button" onClick={(e) => toggleMobileFooter(e)}>
-                            <span className="font-semibold text-lg">
-                                {footerLink.linkGroup}
-                            </span>
+		<>
+			<GetStarted />
 
-                            <i className="fr fi-rr-angle-small-down"></i>
-                        </button>
+			<footer className="px-[5%] pb-[5%] pt-[10%]">
+				<div className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid" ref={parentElement}>
+					{footerLinks.map((footerLink, id) => (
+						<div
+							className="space-y-2 border-b border-footer-border pb-1.5 last:border-none"
+							key={id}
+						>
+							<button className="flex items-center justify-between gap-4 w-full py-1" type="button" onClick={(e) => toggleMobileFooter(e)}>
+								<span className="font-semibold text-lg">
+									{footerLink.linkGroup}
+								</span>
 
-                        <ul className="space-y-4 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
-            				{footerLink.links.map((link, id) =>
-                                link.isLink ? (
-                                    <li key={id}>
-                                        <Link
-                                            className="hover:text-brand-navlink"
-                                            href={link.route}
-                                        >
-                                            {link.linkName}
-                                        </Link>
-                                    </li>
-                                ) : (
-                                    <li key={id}>{link.linkName}</li>
-                                ),
-                            )}
-                        </ul>
-                    </div>
-                ))}
-			</div>
+								<i className="fr fi-rr-angle-small-down"></i>
+							</button>
 
-			<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-8 hidden not-sr-only">
-				{footerLinks.map((footerLink, id) =>
-					footerLink.isDesktopLink ? (
-						<div className="space-y-3" key={id}>
-							<h3 className="font-semibold">
-								{footerLink.linkGroup}
-							</h3>
-
-							<ul className="space-y-2">
+							<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
 								{footerLink.links.map((link, id) =>
 									link.isLink ? (
 										<li key={id}>
 											<Link
-												className="hover:text-brand-navlink"
+												className="hover:text-brand-purple"
 												href={link.route}
 											>
 												{link.linkName}
@@ -264,75 +240,104 @@ const Footer = () => {
 								)}
 							</ul>
 						</div>
-					) : (
-						""
-					),
-				)}
-			</div>
+					))}
+				</div>
 
-			<div className="flex items-center justify-between gap-4 py-4">
-				<span className="flex items-center gap-4">
-					<Image
-						className="rounded-full"
-						src={NigeriaFlag}
-						alt="Nigeria's flag"
-					/>
-					Nigeria
-				</span>
+				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
+					{footerLinks.map((footerLink, id) =>
+						footerLink.isDesktopLink ? (
+							<div className="space-y-5" key={id}>
+								<h3 className="font-semibold">
+									{footerLink.linkGroup}
+								</h3>
 
-				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Twitter
-						</Link>
-					</li>
+								<ul className="space-y-4">
+									{footerLink.links.map((link, id) =>
+										link.isLink ? (
+											<li key={id}>
+												<Link
+													className="hover:text-brand-purple"
+													href={link.route}
+												>
+													{link.linkName}
+												</Link>
+											</li>
+										) : (
+											<li key={id}>{link.linkName}</li>
+										),
+									)}
+								</ul>
+							</div>
+						) : (
+							""
+						),
+					)}
+				</div>
 
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Instagram
-						</Link>
-					</li>
+				<div className="flex items-center justify-between gap-4 py-6">
+					<span className="flex items-center gap-4">
+						<Image
+							className="rounded-full"
+							src={NigeriaFlag}
+							alt="Nigeria's flag"
+						/>
+						Nigeria
+					</span>
 
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Facebook
-						</Link>
-					</li>
+					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Twitter
+							</Link>
+						</li>
 
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							LinkedIn
-						</Link>
-					</li>
-				</ul>
-			</div>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Instagram
+							</Link>
+						</li>
 
-			<div className="flex items-center justify-between gap-4 border-t border-footer-border pt-4">
-				<span className="flex items-center gap-4">
-					&copy; 2022 Inemoni. All right reserved.
-				</span>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Facebook
+							</Link>
+						</li>
 
-				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Privacy Policy
-						</Link>
-					</li>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								LinkedIn
+							</Link>
+						</li>
+					</ul>
+				</div>
 
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Terms of Use
-						</Link>
-					</li>
+				<div className="flex items-center justify-between gap-4 border-t border-footer-border pt-8">
+					<span className="flex items-center gap-4">
+						&copy; 2022 Inemoni. All right reserved.
+					</span>
 
-					<li>
-						<Link className="hover:text-brand-navlink" href="/">
-							Cookie Policy
-						</Link>
-					</li>
-				</ul>
-			</div>
-		</footer>
+					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Privacy Policy
+							</Link>
+						</li>
+
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Terms of Use
+							</Link>
+						</li>
+
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Cookie Policy
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</footer>
+		</>
 	);
 };
 

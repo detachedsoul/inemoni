@@ -23,34 +23,28 @@ module.exports = {
 			},
 			keyframes: {
 				slideUp: {
-					"0%": {
-						top: "calc(100%+5rem)",
-						opacity: "0",
-						"pointer-events": "none"
+					from: {
+						"transform": "translateY(-150%)",
+						"overflow-y": "hidden"
 					},
-					"100%": {
-						transform: "scale(1)",
-						top: "calc(100%+.5rem)",
-						"pointer-events": "click"
+					to: {
+						"transform": "translateY(0)"
 					},
 				},
 				slideDown: {
-					"0%": {
-						transform: "scale(1)",
-						top: "calc(100%+.5rem)",
-						"pointer-events": "click"
+					from: {
+						"transform": "translateY(0)"
 					},
-					"100%": {
-						top: "calc(100%+5rem)",
-						opacity: "0",
-						"pointer-events": "none"
+					to: {
+						"transform": "translateY(-150%)",
+						"overflow-y": "hidden"
 					},
 				},
 			},
 			animation: {
-				slideUp: "slideUp .5s linear forwards",
-				slideDown: "slideDown .5s linear forwards",
-			},
+				slideUp: "slideUp 0s linear forwards",
+				slideDown: "slideDown 0s linear forwards",
+			}
 		},
 	},
 	plugins: [],

@@ -36,20 +36,8 @@ const DMSerifDisplay = localFont({
 
 const Layout = ({ children }) => {
     return (
-		<html lang="en">
-			<head>
-				<meta charSet="UTF-8" />
-				<title>Inemoni | Home</title>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1"
-				/>
-				<link rel="icon" type="image/x-icon" href="/logo.svg" />
-				<meta
-					name="description"
-					content="Inemoni - Bringing financial services to your doorsteps"
-				/>
-			</head>
+		<html className="h-full" lang="en">
+			<head />
 			<body
 				className={`antialiased tracking-wide scroll-smooth overscroll-contain bg-white text-brand-black text-normal selection:bg-brand-purple selection:text-white ${moderat.variable} ${millik.variable} ${DMSerifDisplay.variable} font-moderat break-words [word-break:break-word] [word-wrap:break-word] overflow-y-auto`}
 			>

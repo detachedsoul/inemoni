@@ -5,13 +5,14 @@ const nextConfig = {
 		fontLoaders: [
 			{
 				loader: "@next/font/local",
-				options: { subsets: ["latin"] }
+				options: { subsets: ["latin"] },
 			},
 			{
 				loader: "@next/font/google",
-				options: { subsets: ["latin"] }
+				options: { subsets: ["latin"] },
 			},
 		],
+		scrollRestoration: true,
 	},
 };
 

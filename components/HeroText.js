@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "@assets/img/hero-image.svg";
+import heroImage from "@assets/img/hero-image.png";
 
 const HeroText = () => {
     return (
@@ -38,6 +38,7 @@ const HeroText = () => {
 			</div>
 
 			<Image
+			 	className="rounded-xl"
 				src={heroImage}
 				alt="Happy Inemoni User"
 				quality={100}
