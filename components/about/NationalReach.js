@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Globe from "@assets/img/globe.png";
@@ -22,17 +23,15 @@ const NationalReach = () => {
 		console.log("Hello" + container.current.clientHeight);
 	}, []);
 
-	if (typeof window !== "undefined") {
-		useLayoutEffect(() => {
-			setHeight(() => (height = container.current.offsetHeight));
-			setWidth(() => (width = container.current.offsetWeight));
-			// window.addEventListner("resize", () => {
-			// });
+	useLayoutEffect(() => {
+		setHeight(() => (height = container.current.offsetHeight));
+		setWidth(() => (width = container.current.offsetWeight));
+		// window.addEventListner("resize", () => {
+		// });
 
-			// console.log(height);
-			// console.log("Hello" + container.current.clientHeight);
-		}, []);
-	}
+		// console.log(height);
+		// console.log("Hello" + container.current.clientHeight);
+	}, []);
 
 	return (
 		<section
