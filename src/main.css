@@ -4,11 +4,11 @@
 
 @layer components {
     .header {
-        @apply font-millik text-6xl leading-[4rem]
+        @apply font-millik text-3xl sm:text-5xl leading-[2rem] md:text-6xl sm:leading-[4rem]
     }
 
     .header-secondary {
-        @apply font-DMSerifDisplay font-bold text-5xl leading-[3.5rem]
+        @apply font-DMSerifDisplay font-bold text-2xl sm:text-4xl md:text-5xl leading-normal sm:leading-[3.5rem]
     }
 
     .fr {
@@ -17,5 +17,14 @@
 
     .btn {
         @apply rounded-lg py-3 lg:py-2 px-4 tracking-wider
+    }
+
+    .no-scrollbar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
     }
 }

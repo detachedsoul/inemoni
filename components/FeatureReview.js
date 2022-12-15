@@ -4,7 +4,7 @@ import SamsungGalaxy from "@assets/img/samsung-galaxy.svg";
 
 const FeatureReview = () => {
     return (
-		<section className="grid grid-cols-3 gap-8 items-center px-[5%]">
+		<section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center px-[5%] xl:px-[10%]">
 			<div className="space-y-3">
 				<h2 className="font-bold text-xl">Bills Payment</h2>
 

@@ -4,8 +4,8 @@ import heroImage from "@assets/img/hero-image.png";
 
 const HeroText = () => {
     return (
-		<div className="grid gap-8 grid-cols-2 items-center px-[5%] lg:gap-12">
-			<div className="space-y-4">
+		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 sm:pt-0 xl:px-[10%]">
+			<div className="space-y-4 text-center sm:text-left">
 				<h1 className="header">
 					<span className="text-brand-purple">
 						Financial Services
@@ -20,7 +20,7 @@ const HeroText = () => {
 					agents to make money using our amazing services.
 				</p>
 
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 place-content-center sm:place-content-start">
 					<Link
 						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
 						href="/"
@@ -38,7 +38,7 @@ const HeroText = () => {
 			</div>
 
 			<Image
-			 	className="rounded-xl"
+				className="rounded-xl"
 				src={heroImage}
 				alt="Happy Inemoni User"
 				quality={100}

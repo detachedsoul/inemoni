@@ -6,26 +6,26 @@ import Spotify from "@assets/img/spotify.svg";
 
 const PushNotifications = () => {
     return (
-		<section className="grid grid-cols-2 gap-8 items-center px-[5%] lg:gap-12">
+		<section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center px-[5%] lg:gap-12 xl:px-[10%]">
 			<div className="space-y-4">
-				<div className="bg-white shadow-xl rounded-2xl p-3 grid grid-cols-12 items-center gap-2 justify-between">
-					<div className="flex items-center gap-3 col-span-9">
+				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar">
+					<div className="flex items-center gap-3 shrink-0">
 						<Image src={GTBank} alt="GTBank" />
 
-						<div className="space-y-1">
+						<div className="space-y-1 flex flex-col shrink-0">
 							<h3 className="font-medium">Money Transfer</h3>
 
 							<p>₦300,000 has been transfered to Dominic</p>
 						</div>
 					</div>
 
-					<p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 col-span-3 ml-auto text-right">
+					<p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 ml-auto text-right grid shrink-0">
 						-300,000.00
 					</p>
 				</div>
 
-				<div className="bg-white shadow-xl rounded-2xl p-3 grid grid-cols-12 items-center gap-2 justify-between">
-					<div className="flex items-center gap-3 col-span-9">
+				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar">
+					<div className="flex items-center gap-3 shrink-0">
 						<Image src={IneMoni} alt="Inemoni" />
 
 						<div className="space-y-1">
@@ -35,13 +35,13 @@ const PushNotifications = () => {
 						</div>
 					</div>
 
-					<p className="rounded-3xl bg-notification-green  text-white font-medium text-xs py-3 px-4 col-span-3 ml-auto text-right">
+					<p className="rounded-3xl bg-notification-green  text-white font-medium text-xs py-3 px-4 col-span-3 ml-auto text-right grid shrink-0 mr-4">
 						+90,000.00
 					</p>
 				</div>
 
-				<div className="bg-white shadow-xl rounded-2xl p-3 grid grid-cols-12 items-center gap-2 justify-between">
-					<div className="flex items-center gap-3 col-span-9">
+				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar">
+					<div className="flex items-center gap-3 shrink-0">
 						<Image src={Spotify} alt="Spotify" />
 
 						<div className="space-y-1">
@@ -51,7 +51,7 @@ const PushNotifications = () => {
 						</div>
 					</div>
 
-					<p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 col-span-3 ml-auto text-right">
+					<p className="rounded-3xl bg-notification-red/5 text-notification-red font-medium text-xs py-3 px-4 col-span-3 ml-auto text-right grid shrink-0">
 						-1,200.00
 					</p>
 				</div>

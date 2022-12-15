@@ -6,7 +6,7 @@ import Partners from "@components/Partners";
 
 const Index = () => {
     return (
-        <main className="space-y-[10%]">
+        <main className="space-y-[20%] sm:space-y-[10%]">
             <HeroText />
             <FeatureReview />
             <TrackExpenses />

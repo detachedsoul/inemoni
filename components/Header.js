@@ -4,8 +4,8 @@
 import Logo from "@assets/img/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import {usePathname} from "next/navigation";
-import { useRef, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
 	const pathname = usePathname();
@@ -21,42 +21,48 @@ const Header = () => {
 
 	const handleDropdownClick = (dropdown) => {
 		// Get all the dropdowns in the page
-		const dropdowns = [
-			paymentRef.current,
-			companyRef.current
-		];
+		const dropdowns = [paymentRef.current, companyRef.current];
 
-		dropdowns.forEach(dropdownElement => {
+		dropdowns.forEach((dropdownElement) => {
 			if (dropdownElement !== dropdown.current) {
-				dropdownElement.classList.replace("-translate-y-0", "-translate-y-[150%]");
+				dropdownElement.classList.replace(
+					"-translate-y-0",
+					"-translate-y-[150%]",
+				);
 			}
 		});
 
 		if (dropdown.current.classList.contains("-translate-y-[150%]")) {
-			dropdown.current.classList.replace("-translate-y-[150%]", "-translate-y-0");
+			dropdown.current.classList.replace(
+				"-translate-y-[150%]",
+				"-translate-y-0",
+			);
 		} else {
-			dropdown.current.classList.replace("-translate-y-0", "-translate-y-[150%]");
+			dropdown.current.classList.replace(
+				"-translate-y-0",
+				"-translate-y-[150%]",
+			);
 		}
 	};
 
 	// Close all dropdowns once a link to a new page is clicked
 	useEffect(() => {
 		// Get all the dropdowns in the page
-		const dropdowns = [
-			paymentRef.current,
-			companyRef.current
-		];
+		const dropdowns = [paymentRef.current, companyRef.current];
 
-		dropdowns.forEach(dropdownElement => {
-			dropdownElement.classList.replace("-translate-y-0", "-translate-y-[150%]");
+		dropdowns.forEach((dropdownElement) => {
+			dropdownElement.classList.replace(
+				"-translate-y-0",
+				"-translate-y-[150%]",
+			);
 		});
 
-		// setNavIsOpen(() => navIsOpen = false);
+		setNavIsOpen(() => false);
 	}, [pathname]);
 
-    return (
+	return (
 		<header
-			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] lg:bg-white/95 lg:backdrop-blur ${
+			className={`px-[5%] py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] lg:bg-white/95 lg:backdrop-blur xl:px-[10%] ${
 				navIsOpen ? "bg-white" : "bg-white/95 backdrop-blur"
 			}`}
 		>
@@ -94,8 +100,8 @@ const Header = () => {
 									</span>
 
 									<span className="inline-block">
-										Withdraw cash at our agents outlet closest
-										to you.
+										Withdraw cash at our agents outlet
+										closest to you.
 									</span>
 								</Link>
 
@@ -103,11 +109,13 @@ const Header = () => {
 									className="hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6"
 									href="/"
 								>
-									<span className="block font-bold">Savings</span>
+									<span className="block font-bold">
+										Savings
+									</span>
 
 									<span className="inline-block">
-										Everyone can save without restriction, with
-										fast withdrawal.
+										Everyone can save without restriction,
+										with fast withdrawal.
 									</span>
 								</Link>
 
@@ -120,8 +128,8 @@ const Header = () => {
 									</span>
 
 									<span className="inline-block">
-										Your transfer goes through seamlessly with
-										Inemoni.
+										Your transfer goes through seamlessly
+										with Inemoni.
 									</span>
 								</Link>
 
@@ -150,8 +158,8 @@ const Header = () => {
 										</span>
 
 										<p>
-											Here’s an overview of how we made magic
-											happen
+											Here’s an overview of how we made
+											magic happen
 										</p>
 
 										<Link
@@ -189,8 +197,8 @@ const Header = () => {
 									</span>
 
 									<span className="inline-block">
-										Learn more about who we are and what we do
-										at NestlyPay
+										Learn more about who we are and what we
+										do at NestlyPay
 									</span>
 								</Link>
 

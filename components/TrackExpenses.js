@@ -4,9 +4,9 @@ import ColorBlock from "@assets/img/color-block.svg";
 
 const TrackExpenses = () => {
     return (
-		<section className="grid grid-cols-2 gap-8 items-center px-[5%] lg:gap-12">
-			<div className="space-y-4">
-				<h2 className="header-secondary font-seminold text-brand-dark-purple">
+		<section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center px-[5%] lg:gap-12 xl:px-[10%]">
+			<div className="space-y-4 order-last sm:order-first">
+				<h2 className="header-secondary font-semibold text-brand-dark-purple">
 					Track expenses and manage funds with ease.
 				</h2>
 
@@ -24,7 +24,7 @@ const TrackExpenses = () => {
 				</Link>
 			</div>
 
-			<Image src={ColorBlock} alt="" />
+			<Image className="order-first sm:order-last" src={ColorBlock} alt="" />
 		</section>
 	);
 };

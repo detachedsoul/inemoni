@@ -1,10 +1,10 @@
 "use client";
 
-import GetStarted from "./GetStarted";
+import NigeriaFlag from "@assets/img/nigeria-flag.svg";
 import Image from "next/image";
 import Link from "next/link";
-import NigeriaFlag from "@assets/img/nigeria-flag.svg";
 import { useRef } from "react";
+import GetStarted from "./GetStarted";
 
 const Footer = () => {
 	const footerLinks = [
@@ -178,44 +178,75 @@ const Footer = () => {
 		},
 	];
 
-    const parentElement = useRef(null);
+	const parentElement = useRef(null);
 
-    const toggleMobileFooter = (e) => {
+	const toggleMobileFooter = (e) => {
 		const elementsToTraverse = parentElement.current.childNodes;
 
 		elementsToTraverse.forEach((elements) => {
 			if (elements.firstElementChild !== e.currentTarget) {
-				if (elements.firstElementChild.nextElementSibling.classList.contains("max-h-full")) {
-					elements.firstElementChild.nextElementSibling.classList.replace("max-h-full", "max-h-0");
+				if (
+					elements.firstElementChild.nextElementSibling.classList.contains(
+						"max-h-full",
+					)
+				) {
+					elements.firstElementChild.nextElementSibling.classList.replace(
+						"max-h-full",
+						"max-h-0",
+					);
 
-					elements.firstElementChild.lastElementChild.classList.replace("fi-rr-angle-small-up", "fi-rr-angle-small-down");
+					elements.firstElementChild.lastElementChild.classList.replace(
+						"fi-rr-angle-small-up",
+						"fi-rr-angle-small-down",
+					);
 				}
 			}
-		})
+		});
 
-		if (e.currentTarget.nextElementSibling.classList.contains("max-h-full")) {
-			e.currentTarget.nextElementSibling.classList.replace("max-h-full", "max-h-0");
+		if (
+			e.currentTarget.nextElementSibling.classList.contains("max-h-full")
+		) {
+			e.currentTarget.nextElementSibling.classList.replace(
+				"max-h-full",
+				"max-h-0",
+			);
 
-			e.currentTarget.lastElementChild.classList.replace("fi-rr-angle-small-up", "fi-rr-angle-small-down");
+			e.currentTarget.lastElementChild.classList.replace(
+				"fi-rr-angle-small-up",
+				"fi-rr-angle-small-down",
+			);
 		} else {
-			e.currentTarget.nextElementSibling.classList.replace("max-h-0", "max-h-full");
+			e.currentTarget.nextElementSibling.classList.replace(
+				"max-h-0",
+				"max-h-full",
+			);
 
-			e.currentTarget.lastElementChild.classList.replace("fi-rr-angle-small-down", "fi-rr-angle-small-up");
+			e.currentTarget.lastElementChild.classList.replace(
+				"fi-rr-angle-small-down",
+				"fi-rr-angle-small-up",
+			);
 		}
-    };
+	};
 
 	return (
 		<>
 			<GetStarted />
 
-			<footer className="px-[5%] pb-[5%] pt-[10%]">
-				<div className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid" ref={parentElement}>
+			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[10%]">
+				<div
+					className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+					ref={parentElement}
+				>
 					{footerLinks.map((footerLink, id) => (
 						<div
-							className="space-y-2 border-b border-footer-border pb-1.5 last:border-none"
+							className="space-y-2 border-b border-footer-border pb-1.5 last:border-none sm:last:border-b sm:last:border-footer-border"
 							key={id}
 						>
-							<button className="flex items-center justify-between gap-4 w-full py-1" type="button" onClick={(e) => toggleMobileFooter(e)}>
+							<button
+								className="flex items-center justify-between gap-4 w-full py-1"
+								type="button"
+								onClick={(e) => toggleMobileFooter(e)}
+							>
 								<span className="font-semibold text-lg">
 									{footerLink.linkGroup}
 								</span>
