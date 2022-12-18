@@ -44,6 +44,9 @@ module.exports = {
 			animation: {
 				slideUp: "slideUp 0s linear forwards",
 				slideDown: "slideDown 0s linear forwards",
+			},
+			backgroundImage: {
+				globe: "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(../assets/img/globe.png)"
 			}
 		},
 	},

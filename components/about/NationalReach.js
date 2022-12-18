@@ -1,44 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-
 import Globe from "@assets/img/globe.png";
 import Image from "next/image";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const NationalReach = () => {
-	const globe = useRef(null);
-	const container = useRef(null);
-	let [height, setHeight] = useState("100%");
-	let [width, setWidth] = useState("100%");
-
-	useEffect(() => {
-		// if (typeof window !== "undefined") {
-		// }
-		window.addEventListener("resize", () => {
-			setHeight(() => (height = container.current.offsetHeight));
-			setWidth(() => (width = container.current.offsetWeight));
-		});
-
-		console.log(height);
-		console.log("Hello" + container.current.clientHeight);
-	}, []);
-
-	useLayoutEffect(() => {
-		setHeight(() => (height = container.current.offsetHeight));
-		setWidth(() => (width = container.current.offsetWeight));
-		// window.addEventListner("resize", () => {
-		// });
-
-		// console.log(height);
-		// console.log("Hello" + container.current.clientHeight);
-	}, []);
-
 	return (
 		<section
-			className="space-y-12 relative px-[5%] xl:px-[10%] pb-[10%]"
-			ref={container}
+			className="sm:space-y-12 relative px-[5%] xl:px-[7%] sm:pb-[10%] pt-[5%] sm:pt-0"
 		>
-			<h2 className="header text-5xl">
+			<h2 className="header mb-4 sm:mb-0">
 				Our <span className="text-brand-purple">national</span> reach
 			</h2>
 
@@ -96,7 +64,7 @@ const NationalReach = () => {
 			</div>
 
 			<div
-				className={`absolute -top-24 -bottom-24 right-0 w-3/5 max-h-[${height}px] h-[${height}px] hidden not-sr-only sm:block -z-50`}
+				className={`sm:absolute sm:-top-24 sm:-bottom-24 sm:right-0 sm:w-3/5 sm:block -z-50`}
 			>
 				<Image
 					className="h-full w-full aspect-square object-contain"

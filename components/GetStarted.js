@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const GetStarted = () => {
     return (
-        <section className="bg-brand-dark-purple py-[6%] px-[4%] rounded-3xl text-white mx-[5%] mt-[5%] xl:mx-[10%]">
+        <section className="bg-brand-dark-purple p-[6%] sm:px-[4%] rounded-3xl text-white mx-[5%] mt-[5%] xl:mx-[7%]">
             <div className="md:w-3/5 space-y-6 md:space-y-8">
                 <h2 className="header-secondary">
                     Ready to get started?
@@ -13,11 +13,11 @@ const GetStarted = () => {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
-                    <Link className="bg-white text-brand-dark-purple btn block transition-colors duration-300 ease-in" href="/">
+                    <Link className="bg-white text-brand-dark-purple btn block" href="/">
                         Get Started
                     </Link>
 
-                    <Link className="text-white btn block transition-colors duration-300 ease-in" href="/">
+                    <Link className="text-white btn block" href="/">
                         Contact Support
                     </Link>
                 </div>

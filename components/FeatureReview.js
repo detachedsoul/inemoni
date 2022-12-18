@@ -27,7 +27,6 @@ const FeatureReview = () => {
 				className="block mx-auto"
 				src={SamsungGalaxy}
 				alt=""
-				priority={true}
 			/>
 
 			<div className="space-y-8">

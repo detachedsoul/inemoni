@@ -15,27 +15,27 @@ const Footer = () => {
 				{
 					linkName: "Cash Withdrawal",
 					isLink: true,
-					route: "/",
+					route: "/cash-withdrawal",
 				},
 				{
 					linkName: "Money Transfer",
 					isLink: true,
-					route: "/",
+					route: "/money-transfer",
 				},
 				{
 					linkName: "Pay Bills",
 					isLink: true,
-					route: "/",
+					route: "/pay-bills",
 				},
 				{
 					linkName: "Savings",
 					isLink: true,
-					route: "/",
+					route: "/savings",
 				},
 				{
 					linkName: "Careers",
 					isLink: true,
-					route: "/",
+					route: "/careers",
 				},
 			],
 		},
@@ -232,14 +232,14 @@ const Footer = () => {
 		<>
 			<GetStarted />
 
-			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[10%]">
+			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%]">
 				<div
-					className="lg:hidden lg:not-sr-only grid-cols-1 gap-3 border-b border-footer-border pb-8 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
 					ref={parentElement}
 				>
 					{footerLinks.map((footerLink, id) => (
 						<div
-							className="space-y-2 border-b border-footer-border pb-1.5 last:border-none sm:last:border-b sm:last:border-footer-border"
+							className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
 							key={id}
 						>
 							<button
@@ -342,7 +342,7 @@ const Footer = () => {
 					</ul>
 				</div>
 
-				<div className="flex items-center justify-between gap-4 border-t border-footer-border pt-8">
+				<div className="flex items-center justify-between gap-4  border-t  border-footer-border pt-8">
 					<span className="flex items-center gap-4">
 						&copy; 2022 Inemoni. All right reserved.
 					</span>

@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
 import GTBank from "@assets/img/gtbank.svg";
 import IneMoni from "@assets/img/inemoni.svg";
 import Spotify from "@assets/img/spotify.svg";
+import Image from "next/image";
+import Link from "next/link";
 
 const PushNotifications = () => {
-    return (
-		<section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center px-[5%] lg:gap-12 xl:px-[10%]">
+	return (
+		<section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center px-[5%] lg:gap-12 xl:px-[7%]">
 			<div className="space-y-4">
 				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar">
 					<div className="flex items-center gap-3 shrink-0">

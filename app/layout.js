@@ -1,7 +1,6 @@
 import "@assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-// import { DM_Serif_Display } from "@next/font/google";
 import localFont from "@next/font/local";
 import "./globals.css";
 
@@ -36,10 +35,10 @@ const DMSerifDisplay = localFont({
 
 const Layout = ({ children }) => {
     return (
-		<html className="h-full" lang="en">
+		<html className="" lang="en">
 			<head />
 			<body
-				className={`antialiased tracking-wide scroll-smooth overscroll-contain bg-white text-brand-black text-normal selection:bg-brand-purple selection:text-white ${moderat.variable} ${millik.variable} ${DMSerifDisplay.variable} font-moderat break-words [word-break:break-word] [word-wrap:break-word] overflow-y-auto`}
+				className={`antialiased tracking-wide leading-8 scroll-smooth overscroll-contain bg-white text-brand-black text-lg selection:bg-brand-purple selection:text-white ${moderat.variable} ${millik.variable} ${DMSerifDisplay.variable} font-moderat break-words [word-break:break-word] [word-wrap:break-word]`}
 			>
 				<Header />
 					{children}
