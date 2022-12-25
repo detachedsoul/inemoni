@@ -11,8 +11,8 @@ const About = () => {
 			<AboutSection />
 
 			<section className="px-[10%] space-y-4 text-center sm:space-y-6 sm:text-left">
-				<h3 className="font-bold text-xl sm:text-2xl">
-					We are trusted by verified businesses
+				<h3 className="text-xl sm:text-2xl">
+					We are trusted by <span className="font-bold ">verified</span> businesses
 				</h3>
 
 				<div className="grid grid-cols-3 sm:grid-cols-6 items-center gap-8">

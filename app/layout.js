@@ -35,10 +35,10 @@ const DMSerifDisplay = localFont({
 
 const Layout = ({ children }) => {
     return (
-		<html className="" lang="en">
+		<html lang="en">
 			<head />
 			<body
-				className={`antialiased tracking-wide leading-8 scroll-smooth overscroll-contain bg-white text-brand-black text-lg selection:bg-brand-purple selection:text-white ${moderat.variable} ${millik.variable} ${DMSerifDisplay.variable} font-moderat break-words [word-break:break-word] [word-wrap:break-word]`}
+				className={`antialiased tracking-wide leading-8 scroll-smooth overscroll-contain bg-white text-brand-black text-lg selection:bg-brand-purple selection:text-white ${moderat.variable} ${millik.variable} ${DMSerifDisplay.variable} font-moderat break-words [word-break:break-word] [word-wrap:break-word] lg:text-base`}
 			>
 				<Header />
 					{children}

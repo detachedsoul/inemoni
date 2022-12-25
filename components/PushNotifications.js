@@ -40,7 +40,7 @@ const PushNotifications = () => {
 					</p>
 				</div>
 
-				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar">
+				<div className="bg-white shadow-[0px_4px_30px_rgba(10,14,39,0.04)] rounded-2xl p-3 flex justify-between items-center gap-4 overflow-y-hidden no-scrollbar" tabIndex="0">
 					<div className="flex items-center gap-3 shrink-0">
 						<Image src={Spotify} alt="Spotify" />
 

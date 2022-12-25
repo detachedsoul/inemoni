@@ -7,20 +7,18 @@ const HeroText = () => {
 		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
 			<div className="space-y-4">
 				<h1 className="header -mb-2 sm:-mb-0.5">
-					Withdraw At{" "}
-					<span className="text-brand-orange">Our Agents</span> Close
-					to You
+					Fast, convenient, and <span className="text-brand-purple">secure transfer</span> solution.
 				</h1>
 
 				<p>
-					Our cash withdrawal solution is the perfect way to access
-					the funds in your account whenever you need them. Whether
-					you’re at home or on the go, you can easily and securely
-					withdraw cash from your account using our convenient
-					service.
+					Our money transfer solution makes it easy for you to send
+					and receive money from anywhere in the world. With just a
+					few clicks, you can quickly and securely transfer funds to
+					friends, family, or business associates without the hassle
+					of writing checks or visiting a bank.
 				</p>
 
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 flex-wrap">
 					<Link
 						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
 						href="/"
