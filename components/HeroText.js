@@ -4,20 +4,15 @@ import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
-			<div className="space-y-4">
-				<h1 className="header -mb-2 sm:-mb-0.5">
-					<span className="text-brand-purple">
-						Financial Services
-					</span>{" "}
-					at your{" "}
-					<span className="text-brand-orange">Doorsteps.</span>
+		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
+			<div className="flex flex-col gap-5">
+				<h1 className="header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]">
+					Manage Your Money <br />
+					<span className="text-brand-purple">& Achieve Your Goals</span>
 				</h1>
 
 				<p>
-					Inemoni gives you free and easy access to financial
-					services. Our watchword while creating an avenue for our
-					agents to make money using our amazing services.
+					Our user-friendly interface and intuitive features make managing your finances a breeze, so you can focus on the things that matter most.
 				</p>
 
 				<div className="flex items-center gap-4 flex-wrap">
@@ -29,10 +24,10 @@ const HeroText = () => {
 					</Link>
 
 					<Link
-						className="bg-brand-gray btn px-8 block hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in"
-						href="/"
+						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
+						href="/about"
 					>
-						Sign In
+						Learn More
 					</Link>
 				</div>
 			</div>

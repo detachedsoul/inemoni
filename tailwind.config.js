@@ -17,9 +17,7 @@ module.exports = {
 				"dropdown-shadow": "0px 5px 20px 10px rgba(0, 0, 10, 0.05)",
 			},
 			fontFamily: {
-				moderat: ["var(--font-moderat)"],
-				millik: ["var(--font-millik)"],
-				DMSerifDisplay: ["var(--font-dm-serif-display)"],
+				inter: ['var(--font-inter)'],
 			},
 			keyframes: {
 				slideUp: {

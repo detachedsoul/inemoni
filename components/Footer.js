@@ -229,32 +229,57 @@ const Footer = () => {
 	};
 
 	return (
-		<>
-			<GetStarted />
-
-			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%]">
-				<div
-					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
-					ref={parentElement}
-				>
-					{footerLinks.map((footerLink, id) => (
-						<div
-							className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
-							key={id}
+		<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%]">
+			<div
+				className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+				ref={parentElement}
+			>
+				{footerLinks.map((footerLink, id) => (
+					<div
+						className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
+						key={id}
+					>
+						<button
+							className="flex items-center justify-between gap-4 w-full py-1"
+							type="button"
+							onClick={(e) => toggleMobileFooter(e)}
 						>
-							<button
-								className="flex items-center justify-between gap-4 w-full py-1"
-								type="button"
-								onClick={(e) => toggleMobileFooter(e)}
-							>
-								<span className="font-semibold text-lg">
-									{footerLink.linkGroup}
-								</span>
+							<span className="font-semibold text-lg">
+								{footerLink.linkGroup}
+							</span>
 
-								<i className="fr fi-rr-angle-small-down"></i>
-							</button>
+							<i className="fr fi-rr-angle-small-down"></i>
+						</button>
 
-							<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
+						<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
+							{footerLink.links.map((link, id) =>
+								link.isLink ? (
+									<li key={id}>
+										<Link
+											className="hover:text-brand-purple"
+											href={link.route}
+										>
+											{link.linkName}
+										</Link>
+									</li>
+								) : (
+									<li key={id}>{link.linkName}</li>
+								),
+							)}
+						</ul>
+					</div>
+				))}
+			</div>
+
+			<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
+				{footerLinks.map((footerLink, id) =>
+					footerLink.isDesktopLink ? (
+						<div className="space-y-5" key={id}>
+							<h3 className="font-semibold">
+								{footerLink.linkGroup}
+							</h3>
+
+							<ul className="space-y-4">
 								{footerLink.links.map((link, id) =>
 									link.isLink ? (
 										<li key={id}>
@@ -271,104 +296,75 @@ const Footer = () => {
 								)}
 							</ul>
 						</div>
-					))}
-				</div>
+					) : (
+						""
+					),
+				)}
+			</div>
 
-				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
-					{footerLinks.map((footerLink, id) =>
-						footerLink.isDesktopLink ? (
-							<div className="space-y-5" key={id}>
-								<h3 className="font-semibold">
-									{footerLink.linkGroup}
-								</h3>
+			<div className="flex items-center justify-between gap-4 py-6">
+				<span className="flex items-center gap-4">
+					<Image
+						className="rounded-full"
+						src={NigeriaFlag}
+						alt="Nigeria's flag"
+					/>
+					Nigeria
+				</span>
 
-								<ul className="space-y-4">
-									{footerLink.links.map((link, id) =>
-										link.isLink ? (
-											<li key={id}>
-												<Link
-													className="hover:text-brand-purple"
-													href={link.route}
-												>
-													{link.linkName}
-												</Link>
-											</li>
-										) : (
-											<li key={id}>{link.linkName}</li>
-										),
-									)}
-								</ul>
-							</div>
-						) : (
-							""
-						),
-					)}
-				</div>
+				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Twitter
+						</Link>
+					</li>
 
-				<div className="flex items-center justify-between gap-4 py-6">
-					<span className="flex items-center gap-4">
-						<Image
-							className="rounded-full"
-							src={NigeriaFlag}
-							alt="Nigeria's flag"
-						/>
-						Nigeria
-					</span>
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Instagram
+						</Link>
+					</li>
 
-					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Twitter
-							</Link>
-						</li>
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Facebook
+						</Link>
+					</li>
 
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Instagram
-							</Link>
-						</li>
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							LinkedIn
+						</Link>
+					</li>
+				</ul>
+			</div>
 
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Facebook
-							</Link>
-						</li>
+			<div className="flex items-center justify-between gap-4  border-t  border-footer-border pt-8">
+				<span className="flex items-center gap-4">
+					&copy; 2022 Inemoni. All right reserved.
+				</span>
 
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								LinkedIn
-							</Link>
-						</li>
-					</ul>
-				</div>
+				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Privacy Policy
+						</Link>
+					</li>
 
-				<div className="flex items-center justify-between gap-4  border-t  border-footer-border pt-8">
-					<span className="flex items-center gap-4">
-						&copy; 2022 Inemoni. All right reserved.
-					</span>
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Terms of Use
+						</Link>
+					</li>
 
-					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Privacy Policy
-							</Link>
-						</li>
-
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Terms of Use
-							</Link>
-						</li>
-
-						<li>
-							<Link className="hover:text-brand-purple" href="/">
-								Cookie Policy
-							</Link>
-						</li>
-					</ul>
-				</div>
-			</footer>
-		</>
+					<li>
+						<Link className="hover:text-brand-purple" href="/">
+							Cookie Policy
+						</Link>
+					</li>
+				</ul>
+			</div>
+		</footer>
 	);
 };
 

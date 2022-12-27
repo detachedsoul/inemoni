@@ -247,7 +247,7 @@ const Header = () => {
 							className="text-brand-navlink font-bold hover:bg-dropdown-hover btn hover:text-brand-purple block w-full lg:hover:bg-transparent text-left lg:font-medium"
 							href="/"
 						>
-							Get Started
+							Download App
 						</Link>
 					</li>
 				</ul>
@@ -255,10 +255,10 @@ const Header = () => {
 
 			<div className="flex items-center gap-4">
 				<Link
-					className="btn text-brand-navlink font-medium bg-brand-gray hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in hidden lg:block"
+					className="btn text-brand-navlink bg-brand-gray hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in hidden lg:block"
 					href="/"
 				>
-					Get Started
+					Download App
 				</Link>
 
 				<button

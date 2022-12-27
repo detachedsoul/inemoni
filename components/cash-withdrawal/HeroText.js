@@ -6,8 +6,8 @@ const HeroText = () => {
 	return (
 		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
 			<div className="space-y-4">
-				<h1 className="header -mb-2 sm:-mb-0.5">
-					Withdraw At{" "}
+				<h1 className="header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]">
+					Withdraw At{ " " }
 					<span className="text-brand-orange">Our Agents</span> Close
 					to You
 				</h1>
@@ -39,10 +39,10 @@ const HeroText = () => {
 
 			<Image
 				className="rounded-xl"
-				src={heroImage}
+				src={ heroImage }
 				alt="Happy Inemoni User"
-				quality={100}
-				priority={true}
+				quality={ 100 }
+				priority={ true }
 			/>
 		</div>
 	);

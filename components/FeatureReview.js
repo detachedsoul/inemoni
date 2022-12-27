@@ -1,12 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-import SamsungGalaxy from "@assets/img/samsung-galaxy.svg";
 
 const FeatureReview = () => {
     return (
-		<section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center px-[5%] xl:px-[10%]">
-			<div className="space-y-3">
-				<h2 className="font-bold text-xl">Bills Payment</h2>
+		<section className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-12 items-center px-[5%] xl:px-[10%]">
+			<div className="space-y-5 sm:col-start-1 sm:col-end-2">
+				<h2 className="header text-xl">Bills Payment</h2>
 
 				<p>
 					Life could be hard but making payments shouldn’t. Pay for
@@ -16,22 +14,16 @@ const FeatureReview = () => {
 				</p>
 
 				<Link
-					className="bg-brand-dark-purple hover:bg-brand-dark-purple/90 text-white btn inline-block transition-colors duration-300 ease-in"
+				className="bg-brand-dark-purple hover:bg-brand-dark-purple/90 text-white btn  transition-colors duration-300 ease-in inline-block"
 					href="/"
 				>
 					Download App
 				</Link>
 			</div>
 
-			<Image
-				className="block mx-auto"
-				src={SamsungGalaxy}
-				alt=""
-			/>
-
-			<div className="space-y-8">
-				<div className="space-y-3">
-					<h2 className="font-bold text-xl">Accept Payments</h2>
+			<div className="flex flex-col gap-12 sm:col-end-4 sm:col-span-1">
+				<div className="space-y-5">
+					<h2 className="header text-xl">Accept Payments</h2>
 
 					<p>
 						Easily receive money from anyone, anytime and anywhere
@@ -40,15 +32,15 @@ const FeatureReview = () => {
 
 					<Link
 						className="text-brand-purple font-medium inline-block"
-						href="/"
+						href="/cash-withdrawal"
 					>
 						Learn More
 						<i className="fr fi-rr-arrow-right ml-2"></i>
 					</Link>
 				</div>
 
-				<div className="space-y-3">
-					<h2 className="font-bold text-xl">Money Transfer</h2>
+				<div className="space-y-5">
+					<h2 className="header text-xl">Money Transfer</h2>
 
 					<p>
 						Make single or bulk transfers to bank accounts from your
@@ -58,7 +50,7 @@ const FeatureReview = () => {
 
 					<Link
 						className="text-brand-purple font-medium inline-block"
-						href="/"
+						href="/money-transfer"
 					>
 						Learn More
 						<i className="fr fi-rr-arrow-right ml-2"></i>
