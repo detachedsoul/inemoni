@@ -1,10 +1,11 @@
 "use client";
 
 import NigeriaFlag from "@assets/img/nigeria-flag.svg";
+import iOS from "@assets/img/download-ios.svg";
+import Android from "@assets/img/download-android.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import GetStarted from "./GetStarted";
 
 const Footer = () => {
 	const footerLinks = [
@@ -107,7 +108,7 @@ const Footer = () => {
 					route: "/",
 				},
 				{
-					linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
+					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
 					isLink: true,
 					route: "https://www.google.com/maps/place/IneMoni/@9.1434533,7.3461676,17z/data=!3m1!4b1!4m5!3m4!1s0x104dd95894592a27:0xda8cb3efddd08cda!8m2!3d9.143448!4d7.3483563?shorturl=1",
 				},
@@ -144,7 +145,7 @@ const Footer = () => {
 					route: "/",
 				},
 				{
-					linkName: "No. 67 Bakori road, FHA, Kubwa, Abuja",
+					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
 					isLink: false,
 					route: null,
 				},
@@ -229,57 +230,52 @@ const Footer = () => {
 	};
 
 	return (
-		<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%]">
-			<div
-				className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
-				ref={parentElement}
-			>
-				{footerLinks.map((footerLink, id) => (
-					<div
-						className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
-						key={id}
-					>
-						<button
-							className="flex items-center justify-between gap-4 w-full py-1"
-							type="button"
-							onClick={(e) => toggleMobileFooter(e)}
+		<>
+			<div className="bg-[#121212] px-[10%] py-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] mt-12 mx-[5%] xl:mx-[7%]">
+                <div className="space-y-6 md:space-y-8 sm:w-[70%]">
+                    <p>
+                        Send money to anyone
+                    </p>
+
+                    <h2 className="header text-2xl sm:text-5xl leading-10 sm:text-[3.125rem] sm:leading-[4.063rem]">
+                        Technology To Keep Our Services <span className="text-brand-orange">99% Uptime</span>
+                    </h2>
+
+                    <div className="flex flex-wrap items-center gap-4">
+                        <Link className="bg-white text-brand-black btn block" href="/">
+                            Get Started
+                        </Link>
+
+                        <Link className="text-white btn block" href="/">
+                            Contact Support
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%] sm:pt-[5%]">
+				<div
+					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+					ref={parentElement}
+				>
+					{footerLinks.map((footerLink, id) => (
+						<div
+							className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
+							key={id}
 						>
-							<span className="font-semibold text-lg">
-								{footerLink.linkGroup}
-							</span>
+							<button
+								className="flex items-center justify-between gap-4 w-full py-1"
+								type="button"
+								onClick={(e) => toggleMobileFooter(e)}
+							>
+								<span className="font-semibold text-lg">
+									{footerLink.linkGroup}
+								</span>
 
-							<i className="fr fi-rr-angle-small-down"></i>
-						</button>
+								<i className="fr fi-rr-angle-small-down"></i>
+							</button>
 
-						<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
-							{footerLink.links.map((link, id) =>
-								link.isLink ? (
-									<li key={id}>
-										<Link
-											className="hover:text-brand-purple"
-											href={link.route}
-										>
-											{link.linkName}
-										</Link>
-									</li>
-								) : (
-									<li key={id}>{link.linkName}</li>
-								),
-							)}
-						</ul>
-					</div>
-				))}
-			</div>
-
-			<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
-				{footerLinks.map((footerLink, id) =>
-					footerLink.isDesktopLink ? (
-						<div className="space-y-5" key={id}>
-							<h3 className="font-semibold">
-								{footerLink.linkGroup}
-							</h3>
-
-							<ul className="space-y-4">
+							<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
 								{footerLink.links.map((link, id) =>
 									link.isLink ? (
 										<li key={id}>
@@ -296,75 +292,122 @@ const Footer = () => {
 								)}
 							</ul>
 						</div>
-					) : (
-						""
-					),
-				)}
-			</div>
+					))}
+				</div>
 
-			<div className="flex items-center justify-between gap-4 py-6">
-				<span className="flex items-center gap-4">
-					<Image
-						className="rounded-full"
-						src={NigeriaFlag}
-						alt="Nigeria's flag"
-					/>
-					Nigeria
-				</span>
+				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
+					{footerLinks.map((footerLink, id) =>
+						footerLink.isDesktopLink ? (
+							<div className="space-y-5" key={id}>
+								<h3 className="font-semibold">
+									{footerLink.linkGroup}
+								</h3>
 
-				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Twitter
-						</Link>
-					</li>
+								<ul className="space-y-4">
+									{footerLink.links.map((link, id) =>
+										link.isLink ? (
+											<li key={id}>
+												<Link
+													className="hover:text-brand-purple"
+													href={link.route}
+												>
+													{link.linkName}
+												</Link>
+											</li>
+										) : (
+											<li key={id}>{link.linkName}</li>
+										),
+									)}
+								</ul>
+							</div>
+						) : (
+							null
+						)
+					)}
+				</div>
 
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Instagram
-						</Link>
-					</li>
+				<div className="flex items-center justify-between gap-4 py-6">
+					<span className="flex items-center gap-4">
+						<Image
+							className="rounded-full"
+							src={NigeriaFlag}
+							alt="Nigeria's flag"
+						/>
+						Nigeria
+					</span>
 
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Facebook
-						</Link>
-					</li>
+					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Twitter
+							</Link>
+						</li>
 
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							LinkedIn
-						</Link>
-					</li>
-				</ul>
-			</div>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Instagram
+							</Link>
+						</li>
 
-			<div className="flex items-center justify-between gap-4  border-t  border-footer-border pt-8">
-				<span className="flex items-center gap-4">
-					&copy; 2022 Inemoni. All right reserved.
-				</span>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Facebook
+							</Link>
+						</li>
 
-				<ul className="lg:flex items-center gap-8 hidden not-sr-only">
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Privacy Policy
-						</Link>
-					</li>
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								LinkedIn
+							</Link>
+						</li>
+					</ul>
+				</div>
 
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Terms of Use
-						</Link>
-					</li>
+				<div className="flex items-center justify-between gap-4  border-t border-footer-border pt-8">
+					<span className="flex items-center gap-4">
+						&copy; 2022 Inemoni. All right reserved.
+					</span>
 
-					<li>
-						<Link className="hover:text-brand-purple" href="/">
-							Cookie Policy
-						</Link>
-					</li>
-				</ul>
-			</div>
-		</footer>
+					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Privacy Policy
+							</Link>
+						</li>
+
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Terms of Use
+							</Link>
+						</li>
+
+						<li>
+							<Link className="hover:text-brand-purple" href="/">
+								Cookie Policy
+							</Link>
+						</li>
+					</ul>
+				</div>
+
+				<div className="flex flex-wrap gap-3 pt-8">
+					<Link className="inline-block" href="/">
+						<Image
+							className=""
+							src={iOS}
+							alt="Download on Apple's App Store"
+						/>
+					</Link>
+
+					<Link className="inline-block" href="/">
+						<Image
+							className=""
+							src={Android}
+							alt="Download on Google's PlayStore"
+						/>
+					</Link>
+				</div>
+			</footer>
+		</>
 	);
 };
 

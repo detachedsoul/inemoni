@@ -6,7 +6,7 @@ const NationalReach = () => {
 		<section
 			className="sm:space-y-12 relative px-[5%] xl:px-[7%] sm:pb-[10%] pt-[5%] sm:pt-0"
 		>
-			<h2 className="header mb-4 sm:mb-0">
+			<h2 className="header mb-4 sm:mb-0 text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]">
 				Our <span className="text-brand-purple">national</span> reach
 			</h2>
 

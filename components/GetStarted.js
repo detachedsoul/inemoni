@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import fastTransfer from "@assets/img/index-fast-transfer.png";
-import virtualCard from "@assets/img/index-virtual-card.png";
+import fastTransfer from "@assets/img/index-fast-transfer.svg";
+import virtualCard from "@assets/img/index-virtual-card.svg";
 
 const GetStarted = () => {
     return (
         <div className="px-[5%] xl:px-[7%] flex flex-col gap-12">
             <section className="bg-[#121212] px-[10%] pt-[8%] rounded-3xl items-center justify-between sm:px-[6%] sm:rounded-[2.5rem] text-white grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-6 md:space-y-8 sm:pb-[18%]">
                     <p>
                         Send money to anyone
                     </p>
@@ -36,7 +36,7 @@ const GetStarted = () => {
             </section>
 
             <section className="bg-[#fae7de] px-[10%] pt-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-brand-black grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-6 md:space-y-8 sm:pb-[18%]">
                     <p>
                         Cards that work globally
                     </p>
@@ -62,28 +62,6 @@ const GetStarted = () => {
                     alt="physical & virtual cards That works."
                     quality={ 100 }
                 />
-            </section>
-
-            <section className="bg-[#121212] px-[10%] py-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
-                <div className="space-y-6 md:space-y-8 sm:w-[70%]">
-                    <p>
-                        Send money to anyone
-                    </p>
-
-                    <h2 className="header text-2xl sm:text-5xl leading-10 sm:text-[3.125rem] sm:leading-[4.063rem]">
-                        Technology To Keep Our Services <span className="text-brand-orange">99% Uptime</span>
-                    </h2>
-
-                    <div className="flex flex-wrap items-center gap-4">
-                        <Link className="bg-white text-brand-black btn block" href="/">
-                            Get Started
-                        </Link>
-
-                        <Link className="text-white btn block" href="/">
-                            Contact Support
-                        </Link>
-                    </div>
-                </div>
             </section>
         </div>
     );
