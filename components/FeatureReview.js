@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
+import previewImage from "@assets/img/feature-preview.svg";
 
 const FeatureReview = () => {
     return (
 		<section className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-12 items-center px-[5%] xl:px-[10%]">
-			<div className="space-y-5 sm:col-start-1 sm:col-end-2">
+			<div className="space-y-5">
 				<h2 className="header text-xl">Bills Payment</h2>
 
 				<p>
@@ -21,7 +23,14 @@ const FeatureReview = () => {
 				</Link>
 			</div>
 
-			<div className="flex flex-col gap-12 sm:col-end-4 sm:col-span-1">
+			<Image
+				className="block mx-auto"
+				src={ previewImage }
+				alt=""
+				quality={100}
+			/>
+
+			<div className="flex flex-col gap-12">
 				<div className="space-y-5">
 					<h2 className="header text-xl">Accept Payments</h2>
 

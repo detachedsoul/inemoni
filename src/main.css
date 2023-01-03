@@ -12,7 +12,7 @@
     }
 
     .btn {
-        @apply rounded-[0.625rem] font-medium py-2.5 leading-8 text-base px-4 tracking-wider
+        @apply rounded-[0.625rem] font-medium py-2.5 leading-8 text-[14px] px-4 tracking-wider
     }
 
     .no-scrollbar {

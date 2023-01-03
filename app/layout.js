@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
 		<html lang="en">
 			<head />
 			<body
-				className={`antialiased tracking-wide leading-[2.188rem] scroll-smooth overscroll-contain bg-white text-brand-black text-lg selection:bg-brand-purple selection:text-white ${inter.variable} font-inter break-words [word-break:break-word] [word-wrap:break-word] lg:text-base`}
+				className={`antialiased tracking-wide leading-[35px] scroll-smooth overscroll-contain bg-white text-brand-black text-[16px] selection:bg-brand-purple selection:text-white ${inter.variable} font-inter break-words [word-break:break-word] [word-wrap:break-word]`}
 			>
 				<Header />
 					{children}
