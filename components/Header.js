@@ -61,7 +61,7 @@ const Header = () => {
 		<>
 			<div className="bg-brand-black text-white text-center p-4">
 				<p>
-					🎉 Inemoni has rebranded to serve you better. <Link className="underline underline-offset-4 decoration-wavy" href="/about">Learn More</Link>
+					🎉 Inemoni has rebranded to serve you better. <Link className="underline underline-offset-4" href="/about">Learn More</Link>
 				</p>
 			</div>
 			<header

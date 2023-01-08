@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import fastTransfer from "@assets/img/index-fast-transfer.svg";
+import fastTransfer from "@assets/img/index-fast-transfer.png";
 import virtualCard from "@assets/img/index-virtual-card.svg";
 
 const GetStarted = () => {
@@ -33,6 +33,8 @@ const GetStarted = () => {
                     alt="Fast Transfers. Safe Cards. Cash Backs."
                     quality={100}
                 />
+
+
             </section>
 
             <section className="bg-[#fae7de] px-[10%] pt-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-brand-black grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">

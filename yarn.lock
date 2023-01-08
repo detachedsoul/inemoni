@@ -51,15 +51,15 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
-"@next/env@13.1.1-canary.1":
-  "integrity" "sha512-h8DEj69dLJpFUuXOVPQeJ4/X1LbW5mtZSsaS5Xr/pt2VbrRN50eAV/6rMY+l6U6p/4AX1/F5aK4UBzLQJbwFzw=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.1.1-canary.1.tgz"
-  "version" "13.1.1-canary.1"
+"@next/env@13.1.1":
+  "integrity" "sha512-vFMyXtPjSAiOXOywMojxfKIqE3VWN5RCAx+tT3AS3pcKjMLFTCJFUWsKv8hC+87Z1F4W3r68qTwDFZIFmd5Xkw=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.1.1.tgz"
+  "version" "13.1.1"
 
-"@next/eslint-plugin-next@13.0.6":
-  "integrity" "sha512-JUANdYNCddhmQBjQQPxEJYL7GMCqYtbfrdmtX7c013srig7waNCG69Aoql7CgAgjdy8jn1ovHVdcF/NB46XN3Q=="
-  "resolved" "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-13.0.6.tgz"
-  "version" "13.0.6"
+"@next/eslint-plugin-next@13.1.1":
+  "integrity" "sha512-SBrOFS8PC3nQ5aeZmawJkjKkWjwK9RoxvBSv/86nZp0ubdoVQoko8r8htALd9ufp16NhacCdqhu9bzZLDWtALQ=="
+  "resolved" "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-13.1.1.tgz"
+  "version" "13.1.1"
   dependencies:
     "glob" "7.1.7"
 
@@ -68,10 +68,10 @@
   "resolved" "https://registry.npmjs.org/@next/font/-/font-13.0.7.tgz"
   "version" "13.0.7"
 
-"@next/swc-win32-x64-msvc@13.1.1-canary.1":
-  "integrity" "sha512-/7q6tjUebSaUYTGZRpp4qAmrcL6+tiKfHN5YgW6zpX5MWLEk1DkdnuBjO/jSvCJd0510byBkN6drlzmfTMjzzg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.1.1-canary.1.tgz"
-  "version" "13.1.1-canary.1"
+"@next/swc-win32-x64-msvc@13.1.1":
+  "integrity" "sha512-mVF0/3/5QAc5EGVnb8ll31nNvf3BWpPY4pBb84tk+BfQglWLqc5AC9q1Ht/YMWiEgs8ALNKEQ3GQnbY0bJF2Gg=="
+  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.1.1.tgz"
+  "version" "13.1.1"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -611,12 +611,12 @@
   "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
   "version" "4.0.0"
 
-"eslint-config-next@13.0.6":
-  "integrity" "sha512-Tfn/0lirhkEuoGxKMtDQNtQuC7P3eHcyUyhIJY/OHtjU9ExHFtcge/Fe8Ou/Jd7DIC71vN3CT72oszVwia71cg=="
-  "resolved" "https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-13.0.6.tgz"
-  "version" "13.0.6"
+"eslint-config-next@^13.1.1":
+  "integrity" "sha512-/5S2XGWlGaiqrRhzpn51ux5JUSLwx8PVK2keLi5xk7QmhfYB8PqE6R6SlVw6hgnf/VexvUXSrlNJ/su00NhtHQ=="
+  "resolved" "https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-13.1.1.tgz"
+  "version" "13.1.1"
   dependencies:
-    "@next/eslint-plugin-next" "13.0.6"
+    "@next/eslint-plugin-next" "13.1.1"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.42.0"
     "eslint-import-resolver-node" "^0.3.6"
@@ -1388,30 +1388,30 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next@^13.1.1-canary.1":
-  "integrity" "sha512-20EeQyfGs9dGUAPrXAod5jay1plcM0itItL/7z9BMczYM55/it8TxS1OPTmseyM9Y8uuybTRoCHeKh6TCI09tg=="
-  "resolved" "https://registry.npmjs.org/next/-/next-13.1.1-canary.1.tgz"
-  "version" "13.1.1-canary.1"
+"next@^13.1.1":
+  "integrity" "sha512-R5eBAaIa3X7LJeYvv1bMdGnAVF4fVToEjim7MkflceFPuANY3YyvFxXee/A+acrSYwYPvOvf7f6v/BM/48ea5w=="
+  "resolved" "https://registry.npmjs.org/next/-/next-13.1.1.tgz"
+  "version" "13.1.1"
   dependencies:
-    "@next/env" "13.1.1-canary.1"
+    "@next/env" "13.1.1"
     "@swc/helpers" "0.4.14"
     "caniuse-lite" "^1.0.30001406"
     "postcss" "8.4.14"
     "styled-jsx" "5.1.1"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "13.1.1-canary.1"
-    "@next/swc-android-arm64" "13.1.1-canary.1"
-    "@next/swc-darwin-arm64" "13.1.1-canary.1"
-    "@next/swc-darwin-x64" "13.1.1-canary.1"
-    "@next/swc-freebsd-x64" "13.1.1-canary.1"
-    "@next/swc-linux-arm-gnueabihf" "13.1.1-canary.1"
-    "@next/swc-linux-arm64-gnu" "13.1.1-canary.1"
-    "@next/swc-linux-arm64-musl" "13.1.1-canary.1"
-    "@next/swc-linux-x64-gnu" "13.1.1-canary.1"
-    "@next/swc-linux-x64-musl" "13.1.1-canary.1"
-    "@next/swc-win32-arm64-msvc" "13.1.1-canary.1"
-    "@next/swc-win32-ia32-msvc" "13.1.1-canary.1"
-    "@next/swc-win32-x64-msvc" "13.1.1-canary.1"
+    "@next/swc-android-arm-eabi" "13.1.1"
+    "@next/swc-android-arm64" "13.1.1"
+    "@next/swc-darwin-arm64" "13.1.1"
+    "@next/swc-darwin-x64" "13.1.1"
+    "@next/swc-freebsd-x64" "13.1.1"
+    "@next/swc-linux-arm-gnueabihf" "13.1.1"
+    "@next/swc-linux-arm64-gnu" "13.1.1"
+    "@next/swc-linux-arm64-musl" "13.1.1"
+    "@next/swc-linux-x64-gnu" "13.1.1"
+    "@next/swc-linux-x64-musl" "13.1.1"
+    "@next/swc-win32-arm64-msvc" "13.1.1"
+    "@next/swc-win32-ia32-msvc" "13.1.1"
+    "@next/swc-win32-x64-msvc" "13.1.1"
 
 "node-releases@^2.0.6":
   "integrity" "sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A=="
@@ -1673,7 +1673,7 @@
   "resolved" "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   "version" "5.1.1"
 
-"react-dom@^18.2.0", "react-dom@18.2.0":
+"react-dom@^18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -1686,7 +1686,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@18.2.0":
+"react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

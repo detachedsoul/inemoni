@@ -1,4 +1,4 @@
-import heroImage from "@assets/img/hero-image.png";
+import heroImage from "@assets/img/hero-image.svg";
 import Image from "next/image";
 import Link from "next/link";
 
