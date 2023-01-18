@@ -1,6 +1,6 @@
 import HeroText from "@components/about/HeroText";
-import AboutSection from "@components/about/AboutSection";
 import NationalReach from "@components/about/NationalReach";
+import Testimonials from "@components/about/Testimonials";
 import Image from "next/image";
 import partners from "@assets/data/partners";
 
@@ -8,7 +8,6 @@ const About = () => {
     return (
 		<main className="space-y-[10%] lg:pb-[2%]">
 			<HeroText />
-			<AboutSection />
 
 			<section className="px-[10%] space-y-4 text-center sm:space-y-6 sm:text-left">
 				<h3 className="text-xl font-medium text-center">
@@ -29,6 +28,7 @@ const About = () => {
 			</section>
 
 			<NationalReach />
+			<Testimonials />
 		</main>
 	);
 };

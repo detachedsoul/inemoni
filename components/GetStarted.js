@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import fastTransfer from "@assets/img/index-fast-transfer.png";
-import virtualCard from "@assets/img/index-virtual-card.svg";
+import virtualCard from "@assets/img/index-virtual-card.png";
 
 const GetStarted = () => {
     return (

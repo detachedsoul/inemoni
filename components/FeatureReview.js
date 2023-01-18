@@ -7,7 +7,7 @@ const FeatureReview = () => {
 		<section className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-12 items-center px-[5%] xl:px-[10%]">
 			<div className="space-y-5">
 				<h2 className="header text-xl">Bills Payment</h2>
-
+   
 				<p>
 					Life could be hard but making payments shouldn’t. Pay for
 					Power supply, Internet bundles or Cable TV subscriptions at
