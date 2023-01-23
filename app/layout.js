@@ -2,7 +2,6 @@ import "./globals.css";
 import "@assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import localFont from "@next/font/local";
 import { Inter } from '@next/font/google';
 
 const inter = Inter({

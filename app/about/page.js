@@ -1,12 +1,14 @@
 import HeroText from "@components/about/HeroText";
 import NationalReach from "@components/about/NationalReach";
 import Testimonials from "@components/about/Testimonials";
+import FooterCard from "@components/FooterCard";
 import Image from "next/image";
 import partners from "@assets/data/partners";
 
 const About = () => {
     return (
-		<main className="space-y-[10%] lg:pb-[2%]">
+		<>
+			<main className="space-y-[10%] lg:pb-[2%]">
 			<HeroText />
 
 			<section className="px-[10%] space-y-4 text-center sm:space-y-6 sm:text-left">
@@ -30,6 +32,9 @@ const About = () => {
 			<NationalReach />
 			<Testimonials />
 		</main>
+
+		<FooterCard />
+		</>
 	);
 };
 
