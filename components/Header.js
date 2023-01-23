@@ -207,7 +207,7 @@ const Header = () => {
 
 									<Link
 										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 ${pathname === '/terms-of-use' ? 'bg-dropdown-hover' : ''}`}
-										href="/terms-of-use"
+										href="/legal/terms-of-use"
 									>
 										<span className="block font-bold">
 											Terms of Use

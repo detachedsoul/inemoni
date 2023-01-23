@@ -11,6 +11,10 @@
         @apply header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]
     }
 
+    .secondary-header {
+        @apply main-header text-2xl leading-[2.5rem] sm:text-[2.188rem] sm:leading-[2.813rem]
+    }
+
     .fr {
         @apply relative top-1
     }

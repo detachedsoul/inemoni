@@ -116,17 +116,17 @@ const Footer = () => {
 				{
 					linkName: "Privacy Policy",
 					isLink: true,
-					route: "/privacy-policy",
+					route: "/legal/privacy-policy",
 				},
 				{
 					linkName: "Terms of Use",
 					isLink: true,
-					route: "/terms-of-use",
+					route: "/legal/terms-of-use",
 				},
 				{
 					linkName: "Cookie Policy",
 					isLink: true,
-					route: "/cookie-policy",
+					route: "/legal/cookie-policy",
 				},
 			],
 		},
@@ -343,19 +343,19 @@ const Footer = () => {
 
 					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
 						<li>
-							<Link className="hover:text-brand-purple" href="/privacy-policy">
+							<Link className="hover:text-brand-purple" href="/legal/privacy-policy">
 								Privacy Policy
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/terms-of-use">
+							<Link className="hover:text-brand-purple" href="/legal/terms-of-use">
 								Terms of Use
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/cookie-policy">
+							<Link className="hover:text-brand-purple" href="/legal/cookie-policy">
 								Cookie Policy
 							</Link>
 						</li>
