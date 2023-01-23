@@ -6,7 +6,7 @@ const HeroText = () => {
 	return (
 		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
 			<div className="space-y-4">
-				<h1 className="header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]">
+				<h1 className="main-header">
 					Fast, convenient, and <span className="text-brand-purple">secure transfer</span> solution.
 				</h1>
 

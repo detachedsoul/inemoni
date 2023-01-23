@@ -47,17 +47,12 @@ const Footer = () => {
 				{
 					linkName: "API Documentation",
 					isLink: true,
-					route: "/",
+					route: "/api-docs",
 				},
 				{
-					linkName: "API Status",
+					linkName: "Inemoni Status",
 					isLink: true,
-					route: "/",
-				},
-				{
-					linkName: "API Reference",
-					isLink: true,
-					route: "/",
+					route: "/status",
 				},
 			],
 		},
@@ -89,12 +84,12 @@ const Footer = () => {
 				{
 					linkName: "FAQ",
 					isLink: true,
-					route: "/",
+					route: "/faq",
 				},
 				{
 					linkName: "Blog",
 					isLink: true,
-					route: "/",
+					route: "/blog",
 				},
 			],
 		},
@@ -105,7 +100,7 @@ const Footer = () => {
 				{
 					linkName: "support@inemoni.com",
 					isLink: true,
-					route: "/",
+					route: "mailto:support@inemoni.com",
 				},
 				{
 					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
@@ -121,17 +116,17 @@ const Footer = () => {
 				{
 					linkName: "Privacy Policy",
 					isLink: true,
-					route: "/",
+					route: "/privacy-policy",
 				},
 				{
 					linkName: "Terms of Use",
 					isLink: true,
-					route: "/",
+					route: "/terms-of-use",
 				},
 				{
 					linkName: "Cookie Policy",
 					isLink: true,
-					route: "/",
+					route: "/cookie-policy",
 				},
 			],
 		},
@@ -142,7 +137,7 @@ const Footer = () => {
 				{
 					linkName: "support@inemoni.com",
 					isLink: true,
-					route: "/",
+					route: "mailto:support@inemoni.com",
 				},
 				{
 					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
@@ -370,19 +365,19 @@ const Footer = () => {
 
 					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link className="hover:text-brand-purple" href="/privacy-policy">
 								Privacy Policy
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link className="hover:text-brand-purple" href="/terms-of-use">
 								Terms of Use
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link className="hover:text-brand-purple" href="/cookie-policy">
 								Cookie Policy
 							</Link>
 						</li>
@@ -392,15 +387,13 @@ const Footer = () => {
 				<div className="flex flex-wrap gap-3 pt-8">
 					<Link className="inline-block" href="/">
 						<Image
-							className=""
 							src={iOS}
 							alt="Download on Apple's App Store"
 						/>
 					</Link>
 
-					<Link className="inline-block" href="/">
+					<Link className="inline-block" href="https://play.google.com/store/apps/details?id=com.inemoni.com" target="_blank" rel="noopener noreferrer">
 						<Image
-							className=""
 							src={Android}
 							alt="Download on Google's PlayStore"
 						/>

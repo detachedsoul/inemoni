@@ -7,6 +7,10 @@
         @apply font-semibold leading-[2.188rem]
     }
 
+    .main-header {
+        @apply header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]
+    }
+
     .fr {
         @apply relative top-1
     }

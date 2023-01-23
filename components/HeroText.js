@@ -6,7 +6,7 @@ const HeroText = () => {
 	return (
 		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
-				<h1 className="header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]">
+				<h1 className="main-header">
 					Bringing <span className="text-brand-purple">Financial Services</span> To Your Doorsteps.
 				</h1>
 
