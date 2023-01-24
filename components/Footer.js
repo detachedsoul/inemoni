@@ -63,7 +63,7 @@ const Footer = () => {
 				{
 					linkName: "Give Us Feedback",
 					isLink: true,
-					route: "/",
+					route: "/contact-us",
 				},
 				{
 					linkName: "Help Center",
@@ -84,7 +84,7 @@ const Footer = () => {
 				{
 					linkName: "FAQ",
 					isLink: true,
-					route: "/faq",
+					route: "/legal/faqs",
 				},
 				{
 					linkName: "Blog",
