@@ -31,4 +31,8 @@
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+
+    .form-input {
+        @apply border border-[#dae1e7] focus:outline-none rounded-md py-0.5 px-3 w-full block
+    }
 }
