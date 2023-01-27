@@ -20,8 +20,8 @@ const BlogPost = () => {
 
 			<div className="space-y-12">
 				<div className="space-y-1">
-					<p className="font-semibold">
-						JAN 10, 2023 &bull; 6 Min Read
+					<p className="font-medium">
+						Jan 10, 2023 &bull; 6 Min Read
 					</p>
 
 					<h1 className="secondary-header">

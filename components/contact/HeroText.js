@@ -13,7 +13,7 @@ const HeroText = () => {
 		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
-					Looking to Send us a Message at Inemoni?
+					Looking to send us a message at Inemoni?
 				</h1>
 
 				<p>

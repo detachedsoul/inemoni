@@ -131,22 +131,6 @@ const Footer = () => {
 			],
 		},
 		{
-			linkGroup: "Contact",
-			isDesktopLink: false,
-			links: [
-				{
-					linkName: "support@inemoni.com",
-					isLink: true,
-					route: "mailto:support@inemoni.com",
-				},
-				{
-					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
-					isLink: false,
-					route: null,
-				},
-			],
-		},
-		{
 			linkGroup: "Social",
 			isDesktopLink: false,
 			links: [
