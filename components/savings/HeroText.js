@@ -35,7 +35,7 @@ const HeroText = () => {
 			<Image
 				className="rounded-xl lg:col-span-5"
 				src={heroImage}
-				alt="Happy Inemoni User"
+				alt="Seamless Savings Solution With Inemoni"
 				quality={100}
 				priority={true}
 			/>
