@@ -5,8 +5,8 @@ import virtualCard from "@assets/img/index-virtual-card.png";
 
 const GetStarted = () => {
 	return (
-		<div className="px-[5%] xl:px-[7%] flex flex-col gap-12">
-			<section className="bg-[#121212] px-[10%] pt-[8%] rounded-3xl items-center justify-between sm:px-[6%] sm:rounded-[2.5rem] text-white grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
+		<section className="px-[5%] xl:px-[7%] flex flex-col gap-12">
+			<article className="bg-[#121212] px-[10%] pt-[8%] rounded-3xl items-center justify-between sm:px-[6%] sm:rounded-[2.5rem] text-white grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
 				<div className="space-y-6 md:space-y-8 sm:pb-[18%]">
 					<p>Send money to anyone</p>
 
@@ -40,9 +40,9 @@ const GetStarted = () => {
 					alt="Fast Transfers. Safe Cards. Cash Backs."
 					quality={100}
 				/>
-			</section>
+			</article>
 
-			<section className="bg-[#fae7de] px-[10%] pt-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-brand-black grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
+			<article className="bg-[#fae7de] px-[10%] pt-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-brand-black grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
 				<div className="space-y-6 md:space-y-8 sm:pb-[18%]">
 					<p>Cards that work globally</p>
 
@@ -74,8 +74,8 @@ const GetStarted = () => {
 					alt="physical & virtual cards That works."
 					quality={100}
 				/>
-			</section>
-		</div>
+			</article>
+		</section>
 	);
 };
 

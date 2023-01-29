@@ -1,35 +1,30 @@
-import heroImage from "@assets/img/hero-image.svg";
+import heroImage from "@assets/img/cash-withdrawal-hero-image.png";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
-			<div className="space-y-4">
+		<div className="grid grid-cols-1 items-center justify-between gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-24 xl:px-[7%] lg:grid-cols-12">
+			<div className="space-y-4 lg:col-span-7">
 				<h1 className="main-header">
-					Withdraw At{ " " }
-					<span className="text-brand-orange">Our Agents</span> Close
-					to You
+					Withdraw Cash With Inemoni Closest Agents.
 				</h1>
 
 				<p>
-					Our cash withdrawal solution is the perfect way to access
-					the funds in your account whenever you need them. Whether
-					you’re at home or on the go, you can easily and securely
-					withdraw cash from your account using our convenient
-					service.
+					Withdraw cash at our agents outlet closest to you with ease
+					and convenience, using your debit or credit card.
 				</p>
 
 				<div className="flex items-center gap-4">
 					<Link
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						href="/"
 					>
 						Download App
 					</Link>
 
 					<Link
-						className="bg-brand-gray btn px-8 block hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in"
+						className="btn block bg-brand-gray px-8 transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white"
 						href="/"
 					>
 						Sign In
@@ -38,11 +33,11 @@ const HeroText = () => {
 			</div>
 
 			<Image
-				className="rounded-xl"
-				src={ heroImage }
-				alt="Happy Inemoni User"
-				quality={ 100 }
-				priority={ true }
+				className="rounded-xl lg:col-span-5"
+				src={heroImage}
+				alt="Withdraw Cash With Inemoni Closest Agents"
+				quality={100}
+				priority={true}
 			/>
 		</div>
 	);
