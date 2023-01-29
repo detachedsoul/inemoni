@@ -1,33 +1,30 @@
-import heroImage from "@assets/img/hero-image.svg";
+import heroImage from "@assets/img/money-transfer-hero-image.png";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:gap-24 xl:px-[7%]">
-			<div className="space-y-4">
+		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-24 lg:grid-cols-12 lg:gap-12 xl:px-[7%]">
+			<div className="space-y-4 lg:col-span-7">
 				<h1 className="main-header">
-					Fast, convenient, and <span className="text-brand-purple">secure transfer</span> solution.
+					Seamless Money Transfer with Inemoni.
 				</h1>
 
 				<p>
-					Our money transfer solution makes it easy for you to send
-					and receive money from anywhere in the world. With just a
-					few clicks, you can quickly and securely transfer funds to
-					friends, family, or business associates without the hassle
-					of writing checks or visiting a bank.
+					Our money transfer solution is the perfect way to access the
+					funds in your account whenever you need them.
 				</p>
 
-				<div className="flex items-center gap-4 flex-wrap">
+				<div className="flex flex-wrap items-center gap-4">
 					<Link
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						href="/"
 					>
 						Download App
 					</Link>
 
 					<Link
-						className="bg-brand-gray btn px-8 block hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in"
+						className="btn block bg-brand-gray px-8 transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white"
 						href="/"
 					>
 						Sign In
@@ -36,11 +33,11 @@ const HeroText = () => {
 			</div>
 
 			<Image
-				className="rounded-xl"
-				src={ heroImage }
-				alt="Happy Inemoni User"
-				quality={ 100 }
-				priority={ true }
+				className="rounded-xl lg:col-span-5"
+				src={heroImage}
+				alt="Seamless Money Transfer with Inemoni"
+				quality={100}
+				priority={true}
 			/>
 		</div>
 	);
