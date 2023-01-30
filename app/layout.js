@@ -3,6 +3,7 @@ import "@assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import { Inter } from '@next/font/google';
+import Script from "next/script";
 
 const inter = Inter({
 	variable: '--font-inter',
@@ -13,11 +14,26 @@ const Layout = ({ children }) => {
 		<html lang="en">
 			<head />
 			<body
-				className={`antialiased tracking-wide leading-[35px] scroll-smooth overscroll-contain bg-white text-brand-black text-[16px] selection:bg-brand-purple selection:text-white ${inter.variable} font-inter break-words [word-break:break-word] [word-wrap:break-word]`}
+				className={`overscroll-contain scroll-smooth bg-white text-[16px] leading-[35px] tracking-wide text-brand-black antialiased selection:bg-brand-purple selection:text-white ${inter.variable} break-words font-inter [word-break:break-word] [word-wrap:break-word]`}
 			>
 				<Header />
-					{children}
+				{children}
 				<Footer />
+
+				<Script
+					id="tawkTo"
+					strategy="lazyOnload"
+				>
+					{`var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+					(function () {
+						var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+						s1.async = true;
+						s1.src = 'https://embed.tawk.to/62989881b0d10b6f3e755466/1g4i17fc7';
+						s1.charset = 'UTF-8';
+						s1.setAttribute('crossorigin', '*');
+						s0.parentNode.insertBefore(s1, s0);
+					})();`}
+				</Script>
 			</body>
 		</html>
 	);

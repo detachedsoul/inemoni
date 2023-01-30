@@ -88,7 +88,7 @@ const Index = () => {
 
 						<div className="relative h-[400px] text-right lg:col-span-5 lg:h-[500px]">
 							<Image
-								className="h-full w-full"
+								className="h-full w-full aspect-square"
 								src={InemoniCard}
 								alt="Inemonoi card for cash withdrawal"
 								quality={100}
