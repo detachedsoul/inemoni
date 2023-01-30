@@ -1,7 +1,7 @@
 import HeroText from "@components/savings/HeroText";
 import FooterCard from "@components/FooterCard";
 import Image from "next/image";
-import SavingsDashboard from "@assets/img/savings-dashboard.png";
+import Savings from "@assets/img/savings.png";
 import SavingsBalance from "@assets/img/savings-balance.png";
 
 const Index = () => {
@@ -26,7 +26,7 @@ const Index = () => {
 
                         <Image
                             className="h-full w-full lg:col-span-5"
-                            src={SavingsDashboard}
+                            src={Savings}
                             alt="Savings is Easier When You Use Inemoni"
                             quality={100}
                         />
