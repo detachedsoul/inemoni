@@ -65,16 +65,6 @@ const Footer = () => {
 					isLink: true,
 					route: "/contact-us",
 				},
-				{
-					linkName: "Help Center",
-					isLink: true,
-					route: "/",
-				},
-				{
-					linkName: "Live Chat",
-					isLink: true,
-					route: "/",
-				},
 			],
 		},
 		{
@@ -212,7 +202,7 @@ const Footer = () => {
 		<>
 			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%] sm:pt-[5%]">
 				<div
-					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6  pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6 pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
 					ref={parentElement}
 				>
 					{footerLinks.map((footerLink, id) => (
@@ -252,7 +242,7 @@ const Footer = () => {
 					))}
 				</div>
 
-				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only">
+				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only lg:border-none">
 					{footerLinks.map((footerLink, id) =>
 						footerLink.isDesktopLink ? (
 							<div className="space-y-5" key={id}>

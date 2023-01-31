@@ -58,31 +58,38 @@ const Header = () => {
 
 	return (
 		<>
-			<div className="bg-brand-black text-white text-center p-4">
+			<div className="bg-brand-black p-4 text-center text-white">
 				<p>
-					🎉 Inemoni has rebranded to serve you better. <Link className="underline underline-offset-4" href="/about">Learn More</Link>
+					🎉 Inemoni has rebranded to serve you better.{" "}
+					<Link
+						className="underline underline-offset-4"
+						href="/about"
+					>
+						Learn More
+					</Link>
 				</p>
 			</div>
 			<header
-				className={`py-[6%] px-[5%] sm:py-[4%] sticky top-0 z-50 flex items-center gap-4 justify-between lg:py-[1.5%] bg-white xl:px-[7%]`}
+				className={`sticky top-0 z-50 flex items-center justify-between gap-4 bg-white py-[6%] px-[5%] sm:py-[4%] lg:py-[1.5%] xl:px-[7%]`}
 			>
 				<Link href="/">
-					<Image src={Logo} alt="Inemoni" quality={100} priority={true} />
+					<Image
+						src={Logo}
+						alt="Inemoni"
+						quality={100}
+						priority={true}
+					/>
 				</Link>
 
 				<nav
-					className={
-						`lg:top-0 absolute top-full lg:static left-0 bg-white min-h-screen h-full z-50 w-full lg:w-auto border-r border-brand-gray lg:min-h-0 lg:border-none transition-transform duration-500 ease-in-out lg:bg-transparent lg:translate-x-0
-						${
-							navIsOpen ? "translate-x-0" : "-translate-x-full"
-						}`
-					}
+					className={`absolute top-full left-0 z-50 h-full min-h-screen w-full border-r border-brand-gray bg-white transition-transform duration-500 ease-in-out lg:static lg:top-0 lg:min-h-0 lg:w-auto lg:translate-x-0 lg:border-none lg:bg-transparent
+						${navIsOpen ? "translate-x-0" : "-translate-x-full"}`}
 					ref={navRef}
 				>
-					<ul className="flex lg:items-center flex-col gap-4 lg:gap-12 lg:p-0 lg:justify-between lg:flex-row lg:min-h-0 bg-white min-h-[calc((100vh-12%)-1rem)] p-4 overflow-y-auto lg:bg-transparent">
+					<ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-white p-4 lg:min-h-0 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:bg-transparent lg:p-0">
 						<li className="relative">
 							<button
-								className="text-brand-navlink font-bold hover:bg-dropdown-hover btn hover:text-brand-purple block w-full lg:hover:bg-transparent text-left lg:font-medium"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
 								type="button"
 								onClick={() => handleDropdownClick(paymentRef)}
 							>
@@ -90,12 +97,16 @@ const Header = () => {
 							</button>
 
 							<div
-								className="-translate-y-[150%] z-50 transition-transform duration-700 ease-in-out absolute top-[calc(100%+.5rem)] lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto"
+								className="absolute top-[calc(100%+.5rem)] z-50 w-auto -translate-y-[150%] transition-transform duration-700 ease-in-out lg:fixed lg:-left-[40%] lg:-right-[40%]"
 								ref={paymentRef}
 							>
-								<div className="bg-white grid grid-cols-1 lg:grid-cols-12 gap-4 rounded-xl p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:py-8 lg:px-12 lg:gap-8">
+								<div className="grid grid-cols-1 gap-4 rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:grid-cols-12 lg:gap-8 lg:py-8 lg:px-12">
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6 ${pathname === '/cash-withdrawal' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
+											pathname === "/cash-withdrawal"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/cash-withdrawal"
 									>
 										<span className="block font-bold">
@@ -109,7 +120,11 @@ const Header = () => {
 									</Link>
 
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6 ${pathname === '/savings' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
+											pathname === "/savings"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/savings"
 									>
 										<span className="block font-bold">
@@ -117,13 +132,17 @@ const Header = () => {
 										</span>
 
 										<span className="inline-block">
-											Everyone can save without restriction,
-											with fast withdrawal.
+											Everyone can save without
+											restriction, with fast withdrawal.
 										</span>
 									</Link>
 
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6 ${pathname === '/money-transfer' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
+											pathname === "/money-transfer"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/money-transfer"
 									>
 										<span className="block font-bold">
@@ -131,13 +150,17 @@ const Header = () => {
 										</span>
 
 										<span className="inline-block">
-											Your transfer goes through seamlessly
-											with Inemoni.
+											Your transfer goes through
+											seamlessly with Inemoni.
 										</span>
 									</Link>
 
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 lg:col-span-6 ${pathname === '/pay-bills' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
+											pathname === "/pay-bills"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/pay-bills"
 									>
 										<span className="block font-bold">
@@ -145,8 +168,8 @@ const Header = () => {
 										</span>
 
 										<span className="inline-block">
-											Payment of bills is easily accessible to
-											everyone.
+											Payment of bills is easily
+											accessible to everyone.
 										</span>
 									</Link>
 
@@ -155,19 +178,19 @@ const Header = () => {
 											Latest blog post
 										</span>
 
-										<div className="bg-dropdown-hover text-brand-black btn space-y-1.5">
+										<div className="btn space-y-1.5 bg-dropdown-hover text-brand-black">
 											<span className="block font-bold">
 												We went live 🎊
 											</span>
 
 											<p>
-												Here’s an overview of how we made
-												magic happen
+												Here’s an overview of how we
+												made magic happen
 											</p>
 
 											<Link
-												className="text-brand-purple inline-block"
-												href="/"
+												className="inline-block text-brand-purple"
+												href="/blog"
 											>
 												Read More
 												<i className="fr fi-rr-arrow-right ml-2"></i>
@@ -180,19 +203,23 @@ const Header = () => {
 
 						<li className="relative">
 							<button
-								className="text-brand-navlink font-bold hover:bg-dropdown-hover btn hover:text-brand-purple block w-full lg:hover:bg-transparent text-left lg:font-medium"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
 								onClick={() => handleDropdownClick(companyRef)}
 							>
 								Company
 							</button>
 
 							<div
-								className="-translate-y-[150%] z-50 transition-transform duration-700 ease-in-out absolute top-[calc(100%+.5rem)] lg:fixed lg:-left-[40%] lg:-right-[40%] w-auto"
+								className="absolute top-[calc(100%+.5rem)] z-50 w-auto -translate-y-[150%] transition-transform duration-700 ease-in-out lg:fixed lg:-left-[40%] lg:-right-[40%]"
 								ref={companyRef}
 							>
-								<div className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-xl p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:py-8 lg:px-12 lg:gap-8">
+								<div className="grid grid-cols-1 gap-4 rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:grid-cols-2 lg:gap-8 lg:py-8 lg:px-12">
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 ${pathname === '/about' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
+											pathname === "/about"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/about"
 									>
 										<span className="block font-bold">
@@ -200,13 +227,17 @@ const Header = () => {
 										</span>
 
 										<span className="inline-block">
-											Learn more about who we are and what we
-											do at Inemoni
+											Learn more about who we are and what
+											we do at Inemoni
 										</span>
 									</Link>
 
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 ${pathname === '/terms-of-use' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
+											pathname === "/terms-of-use"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/legal/terms-of-use"
 									>
 										<span className="block font-bold">
@@ -214,13 +245,17 @@ const Header = () => {
 										</span>
 
 										<span className="inline-block">
-											Describing your rights on how & when we
-											handle your account.
+											Describing your rights on how & when
+											we handle your account.
 										</span>
 									</Link>
 
 									<Link
-										className={`hover:bg-dropdown-hover text-brand-black btn space-y-2 ${pathname === '/contact-us' ? 'bg-dropdown-hover' : ''}`}
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
+											pathname === "/contact-us"
+												? "bg-dropdown-hover"
+												: ""
+										}`}
 										href="/contact-us"
 									>
 										<span className="block font-bold">
@@ -240,17 +275,17 @@ const Header = () => {
 
 						<li>
 							<Link
-								className="text-brand-navlink font-bold hover:bg-dropdown-hover btn hover:text-brand-purple block w-full lg:hover:bg-transparent text-left lg:font-medium"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
 								href="/"
 							>
 								Careers
 							</Link>
 						</li>
 
-						<li className="lg:hidden lg:not-sr-only">
+						<li className="lg:not-sr-only lg:hidden">
 							<Link
-								className="text-brand-navlink font-bold hover:bg-dropdown-hover btn hover:text-brand-purple block w-full lg:hover:bg-transparent text-left lg:font-medium"
-								href="/"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
+								href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 							>
 								Download App
 							</Link>
@@ -260,14 +295,14 @@ const Header = () => {
 
 				<div className="flex items-center gap-4">
 					<Link
-						className="btn text-brand-navlink bg-brand-gray hover:bg-brand-navlink hover:text-white transition-colors duration-300 ease-in hidden lg:block"
-						href="/"
+						className="btn hidden bg-brand-gray text-brand-navlink transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white lg:block"
+						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 					>
 						Download App
 					</Link>
 
 					<button
-						className="lg:hidden lg:not-sr-only"
+						className="lg:not-sr-only lg:hidden"
 						type="button"
 						aria-label="Navbar toggle button"
 						onClick={handleNavClick}

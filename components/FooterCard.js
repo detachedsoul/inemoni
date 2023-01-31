@@ -21,7 +21,9 @@ const FooterCard = () => {
 
 					<Link
 						className="text-white btn block"
-						href="/"
+						href="mailto:support@inemoni.com"
+						target="_blank"
+						rel="noopener noreferrer"
 					>
 						Contact Support
 					</Link>

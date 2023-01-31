@@ -5,12 +5,12 @@ import virtualCard from "@assets/img/index-virtual-card.png";
 
 const GetStarted = () => {
 	return (
-		<section className="px-[5%] xl:px-[7%] flex flex-col gap-12">
-			<article className="bg-[#121212] px-[10%] pt-[8%] rounded-3xl items-center justify-between sm:px-[6%] sm:rounded-[2.5rem] text-white grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
-				<div className="space-y-6 md:space-y-8 sm:pb-[18%]">
+		<section className="flex flex-col gap-12 px-[5%] xl:px-[7%]">
+			<article className="grid grid-cols-1 items-center justify-between gap-12 rounded-3xl bg-[#121212] px-[10%] pt-[8%] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:grid-cols-2 sm:rounded-[2.5rem] sm:px-[6%]">
+				<div className="space-y-6 sm:pb-[18%] md:space-y-8">
 					<p>Send money to anyone</p>
 
-					<h2 className="header text-2xl sm:text-5xl leading-10 sm:text-[3.125rem] sm:leading-[4.063rem]">
+					<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
 						<span className="text-brand-orange">Fast</span>{" "}
 						Transfers.{" "}
 						<span className="text-brand-orange">Safe</span> Cards.
@@ -19,14 +19,14 @@ const GetStarted = () => {
 
 					<div className="flex flex-wrap items-center gap-4">
 						<Link
-							className="bg-white text-brand-black btn inline-block"
-							href="/"
+							className="btn inline-block bg-white text-brand-black"
+							href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 						>
 							Download App
 						</Link>
 
 						<Link
-							className="text-white btn inline-block"
+							className="btn inline-block text-white"
 							href="/"
 						>
 							Sign In
@@ -42,19 +42,19 @@ const GetStarted = () => {
 				/>
 			</article>
 
-			<article className="bg-[#fae7de] px-[10%] pt-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-brand-black grid gap-12 grid-cols-1 sm:grid-cols-2 shadow-[0px_5px_10px_rgba(10,14,39,0.05)]">
-				<div className="space-y-6 md:space-y-8 sm:pb-[18%]">
+			<article className="grid grid-cols-1 items-center gap-12 rounded-3xl bg-[#fae7de] px-[10%] pt-[8%] text-brand-black shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:grid-cols-2 sm:rounded-[2.5rem] sm:px-[6%]">
+				<div className="space-y-6 sm:pb-[18%] md:space-y-8">
 					<p>Cards that work globally</p>
 
-					<h2 className="header text-2xl sm:text-5xl leading-10 sm:text-[3.125rem] sm:leading-[4.063rem]">
+					<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
 						Physical & Virtual Cards{" "}
 						<span className="text-brand-orange">That works.</span>
 					</h2>
 
 					<div className="flex flex-wrap items-center gap-4">
 						<Link
-							className="bg-brand-black text-white btn block"
-							href="/"
+							className="btn block bg-brand-black text-white"
+							href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 						>
 							Download App
 						</Link>

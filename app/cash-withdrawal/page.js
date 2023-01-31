@@ -74,7 +74,7 @@ const Index = () => {
 				<HeroText />
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12">
+					<article className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
 						<div className="space-y-5 lg:col-span-7">
 							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
 								Need to Pay with Cash? Use your Card Anywhere.
@@ -86,9 +86,9 @@ const Index = () => {
 							</p>
 						</div>
 
-						<div className="relative h-[400px] text-right lg:col-span-5 lg:h-[500px]">
+						<div className="relative h-[400px] text-right lg:col-span-5 lg:h-[500px] mx-auto lg:ml-auto lg:mx-0 w-[70%] justify-items-end">
 							<Image
-								className="h-full w-full aspect-square"
+								className="aspect-square h-full w-full"
 								src={InemoniCard}
 								alt="Inemonoi card for cash withdrawal"
 								quality={100}
@@ -123,10 +123,10 @@ const Index = () => {
 										Inemoni POS
 									</span>
 
-									<i className="fr fi-rr-angle-down"></i>
+									<i className="fr fi-rr-angle-up"></i>
 								</button>
 
-								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
+								<div className="max-h-full space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
 									<h2 className="font-semibold">Inemoni for Restaurants</h2>
 
 									<div className="space-y-2">
