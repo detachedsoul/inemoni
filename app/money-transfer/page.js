@@ -2,7 +2,7 @@ import HeroText from "@components/money-transfer/HeroText";
 import FooterCard from "@components/FooterCard";
 import Image from "next/image";
 import SendMoney from "@assets/img/send-money.png";
-import SuccessfulTransaction from "@assets/img/successful-transaction.png";
+import SuccessfulTransaction from "@assets/img/money-transfer-successful.png";
 
 const Index = () => {
 	return (
@@ -18,12 +18,15 @@ const Index = () => {
 							</h2>
 
 							<p>
-								With just a few clicks, you can quickly and securely transfer funds to friends, family, or business associates without the hassle of writing checks or visiting a bank.
+								With just a few clicks, you can quickly and
+								securely transfer funds to friends, family, or
+								business associates without the hassle of
+								writing checks or visiting a bank.
 							</p>
 						</div>
 
 						<Image
-							className="h-full w-full lg:col-span-5"
+							className="h-full w-full shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] rounded-lg lg:col-span-5"
 							src={SuccessfulTransaction}
 							alt="Money Transfer is easier when you use Inemoni"
 							quality={100}
@@ -39,7 +42,9 @@ const Index = () => {
 							</h2>
 
 							<p>
-								We believe in moving money quickly and free of charge, so you can count on getting free transfers to other banks every month forever.
+								We believe in moving money quickly and free of
+								charge, so you can count on getting free
+								transfers to other banks every month forever.
 							</p>
 						</div>
 

@@ -69,7 +69,7 @@ const Layout = ({ children }) => {
 			</div>
 
 			<button
-				className="fixed right-[5%] bottom-[10%] rounded-md px-2.5 pt-1 pb-0.5 bg-gray-100 z-[1024] lg:hidden"
+				className="fixed right-[5%] bottom-[15%] rounded-md px-2.5 pt-1 pb-0.5 bg-gray-100 z-[1024] lg:hidden"
 				type="button"
 				aria-label="Toggle legal policies links"
 				onClick={handleClick}
