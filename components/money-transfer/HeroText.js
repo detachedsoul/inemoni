@@ -11,8 +11,9 @@ const HeroText = () => {
 				</h1>
 
 				<p>
-					Our money transfer solution is the perfect way to access the
-					funds in your account whenever you need them.
+					Unlock the power of your funds with Inemoni’s Money Transfer
+					Solution - experience seamless access to your account,
+					anytime, anywhere.
 				</p>
 
 				<div className="flex flex-wrap items-center gap-4">

@@ -18,15 +18,15 @@ const Index = () => {
 							</h2>
 
 							<p>
-								With just a few clicks, you can quickly and
-								securely transfer funds to friends, family, or
-								business associates without the hassle of
-								writing checks or visiting a bank.
+								Effortlessly connect with your loved ones and
+								business partners with Inemoni’s Quick and
+								Secure Fund Transfer. Say goodbye to checks and
+								bank visits.
 							</p>
 						</div>
 
 						<Image
-							className="h-full w-full shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] rounded-lg lg:col-span-5"
+							className="h-full w-full rounded-lg shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:col-span-5"
 							src={SuccessfulTransaction}
 							alt="Money Transfer is easier when you use Inemoni"
 							quality={100}
@@ -42,9 +42,10 @@ const Index = () => {
 							</h2>
 
 							<p>
-								We believe in moving money quickly and free of
-								charge, so you can count on getting free
-								transfers to other banks every month forever.
+								Effortlessly move your money, whenever and
+								wherever you need it, with our hassle-free, and
+								secure transfers. Experience the freedom of fast
+								and free banking today!
 							</p>
 						</div>
 

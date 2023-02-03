@@ -77,16 +77,19 @@ const Index = () => {
 					<article className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
 						<div className="space-y-5 lg:col-span-7">
 							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
-								Need to Pay with Cash? Use your Card Anywhere.
+								Say Goodbye to Cash Hassles, Hello to Seamless
+								Payments with Your Card Anywhere.
 							</h2>
 
 							<p>
-								Our cards are accepted on Spotify, Netflix,
-								Prime Video, Showmax! and even POS stalls.
+								Enjoy seamless access to your favorite
+								entertainment and payments with our cards on
+								Spotify, Netflix, Prime Video, Showmax, and
+								more.
 							</p>
 						</div>
 
-						<div className="relative h-[400px] text-right lg:col-span-5 lg:h-[500px] mx-auto lg:ml-auto lg:mx-0 w-[70%] justify-items-end">
+						<div className="relative mx-auto h-[400px] w-[70%] justify-items-end text-right lg:col-span-5 lg:mx-0 lg:ml-auto lg:h-[500px]">
 							<Image
 								className="aspect-square h-full w-full"
 								src={InemoniCard}
@@ -127,17 +130,12 @@ const Index = () => {
 								</button>
 
 								<div className="max-h-full space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
-									<h2 className="font-semibold">Inemoni for Restaurants</h2>
-
-									<div className="space-y-2">
-										<p>
-											Inemoni for Restaurants mobile POS
-											on Square Terminal lets you cover
-											more tables and deliver a better
-											guest experience by taking orders
-											and payments tableside.
-										</p>
-									</div>
+									<p>
+										Empower your retail business with
+										Inemoni’s Fintech Solutions - effortless
+										payments, seamless transactions, and
+										unmatched financial control.
+									</p>
 								</div>
 							</div>
 
@@ -157,17 +155,12 @@ const Index = () => {
 								</button>
 
 								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
-									<h2 className="font-semibold">Inemoni for Restaurants</h2>
-
-									<div className="space-y-2">
-										<p>
-											Inemoni for Restaurants mobile POS
-											on Square Terminal lets you cover
-											more tables and deliver a better
-											guest experience by taking orders
-											and payments tableside.
-										</p>
-									</div>
+									<p>
+										Streamline your retail business with
+										Inemoni POS Terminal - effortless
+										transactions, seamless experience, and
+										unmatched convenience.
+									</p>
 								</div>
 							</div>
 
@@ -187,17 +180,12 @@ const Index = () => {
 								</button>
 
 								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
-									<h2 className="font-semibold">Inemoni for Restaurants</h2>
-
-									<div className="space-y-2">
-										<p>
-											Inemoni for Restaurants mobile POS
-											on Square Terminal lets you cover
-											more tables and deliver a better
-											guest experience by taking orders
-											and payments tableside.
-										</p>
-									</div>
+									<p>
+										Transform your appointments with
+										Inemoni’s Fintech Solutions - effortless
+										payments, seamless scheduling, and
+										unmatched convenience.
+									</p>
 								</div>
 							</div>
 						</div>

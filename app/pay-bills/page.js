@@ -18,9 +18,8 @@ const Index = () => {
 							</h2>
 
 							<p>
-								With our solution, you can easily and securely
-								pay all of your bills from a single account,
-								saving you time and money.
+								Easily and securely pay bills from one account
+								with our solution, saving time and money.
 							</p>
 						</div>
 

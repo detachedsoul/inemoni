@@ -4,19 +4,23 @@ import previewImage from "@assets/img/feature-preview.svg";
 
 const FeatureReview = () => {
     return (
-		<section className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-12 items-center px-[5%] xl:px-[10%]">
+		<section className="grid grid-cols-1 items-center justify-between gap-12 px-[5%] sm:grid-cols-3 xl:px-[10%]">
 			<div className="space-y-5">
 				<h2 className="header text-xl">Bills Payment</h2>
-   
+
 				<p>
-					Life could be hard but making payments shouldn’t. Pay for
-					Power supply, Internet bundles or Cable TV subscriptions at
-					your comfort zone. With Inemoni, we make payment of bills
-					easily accessible to everyone through our agents.
+					Say goodbye to the hassle of bill payments! At Inemoni, we
+					believe life may have its challenges, but paying for your
+					essential services shouldn’t be one of them. Power up your
+					home, stay connected with high-speed internet, and enjoy
+					endless entertainment with our simple and convenient bill
+					payment solutions. Accessible to everyone through our
+					network of agents & mobile app, paying bills has never been
+					easier!
 				</p>
 
 				<Link
-				className="bg-brand-dark-purple hover:bg-brand-dark-purple/90 text-white btn  transition-colors duration-300 ease-in inline-block"
+					className="btn inline-block bg-brand-dark-purple text-white  transition-colors duration-300 ease-in hover:bg-brand-dark-purple/90"
 					href="/"
 				>
 					Download App
@@ -24,8 +28,8 @@ const FeatureReview = () => {
 			</div>
 
 			<Image
-				className="block mx-auto"
-				src={ previewImage }
+				className="mx-auto block"
+				src={previewImage}
 				alt=""
 				quality={100}
 			/>
@@ -35,12 +39,16 @@ const FeatureReview = () => {
 					<h2 className="header text-xl">Accept Payments</h2>
 
 					<p>
-						Easily receive money from anyone, anytime and anywhere
-						in the world.
+						Get ready to experience a whole new level of financial
+						freedom. Imagine being able to effortlessly receive
+						funds from anyone, anywhere, at any time - no matter
+						where you are in the world. With just a few clicks, your
+						money is right at your fingertips. Welcome to a world of
+						limitless financial possibilities.
 					</p>
 
 					<Link
-						className="text-brand-purple font-medium inline-block"
+						className="inline-block font-medium text-brand-purple"
 						href="/cash-withdrawal"
 					>
 						Learn More
@@ -52,13 +60,17 @@ const FeatureReview = () => {
 					<h2 className="header text-xl">Money Transfer</h2>
 
 					<p>
-						Make single or bulk transfers to bank accounts from your
-						Inemoni dashboard. Your transfer goes through seamlessly
-						with Inemoni.
+						Say goodbye to long lines and complicated bank
+						transfers. With Inemoni, you can easily make a single
+						transfer or send money to multiple accounts in bulk -
+						all from the comfort of your own dashboard. And the best
+						part? Your transfers will go through like a dream,
+						giving you one less thing to worry about. Experience
+						seamless and stress-free banking today with Inemoni.
 					</p>
 
 					<Link
-						className="text-brand-purple font-medium inline-block"
+						className="inline-block font-medium text-brand-purple"
 						href="/money-transfer"
 					>
 						Learn More

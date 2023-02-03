@@ -11,8 +11,9 @@ const HeroText = () => {
 				</h1>
 
 				<p>
-					We have digitalized savings, so everyone can save without
-					restriction, with quick and fast withdrawal.
+					Unlock unlimited financial possibilities with Inemoni’s
+					Digitalised Savings - effortless deposits, quick
+					withdrawals, and unrestricted access to your funds.
 				</p>
 
 				<div className="flex flex-wrap items-center gap-4">

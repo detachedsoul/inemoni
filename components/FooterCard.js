@@ -2,25 +2,24 @@ import Link from "next/link";
 
 const FooterCard = () => {
     return (
-		<div className="bg-[#121212] px-[10%] py-[8%] rounded-3xl items-center sm:px-[6%] sm:rounded-[2.5rem] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] my-12 mx-[5%] xl:mx-[7%]">
-			<div className="space-y-6 md:space-y-8 sm:w-[70%]">
-				<p>Send money to anyone</p>
+		<div className="my-12 mx-[5%] items-center rounded-3xl bg-[#121212] px-[10%] py-[8%] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:rounded-[2.5rem] sm:px-[6%] xl:mx-[7%]">
+			<div className="space-y-6 sm:w-[70%] md:space-y-8">
+				<p>Effortless Finance: Speed and Savings Combined</p>
 
-				<h2 className="header text-2xl sm:text-5xl leading-10 sm:text-[3.125rem] sm:leading-[4.063rem]">
-					Technology To Keep Our Services{" "}
-					<span className="text-brand-orange">99% Uptime</span>
+				<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+					Fast, Affordable Financial Solutions, Anytime, Anywhere.
 				</h2>
 
 				<div className="flex flex-wrap items-center gap-4">
 					<Link
-						className="bg-white text-brand-black btn block"
+						className="btn block bg-white text-brand-black"
 						href="/"
 					>
 						Get Started
 					</Link>
 
 					<Link
-						className="text-white btn block"
+						className="btn block text-white"
 						href="mailto:support@inemoni.com"
 						target="_blank"
 						rel="noopener noreferrer"
