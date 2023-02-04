@@ -158,7 +158,7 @@ const Terms = () => {
 						of personal information that you supply to us. You can
 						examine our privacy policy any time by clicking{" "}
 						<Link
-							className="underline underline-offset-[4px]"
+							className="underline underline-offset-4"
 							href="/legal/privacy-policy"
 						>
 							here
