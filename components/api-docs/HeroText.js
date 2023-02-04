@@ -4,32 +4,28 @@ import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
+		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
-					Build Payment{" "}
-					<span className="text-brand-purple">
-						Solutions with Inemoni
-					</span>{" "}
-					API’s
+					Your Business with Inemoni’s Customisable Payment API’s
 				</h1>
 
 				<p>
-					Robust API integration for building and processing fully
-					customizable payment solutions. Integrate Inemoni once and
-					let your customers pay you however they want.
+					Unleash the Full Potential of Your Business with
+					Customisable and Reliable Payment Solutions through Inemoni
+					API’s
 				</p>
 
-				<div className="flex items-center gap-4 flex-wrap">
+				<div className="flex flex-wrap items-center gap-4">
 					<Link
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						href="/"
 					>
 						Join Waitlist
 					</Link>
 
 					<Link
-						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
+						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
 						href="/about"
 					>
 						Learn More
@@ -38,7 +34,7 @@ const HeroText = () => {
 			</div>
 
 			<Image
-				className="rounded-xl object-cover aspect-video"
+				className="aspect-video rounded-xl object-cover"
 				src={apiDocs}
 				alt="API documentation"
 				quality={100}

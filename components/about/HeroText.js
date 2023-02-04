@@ -13,9 +13,7 @@ const HeroText = () => {
 				</h1>
 
 				<p>
-					Inemoni makes it possible to bring financial activities to
-					your doorstep with our users and agents’ network solely to
-					make such transactions fast, secure and convenient.
+					With Inemoni, managing your finances has never been easier. Our extensive network of agents and user-friendly platform allow for seamless and secure financial transactions from the comfort of your own home. Say goodbye to the hassle of visiting banks and say hello to a faster, more convenient financial experience with Inemoni.
 				</p>
 
 				<div className="flex items-center gap-4 flex-wrap">

@@ -10,21 +10,20 @@ const HeroText = () => {
 	};
 
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
+		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
-					Looking to send us a message at Inemoni?
+					Get in Touch with Inemoni - Connect with Us Today!
 				</h1>
 
 				<p>
-					Our user-friendly interface and intuitive features make
-					managing your finances a breeze, so you can focus on the
-					things that matter most.
+					Connect with our team and get personalized support for all
+					your financial needs.
 				</p>
 
-				<div className="flex items-center gap-4 flex-wrap">
+				<div className="flex flex-wrap items-center gap-4">
 					<button
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						type="button"
 						onClick={handleClick}
 					>
@@ -32,7 +31,7 @@ const HeroText = () => {
 					</button>
 
 					<Link
-						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
+						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
 						href="mailto:support@inemoni.org"
 					>
 						Send an Email

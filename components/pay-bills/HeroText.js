@@ -13,7 +13,8 @@ const HeroText = () => {
 				<p>
 					We make payment of bills such as Electricity Bills, Cable
 					Tv, Airtime & Data, Edu. PIN etc, easily accessible to
-					everyone through our agents
+					everyone through our agents and mobile
+					solutions.
 				</p>
 
 				<div className="flex flex-wrap items-center gap-4">
