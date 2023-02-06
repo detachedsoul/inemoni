@@ -60,13 +60,12 @@ const FeatureReview = () => {
 					<h2 className="header text-xl">Money Transfer</h2>
 
 					<p>
-						Say goodbye to long lines and complicated bank
-						transfers. With Inemoni, you can easily make a single
-						transfer or send money to multiple accounts in bulk -
-						all from the comfort of your own dashboard. And the best
-						part? Your transfers will go through like a dream,
-						giving you one less thing to worry about. Experience
-						seamless and stress-free banking today with Inemoni.
+						With Inemoni, send money easily without standing in long
+						lines or dealing with complicated bank transfers. You
+						can transfer to one person or many, all from the same
+						place. No more stress, your transfers will be quick and
+						easy. Start enjoying seamless banking with Inemoni
+						today.
 					</p>
 
 					<Link

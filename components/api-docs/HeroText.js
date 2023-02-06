@@ -7,7 +7,7 @@ const HeroText = () => {
 		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
-					Your Business with Inemoni’s Customisable Payment API’s
+					Power your Business with Inemoni’s Customisable Payment API’s
 				</h1>
 
 				<p>

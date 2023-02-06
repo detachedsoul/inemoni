@@ -131,10 +131,10 @@ const Index = () => {
 
 								<div className="max-h-full space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
 									<p>
-										Empower your retail business with
-										Inemoni’s Fintech Solutions - effortless
-										payments, seamless transactions, and
-										unmatched financial control.
+										Streamline your business with Inemoni
+										POS Terminal - effortless transactions,
+										seamless experience, and unmatched
+										convenience.
 									</p>
 								</div>
 							</div>
@@ -156,10 +156,10 @@ const Index = () => {
 
 								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
 									<p>
-										Streamline your retail business with
-										Inemoni POS Terminal - effortless
-										transactions, seamless experience, and
-										unmatched convenience.
+										Empower your retail business with
+										Inemoni’s Fintech Solutions - effortless
+										payments, seamless transactions, and
+										unmatched financial control.
 									</p>
 								</div>
 							</div>
