@@ -27,7 +27,7 @@ const GetStarted = () => {
 
 						<Link
 							className="btn inline-block text-white"
-							href="/"
+							href="https://www.inemoni.org/mobile/login"
 						>
 							Sign In
 						</Link>
@@ -61,7 +61,7 @@ const GetStarted = () => {
 
 						<Link
 							className="btn block"
-							href="/"
+							href="https://www.inemoni.org/mobile/login"
 						>
 							Sign In
 						</Link>

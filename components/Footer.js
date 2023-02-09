@@ -36,7 +36,7 @@ const Footer = () => {
 				{
 					linkName: "Careers",
 					isLink: true,
-					route: "/careers",
+					route: "/",
 				},
 			],
 		},
@@ -91,6 +91,11 @@ const Footer = () => {
 					linkName: "support@inemoni.com",
 					isLink: true,
 					route: "mailto:support@inemoni.com",
+				},
+				{
+					linkName: "01-8880249",
+					isLink: true,
+					route: "tel:01-8880249",
 				},
 				{
 					linkName: "No. 67 Bakori Road, FHA, Kubwa, Abuja",
@@ -200,9 +205,9 @@ const Footer = () => {
 
 	return (
 		<>
-			<footer className="px-[5%] pb-[5%] pt-[10%] xl:px-[7%] sm:pt-[5%]">
+			<footer className="px-[5%] pb-[5%] pt-[10%] sm:pt-[5%] xl:px-[7%]">
 				<div
-					className="lg:hidden lg:not-sr-only grid-cols-1 gap-6 pb-12 grid sm:grid-cols-2 sm:gap-x-8 sm:items-start sm:self-start"
+					className="grid grid-cols-1 gap-6 pb-12 sm:grid-cols-2 sm:items-start sm:gap-x-8 sm:self-start lg:not-sr-only lg:hidden"
 					ref={parentElement}
 				>
 					{footerLinks.map((footerLink, id) => (
@@ -211,18 +216,18 @@ const Footer = () => {
 							key={id}
 						>
 							<button
-								className="flex items-center justify-between gap-4 w-full py-1"
+								className="flex w-full items-center justify-between gap-4 py-1"
 								type="button"
 								onClick={(e) => toggleMobileFooter(e)}
 							>
-								<span className="font-semibold text-lg">
+								<span className="text-lg font-semibold">
 									{footerLink.linkGroup}
 								</span>
 
 								<i className="fr fi-rr-angle-small-down"></i>
 							</button>
 
-							<ul className="space-y-6 w-full z-20 transition-all ease-linear max-h-0 duration-100 overflow-y-hidden">
+							<ul className="z-20 max-h-0 w-full space-y-6 overflow-y-hidden transition-all duration-100 ease-linear">
 								{footerLink.links.map((link, id) =>
 									link.isLink ? (
 										<li key={id}>
@@ -242,10 +247,13 @@ const Footer = () => {
 					))}
 				</div>
 
-				<div className="lg:grid grid-cols-5 gap-4 border-b border-footer-border pb-10 hidden not-sr-only lg:border-none">
+				<div className="not-sr-only hidden grid-cols-5 gap-4 border-b border-footer-border pb-10 lg:grid lg:border-none">
 					{footerLinks.map((footerLink, id) =>
 						footerLink.isDesktopLink ? (
-							<div className="space-y-5" key={id}>
+							<div
+								className="space-y-5"
+								key={id}
+							>
 								<h3 className="font-semibold">
 									{footerLink.linkGroup}
 								</h3>
@@ -267,9 +275,7 @@ const Footer = () => {
 									)}
 								</ul>
 							</div>
-						) : (
-							null
-						)
+						) : null,
 					)}
 				</div>
 
@@ -278,58 +284,102 @@ const Footer = () => {
 						<Image
 							className="rounded-full"
 							src={NigeriaFlag}
-							alt="Nigeria's flag"
+							alt="Nigeria’s flag"
 						/>
 						Nigeria
 					</span>
 
-					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+					<ul className="not-sr-only hidden items-center gap-8 lg:flex">
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link
+								className="hover:text-brand-purple"
+								href="https://twitter.com/inemonihq"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								Twitter
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link
+								className="hover:text-brand-purple"
+								href="https://www.instagram.com/inemonihq"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								Instagram
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link
+								className="hover:text-brand-purple"
+								href="https://web.facebook.com/inemonihq"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								Facebook
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/">
+							<Link
+								className="hover:text-brand-purple"
+								href="https://linkedin.com/in/inemonihq"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								LinkedIn
 							</Link>
 						</li>
 					</ul>
 				</div>
 
-				<div className="flex items-center justify-between gap-4  border-t border-footer-border pt-8">
-					<span className="flex items-center gap-4">
-						&copy; 2022 Inemoni. All right reserved.
-					</span>
+				<div className="grid items-start justify-between gap-8 border-t border-footer-border pt-8">
+					<div className="space-y-2">
+						<span className="flex items-center gap-4">
+							&copy; 2022 Inemoni. All right reserved.
+						</span>
 
-					<ul className="lg:flex items-center gap-8 hidden not-sr-only">
+						<p className="text-[#979797]">
+							Inemoni Digital Concept LTD, operating under the
+							trademark “Inemoni”, is a financial technology
+							company and not a traditional banking institution.
+							Banking services are offered through partnerships
+							with licensed banks under the supervision of the
+							Central Bank of Nigeria (CBN). The debit cards
+							issued by Inemoni’s partner banks are licensed by
+							both Visa and MasterCard and can be used at any
+							location that accepts Visa and MasterCard debit
+							cards.
+						</p>
+					</div>
+
+					<ul className="not-sr-only hidden items-center gap-8 lg:flex">
 						<li>
-							<Link className="hover:text-brand-purple" href="/legal/privacy-policy">
+							<Link
+								className="hover:text-brand-purple"
+								href="/legal/privacy-policy"
+							>
 								Privacy Policy
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/legal/terms-of-use">
+							<Link
+								className="hover:text-brand-purple"
+								href="/legal/terms-of-use"
+							>
 								Terms of Use
 							</Link>
 						</li>
 
 						<li>
-							<Link className="hover:text-brand-purple" href="/legal/cookie-policy">
+							<Link
+								className="hover:text-brand-purple"
+								href="/legal/cookie-policy"
+							>
 								Cookie Policy
 							</Link>
 						</li>
@@ -337,17 +387,25 @@ const Footer = () => {
 				</div>
 
 				<div className="flex flex-wrap gap-3 pt-8">
-					<Link className="inline-block" href="/">
+					<Link
+						className="inline-block"
+						href="/"
+					>
 						<Image
 							src={iOS}
-							alt="Download on Apple's App Store"
+							alt="Download on Apple’s App Store"
 						/>
 					</Link>
 
-					<Link className="inline-block" href="https://play.google.com/store/apps/details?id=com.inemoni.com" target="_blank" rel="noopener noreferrer">
+					<Link
+						className="inline-block"
+						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Image
 							src={Android}
-							alt="Download on Google's PlayStore"
+							alt="Download on Google’s PlayStore"
 						/>
 					</Link>
 				</div>
