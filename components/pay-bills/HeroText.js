@@ -27,7 +27,7 @@ const HeroText = () => {
 
 					<Link
 						className="btn block bg-brand-gray px-8 transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white"
-						href="/"
+						href="https://www.inemoni.org/mobile/login"
 					>
 						Sign In
 					</Link>
