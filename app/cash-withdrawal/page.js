@@ -5,6 +5,7 @@ import InemoniCard from "@assets/img/inemoni-card.png";
 import PurpleBackgroundPOS from "@assets/img/purple-background-pos.png";
 import HeroText from "@components/cash-withdrawal/HeroText";
 import FooterCard from "@components/FooterCard";
+import FooterBanner from "@components/FooterBanner";
 import Image from "next/image";
 
 const Index = () => {
@@ -194,6 +195,7 @@ const Index = () => {
 			</main>
 
 			<FooterCard />
+			<FooterBanner />
 		</>
 	);
 };

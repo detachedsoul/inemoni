@@ -3,6 +3,7 @@ import HeroText from "@components/HeroText";
 import FeatureReview from "@components/FeatureReview";
 import GetStarted from "@components/GetStarted";
 import FooterCard from "@components/FooterCard";
+import FooterBanner from "@components/FooterBanner";
 import partners from "@assets/data/partners";
 
 const Index = () => {
@@ -35,6 +36,8 @@ const Index = () => {
 			</main>
 
 			<FooterCard />
+
+			<FooterBanner />
 		</>
 	);
 };

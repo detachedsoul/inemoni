@@ -205,7 +205,7 @@ const Footer = () => {
 
 	return (
 		<>
-			<footer className="px-[5%] pb-[5%] pt-[10%] sm:pt-[5%] xl:px-[7%]">
+			<footer className="px-[5%] pb-[25%] pt-[10%] sm:pt-[5%] xl:px-[7%] lg:pb-[5%]">
 				<div
 					className="grid grid-cols-1 gap-6 pb-12 sm:grid-cols-2 sm:items-start sm:gap-x-8 sm:self-start lg:not-sr-only lg:hidden"
 					ref={parentElement}

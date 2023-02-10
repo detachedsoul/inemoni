@@ -1,5 +1,6 @@
 import HeroText from "@components/pay-bills/HeroText";
 import FooterCard from "@components/FooterCard";
+import FooterBanner from "@components/FooterBanner";
 import Image from "next/image";
 import PosReceipt from "@assets/img/pos-receipt.png";
 import SuccessfulTransaction from "@assets/img/successful-transaction.png";
@@ -58,6 +59,8 @@ const Index = () => {
 			</main>
 
 			<FooterCard />
+
+			<FooterBanner />
 		</>
 	);
 };

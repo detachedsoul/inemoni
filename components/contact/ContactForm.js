@@ -22,7 +22,7 @@ const ContactForm = () => {
 						className="grid gap-0.5"
 						htmlFor="fullname"
 					>
-						<span clasName="font-bold">Full Name</span>
+						<span className="font-bold">Full Name</span>
 
 						<input
 							type="text"
@@ -36,7 +36,7 @@ const ContactForm = () => {
 						className="grid gap-0.5"
 						htmlFor="email-address"
 					>
-						<span clasName="font-bold">Email Address</span>
+						<span className="font-bold">Email Address</span>
 
 						<input
 							type="email"
@@ -50,7 +50,7 @@ const ContactForm = () => {
 						className="grid gap-0.5 lg:col-span-2"
 						htmlFor="feedback-message"
 					>
-						<span clasName="font-bold">Your Feedback</span>
+						<span className="font-bold">Your Feedback</span>
 
 						<textarea
 							className="form-input"

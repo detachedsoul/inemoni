@@ -1,5 +1,6 @@
 import HeroText from "@components/money-transfer/HeroText";
 import FooterCard from "@components/FooterCard";
+import FooterBanner from "@components/FooterBanner";
 import Image from "next/image";
 import SendMoney from "@assets/img/send-money.png";
 import SuccessfulTransaction from "@assets/img/money-transfer-successful.png";
@@ -60,6 +61,8 @@ const Index = () => {
 			</main>
 
 			<FooterCard />
+
+			<FooterBanner />
 		</>
 	);
 };

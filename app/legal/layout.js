@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import FooterBanner from "@components/FooterBanner";
 import { useState,useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -80,6 +81,8 @@ const Layout = ({ children }) => {
 					} top-0`}
 				></i>
 			</button>
+
+			<FooterBanner />
 		</>
 	);
 };

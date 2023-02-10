@@ -1,5 +1,6 @@
 import HeroText from "@components/savings/HeroText";
 import FooterCard from "@components/FooterCard";
+import FooterBanner from "@components/FooterBanner";
 import Image from "next/image";
 import Savings from "@assets/img/savings.png";
 import SavingsBalance from "@assets/img/savings-balance.png";
@@ -60,6 +61,8 @@ const Index = () => {
 			</main>
 
 			<FooterCard />
+
+			<FooterBanner />
 		</>
 	);
 };
