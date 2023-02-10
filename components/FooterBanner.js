@@ -61,7 +61,7 @@ const FooterBanner = () => {
 
             <Link
                 className="rounded-xl bg-brand-purple py-1 px-3 text-white transition-colors ease-in-out hover:bg-brand-dark-purple"
-                href=""
+                href="https://play.google.com/store/apps/details?id=com.inemoni.com"
                 target="_blank"
                 rel="noopener noreferrer"
             >
