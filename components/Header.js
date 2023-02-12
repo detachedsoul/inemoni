@@ -54,6 +54,19 @@ const Header = () => {
 		});
 
 		setNavIsOpen(() => false);
+
+		window.addEventListener("click", (e) => {
+			let dropdownToggleBtns = document.querySelectorAll(".dropdown-toggle");
+
+			dropdownToggleBtns.forEach((dropdownToggleBtn) => {
+				if (e.target !== dropdownToggleBtn && dropdownToggleBtn.nextElementSibling.classList.contains("-translate-y-0")) {
+					dropdownToggleBtn.nextElementSibling.classList.replace(
+						"-translate-y-0",
+						"-translate-y-[150%]",
+					);
+				}
+			});
+		});
 	}, [pathname]);
 
 	return (
@@ -82,14 +95,14 @@ const Header = () => {
 				</Link>
 
 				<nav
-					className={`absolute top-full left-0 z-50 h-full min-h-screen w-full border-r border-brand-gray bg-white transition-transform duration-500 ease-in-out lg:static lg:top-0 lg:min-h-0 lg:w-auto lg:translate-x-0 lg:border-none lg:bg-transparent
+					className={`absolute top-full left-0 z-[1024] h-full min-h-screen w-full border-r border-brand-gray bg-white transition-transform duration-500 ease-in-out lg:static lg:top-0 lg:min-h-0 lg:w-auto lg:translate-x-0 lg:border-none lg:bg-transparent
 						${navIsOpen ? "translate-x-0" : "-translate-x-full"}`}
 					ref={navRef}
 				>
 					<ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-white p-4 lg:min-h-0 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:bg-transparent lg:p-0">
 						<li className="relative">
 							<button
-								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent dropdown-toggle"
 								type="button"
 								onClick={() => handleDropdownClick(paymentRef)}
 							>
@@ -203,7 +216,7 @@ const Header = () => {
 
 						<li className="relative">
 							<button
-								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent dropdown-toggle"
 								onClick={() => handleDropdownClick(companyRef)}
 							>
 								Company

@@ -92,7 +92,7 @@ const Index = () => {
 
 						<div className="relative mx-auto h-[400px] w-[70%] justify-items-end text-right lg:col-span-5 lg:mx-0 lg:ml-auto lg:h-[500px]">
 							<Image
-								className="aspect-square h-full w-full"
+								className="h-full w-full"
 								src={InemoniCard}
 								alt="Inemonoi card for cash withdrawal"
 								quality={100}
