@@ -1,4 +1,4 @@
-import VeryifyMe from "@assets/img/verify-me.svg";
+import Mono from "@assets/img/mono.svg";
 import Paystack from "@assets/img/paystack.svg";
 import Xpress from "@assets/img/xpress.svg";
 import Itex from "@assets/img/itex.svg";
@@ -7,9 +7,9 @@ import Flutterwave from "@assets/img/flutterwave.svg";
 
 const partners = [
     {
-        name: "Verify Me",
-        logo: VeryifyMe,
-        alt: "Verify Me",
+        name: "Mono",
+        logo: Mono,
+        alt: "Mono",
     },
     {
         name: "Paystack",
