@@ -9,8 +9,6 @@ const Faqs = () => {
 
 		const elementsToTraverse = parentElement.current.childNodes;
 
-		console.log(e, elementsToTraverse);
-
 		elementsToTraverse.forEach((elements) => {
 			if (elements.firstElementChild !== e.currentTarget) {
 				if (

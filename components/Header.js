@@ -3,11 +3,11 @@
 import Logo from "@assets/img/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
-	const pathname = usePathname();
+	const router = useRouter();
 
 	const navRef = useRef(null);
 	const paymentRef = useRef(null);
@@ -67,7 +67,7 @@ const Header = () => {
 				}
 			});
 		});
-	}, [pathname]);
+	}, [router.pathname]);
 
 	return (
 		<>
@@ -116,7 +116,7 @@ const Header = () => {
 								<div className="grid grid-cols-1 gap-4 rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:grid-cols-12 lg:gap-8 lg:py-8 lg:px-12">
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
-											pathname === "/cash-withdrawal"
+											router.pathname === "/cash-withdrawal"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -134,7 +134,7 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
-											pathname === "/savings"
+											router.pathname === "/savings"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -152,7 +152,7 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
-											pathname === "/money-transfer"
+											router.pathname === "/money-transfer"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -170,7 +170,7 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover lg:col-span-6 ${
-											pathname === "/pay-bills"
+											router.pathname === "/pay-bills"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -229,7 +229,7 @@ const Header = () => {
 								<div className="grid grid-cols-1 gap-4 rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] lg:grid-cols-2 lg:gap-8 lg:py-8 lg:px-12">
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											pathname === "/about"
+											router.pathname === "/about"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -247,7 +247,7 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											pathname === "/terms-of-use"
+											router.pathname === "/terms-of-use"
 												? "bg-dropdown-hover"
 												: ""
 										}`}
@@ -265,7 +265,7 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											pathname === "/contact-us"
+											router.pathname === "/contact-us"
 												? "bg-dropdown-hover"
 												: ""
 										}`}

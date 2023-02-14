@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./app/**/*.js", "./components/**/*.js"],
+	content: ["./pages/**/*.js", "./components/**/*.js"],
 	theme: {
 		extend: {
 			colors: {
@@ -17,7 +17,7 @@ module.exports = {
 				"dropdown-shadow": "0px 5px 20px 10px rgba(0, 0, 10, 0.05)",
 			},
 			fontFamily: {
-				inter: ['var(--font-inter)'],
+				inter: ['Inter', 'sans-serif'],
 			},
 			keyframes: {
 				slideUp: {

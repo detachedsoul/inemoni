@@ -132,22 +132,22 @@ const Footer = () => {
 				{
 					linkName: "Twitter",
 					isLink: true,
-					route: "/",
+					route: "https://twitter.com/inemonihq",
 				},
 				{
 					linkName: "Instagram",
 					isLink: true,
-					route: "/",
+					route: "https://www.instagram.com/inemonihq",
 				},
 				{
 					linkName: "Facebook",
 					isLink: true,
-					route: "/",
+					route: "https://web.facebook.com/inemonihq",
 				},
 				{
 					linkName: "LinkedIn",
 					isLink: true,
-					route: "/",
+					route: "https://www.linkedin.com/company/inemoni/",
 				},
 			],
 		},
@@ -326,7 +326,7 @@ const Footer = () => {
 						<li>
 							<Link
 								className="hover:text-brand-purple"
-								href="https://linkedin.com/in/inemonihq"
+								href="https://www.linkedin.com/company/inemoni/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

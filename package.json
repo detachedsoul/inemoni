@@ -7,7 +7,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "compile": "npx tailwindcss -i ./src/main.css -o ./app/globals.css --watch --minify"
+    "compile": "npx tailwindcss -i ./src/main.css -o ./styles/globals.css --watch --minify"
   },
   "dependencies": {
     "@next/font": "^13.0.6",
