@@ -89,7 +89,7 @@ const Faqs = () => {
 								How long does it take to open an account?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -117,7 +117,7 @@ const Faqs = () => {
 								business/personal account?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 space-y-4 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -193,7 +193,7 @@ const Faqs = () => {
 								Why do you need my BVN?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -221,7 +221,7 @@ const Faqs = () => {
 								BVN?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -252,7 +252,7 @@ const Faqs = () => {
 								association. Can I still create an account?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -276,7 +276,7 @@ const Faqs = () => {
 								approved?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -299,7 +299,7 @@ const Faqs = () => {
 								Why was my compliance rejected?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -339,7 +339,7 @@ const Faqs = () => {
 								How do I fund my account?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -370,7 +370,7 @@ const Faqs = () => {
 								How do I transfer money?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 space-y-4 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
@@ -458,7 +458,7 @@ const Faqs = () => {
 								Do I get an SMS alert for every transaction?
 							</span>
 
-							<i className="fr fi-rr-angle-down"></i>
+							<i className="fi-rr-angle-down"></i>
 						</button>
 
 						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">

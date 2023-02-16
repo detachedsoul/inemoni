@@ -3,16 +3,30 @@
 @tailwind utilities;
 
 @layer components {
+    i[class*="fi-rr-"]:before,
+    i[class^=fi-rr-]:before,
+    span[class*=fi-rr-]:before,
+    span[class^=fi-rr-]:before {
+        font-family: uicons-regular-rounded !important;
+        font-style: normal;
+        font-weight: 400 !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+
     .header {
         @apply font-semibold leading-[2.188rem]
     }
 
     .main-header {
-        @apply header text-4xl leading-[3rem] sm:text-[3.125rem] sm:leading-[4.063rem]
+        @apply header text-4xl leading-[3rem] lg:text-[3.125rem] sm:leading-[4.063rem]
     }
 
     .secondary-header {
-        @apply main-header text-2xl leading-[2.5rem] sm:text-[2.188rem] sm:leading-[2.813rem]
+        @apply header text-2xl sm:text-[2.188rem] leading-[3rem] lg:text-[3.125rem] sm:leading-[4.063rem]
     }
 
     .fr {

@@ -205,9 +205,9 @@ const Footer = () => {
 
 	return (
 		<>
-			<footer className="px-[5%] pb-[25%] pt-[10%] sm:pt-[5%] xl:px-[7%] lg:pb-[5%]">
+			<footer className="px-[5%] pt-[10%] sm:pt-[5%] xl:px-[7%] md:pb-[5%]">
 				<div
-					className="grid grid-cols-1 gap-6 pb-12 sm:grid-cols-2 sm:items-start sm:gap-x-8 sm:self-start lg:not-sr-only lg:hidden"
+					className="grid grid-cols-1 gap-6 pb-12 sm:items-start sm:grid-cols-2 sm:gap-x-8 sm:self-start lg:not-sr-only md:hidden"
 					ref={parentElement}
 				>
 					{footerLinks.map((footerLink, id) => (
@@ -224,7 +224,7 @@ const Footer = () => {
 									{footerLink.linkGroup}
 								</span>
 
-								<i className="fr fi-rr-angle-small-down"></i>
+								<i className="fi-rr-angle-small-down"></i>
 							</button>
 
 							<ul className="z-20 max-h-0 w-full space-y-6 overflow-y-hidden transition-all duration-100 ease-linear">
@@ -247,7 +247,7 @@ const Footer = () => {
 					))}
 				</div>
 
-				<div className="not-sr-only hidden grid-cols-5 gap-4 border-b border-footer-border pb-10 lg:grid lg:border-none">
+				<div className="not-sr-only hidden lg:grid-cols-5 gap-4 border-b border-footer-border pb-10 md:grid md:grid-cols-3 md:gap-6 md:justify-between md:content-center lg:border-none">
 					{footerLinks.map((footerLink, id) =>
 						footerLink.isDesktopLink ? (
 							<div
@@ -356,7 +356,7 @@ const Footer = () => {
 						</p>
 					</div>
 
-					<ul className="not-sr-only hidden items-center gap-8 lg:flex">
+					<ul className="not-sr-only hidden items-center gap-8 md:flex">
 						<li>
 							<Link
 								className="hover:text-brand-purple"
@@ -394,6 +394,7 @@ const Footer = () => {
 						<Image
 							src={iOS}
 							alt="Download on Apple’s App Store"
+							height={40}
 						/>
 					</Link>
 
@@ -406,10 +407,13 @@ const Footer = () => {
 						<Image
 							src={Android}
 							alt="Download on Google’s PlayStore"
+							height={40}
 						/>
 					</Link>
 				</div>
 			</footer>
+
+			<div className="my-20 md:hidden" aria-hidden="true"></div>
 		</>
 	);
 };

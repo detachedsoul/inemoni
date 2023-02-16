@@ -22,9 +22,9 @@ const PayBills = () => {
 				<HeroText />
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16">
+					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16 sm:grid-cols-2">
 						<div className="space-y-5 lg:col-span-7">
-							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+							<h2 className="secondary-header">
 								Bill Payment is easier when you use Inemoni.
 							</h2>
 
@@ -44,9 +44,9 @@ const PayBills = () => {
 				</section>
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16">
+					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16 sm:grid-cols-2">
 						<div className="space-y-5 lg:col-span-7">
-							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+							<h2 className="secondary-header">
 								Spare Yourself Time & Pay Bills in Seconds.
 							</h2>
 

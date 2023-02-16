@@ -22,9 +22,9 @@ const SavingsFeature = () => {
 				<HeroText />
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16">
+					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16 sm:grid-cols-2">
 						<div className="space-y-5 lg:col-span-7">
-							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+							<h2 className="secondary-header">
 								Savings is Easier When You Use Inemoni.
 							</h2>
 
@@ -37,7 +37,7 @@ const SavingsFeature = () => {
 						</div>
 
 						<Image
-							className="h-full w-full lg:col-span-5"
+							className="h-full w-full lg:col-span-5 aspect-square"
 							src={Savings}
 							alt="Savings is Easier When You Use Inemoni"
 							quality={100}
@@ -46,9 +46,9 @@ const SavingsFeature = () => {
 				</section>
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16">
+					<article className="grid grid-cols-1 items-center justify-between gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-16">
 						<div className="space-y-5 lg:col-span-7">
-							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+							<h2 className="secondary-header">
 								Stash your money & watch it grow.
 							</h2>
 
@@ -65,6 +65,7 @@ const SavingsFeature = () => {
 							src={SavingsBalance}
 							alt="Stash your money & watch it grow"
 							quality={100}
+							priority
 						/>
 					</article>
 				</section>

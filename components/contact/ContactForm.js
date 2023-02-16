@@ -1,7 +1,7 @@
 const ContactForm = () => {
     return (
 		<form
-			className="grid place-content-center mx-[5%] p-[5%] rounded-md shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] lg:w-3/5 lg:mx-auto scroll-m-28"
+			className="grid place-content-center mx-[5%] p-[5%] rounded-md shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] md:w-3/5 md:mx-auto scroll-m-28"
             method="POST"
             id="contact-form"
 		>
@@ -17,7 +17,7 @@ const ContactForm = () => {
 					</p>
 				</div>
 
-				<div className="grid gap-4 lg:grid-cols-2 lg:gap-x-6">
+				<div className="grid gap-4 md:grid-cols-2 md:gap-x-6">
 					<label
 						className="grid gap-0.5"
 						htmlFor="fullname"
@@ -47,7 +47,7 @@ const ContactForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5 lg:col-span-2"
+						className="grid gap-0.5 md:col-span-2"
 						htmlFor="feedback-message"
 					>
 						<span className="font-bold">Your Feedback</span>

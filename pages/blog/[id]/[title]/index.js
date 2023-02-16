@@ -1,7 +1,8 @@
 import BlogPost from "@components/blog/BlogPost";
 import Head from "next/head";
+import Layout from "@pages/_layout";
 
-const Index = () => {
+const Blog = () => {
     return (
 		<>
 			<Head>
@@ -21,4 +22,8 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default Blog;
+
+Blog.getLayout = (page) => {
+	return <Layout>{page}</Layout>;
+};

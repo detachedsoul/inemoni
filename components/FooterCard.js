@@ -6,14 +6,15 @@ const FooterCard = () => {
 			<div className="space-y-6 sm:w-[70%] md:space-y-8">
 				<p>Effortless Finance: Speed and Savings Combined</p>
 
-				<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+				<h2 className="secondary-header">
 					Fast, Affordable Financial Solutions, Anytime, Anywhere.
 				</h2>
 
 				<div className="flex flex-wrap items-center gap-4">
 					<Link
 						className="btn block bg-white text-brand-black"
-						href="https://www.inemoni.org/mobile/register"
+						href="https://www.inemoni.org/mobile"
+						target="_blank" rel="noopener noreferrer"
 					>
 						Get Started
 					</Link>

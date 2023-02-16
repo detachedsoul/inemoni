@@ -10,7 +10,7 @@ const HeroText = () => {
 	};
 
 	return (
-		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
+		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
 					Get in Touch with Inemoni - Connect with Us Today!

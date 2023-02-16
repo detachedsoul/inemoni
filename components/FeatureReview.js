@@ -4,7 +4,7 @@ import previewImage from "@assets/img/feature-preview.svg";
 
 const FeatureReview = () => {
     return (
-		<section className="grid grid-cols-1 items-center justify-between gap-12 px-[5%] sm:grid-cols-3 xl:px-[10%]">
+		<section className="grid grid-cols-1 items-start lg:items-center justify-between gap-12 px-[5%] sm:grid-cols-2 lg:grid-cols-3 xl:px-[10%]">
 			<div className="space-y-5">
 				<h2 className="header text-xl">Bills Payment</h2>
 
@@ -21,20 +21,20 @@ const FeatureReview = () => {
 
 				<Link
 					className="btn inline-block bg-brand-dark-purple text-white  transition-colors duration-300 ease-in hover:bg-brand-dark-purple/90"
-					href="/"
+					href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 				>
 					Download App
 				</Link>
 			</div>
 
 			<Image
-				className="mx-auto block"
+				className="mx-auto block sm:col-span-2 sm:mx-auto sm:order-last lg:col-span-1"
 				src={previewImage}
 				alt=""
 				quality={100}
 			/>
 
-			<div className="flex flex-col gap-12">
+			<div className="flex flex-col gap-12 lg:order-last">
 				<div className="space-y-5">
 					<h2 className="header text-xl">Accept Payments</h2>
 
@@ -52,7 +52,7 @@ const FeatureReview = () => {
 						href="/cash-withdrawal"
 					>
 						Learn More
-						<i className="fr fi-rr-arrow-right ml-2"></i>
+						<i className="fi-rr-arrow-right ml-2"></i>
 					</Link>
 				</div>
 
@@ -73,7 +73,7 @@ const FeatureReview = () => {
 						href="/money-transfer"
 					>
 						Learn More
-						<i className="fr fi-rr-arrow-right ml-2"></i>
+						<i className="fi-rr-arrow-right ml-2"></i>
 					</Link>
 				</div>
 			</div>

@@ -7,7 +7,7 @@ import Link from "next/link";
 const BlogPost = () => {
     return (
 		<article className="space-y-4">
-			<div className="relative h-[200px] w-full rounded-lg lg:h-[300px]">
+			<div className="relative h-[200px] w-full rounded-lg md:h-[250px] lg:h-[300px]">
 				<Image
 					className="block w-full rounded-lg object-cover object-center"
 					src="/img/blogImage.png"
@@ -15,6 +15,7 @@ const BlogPost = () => {
 					title="Here’s an overview of how we made magic happen"
 					quality={100}
 					fill
+					priority
 				/>
 			</div>
 
@@ -29,8 +30,8 @@ const BlogPost = () => {
 					</h1>
 				</div>
 
-				<div className="grid gap-8 lg:grid-cols-12">
-					<div className="lg:col-span-4">
+				<div className="grid gap-8 md:grid-cols-12">
+					<div className="md:col-span-4">
 						<div className="space-y-8  lg:sticky lg:top-[18%]">
 							<div className="flex items-center gap-4">
 								<Image
@@ -117,7 +118,7 @@ const BlogPost = () => {
 						</div>
 					</div>
 
-					<div className="lg:col-span-8">
+					<div className="md:col-span-8">
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et

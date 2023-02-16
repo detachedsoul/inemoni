@@ -6,11 +6,11 @@ import virtualCard from "@assets/img/index-virtual-card.png";
 const GetStarted = () => {
 	return (
 		<section className="flex flex-col gap-12 px-[5%] xl:px-[7%]">
-			<article className="grid grid-cols-1 items-center justify-between gap-12 rounded-3xl bg-[#121212] px-[10%] pt-[8%] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:grid-cols-2 sm:rounded-[2.5rem] sm:px-[6%]">
+			<article className="grid grid-cols-1 items-end justify-between gap-8 rounded-3xl bg-[#121212] px-[10%] pt-[8%] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] md:grid-cols-2 sm:rounded-[2.5rem] sm:px-[6%] lg:gap-12">
 				<div className="space-y-6 sm:pb-[18%] md:space-y-8">
 					<p>Send money to anyone</p>
 
-					<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+					<h2 className="secondary-header">
 						<span className="text-brand-orange">Fast</span>{" "}
 						Transfers.{" "}
 						<span className="text-brand-orange">Safe</span> Cards.
@@ -27,7 +27,7 @@ const GetStarted = () => {
 
 						<Link
 							className="btn inline-block text-white"
-							href="https://www.inemoni.org/mobile/login"
+							href="https://www.inemoni.org/mobile" target="_blank" rel="noopener noreferrer"
 						>
 							Sign In
 						</Link>
@@ -35,18 +35,19 @@ const GetStarted = () => {
 				</div>
 
 				<Image
-					className="ml-auto"
+					className="mx-auto md:mr-0"
 					src={fastTransfer}
 					alt="Fast Transfers. Safe Cards. Cash Backs."
 					quality={100}
+					width={350}
 				/>
 			</article>
 
-			<article className="grid grid-cols-1 items-center gap-12 rounded-3xl bg-[#fae7de] px-[10%] pt-[8%] text-brand-black shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:grid-cols-2 sm:rounded-[2.5rem] sm:px-[6%]">
+			<article className="grid grid-cols-1 items-end gap-8 rounded-3xl bg-[#fae7de] px-[10%] pt-[8%] text-brand-black shadow-[0px_5px_10px_rgba(10,14,39,0.05)] md:grid-cols-2 md:rounded-[2.5rem] sm:px-[6%] lg:gap-12">
 				<div className="space-y-6 sm:pb-[18%] md:space-y-8">
 					<p>Cards that work globally</p>
 
-					<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+					<h2 className="secondary-header">
 						Physical & Virtual Cards{" "}
 						<span className="text-brand-orange">That works.</span>
 					</h2>
@@ -61,7 +62,7 @@ const GetStarted = () => {
 
 						<Link
 							className="btn block"
-							href="https://www.inemoni.org/mobile/login"
+							href="https://www.inemoni.org/mobile" target="_blank" rel="noopener noreferrer"
 						>
 							Sign In
 						</Link>
@@ -69,10 +70,11 @@ const GetStarted = () => {
 				</div>
 
 				<Image
-					className="ml-auto"
+					className="mx-auto md:mr-0"
 					src={virtualCard}
-					alt="physical & virtual cards That works."
+					alt="Physical & virtual cards That works."
 					quality={100}
+					width={350}
 				/>
 			</article>
 		</section>

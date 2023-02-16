@@ -85,9 +85,9 @@ const CashWithdrawal = () => {
 				<HeroText />
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+					<article className="grid grid-cols-1 items-center gap-12 sm:grid-cols-2 lg:grid-cols-12">
 						<div className="space-y-5 lg:col-span-7">
-							<h2 className="header text-2xl leading-10 sm:text-5xl sm:text-[3.125rem] sm:leading-[4.063rem]">
+							<h2 className="secondary-header">
 								Say Goodbye to Cash Hassles, Hello to Seamless
 								Payments with Your Card Anywhere.
 							</h2>
@@ -100,9 +100,9 @@ const CashWithdrawal = () => {
 							</p>
 						</div>
 
-						<div className="relative mx-auto h-[400px] w-[70%] justify-items-end text-right lg:col-span-5 lg:mx-0 lg:ml-auto lg:h-[500px]">
+						<div className="relative mx-auto h-[400px] w-3/5 sm:w-4/5 lg:col-span-5 sm:ml-auto sm:mr-0 lg:h-[500px]">
 							<Image
-								className="aspect-square h-full w-full"
+								className="h-full w-full"
 								src={InemoniCard}
 								alt="Inemonoi card for cash withdrawal"
 								quality={100}
@@ -113,7 +113,7 @@ const CashWithdrawal = () => {
 				</section>
 
 				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-2">
+					<article className="grid grid-cols-1 items-center justify-between gap-12 sm:grid-cols-2">
 						<Image
 							className="h-full w-full"
 							src={PurpleBackgroundPOS}
@@ -137,7 +137,7 @@ const CashWithdrawal = () => {
 										Inemoni POS
 									</span>
 
-									<i className="fr fi-rr-angle-up"></i>
+									<i className="fi-rr-angle-up"></i>
 								</button>
 
 								<div className="max-h-full space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
@@ -158,11 +158,11 @@ const CashWithdrawal = () => {
 										toggleAccordion(element)
 									}
 								>
-									<span className="text-left font-bold">
+									<span className="text-left">
 										Inemoni for Retail
 									</span>
 
-									<i className="fr fi-rr-angle-down"></i>
+									<i className="fi-rr-angle-down"></i>
 								</button>
 
 								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">
@@ -183,11 +183,11 @@ const CashWithdrawal = () => {
 										toggleAccordion(element)
 									}
 								>
-									<span className="text-left font-bold">
+									<span className="text-left">
 										Inemoni Appointments
 									</span>
 
-									<i className="fr fi-rr-angle-down"></i>
+									<i className="fi-rr-angle-down"></i>
 								</button>
 
 								<div className="max-h-0 space-y-1 overflow-y-hidden pt-4 pb-2 transition-all duration-[50ms] ease-linear">

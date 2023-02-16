@@ -19,7 +19,7 @@ const Blog = () => {
 					Hello! 👋 Welcome to Our Blog
 				</h1>
 
-				<section className="grid gap-8 lg:grid-cols-3">
+				<section className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 					<article className="space-y-4">
 						<div className="relative h-[200px] rounded-t-lg">
 							<Image
