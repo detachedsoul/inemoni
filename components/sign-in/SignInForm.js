@@ -15,7 +15,7 @@ const SignInForm = () => {
 					</p>
 				</div>
 
-				<div className="grid gap-4 md:gap-x-6">
+				<div className="grid gap-6">
 					<label
 						className="grid gap-0.5"
 						htmlFor="phone-number"
@@ -58,10 +58,10 @@ const SignInForm = () => {
 					</button>
 				</div>
 
-				<div className="sapce-y-5">
+				<div className="space-y-5">
 					<p className="text-center font-normal">Or</p>
 
-					<p className="text-center">
+					<p className="text-center text-[#979797]">
 						Don’t have an account?{" "}
 						<Link
 							className="font-medium text-brand-dark-purple"

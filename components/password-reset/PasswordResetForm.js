@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const emailResetForm = () => {
+const PasswordResetForm = () => {
 	return (
 		<form
 			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] md:mx-auto md:w-3/5 lg:w-1/2 md:shadow-none"
@@ -16,7 +16,7 @@ const emailResetForm = () => {
 					</p>
 				</div>
 
-				<div className="grid gap-4 md:gap-x-6">
+				<div className="grid gap-6">
 					<label
 						className="grid gap-0.5"
 						htmlFor="email"
@@ -56,4 +56,4 @@ const emailResetForm = () => {
 	);
 };
 
-export default emailResetForm;
+export default PasswordResetForm;

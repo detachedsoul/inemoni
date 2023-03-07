@@ -1,4 +1,4 @@
-import SignInForm from "@components/sign-in/SignIn";
+import SignInForm from "@components/sign-in/SignInForm";
 import Layout from "./_layout";
 import Head from "next/head";
 

@@ -17,7 +17,7 @@ const ContactForm = () => {
 					</p>
 				</div>
 
-				<div className="grid gap-4 md:grid-cols-2 md:gap-x-6">
+				<div className="grid gap-6 md:grid-cols-2">
 					<label
 						className="grid gap-0.5"
 						htmlFor="fullname"
