@@ -28,7 +28,7 @@ const ContactForm = () => {
 							type="text"
 							name="fullname"
 							id="fullname"
-							className="form-input"
+							className="input-form"
 						/>
 					</label>
 
@@ -42,7 +42,7 @@ const ContactForm = () => {
 							type="email"
 							name="email-address"
 							id="email-address"
-							className="form-input"
+							className="input-form"
 						/>
 					</label>
 
@@ -53,7 +53,7 @@ const ContactForm = () => {
 						<span className="font-bold">Your Feedback</span>
 
 						<textarea
-							className="form-input"
+							className="input-form"
 							id="feedback-message"
 							rows="5"
 						></textarea>

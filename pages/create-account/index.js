@@ -1,5 +1,5 @@
-import CreateAccountForm from "@components/create-account/CreateAccountForm";
-import Layout from "./_layout";
+import BVNForm from "@components/create-account/BVNForm";
+import Layout from "@pages/_layout";
 import Head from "next/head";
 
 const CreateAccount = () => {
@@ -14,7 +14,7 @@ const CreateAccount = () => {
 			</Head>
 
 			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<CreateAccountForm />
+				<BVNForm />
 			</main>
 		</>
 	);

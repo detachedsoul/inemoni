@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import InfoIcon from "@assets/img/info-icon.svg";
 
-const CreateAccountForm = () => {
+const BVNForm = () => {
 	return (
 		<form
 			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] md:mx-auto md:w-3/5 md:shadow-none lg:w-1/2"
@@ -30,7 +30,7 @@ const CreateAccountForm = () => {
 							type="text"
 							name="bvn"
 							id="bvn"
-							className="form-input"
+							className="input-form"
 							placeholder="Enter BVN number"
 						/>
 					</label>
@@ -77,4 +77,4 @@ const CreateAccountForm = () => {
 	);
 };
 
-export default CreateAccountForm;
+export default BVNForm;

@@ -29,7 +29,7 @@ const PasswordResetForm = () => {
 							type="email"
 							name="email"
 							id="email"
-							className="form-input"
+							className="input-form"
 							placeholder="Valid email required"
 						/>
 					</label>

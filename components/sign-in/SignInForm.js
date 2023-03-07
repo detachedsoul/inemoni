@@ -28,7 +28,7 @@ const SignInForm = () => {
 							type="tel"
 							name="phone-number"
 							id="phone-number"
-							className="form-input"
+							className="input-form"
 							placeholder="Enter your phone number"
 						/>
 					</label>
@@ -45,7 +45,7 @@ const SignInForm = () => {
 							type="password"
 							name="password"
 							id="password"
-							className="form-input"
+							className="input-form"
 							placeholder="Enter your pin"
 						/>
 					</label>

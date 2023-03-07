@@ -28,7 +28,7 @@ const UpdatePinForm = () => {
 							type="password"
 							name="new-password"
 							id="new-password"
-							className="form-input"
+							className="input-form"
 							placeholder="Enter your new pin"
 						/>
 					</label>
@@ -45,7 +45,7 @@ const UpdatePinForm = () => {
 							type="password"
 							name="confirm-password"
 							id="confirm-password"
-							className="form-input"
+							className="input-form"
 							placeholder="Confirm your new pin"
 						/>
 					</label>

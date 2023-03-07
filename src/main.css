@@ -17,6 +17,12 @@
         -moz-osx-font-smoothing: grayscale
     }
 
+    select option {
+        font-family: inherit;
+        font: -moz-pull-down-menu;
+        font-size: inherit;
+    }
+
     .header {
         @apply font-semibold leading-[2.188rem]
     }
@@ -46,7 +52,11 @@
         display: none;
     }
 
-    .form-input {
+    .input-form {
         @apply border border-[#dae1e7] focus:outline-none rounded-md py-0.5 px-3 w-full block
+    }
+
+    .input-select {
+        @apply border border-[#dae1e7] focus:outline-none rounded-md py-2.5 px-3 w-full block
     }
 }
