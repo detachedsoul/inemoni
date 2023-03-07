@@ -12,7 +12,8 @@ const FooterBanner = () => {
                     src={FooterBannerLogo}
                     alt="Inemoni"
                     height={50}
-                    quality={100}
+                    quality={ 100 }
+                    priority={true}
                 />
 
                 <div className="space-y-1.5">

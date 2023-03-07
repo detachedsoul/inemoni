@@ -25,20 +25,20 @@ const Header = () => {
 			if (dropdownElement !== dropdown.current) {
 				dropdownElement.classList.replace(
 					"-translate-y-0",
-					"-translate-y-[150%]",
+					"-translate-y-[200%]",
 				);
 			}
 		});
 
-		if (dropdown.current.classList.contains("-translate-y-[150%]")) {
+		if (dropdown.current.classList.contains("-translate-y-[200%]")) {
 			dropdown.current.classList.replace(
-				"-translate-y-[150%]",
+				"-translate-y-[200%]",
 				"-translate-y-0",
 			);
 		} else {
 			dropdown.current.classList.replace(
 				"-translate-y-0",
-				"-translate-y-[150%]",
+				"-translate-y-[200%]",
 			);
 		}
 	};
@@ -49,7 +49,7 @@ const Header = () => {
 		dropdowns.forEach((dropdownElement) => {
 			dropdownElement.classList.replace(
 				"-translate-y-0",
-				"-translate-y-[150%]",
+				"-translate-y-[200%]",
 			);
 		});
 
@@ -62,7 +62,7 @@ const Header = () => {
 				if (e.target !== dropdownToggleBtn && dropdownToggleBtn.nextElementSibling.classList.contains("-translate-y-0")) {
 					dropdownToggleBtn.nextElementSibling.classList.replace(
 						"-translate-y-0",
-						"-translate-y-[150%]",
+						"-translate-y-[200%]",
 					);
 				}
 			});
@@ -110,7 +110,7 @@ const Header = () => {
 							</button>
 
 							<div
-								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[150%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
+								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[200%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
 								ref={paymentRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-12 lg:gap-8">
@@ -215,7 +215,7 @@ const Header = () => {
 							</button>
 
 							<div
-								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[150%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
+								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[200%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
 								ref={companyRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8">
