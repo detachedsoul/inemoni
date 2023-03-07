@@ -8,7 +8,7 @@ const emailResetForm = () => {
 		>
 			<div className="space-y-6">
 				<div className="space-y-2 text-center">
-					<h2 className="header text-2xl">Hi 👋</h2>
+					<h1 className="header text-2xl">Hi 👋</h1>
 
 					<p className="text-base">
 						Just enter your email address below and we’ll send you a
