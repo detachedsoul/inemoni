@@ -1,7 +1,7 @@
 const ContactInformationForm = () => {
 	return (
 		<form
-			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] md:mx-auto md:w-3/5 md:shadow-none"
+			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] md:mx-auto md:w-3/5"
 			method="POST"
 		>
 			<div className="space-y-6">

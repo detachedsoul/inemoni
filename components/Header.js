@@ -198,6 +198,8 @@ const Header = () => {
 												href="/blog"
 											>
 												Read More
+
+												<span className="sr-only">Read more about how we made magic happen</span>
 												<i className="fi-rr-arrow-right ml-2"></i>
 											</Link>
 										</div>

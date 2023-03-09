@@ -4,7 +4,7 @@ import previewImage from "@assets/img/feature-preview.svg";
 
 const FeatureReview = () => {
     return (
-		<section className="grid grid-cols-1 items-start lg:items-center justify-between gap-12 px-[5%] sm:grid-cols-2 lg:grid-cols-3 xl:px-[10%]">
+		<section className="grid grid-cols-1 items-start justify-between gap-12 px-[5%] sm:grid-cols-2 lg:grid-cols-3 lg:items-center xl:px-[10%]">
 			<div className="space-y-5">
 				<h2 className="header text-xl">Bills Payment</h2>
 
@@ -28,7 +28,7 @@ const FeatureReview = () => {
 			</div>
 
 			<Image
-				className="mx-auto block sm:col-span-2 sm:mx-auto sm:order-last lg:col-span-1"
+				className="mx-auto block sm:order-last sm:col-span-2 sm:mx-auto lg:col-span-1"
 				src={previewImage}
 				alt=""
 				quality={100}
@@ -52,6 +52,9 @@ const FeatureReview = () => {
 						href="/cash-withdrawal"
 					>
 						Learn More
+						<span className="sr-only">
+							Learn more about our cash withdrawal feature
+						</span>
 						<i className="fi-rr-arrow-right ml-2"></i>
 					</Link>
 				</div>
@@ -73,6 +76,9 @@ const FeatureReview = () => {
 						href="/money-transfer"
 					>
 						Learn More
+						<span className="sr-only">
+							Learn more about our money transfer feature
+						</span>
 						<i className="fi-rr-arrow-right ml-2"></i>
 					</Link>
 				</div>

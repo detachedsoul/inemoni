@@ -1,11 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import InfoIcon from "@assets/img/info-icon.svg";
+import whyBVNLogo from "@assets/img/why-bvn-logo.png";
+import {useState, useEffect} from "react";
 
 const BVNForm = () => {
+	const [isActive, setIsActive] = useState(false);
+
+	useEffect(() => {
+		if (isActive) {
+			document.querySelector("body").style.overflow = "hidden";
+		} else {
+			document.querySelector("body").style.overflow = "auto"
+		}
+	}, [isActive]);
+
 	return (
 		<form
-			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] shadow-[rgba(0,0,0,0.03)_0px_0.25rem_0.5625rem_-0.0625rem,_rgba(0,0,0,0.05)_0px_0.275rem_1.25rem_-0.0625rem] md:mx-auto md:w-3/5 md:shadow-none lg:w-1/2"
+			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] md:mx-auto md:w-3/5 lg:w-1/2"
 			method="POST"
 		>
 			<div className="space-y-6">
@@ -50,16 +64,24 @@ const BVNForm = () => {
 
 				<div className="space-y-8">
 					<p className="text-center">
-                        <span className="mr-4">
-                            <Image className="inline" src={InfoIcon} alt="" height={20} width={20} quality={100} />
-                        </span>
+						<span className="relative -top-0.5 mr-4 inline">
+							<Image
+								className="inline-block"
+								src={InfoIcon}
+								alt=""
+								height={20}
+								width={20}
+								quality={100}
+							/>
+						</span>
 
-						<Link
+						<button
 							className="text-center font-normal"
-							href="/legal/faqs"
+							type="button"
+							onClick={() => setIsActive(() => true)}
 						>
 							Why do we need your BVN?
-						</Link>
+						</button>
 					</p>
 
 					<p className="text-center text-[#979797]">
@@ -71,6 +93,80 @@ const BVNForm = () => {
 							Sign In
 						</Link>
 					</p>
+				</div>
+
+				<div className={`fixed -top-6 left-0 z-[1024] h-full w-full bg-black/60 transition-transform ease-linear duration-300 ${isActive ? 'scale-100' : 'scale-0'}`}>
+					<div className="fixed top-1/4 bottom-1/4 left-[5%] grid w-[calc(100%-10%)] place-content-center lg:left-[calc((100%-30%)/2)] lg:w-[30%] min-[500px]:w-3/5 min-[500px]:left-[calc((100%-60%)/2)] min-[600px]:w-1/2 min-[600px]:left-[calc((100%-50%)/2)]">
+						<div className="no-scrollbar space-y-4 overflow-y-auto rounded-lg bg-brand-gray p-4 text-start text-base">
+							<button className="absolute right-2 top-2 bg-brand-purple/90 text-white rounded-md py-1 px-2 backdrop-blur" type="button" aria-label="Close dialog" onClick={() => setIsActive(() => !isActive)}>
+								<i className="fi-rr-cross top-0.5 relative"></i>
+							</button>
+
+							<h3 className="header font-medium">
+								Why is BVN information needed?
+							</h3>
+
+							<p>
+								As a method of detecting fraudulent accounts, we
+								request your bvn details for:
+							</p>
+
+							<ul className="list-inside list-none space-y-4">
+								<li className="flex items-baseline gap-4">
+									<Image
+										src={whyBVNLogo}
+										alt=""
+										width={10}
+										height={10}
+									/>{" "}
+									First Name
+								</li>
+								<li className="flex items-baseline gap-4">
+									<Image
+										src={whyBVNLogo}
+										alt=""
+										width={10}
+										height={10}
+									/>{" "}
+									Last Name
+								</li>
+								<li className="flex items-baseline gap-4">
+									<Image
+										src={whyBVNLogo}
+										alt=""
+										width={10}
+										height={10}
+									/>{" "}
+									Phone Number
+								</li>
+								<li className="flex items-baseline gap-4">
+									<Image
+										src={whyBVNLogo}
+										alt=""
+										width={10}
+										height={10}
+									/>{" "}
+									Date of Birth
+								</li>
+								<li className="flex items-baseline gap-4">
+									<Image
+										src={whyBVNLogo}
+										alt=""
+										width={10}
+										height={10}
+									/>{" "}
+									Image ID
+								</li>
+							</ul>
+
+							<p className="text-sm">
+								The BVN verification process only confirms that
+								your personal details provided on Inemoni are
+								the same as it is in your BVN and doesn’t give
+								access to your account or transactions.
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</form>
