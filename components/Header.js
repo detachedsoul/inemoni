@@ -79,6 +79,9 @@ const Header = () => {
 						href="/about"
 					>
 						Learn More
+						<span className="sr-only">
+							Read more about who we are and what we do
+						</span>
 					</Link>
 				</p>
 			</div>
@@ -99,10 +102,10 @@ const Header = () => {
 						${navIsOpen ? "translate-x-0" : "-translate-x-full"}`}
 					ref={navRef}
 				>
-					<ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-white p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 lg:gap-12 md:bg-transparent md:p-0">
+					<ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-white p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 md:bg-transparent md:p-0 lg:gap-12">
 						<li className="relative">
 							<button
-								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent dropdown-toggle"
+								className="btn dropdown-toggle block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"
 								type="button"
 								onClick={() => handleDropdownClick(paymentRef)}
 							>
@@ -110,13 +113,15 @@ const Header = () => {
 							</button>
 
 							<div
-								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[200%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
+								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:-left-[40%] lg:py-8 lg:px-12"
 								ref={paymentRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-12 lg:gap-8">
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover md:col-span-6 ${
-											router.pathname === "/cash-withdrawal" && 'bg-dropdown-hover'
+											router.pathname ===
+												"/cash-withdrawal" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/cash-withdrawal"
 									>
@@ -132,7 +137,8 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover md:col-span-6 ${
-											router.pathname === "/savings" && 'bg-dropdown-hover'
+											router.pathname === "/savings" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/savings"
 									>
@@ -148,7 +154,9 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover md:col-span-6 ${
-											router.pathname === "/money-transfer" && 'bg-dropdown-hover'
+											router.pathname ===
+												"/money-transfer" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/money-transfer"
 									>
@@ -164,7 +172,8 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover md:col-span-6 ${
-											router.pathname === "/pay-bills" && 'bg-dropdown-hover'
+											router.pathname === "/pay-bills" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/pay-bills"
 									>
@@ -198,8 +207,10 @@ const Header = () => {
 												href="/blog"
 											>
 												Read More
-
-												<span className="sr-only">Read more about how we made magic happen</span>
+												<span className="sr-only">
+													Read more about how we made
+													magic happen
+												</span>
 												<i className="fi-rr-arrow-right ml-2"></i>
 											</Link>
 										</div>
@@ -210,20 +221,21 @@ const Header = () => {
 
 						<li className="relative">
 							<button
-								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent dropdown-toggle"
+								className="btn dropdown-toggle block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"
 								onClick={() => handleDropdownClick(companyRef)}
 							>
 								Company
 							</button>
 
 							<div
-								className="absolute top-[calc(100%+.5rem)] rounded-xl z-50 w-full -translate-y-[200%] transition-transform duration-700 ease-in-out md:w-auto md:fixed md:-left-[35%] md:-right-[40%] md:overflow-y-auto md:max-h-[calc((100vh-100%)-100%)] lg:-left-[40%] lg:py-8 lg:px-12 p-4 bg-white shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] no-scrollbar"
+								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:-left-[40%] lg:py-8 lg:px-12"
 								ref={companyRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8">
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											router.pathname === "/about" && 'bg-dropdown-hover'
+											router.pathname === "/about" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/about"
 									>
@@ -239,7 +251,9 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											router.pathname === "/legal/terms-of-use" && 'bg-dropdown-hover'
+											router.pathname ===
+												"/legal/terms-of-use" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/legal/terms-of-use"
 									>
@@ -255,7 +269,8 @@ const Header = () => {
 
 									<Link
 										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
-											router.pathname === "/contact-us" && 'bg-dropdown-hover'
+											router.pathname === "/contact-us" &&
+											"bg-dropdown-hover"
 										}`}
 										href="/contact-us"
 									>
@@ -283,7 +298,7 @@ const Header = () => {
 							</Link>
 						</li>
 
-						<li className="lg:not-sr-only md:hidden">
+						<li className="md:hidden lg:not-sr-only">
 							<Link
 								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple lg:font-medium lg:hover:bg-transparent"
 								href="https://play.google.com/store/apps/details?id=com.inemoni.com"

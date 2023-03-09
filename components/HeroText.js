@@ -4,29 +4,38 @@ import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
+		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
 			<div className="flex flex-col gap-5">
 				<h1 className="main-header">
-					Bringing <span className="text-brand-purple">Financial Services</span> To Your Doorsteps.
+					Bringing{" "}
+					<span className="text-brand-purple">
+						Financial Services
+					</span>{" "}
+					To Your Doorsteps.
 				</h1>
 
 				<p>
-					Easy access to financial services is our watchword while creating an avenue for our agents to make money using our amazing services.
+					Easy access to financial services is our watchword while
+					creating an avenue for our agents to make money using our
+					amazing services.
 				</p>
 
-				<div className="flex items-center gap-4 flex-wrap">
+				<div className="flex flex-wrap items-center gap-4">
 					<Link
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 					>
 						Download App
 					</Link>
 
 					<Link
-						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
+						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
 						href="/about"
 					>
 						Learn More
+						<span className="sr-only">
+							Read more about who we are and what we do
+						</span>
 					</Link>
 				</div>
 			</div>
