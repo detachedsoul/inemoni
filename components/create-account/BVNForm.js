@@ -95,10 +95,10 @@ const BVNForm = () => {
 					</p>
 				</div>
 
-				<div className={`fixed -top-6 left-0 z-[1024] h-full w-full bg-black/60 transition-transform ease-linear duration-300 ${isActive ? 'scale-100' : 'scale-0'}`}>
-					<div className="fixed top-1/4 bottom-1/4 left-[5%] grid w-[calc(100%-10%)] place-content-center lg:left-[calc((100%-30%)/2)] lg:w-[30%] min-[500px]:w-3/5 min-[500px]:left-[calc((100%-60%)/2)] min-[600px]:w-1/2 min-[600px]:left-[calc((100%-50%)/2)]">
-						<div className="no-scrollbar space-y-4 overflow-y-auto rounded-lg bg-brand-gray p-4 text-start text-base">
-							<button className="absolute right-2 top-2 bg-brand-purple/90 text-white rounded-md py-1 px-2 backdrop-blur" type="button" aria-label="Close dialog" onClick={() => setIsActive(() => !isActive)}>
+				<div className={`fixed -top-6 bottom-0 left-0 z-[1024] h-full w-full bg-black/60 transition-transform ease-linear duration-500 ${isActive ? 'translate-y-0' : 'translate-y-[500%]'}`}>
+					<div className={`fixed top-1/4 bottom-0 grid w-[calc(100%-10%)] left-[5%]  place-content-center lg:left-[calc((100%-30%)/2)] lg:w-[30%] min-[500px]:w-3/5 min-[500px]:left-[calc((100%-60%)/2)] min-[600px]:w-1/2 min-[600px]:left-[calc((100%-50%)/2)] transition-transform ease-linear duration-500 z-[1024]`}>
+						<div className="space-y-4 rounded-t-xl bg-brand-gray p-4 text-start text-base overflow-y-auto no-scrollbar">
+							<button className="absolute right-2 top-2 bg-brand-purple/50 text-white rounded-md py-1 px-2 backdrop-blur-xl" type="button" aria-label="Close dialog" onClick={() => setIsActive(() => !isActive)}>
 								<i className="fi-rr-cross top-0.5 relative"></i>
 							</button>
 
