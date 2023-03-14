@@ -1,4 +1,5 @@
 import ContactInformationForm from "@components/create-account/ContactInformationForm";
+import Sidebar from "@components/create-account/Sidebar";
 import Layout from "@pages/_layout";
 import Head from "next/head";
 
@@ -13,8 +14,12 @@ const ContactInformation = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<ContactInformationForm />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
+
+				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[10%]">
+					<ContactInformationForm />
+				</div>
 			</main>
 		</>
 	);

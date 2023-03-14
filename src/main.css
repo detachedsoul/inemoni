@@ -59,4 +59,8 @@
     .input-select {
         @apply border border-[#dae1e7] focus:outline-none rounded-md py-2.5 px-3 w-full block
     }
+
+    .input-checkbox {
+        @apply text-white bg-brand-purple border-[#979797] rounded-md p-2
+    }
 }

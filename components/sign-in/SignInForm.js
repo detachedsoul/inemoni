@@ -3,75 +3,91 @@ import Link from "next/link";
 const SignInForm = () => {
     return (
 		<form
-			className="mx-[5%] grid scroll-m-28 place-content-center rounded-md p-[5%] md:mx-auto md:w-3/5"
+			className="space-y-6 rounded-md p-[5%] md:bg-white"
 			method="POST"
 		>
-			<div className="space-y-6">
-				<div className="space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Welcome</h1>
+			<div className="mx-auto w-[90%] space-y-2 text-center">
+				<h1 className="header text-2xl">Hi, Welcome</h1>
 
-					<p className="text-base">
-						Sign in to continue to an awesome experience
-					</p>
-				</div>
-
-				<div className="grid gap-6">
-					<label
-						className="grid gap-0.5"
-						htmlFor="phone-number"
-					>
-						<span className="font-bold text-brand-dark-purple">
-							Phone Number
-						</span>
-
-						<input
-							type="tel"
-							name="phone-number"
-							id="phone-number"
-							className="input-form"
-							placeholder="Enter your phone number"
-						/>
-					</label>
-
-					<label
-						className="grid gap-0.5"
-						htmlFor="password"
-					>
-						<span className="font-bold text-brand-dark-purple">
-							Pin
-						</span>
-
-						<input
-							type="password"
-							name="password"
-							id="password"
-							className="input-form"
-							placeholder="Enter your pin"
-						/>
-					</label>
-
-					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-						type="submit"
-					>
-						Validate Details
-					</button>
-				</div>
-
-				<div className="space-y-5">
-					<p className="text-center font-normal">Or</p>
-
-					<p className="text-center text-[#979797]">
-						Don’t have an account?{" "}
-						<Link
-							className="font-medium text-brand-dark-purple"
-							href="/create-account"
-						>
-							Sign Up
-						</Link>
-					</p>
-				</div>
+				<p className="text-base">
+					Sign in to continue to an awesome experience
+				</p>
 			</div>
+
+			<div className="grid gap-6">
+				<label
+					className="grid gap-0.5"
+					htmlFor="phone-number"
+				>
+					<span className="font-bold text-brand-dark-purple">
+						Phone Number
+					</span>
+
+					<input
+						type="tel"
+						name="phone-number"
+						id="phone-number"
+						className="input-form"
+						placeholder="Enter your phone number"
+					/>
+				</label>
+
+				<label
+					className="grid gap-0.5"
+					htmlFor="password"
+				>
+					<span className="font-bold text-brand-dark-purple">
+						Pin
+					</span>
+
+					<input
+						type="password"
+						name="password"
+						id="password"
+						className="input-form"
+						placeholder="Enter your pin"
+					/>
+				</label>
+
+				<div className="flex flex-wrap items-center justify-between gap-4">
+					<label
+						className="flex items-center gap-1"
+						htmlFor="remember-me"
+					>
+						<input
+							className="form-checkbox rounded-md border-[#979797] bg-brand-purple p-2 text-white"
+							type="checkbox"
+							id="remember-me"
+						/>
+						<span className="text-[#979797]">
+							Keep me signed in
+						</span>
+					</label>
+					<Link
+						className="text-brand-dark-purple"
+						href="/password-reset"
+					>
+						Forgot Password
+					</Link>
+				</div>
+
+				<button
+					className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
+					type="submit"
+				>
+					Sign In
+				</button>
+			</div>
+
+			<p className="text-[#979797]">
+				Don’t have an account?{" "}
+				<Link
+					className="font-medium text-brand-dark-purple"
+					href="/create-account"
+				>
+					Create one
+				</Link>
+			</p>
 		</form>
 	);
 };

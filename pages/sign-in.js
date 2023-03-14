@@ -1,4 +1,5 @@
 import SignInForm from "@components/sign-in/SignInForm";
+import Sidebar from "@components/create-account/Sidebar";
 import Layout from "./_layout";
 import Head from "next/head";
 
@@ -13,8 +14,12 @@ const SignIn = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<SignInForm />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
+
+				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[10%]">
+					<SignInForm />
+				</div>
 			</main>
 		</>
 	);

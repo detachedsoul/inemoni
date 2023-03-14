@@ -1,4 +1,5 @@
 import PasswordResetForm from "@components/password-reset/PasswordResetForm";
+import Sidebar from "@components/create-account/Sidebar";
 import Layout from "./_layout";
 import Head from "next/head";
 
@@ -13,8 +14,12 @@ const PasswordReset = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<PasswordResetForm />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
+
+				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%]">
+					<PasswordResetForm />
+				</div>
 			</main>
 		</>
 	);

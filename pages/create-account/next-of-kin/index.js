@@ -1,4 +1,5 @@
 import NextofKinForm from "@components/create-account/NextofKinForm";
+import Sidebar from "@components/create-account/Sidebar";
 import Layout from "@pages/_layout";
 import Head from "next/head";
 
@@ -13,8 +14,12 @@ const NextofKin = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<NextofKinForm />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
+
+				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[10%]">
+					<NextofKinForm />
+				</div>
 			</main>
 		</>
 	);
