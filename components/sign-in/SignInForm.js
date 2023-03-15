@@ -49,7 +49,7 @@ const SignInForm = () => {
 					/>
 				</label>
 
-				<div className="flex flex-wrap items-center justify-between gap-4">
+				<div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-4">
 					<label
 						className="flex items-center gap-2 cursor-pointer"
 						htmlFor="remember-me"

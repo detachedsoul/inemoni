@@ -71,7 +71,7 @@ const PersonalDetailsForm = () => {
 					</span>
 
 					<select
-						className="input-select form-select"
+						className="input-select"
 						name="gender"
 						id="gender"
 					>

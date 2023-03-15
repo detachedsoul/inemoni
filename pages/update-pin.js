@@ -1,4 +1,5 @@
 import UpdatePinForm from "@components/update-pin/UpdatePinForm";
+import Sidebar from "@components/create-account/Sidebar";
 import Layout from "./_layout";
 import Head from "next/head";
 
@@ -13,8 +14,12 @@ const UpdatePin = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] py-12 sm:space-y-[10%]">
-				<UpdatePinForm />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
+
+				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
+					<UpdatePinForm />
+				</div>
 			</main>
 		</>
 	);

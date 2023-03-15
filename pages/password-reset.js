@@ -17,7 +17,7 @@ const PasswordReset = () => {
 			<main className="grid md:grid-cols-2">
 				<Sidebar />
 
-				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[5%]  xl:px-[8%]">
+				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
 					<PasswordResetForm />
 				</div>
 			</main>
