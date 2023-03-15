@@ -7,7 +7,7 @@ import Link from "next/link";
 const Sidebar = () => {
     return (
 		<div className="hidden place-content-center bg-brand-purple text-center text-white md:grid">
-			<div className="space-y-8 py-12 px-16 text-center">
+			<div className="space-y-8 py-12 px-[10%] xl:px-[8%] text-center">
 				<h2 className="header text-center text-[32px] font-medium leading-[50px]">
 					Easy Access to Financial Services
 				</h2>

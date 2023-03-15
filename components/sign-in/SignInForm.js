@@ -51,11 +51,11 @@ const SignInForm = () => {
 
 				<div className="flex flex-wrap items-center justify-between gap-4">
 					<label
-						className="flex items-center gap-1"
+						className="flex items-center gap-2 cursor-pointer"
 						htmlFor="remember-me"
 					>
 						<input
-							className="form-checkbox rounded-md border-[#979797] bg-brand-purple p-2 text-white"
+							className="input-checkbox"
 							type="checkbox"
 							id="remember-me"
 						/>

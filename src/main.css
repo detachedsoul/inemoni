@@ -57,10 +57,10 @@
     }
 
     .input-select {
-        @apply border border-[#dae1e7] focus:outline-none rounded-md py-2.5 px-3 w-full block
+        @apply form-select border border-[#dae1e7] focus:outline-none rounded-md py-2.5 px-3 w-full block
     }
 
     .input-checkbox {
-        @apply text-white bg-brand-purple border-[#979797] rounded-md p-2
+        @apply form-checkbox text-brand-purple border-[#979797] rounded p-2 md:px-1 md:py-0.5 cursor-pointer ring-offset-white hover:ring-1 hover:ring-offset-2 hover:ring-brand-purple focus-within:ring-1 focus-within:ring-offset-2 focus-within:ring-brand-purple
     }
 }

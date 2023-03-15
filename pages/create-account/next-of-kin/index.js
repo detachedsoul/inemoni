@@ -17,7 +17,7 @@ const NextofKin = () => {
 			<main className="grid md:grid-cols-2">
 				<Sidebar />
 
-				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[10%]">
+				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[5%] xl:px-[8%]">
 					<NextofKinForm />
 				</div>
 			</main>
