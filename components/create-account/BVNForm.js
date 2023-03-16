@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const BVNForm = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -13,16 +13,16 @@ const BVNForm = () => {
 		if (isActive) {
 			document.querySelector("body").style.overflow = "hidden";
 		} else {
-			document.querySelector("body").style.overflow = "auto"
+			document.querySelector("body").style.overflow = "auto";
 		}
 	}, [isActive]);
 
 	return (
 		<form
-			className="rounded-md p-[5%] md:bg-white space-y-6"
+			className="space-y-6 rounded-md p-[5%] md:bg-white"
 			method="POST"
 		>
-			<div className="space-y-2 text-center w-[90%] mx-auto">
+			<div className="mx-auto w-[90%] space-y-2 text-center">
 				<h1 className="header text-2xl">Hi, Welcome</h1>
 
 				<p className="text-base">
@@ -49,8 +49,7 @@ const BVNForm = () => {
 				</label>
 
 				<p className="text-sm font-medium text-brand-dark-purple">
-					Tip: Dial *565*0# on your registered number to get your
-					BVN
+					Tip: Dial *565*0# on your registered number to get your BVN
 				</p>
 
 				<button
@@ -94,11 +93,22 @@ const BVNForm = () => {
 				</p>
 			</div>
 
-			<div className={`fixed -top-6 bottom-0 left-0 z-[1024] h-full w-full bg-black/60 transition-transform ease-linear duration-500 ${isActive ? 'translate-y-0' : 'translate-y-[100%]'}`}>
-				<div className={`fixed top-1/4 bottom-0 grid w-[calc(100%-10%)] left-[5%]  place-content-center lg:left-[calc((100%-30%)/2)] lg:w-[30%] min-[500px]:w-3/5 min-[500px]:left-[calc((100%-60%)/2)] min-[600px]:w-1/2 min-[600px]:left-[calc((100%-50%)/2)] transition-transform ease-linear duration-500 z-[1024]`}>
-					<div className="space-y-4 rounded-t-xl bg-brand-gray p-4 text-start text-base overflow-y-auto no-scrollbar">
-						<button className="absolute right-2 top-2 bg-brand-purple text-white rounded-md py-1 px-2 backdrop-blur-xl" type="button" aria-label="Close dialog" onClick={() => setIsActive(() => !isActive)}>
-							<i className="fi-rr-cross top-0.5 relative"></i>
+			<div
+				className={`fixed -top-6 bottom-0 left-0 z-[1024] h-full w-full bg-black/60 transition-transform duration-500 ease-linear ${
+					isActive ? "translate-y-0" : "translate-y-full"
+				}`}
+			>
+				<div
+					className={`fixed top-1/4 bottom-0 left-[5%] z-[1024] grid  w-[calc(100%-10%)] place-content-center transition-transform duration-500 ease-linear min-[500px]:left-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:left-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:left-[calc((100%-30%)/2)] lg:w-[30%]`}
+				>
+					<div className="no-scrollbar space-y-4 overflow-y-auto rounded-t-xl bg-brand-gray p-4 text-start text-base relative">
+						<button
+							className="absolute right-2 top-2 rounded-md bg-brand-purple py-1 px-2 text-white"
+							type="button"
+							aria-label="Close dialog"
+							onClick={() => setIsActive(() => !isActive)}
+						>
+							<i className="fi-rr-cross relative top-0.5"></i>
 						</button>
 
 						<h3 className="header font-medium">
@@ -159,10 +169,10 @@ const BVNForm = () => {
 						</ul>
 
 						<p className="text-sm">
-							The BVN verification process only confirms that
-							your personal details provided on Inemoni are
-							the same as it is in your BVN and doesn’t give
-							access to your account or transactions.
+							The BVN verification process only confirms that your
+							personal details provided on Inemoni are the same as
+							it is in your BVN and doesn’t give access to your
+							account or transactions.
 						</p>
 					</div>
 				</div>
