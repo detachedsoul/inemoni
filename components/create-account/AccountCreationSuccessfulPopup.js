@@ -36,7 +36,7 @@ const AccountCreationSuccessfulPopup = ({isActive}) => {
 				<Link
 					className="btn block bg-brand-purple text-center text-white transition duration-500 ease-in-out hover:bg-brand-dark-purple"
 					href="/sign-in"
-					onClick={() => isActive = false}
+					onClick={() => document.querySelector("body").style.overflow = "auto"}
 				>
 					Sign In
 				</Link>
