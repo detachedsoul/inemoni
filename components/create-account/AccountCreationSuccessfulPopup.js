@@ -5,14 +5,12 @@ import AccountSuccessfulImage from "@assets/img/account-creation-successful-img.
 const AccountCreationSuccessfulPopup = ({isActive}) => {
     return (
 		<div
-			className={
-                `fixed top-0 bottom-0 left-0 z-[1024] h-full w-full bg-black/60 transition-transform duration-500 ease-linear flex flex-col place-content-center ${
-                    isActive ? "translate-y-0" : "translate-y-[100%]"
-                }`
-            }
+			className={`fixed top-0 bottom-0 left-0 z-[1024] flex h-full w-full flex-col place-content-center bg-black/60 transition-transform duration-500 ease-linear ${
+				isActive ? "translate-y-0" : "translate-y-full"
+			}`}
 		>
 			<div
-				className={`z-[1024] w-[calc(100%-10%)] ml-[5%] lg:ml-[calc((100%-40%)/2)] min-[500px]:ml-[calc((100%-60%)/2)] min-[600px]:ml-[calc((100%-50%)/2)] space-y-6 rounded-md bg-white p-4 text-center min-[500px]:w-3/5 min-[600px]:w-1/2 lg:w-[40%] overflow-y-auto no-scrollbar`}
+				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-md bg-white p-4 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-40%)/2)] lg:w-[40%]`}
 			>
 				<div className="mx-auto text-center">
 					<Image
@@ -23,7 +21,7 @@ const AccountCreationSuccessfulPopup = ({isActive}) => {
 					/>
 				</div>
 
-				<div className="space-y-2.5 w-[90%] mx-auto">
+				<div className="mx-auto w-[90%] space-y-2.5">
 					<h3 className="text-xl font-medium">
 						Account Created Successfully
 					</h3>
@@ -38,6 +36,7 @@ const AccountCreationSuccessfulPopup = ({isActive}) => {
 				<Link
 					className="btn block bg-brand-purple text-center text-white transition duration-500 ease-in-out hover:bg-brand-dark-purple"
 					href="/sign-in"
+					onClick={() => isActive = false}
 				>
 					Sign In
 				</Link>

@@ -15,9 +15,15 @@ const CreatePinForm = () => {
 		if (isActive) {
 			document.querySelector("body").style.overflow = "hidden";
 		} else {
-			document.querySelector("body").style.overflow = "auto"
+			document.querySelector("body").style.overflow = "auto";
 		}
 	}, [isActive]);
+
+    useEffect(() => {
+		setIsActive(() => false);
+
+		document.querySelector("body").style.overflow = "auto";
+	}, [router.pathname]);
 
     return (
 		<>
