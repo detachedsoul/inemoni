@@ -3,13 +3,9 @@
 import Link from "next/link";
 import AccountCreationSuccessfulPopup from "@components/create-account/AccountCreationSuccessfulPopup";
 import {useState, useEffect} from "react";
-import {useRouter} from "next/router";
 
 const CreatePinForm = () => {
-    const router = useRouter();
     const [isActive, setIsActive] = useState(false);
-
-    console.log(router);
 
     useEffect(() => {
 		if (isActive) {
