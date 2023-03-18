@@ -1,7 +1,7 @@
 const ContactForm = () => {
     return (
 		<form
-			className="grid place-content-center mx-[5%] p-[5%] rounded-md md:w-3/5 md:mx-auto scroll-m-28"
+			className="grid place-content-center mx-[5%] rounded-md md:w-3/5 md:mx-auto scroll-m-28"
             method="POST"
             id="contact-form"
 		>
@@ -11,7 +11,7 @@ const ContactForm = () => {
 						Looking to Give a Feedback?
 					</h2>
 
-					<p>
+					<p className="w-[90%] mx-auto">
 						Fill out the form below and we will respond as soon as
 						possible
 					</p>

@@ -33,7 +33,7 @@ const CreatePinForm = () => {
 
 				<div className="grid gap-4 md:gap-x-6">
 					<label
-						className="mx-auto grid w-4/5 gap-0.5"
+						className="grid gap-0.5"
 						htmlFor="create-pin"
 					>
 						<span className="font-bold text-brand-dark-purple">
@@ -43,54 +43,60 @@ const CreatePinForm = () => {
 						<div className="flex items-center gap-2 overflow-x-auto max-w-full no-scrollbar">
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin"
-								className="input-form border-2 border-[#34c759] p-2 w-[50px] h-[50px] text-center font-bold text-[#34c759] focus:border-[#34c759]"
+								className="input-form border-2 border-[#34c759] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold text-[#34c759] focus:border-[#34c759]"
 								value="1"
                                 readOnly
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin-value-2"
-								className="input-form border-2 border-[#34c759] p-2 w-[50px] h-[50px] text-center font-bold text-[#34c759] focus:border-[#34c759]"
+								className="input-form border-2 border-[#34c759] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold text-[#34c759] focus:border-[#34c759]"
 								value="1"
                                 readOnly
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin-value-3"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin-value-4"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin-value-5"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="create-pin"
 								id="create-pin-value-6"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 						</div>
 					</label>
 
 					<label
-						className="mx-auto grid w-4/5 gap-0.5"
+						className="grid gap-0.5"
 						htmlFor="confirm-pin"
 					>
 						<span className="font-bold text-brand-dark-purple">
@@ -100,49 +106,55 @@ const CreatePinForm = () => {
 						<div className="flex items-center gap-2 overflow-x-auto max-w-full no-scrollbar">
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin-value-2"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin-value-3"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin-value-4"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin-value-5"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 
 							<input
 								type="password"
+                                maxLength="1"
 								name="confirm-pin"
 								id="confirm-pin-value-6"
-								className="input-form border-[#979797] p-2 w-[50px] h-[50px] text-center font-bold focus:border-[#979797]"
+								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
 							/>
 						</div>
 					</label>
 
-					<p className="mx-auto w-4/5 text-center text-[#979797]">
+					<p className="text-center text-[#979797]">
 						By clicking create account, you agree to Inemoni’s{" "}
 						<Link
 							className="text-brand-dark-purple"
@@ -150,7 +162,18 @@ const CreatePinForm = () => {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Terms of Use & Privacy Policy
+							Terms of Use
+						</Link>
+
+                        {" "} & {" "}
+
+                        <Link
+							className="text-brand-dark-purple"
+							href="/legal/privacy-policy/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Privacy Policy
 						</Link>
 						.
 					</p>
