@@ -30,7 +30,7 @@ const SignInForm = () => {
 			method: "POST",
 			body: JSON.stringify(data),
 			redirect: "follow",
-			headers: { "Content-Type": "application/json" }
+			headers: { "Content-Type": "application/json" },
 		};
 
 		try {
@@ -41,10 +41,16 @@ const SignInForm = () => {
 
 			const response = await request.json();
 
-			if (response.error === false && response.account_verified === true) {
+			if (
+				response.error === false &&
+				response.account_verified === true
+			) {
 				setHeader(() => "Login Successful");
 
-				setMessage(() => "Login successful. You will be redirected to your dashboard shortly.");
+				setMessage(
+					() =>
+						"Login successful. You will be redirected to your dashboard shortly.",
+				);
 
 				setIsError(() => false);
 
@@ -53,13 +59,9 @@ const SignInForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
 
 				setTimeout(() => {
-					// document.cookie = `user_auth_token=${response.data.login_token}; path=/`;
-
-					window.location.href = "https://inemoni.org/mobile";
+					window.location.replace("https://inemoni.org/mobile");
 
 					document.querySelector("body").style.overflow = "auto";
-
-					// console.log(document.cookie);
 				}, 3000);
 			} else if (
 				response.error === false &&
@@ -67,29 +69,45 @@ const SignInForm = () => {
 			) {
 				setHeader(() => "Account Not Verified");
 
-				setMessage(() => "Your account has not been verified. Please verify your account to continue.");
+				setMessage(
+					() =>
+						"Your account has not been verified. Please verify your account to continue.",
+				);
 
 				setIsError(() => true);
 
 				setIsActive(() => true);
+
+				document.querySelector("body").style.overflow = "hidden";
 			} else {
 				setHeader(() => "Login Failed");
 
-				setMessage(() => "Login failed. Please check your phone number and pin and try again.");
+				setMessage(
+					() =>
+						"Login failed. Please check your phone number and pin and try again.",
+				);
 
 				setIsError(() => true);
 
 				setIsActive(() => true);
+
+				document.querySelector("body").style.overflow = "hidden";
 			}
-
-			console.log(response);
-
 		} catch (error) {
-			console.log(error);
+			setHeader(() => "Login Failed");
+
+			setMessage(
+				() =>
+					"Login failed. Please check your phone number and pin and try again.",
+			);
+
+			setIsError(() => true);
+
+			setIsActive(() => true);
 		}
 	};
 
-    return (
+	return (
 		<>
 			<form
 				className="space-y-6 rounded-md p-[5%] md:bg-white"
@@ -182,7 +200,13 @@ const SignInForm = () => {
 				</p>
 			</form>
 
-			<AuthPopup isActive={isActive} header={header} message={message} isError={isError} />
+			<AuthPopup
+				isActive={isActive}
+				header={header}
+				message={message}
+				isError={ isError }
+				setIsActive={setIsActive}
+			/>
 		</>
 	);
 };
