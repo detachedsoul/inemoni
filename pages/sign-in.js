@@ -1,4 +1,5 @@
 import SignInForm from "@components/sign-in/SignInForm";
+import LockScreenForm from "@components/lockscreen/LockScreenForm";
 import Sidebar from "@components/create-account/Sidebar";
 import Layout from "./_layout";
 import Head from "next/head";
@@ -10,56 +11,49 @@ const SignIn = () => {
 
 	useEffect(() => {
 		setIsLoading(() => false);
+
+		console.log(typeof getCookie("is_logged_in").isValid);
 	}, []);
 
-	if (typeof window !== "undefined" && !isLoading === true && getCookie("is_logged_in").isValid === true) {
-		// window.location.replace("https://www.inemoni.org/mobile");
+	return (
+		!isLoading && (
+			<>
+				{getCookie("is_logged_in").isValid === true ? (
+					<Head>
+						<title>Inemoni | Lock Screen</title>
+						<meta
+							name="description"
+							content="Enter your password to continue"
+						/>
+					</Head>
+				) : (
+					<Head>
+						<title>Inemoni | Sign In</title>
+						<meta
+							name="description"
+							content="Sign in to your account"
+						/>
+					</Head>
+				)}
 
-		console.log(getCookie("is_logged_in").sanitizedValue);
+				<main className="grid md:grid-cols-2">
+					<Sidebar />
 
-		return;
-	}
-
-    return (!isLoading &&
-		<>
-			<Head>
-				<title>Inemoni | Sign In</title>
-				<meta
-					name="description"
-					content="Sign in to your account"
-				/>
-			</Head>
-
-			<main className="grid md:grid-cols-2">
-				<Sidebar />
-
-				<div className="flex flex-col place-content-center md:bg-[#fafafa] py-12 md:p-[10%] xl:px-[14%]">
-					<SignInForm />
-				</div>
-			</main>
-		</>
+					<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
+						{getCookie("is_logged_in").isValid === true ? (
+							<LockScreenForm />
+						) : (
+							<SignInForm />
+						)}
+					</div>
+				</main>
+			</>
+		)
 	);
 };
 
 export default SignIn;
 
-// if (typeof window !== "undefined" && !isLoading === true && getCookie("is_logged_in").isValid === true) {
-// 	SignIn.getLayout = (page) => {
-// 		return <Layout>{ page }</Layout>;
-// 	};
-// }
-
-// SignIn.getLayout = (page) => {
-// 	if (
-// 		typeof window !== "undefined" &&
-// 		getCookie("is_logged_in").isValid === true
-// 	) {
-// 		return null;
-// 	}
-
-// 	return <Layout>{ page }</Layout>;
-// };
-
-	SignIn.getLayout = (page) => {
-		return typeof window !== "undefined" === true && getCookie("is_logged_in").isValid === false ? <Layout>{ page }</Layout> : <>{page}</>;
-	};
+SignIn.getLayout = (page) => {
+	return <Layout>{ page }</Layout>;
+};

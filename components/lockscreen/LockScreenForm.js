@@ -12,10 +12,6 @@ const LockScreenForm = () => {
 	const [isActive, setIsActive] = useState(false);
 	const [isError, setIsError] = useState(false);
 
-	const handlePhoneNumberChange = (e) => {
-		setPhoneNumber(e.target.value);
-	};
-
 	const handlePasswordChange = (e) => {
 		if (!validatePasswordField(e.target.value)) {
 			return;

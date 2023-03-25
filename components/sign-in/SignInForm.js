@@ -71,11 +71,12 @@ const SignInForm = () => {
 
 				const now = new Date();
 				const expiration = new Date(
-					new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000)
+					new Date(now.getTime() + (60 * 60 * 60 * 24 * 365 * 10)),
 				);
 
-				document.cookie = `is_logged_in=${true};expires=5;path=/`;
-				// document.cookie = `login_credentials=${true};expires=5;path=/`;
+				document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
+				document.cookie = `user_login_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
+				document.cookie = `user_name=${response.data.fname};expires=${expiration.toGMTString()};path=/`;
 
 				setTimeout(() => {
 					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
