@@ -52,6 +52,16 @@
         @apply hidden
     }
 
+    .no-number-increment::-webkit-inner-spin-button,
+    .no-number-increment::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .no-number-increment {
+        -moz-appearance: textfield;
+    }
+
     .input-form {
         @apply form-input border border-[#dae1e7] focus:outline-none focus:ring-0 rounded-md py-2.5 px-3 w-full block focus:border-[#dae1e7]
     }

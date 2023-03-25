@@ -12,15 +12,14 @@ const SignInForm = () => {
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [isError, setIsError] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const handlePhoneNumberChange = (e) => {
 		setPhoneNumber(e.target.value);
 	};
 
 	useEffect(() => {
-		if (getCookie("user_auth_token").isValid) {
-			window.location.replace("https://www.inemoni.org/mobile");
-		}
+		setIsLoading(() => false);
 	}, []);
 
 	const handlePasswordChange = (e) => {
@@ -76,7 +75,7 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 
-				document.cookie = `user_auth_token=${response.data.login_token};`;
+				// document.cookie = `login_credentials=${response.data.login_token};`;
 
 				setTimeout(() => {
 					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
@@ -171,10 +170,10 @@ const SignInForm = () => {
 						</span>
 
 						<input
-							type="password"
+							type="number"
 							name="password"
 							id="password"
-							className="input-form"
+							className="input-form [-webkit-text-security:square] no-number-increment"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={6}
