@@ -24,7 +24,7 @@ const AuthPopup = ({ isActive, setIsActive, header, message, isError }) => {
 
 				<div className="mx-auto w-[90%] space-y-2.5">
 					<h3
-						className={`text-xl font-medium ${
+						className={`text-xl font-bold ${
 							isError
 								? "text-notification-red"
 								: "text-notification-green"

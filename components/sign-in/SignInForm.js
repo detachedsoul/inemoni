@@ -5,6 +5,7 @@ import { useState } from "react";
 const SignInForm = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
+	const [keepSignin, setKeepSignin] = useState(false);
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
@@ -18,12 +19,17 @@ const SignInForm = () => {
 		setPassword(e.target.value);
 	};
 
+	const handleKeepSigninChange = (e) => {
+		setKeepSignin(e.target.checked);
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const data = {
 			phone: phoneNumber,
 			pin: password,
+			keep_signin: keepSignin,
 		};
 
 		const requestOptions = {
@@ -59,7 +65,7 @@ const SignInForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
 
 				setTimeout(() => {
-					window.location.replace("https://inemoni.org/mobile");
+					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);
@@ -168,6 +174,7 @@ const SignInForm = () => {
 								className="input-checkbox"
 								type="checkbox"
 								id="remember-me"
+								onChange={(e) => handleKeepSigninChange(e)}
 							/>
 							<span className="text-[#979797]">
 								Keep me signed in
@@ -204,7 +211,7 @@ const SignInForm = () => {
 				isActive={isActive}
 				header={header}
 				message={message}
-				isError={ isError }
+				isError={isError}
 				setIsActive={setIsActive}
 			/>
 		</>
