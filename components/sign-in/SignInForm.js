@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import validatePasswordField from "@helpers/validatePasswordField";
 import getCookie from "@helpers/getCookie";
 
@@ -17,12 +17,11 @@ const SignInForm = () => {
 		setPhoneNumber(e.target.value);
 	};
 
-	if (
-		typeof window !== "undefined" &&
-		getCookie("user_auth_token") !== undefined
-	) {
-		window.location.replace("https://www.inemoni.org/mobile");
-	}
+	useEffect(() => {
+		if (getCookie("user_auth_token").isValid) {
+			window.location.replace("https://www.inemoni.org/mobile");
+		}
+	}, []);
 
 	const handlePasswordChange = (e) => {
 		if (!validatePasswordField(e.target.value)) {
@@ -76,6 +75,8 @@ const SignInForm = () => {
 				setIsActive(() => true);
 
 				document.querySelector("body").style.overflow = "hidden";
+
+				document.cookie = `user_auth_token=${response.data.login_token};`;
 
 				setTimeout(() => {
 					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);

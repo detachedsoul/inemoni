@@ -1,7 +1,20 @@
-const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+const getCookie = (cookieName) => {
+	const cookies = document.cookie.split("; ");
+	for (const cookie of cookies) {
+		const [name, value] = cookie.split("=");
+		if (name === cookieName) {
+            const sanitizedValue = decodeURIComponent(value);
+            const isValid = true;
+
+            return {
+                name,
+                sanitizedValue,
+                isValid
+            };
+		}
+    }
+
+	return false;
 };
 
 export default getCookie;
