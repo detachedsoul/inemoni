@@ -1,12 +1,11 @@
 import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
+import getCookie from "@helpers/getCookie";
 import validatePasswordField from "@helpers/validatePasswordField";
 
 const LockScreenForm = () => {
-	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
-	const [keepSignin, setKeepSignin] = useState(false);
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
@@ -20,17 +19,12 @@ const LockScreenForm = () => {
 		setPassword(e.target.value);
 	};
 
-	const handleKeepSigninChange = (e) => {
-		setKeepSignin(e.target.checked);
-	};
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const data = {
-			phone: phoneNumber,
+			user_token: getCookie("user_login_token").sanitizedValue.toString(),
 			pin: password,
-			keep_signin: keepSignin,
 		};
 
 		const requestOptions = {
@@ -42,7 +36,7 @@ const LockScreenForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/login",
+				"https://inemoni.org/api/verify-login",
 				requestOptions,
 			);
 
@@ -50,36 +44,97 @@ const LockScreenForm = () => {
 
 			if (
 				response.error === false &&
-				response.account_verified === true
+				response.message === "Login successful"
 			) {
-				setHeader(() => "Login Successful");
-
-				setMessage(
-					() =>
-						"Login successful. You will be redirected to your dashboard shortly.",
-				);
-
-				setIsError(() => false);
-
-				setIsActive(() => true);
-
-				document.querySelector("body").style.overflow = "hidden";
-
 				const now = new Date();
 				const expiration = new Date(
 					new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000),
 				);
 
-				document.cookie = `is_logged_in=${true};expires=5;path=/`;
-				// document.cookie = `login_credentials=${true};expires=5;path=/`;
+				const data = {
+					phone: getCookie("phone_number").sanitizedValue.toString(),
+					pin: password
+				};
 
-				setTimeout(() => {
-					window.location.replace(
-						`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
+				const requestOptions = {
+					method: "POST",
+					body: JSON.stringify(data),
+					redirect: "follow",
+					headers: { "Content-Type": "application/json" },
+				};
+
+				const request = await fetch(
+					"https://inemoni.org/api/login",
+					requestOptions,
+				);
+
+				const response = await request.json();
+
+				if (
+					response.error === false &&
+					response.account_verified === true
+				) {
+					setHeader(() => "Login Successful");
+
+					setMessage(
+						() =>
+							"Login successful. You will be redirected to your dashboard shortly.",
 					);
 
-					document.querySelector("body").style.overflow = "auto";
-				}, 3000);
+					setIsError(() => false);
+
+					setIsActive(() => true);
+
+					document.querySelector("body").style.overflow = "hidden";
+
+					document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
+					document.cookie = `user_login_token=${
+						response.data.login_token
+					};expires=${expiration.toGMTString()};path=/`;
+					document.cookie = `phone_number=0${
+						response.data.uid
+					};expires=${expiration.toGMTString()};path=/`;
+					document.cookie = `session_data=${
+						response.data.session_data
+					};expires=${expiration.toGMTString()};path=/`;
+
+					setTimeout(() => {
+						window.location.replace(
+							`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
+						);
+
+						document.querySelector("body").style.overflow = "auto";
+					}, 3000);
+				} else if (
+					response.error === false &&
+					response.account_verified === false
+				) {
+					setHeader(() => "Account Not Verified");
+
+					setMessage(
+						() =>
+							"Your account has not been verified. Please verify your account to continue.",
+					);
+
+					setIsError(() => true);
+
+					setIsActive(() => true);
+
+					document.querySelector("body").style.overflow = "hidden";
+				} else {
+					setHeader(() => "Login Failed");
+
+					setMessage(
+						() =>
+							"Login failed. Please check your phone number and pin and try again.",
+					);
+
+					setIsError(() => true);
+
+					setIsActive(() => true);
+
+					document.querySelector("body").style.overflow = "hidden";
+				}
 			} else if (
 				response.error === false &&
 				response.account_verified === false
@@ -100,8 +155,7 @@ const LockScreenForm = () => {
 				setHeader(() => "Login Failed");
 
 				setMessage(
-					() =>
-						"Login failed. Please check your phone number and pin and try again.",
+					() => "Login failed. Please check your pin and try again.",
 				);
 
 				setIsError(() => true);
@@ -111,16 +165,20 @@ const LockScreenForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
 			}
 		} catch (error) {
+			console.log(error)
+
 			setHeader(() => "Login Failed");
 
 			setMessage(
 				() =>
-					"Login failed. Please check your phone number and pin and try again.",
+					"Login failed. Please check your pin and try again.",
 			);
 
 			setIsError(() => true);
 
 			setIsActive(() => true);
+
+			document.querySelector("body").style.overflow = "hidden";
 		}
 	};
 

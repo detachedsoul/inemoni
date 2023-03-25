@@ -34,7 +34,7 @@ const SignInForm = () => {
 		const data = {
 			phone: phoneNumber,
 			pin: password,
-			keep_signin: keepSignin,
+			keep_signin: keepSignin
 		};
 
 		const requestOptions = {
@@ -76,7 +76,10 @@ const SignInForm = () => {
 
 				document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
 				document.cookie = `user_login_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
-				document.cookie = `user_name=${response.data.fname};expires=${expiration.toGMTString()};path=/`;
+				document.cookie = `phone_number=0${
+					response.data.uid
+				};expires=${expiration.toGMTString()};path=/`;
+				document.cookie = `session_data=${response.data.session_data};expires=${expiration.toGMTString()};path=/`;
 
 				setTimeout(() => {
 					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
@@ -124,6 +127,8 @@ const SignInForm = () => {
 			setIsError(() => true);
 
 			setIsActive(() => true);
+
+			document.querySelector("body").style.overflow = "hidden";
 		}
 	};
 

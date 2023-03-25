@@ -11,44 +11,40 @@ const SignIn = () => {
 
 	useEffect(() => {
 		setIsLoading(() => false);
-
-		console.log(typeof getCookie("is_logged_in").isValid);
 	}, []);
 
 	return (
-		!isLoading && (
-			<>
-				{getCookie("is_logged_in").isValid === true ? (
-					<Head>
-						<title>Inemoni | Lock Screen</title>
-						<meta
-							name="description"
-							content="Enter your password to continue"
-						/>
-					</Head>
-				) : (
-					<Head>
-						<title>Inemoni | Sign In</title>
-						<meta
-							name="description"
-							content="Sign in to your account"
-						/>
-					</Head>
-				)}
+		<>
+			{!isLoading && getCookie("is_logged_in").isValid === true ? (
+				<Head>
+					<title>Inemoni | Lock Screen</title>
+					<meta
+						name="description"
+						content="Enter your password to continue"
+					/>
+				</Head>
+			) : (
+				<Head>
+					<title>Inemoni | Sign In</title>
+					<meta
+						name="description"
+						content="Sign in to your account"
+					/>
+				</Head>
+			)}
 
-				<main className="grid md:grid-cols-2">
-					<Sidebar />
+			<main className="grid md:grid-cols-2">
+				<Sidebar />
 
-					<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
-						{getCookie("is_logged_in").isValid === true ? (
-							<LockScreenForm />
-						) : (
-							<SignInForm />
-						)}
-					</div>
-				</main>
-			</>
-		)
+				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
+					{!isLoading && getCookie("is_logged_in").isValid === true ? (
+						<LockScreenForm />
+					) : (
+						<SignInForm />
+					)}
+				</div>
+			</main>
+		</>
 	);
 };
 
