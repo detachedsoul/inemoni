@@ -11,7 +11,7 @@ const AuthPopup = ({ isActive, setIsActive, header, message, isError }) => {
 			}`}
 		>
 			<div
-				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-md bg-white p-4 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-30%)/2)] lg:w-[30%]`}
+				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-xl bg-white p-4 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-30%)/2)] lg:w-[30%]`}
 			>
 				<div className="mx-auto text-center">
 					<Image
@@ -22,7 +22,7 @@ const AuthPopup = ({ isActive, setIsActive, header, message, isError }) => {
 					/>
 				</div>
 
-				<div className="mx-auto w-[90%] space-y-2.5">
+				<div className="mx-auto w-[90%] space-y-2">
 					<h3
 						className={`text-xl font-bold ${
 							isError

@@ -3,7 +3,7 @@ import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import validatePasswordField from "@helpers/validatePasswordField";
 
-const SignInForm = () => {
+const LockScreenForm = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [keepSignin, setKeepSignin] = useState(false);
@@ -71,14 +71,16 @@ const SignInForm = () => {
 
 				const now = new Date();
 				const expiration = new Date(
-					new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000)
+					new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000),
 				);
 
 				document.cookie = `is_logged_in=${true};expires=5;path=/`;
 				// document.cookie = `login_credentials=${true};expires=5;path=/`;
 
 				setTimeout(() => {
-					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
+					window.location.replace(
+						`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
+					);
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);
@@ -126,42 +128,20 @@ const SignInForm = () => {
 		}
 	};
 
-
 	return (
 		<>
 			<form
 				className="space-y-6 rounded-md p-[5%] md:bg-white"
 				method="POST"
-				onSubmit={ handleSubmit }
+				onSubmit={handleSubmit}
 			>
 				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Welcome</h1>
+					<h1 className="header text-2xl">Welcome back</h1>
 
-					<p className="text-base">
-						Sign in to continue to an awesome experience
-					</p>
+					<p className="text-base">Enter your pin to continue</p>
 				</div>
 
 				<div className="grid gap-6">
-					<label
-						className="grid gap-0.5"
-						htmlFor="phone-number"
-					>
-						<span className="font-bold text-brand-dark-purple">
-							Phone Number
-						</span>
-
-						<input
-							type="tel"
-							name="phone-number"
-							id="phone-number"
-							className="input-form"
-							placeholder="Enter your phone number"
-							onChange={ (e) => handlePhoneNumberChange(e) }
-							required={ true }
-						/>
-					</label>
-
 					<label
 						className="grid gap-0.5"
 						htmlFor="password"
@@ -174,40 +154,24 @@ const SignInForm = () => {
 							type="number"
 							name="password"
 							id="password"
-							className="input-form [-webkit-text-security:square] no-number-increment"
+							className="input-form no-number-increment [-webkit-text-security:square]"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
-							maxLength={ 6 }
-							onChange={ (e) => handlePasswordChange(e) }
-							onInput={ (e) => handlePasswordChange(e) }
-							value={ password }
+							maxLength={6}
+							onChange={(e) => handlePasswordChange(e)}
+							onInput={(e) => handlePasswordChange(e)}
+							value={password}
 							aria-label="Enter your pin. It should be six digits."
-							required={ true }
+							required={true}
 						/>
 					</label>
 
-					<div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-4">
-						<label
-							className="flex cursor-pointer items-center gap-2"
-							htmlFor="remember-me"
-						>
-							<input
-								className="input-checkbox"
-								type="checkbox"
-								id="remember-me"
-								onChange={ (e) => handleKeepSigninChange(e) }
-							/>
-							<span className="text-[#979797]">
-								Keep me signed in
-							</span>
-						</label>
-						<Link
-							className="text-brand-dark-purple"
-							href="/password-reset"
-						>
-							Forgot Password
-						</Link>
-					</div>
+                    <Link
+                        className="text-brand-dark-purple"
+                        href="/password-reset"
+                    >
+                        Forgot Password
+                    </Link>
 
 					<button
 						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
@@ -218,7 +182,7 @@ const SignInForm = () => {
 				</div>
 
 				<p className="text-[#979797]">
-					Don’t have an account?{ " " }
+					Don’t have an account?{" "}
 					<Link
 						className="font-medium text-brand-dark-purple"
 						href="/create-account"
@@ -229,14 +193,14 @@ const SignInForm = () => {
 			</form>
 
 			<AuthPopup
-				isActive={ isActive }
-				header={ header }
-				message={ message }
-				isError={ isError }
-				setIsActive={ setIsActive }
+				isActive={isActive}
+				header={header}
+				message={message}
+				isError={isError}
+				setIsActive={setIsActive}
 			/>
 		</>
 	);
 };
 
-export default SignInForm;
+export default LockScreenForm;
