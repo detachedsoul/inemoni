@@ -1,6 +1,8 @@
 import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
+import validatePasswordField from "@helpers/validatePasswordField";
+import getCookie from "@helpers/getCookie";
 
 const SignInForm = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -15,7 +17,18 @@ const SignInForm = () => {
 		setPhoneNumber(e.target.value);
 	};
 
+	if (
+		typeof window !== "undefined" &&
+		getCookie("user_auth_token") !== undefined
+	) {
+		window.location.replace("https://www.inemoni.org/mobile");
+	}
+
 	const handlePasswordChange = (e) => {
+		if (!validatePasswordField(e.target.value)) {
+			return;
+		}
+
 		setPassword(e.target.value);
 	};
 
@@ -144,6 +157,7 @@ const SignInForm = () => {
 							className="input-form"
 							placeholder="Enter your phone number"
 							onChange={(e) => handlePhoneNumberChange(e)}
+							required={true}
 						/>
 					</label>
 
@@ -161,7 +175,13 @@ const SignInForm = () => {
 							id="password"
 							className="input-form"
 							placeholder="Enter your pin"
+							pattern="[0-9]{6}"
+							maxLength={6}
 							onChange={(e) => handlePasswordChange(e)}
+							onInput={(e) => handlePasswordChange(e)}
+							value={password}
+							aria-label="Enter your pin. It should be six digits."
+							required={true}
 						/>
 					</label>
 
