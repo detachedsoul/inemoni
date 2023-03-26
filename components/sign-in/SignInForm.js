@@ -184,6 +184,7 @@ const SignInForm = () => {
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={ 6 }
+							minLenght={6}
 							onChange={ (e) => handlePasswordChange(e) }
 							onInput={ (e) => handlePasswordChange(e) }
 							value={ password }

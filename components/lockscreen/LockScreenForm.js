@@ -212,6 +212,7 @@ const LockScreenForm = () => {
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={6}
+							minLength={6}
 							onChange={(e) => handlePasswordChange(e)}
 							onInput={(e) => handlePasswordChange(e)}
 							value={password}

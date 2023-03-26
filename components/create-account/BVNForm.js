@@ -5,9 +5,18 @@ import Image from "next/image";
 import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
 import { useState, useEffect } from "react";
+import AuthPopup from "@components/create-account/AuthPopup";
 
 const BVNForm = () => {
 	const [isActive, setIsActive] = useState(false);
+	const [authPopup, setAuthPopup] = useState(false);
+	const [header, setHeader] = useState("");
+	const [message, setMessage] = useState("");
+	const [isError, setIsError] = useState(false);
+	const [bvn, setBVN] = useState("");
+	const [isLink, setIsLink] = useState(false);
+	const [buttonText, setButtonText] = useState("");
+	const route = "/create-account/personal-details";
 
 	useEffect(() => {
 		if (isActive) {
@@ -17,10 +26,94 @@ const BVNForm = () => {
 		}
 	}, [isActive]);
 
+	const handleBVNChange = (e) => {
+		if (/^\d{0,11}$/.test(e.target.value) === false) {
+			return;
+		}
+
+		setBVN(e.target.value);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const data = {
+			id_type: "bvn",
+			id_number: bvn
+		};
+
+		const reqestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+			redirect: "follow",
+		};
+
+		try {
+			const request = await fetch(
+				"https://inemoni.org/api/auth/validate",
+				reqestOptions,
+			);
+
+			const response = await request.json();
+
+			if (response.error === false) {
+				setHeader(() => "BVN Verified Successfully");
+
+				setMessage(
+					() =>
+						"BVN verification successful. Please continue to create your account.",
+				);
+
+				setIsError(() => false);
+
+				setAuthPopup(() => true);
+
+				setIsLink(() => true);
+
+				setButtonText(() => "Continue");
+
+				document.querySelector("body").style.overflow = "hidden";
+			} else {
+				setHeader(() => "BVN Verification Failed");
+
+				setMessage(
+					() =>
+					"BVN verification failed. Please check your BVN and try again.",
+				);
+
+				setIsError(() => true);
+
+				setAuthPopup(() => true);
+
+				setButtonText(() => "Try Again");
+
+				document.querySelector("body").style.overflow = "hidden";
+			}
+		} catch (error) {
+			setHeader(() => "BVN Verification Failed");
+
+			setMessage(
+				() =>
+				"BVN verification failed. Please check your BVN and try again.",
+			);
+
+			setIsError(() => true);
+
+			setAuthPopup(() => true);
+
+			setButtonText(() => "Try Again");
+
+			document.querySelector("body").style.overflow = "hidden";
+		}
+	};
+
 	return (
+<>
 		<form
 			className="space-y-6 rounded-md p-[5%] md:bg-white"
 			method="POST"
+			onSubmit={handleSubmit}
 		>
 			<div className="mx-auto w-[90%] space-y-2 text-center">
 				<h1 className="header text-2xl">Hi, Welcome</h1>
@@ -40,11 +133,17 @@ const BVNForm = () => {
 					</span>
 
 					<input
-						type="text"
+						type="number"
 						name="bvn"
 						id="bvn"
-						className="input-form"
+						className="input-form no-number-increment"
 						placeholder="Enter BVN number"
+						maxLength={ 11 }
+						minLength={ 11 }
+						pattern="[0-9]{11}"
+						onChange={ (e) => handleBVNChange(e) }
+						value={bvn}
+						required={true}
 					/>
 				</label>
 
@@ -178,6 +277,19 @@ const BVNForm = () => {
 				</div>
 			</div>
 		</form>
+
+		<AuthPopup
+			isActive={ authPopup }
+			header={ header }
+			message={ message }
+			isError={ isError }
+			setIsActive={ setAuthPopup }
+			isLink={ isLink }
+			route={ route }
+			buttonText={ buttonText }
+		/>
+
+		</>
 	);
 };
 
