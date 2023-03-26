@@ -16,6 +16,7 @@ const BVNForm = () => {
 	const [bvn, setBVN] = useState("");
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
+	const [queryParams, setQueryParams] = useState({});
 	const route = "/create-account/personal-details";
 
 	useEffect(() => {
@@ -72,6 +73,8 @@ const BVNForm = () => {
 				setIsLink(() => true);
 
 				setButtonText(() => "Continue");
+
+				setQueryParams(() => response.data);
 
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
@@ -287,6 +290,7 @@ const BVNForm = () => {
 			isLink={ isLink }
 			route={ route }
 			buttonText={ buttonText }
+			queryParams={ queryParams }
 		/>
 
 		</>

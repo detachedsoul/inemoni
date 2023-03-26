@@ -1,4 +1,11 @@
+import { useRouter } from "next/router";
+
 const PersonalDetailsForm = () => {
+	const router = useRouter()
+
+	const queryPramas = router.query;
+
+	console.log(queryPramas);
 	return (
 		<form
 			className="rounded-md p-[5%] md:bg-white space-y-6"

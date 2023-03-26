@@ -12,6 +12,7 @@ const AuthPopup = ({
 	buttonText = "Try Again",
 	isLink = false,
 	route = null,
+	queryParams = {}
 }) => {
 	return (
 		<div
@@ -58,7 +59,11 @@ const AuthPopup = ({
 				{isLink && (
 					<Link
 						className="btn block w-full bg-brand-purple text-center text-white transition duration-500 ease-in-out hover:bg-brand-dark-purple"
-						href={route}
+						href={ {
+							pathname: route,
+							query: {...queryParams}
+						} }
+						as={route}
 						onClick={() => document.querySelector("body").style.overflow = "auto"}
 					>
 						{buttonText}
