@@ -11,7 +11,10 @@ const VerifyAccountForm = () => {
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [isError, setIsError] = useState(false);
+    const [isLink, setIsLink] = useState(false);
+	const [buttonText, setButtonText] = useState("Try Again");
     const [otp, setOTP] = useState("");
+    const route = "/sign-in";
 
     if (Object.keys(queryParams).length < 1) {
 		typeof window !== "undefined" &&
@@ -48,141 +51,37 @@ const VerifyAccountForm = () => {
 			const response = await request.json();
 
             if (response.error === false) {
-
-                console.lgo(response);
-
-                // Show the authpopup with all the neccessary information
-                setHeader(() => "Account Verified");
-                setMessage(() => "Your account has been verified successfully. You will be redirected to your dashboard shortly.");
+                setHeader(() => "Account Successfully Verified");
+                setMessage(() => "Your account has been verified successfully.");
                 setIsError(() => false);
                 setIsActive(() => true);
+                setIsLink(() => true);
+                setButtonText(() => "Login");
                 document.querySelector("body").style.overflow = "hidden";
+            } else if (
+				response.error === true &&
+				response.message === "Phone number already verified"
+			) {
+				setHeader(() => "Already Verified");
+				setMessage(
+					() => "Your phone number has already been verified.",
+				);
+				setIsError(() => false);
+				setIsActive(() => true);
+                setIsLink(() => true);
+				setButtonText(() => "Login Instead");
+				document.querySelector("body").style.overflow = "hidden";
 
-
-                // 	const now = new Date();
-                // 	const expiration = new Date(
-                // 		new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000),
-                // 	);
-
-                // 	const data = {
-                // 		phone: getCookie("phone_number").sanitizedValue.toString(),
-                // 		pin: password
-                // 	};
-
-                // 	const requestOptions = {
-                // 		method: "POST",
-                // 		body: JSON.stringify(data),
-                // 		redirect: "follow",
-                // 		headers: { "Content-Type": "application/json" },
-                // 	};
-
-                // 	const request = await fetch(
-                // 		"https://inemoni.org/api/login",
-                // 		requestOptions,
-                // 	);
-
-                // 	const response = await request.json();
-
-                // 	if (
-                // 		response.error === false &&
-                // 		response.account_verified === true
-                // 	) {
-                // 		setHeader(() => "Login Successful");
-
-                // 		setMessage(
-                // 			() =>
-                // 				"Login successful. You will be redirected to your dashboard shortly.",
-                // 		);
-
-                // 		setIsError(() => false);
-
-                // 		setIsActive(() => true);
-
-                // 		document.querySelector("body").style.overflow = "hidden";
-
-                // 		document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
-                // 		document.cookie = `user_login_token=${
-                // 			response.data.login_token
-                // 		};expires=${expiration.toGMTString()};path=/`;
-                // 		document.cookie = `phone_number=0${
-                // 			response.data.uid
-                // 		};expires=${expiration.toGMTString()};path=/`;
-                // 		document.cookie = `session_data=${
-                // 			response.data.session_data
-                // 		};expires=${expiration.toGMTString()};path=/`;
-
-                // 		setTimeout(() => {
-                // 			window.location.replace(
-                // 				`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
-                // 			);
-
-                // 			document.querySelector("body").style.overflow = "auto";
-                // 		}, 3000);
-                // 	} else if (
-                // 		response.error === false &&
-                // 		response.account_verified === false
-                // 	) {
-                // 		setHeader(() => "Account Not Verified");
-
-                // 		setMessage(
-                // 			() =>
-                // 				"Your account has not been verified. Please verify your account to continue.",
-                // 		);
-
-                // 		setIsError(() => true);
-
-                // 		setIsActive(() => true);
-
-                // 		document.querySelector("body").style.overflow = "hidden";
-                // 	} else {
-                // 		setHeader(() => "Login Failed");
-
-                // 		setMessage(
-                // 			() =>
-                // 				"Login failed. Please check your phone number and pin and try again.",
-                // 		);
-
-                // 		setIsError(() => true);
-
-                // 		setIsActive(() => true);
-
-                // 		document.querySelector("body").style.overflow = "hidden";
-                // 	}
-                // } else if (
-                // 	response.error === false &&
-                // 	response.account_verified === false
-                // ) {
-                // 	setHeader(() => "Account Not Verified");
-
-                // 	setMessage(
-                // 		() =>
-                // 			"Your account has not been verified. Please verify your account to continue.",
-                // 	);
-
-                // 	setIsError(() => true);
-
-                // 	setIsActive(() => true);
-
-                // 	document.querySelector("body").style.overflow = "hidden";
-                // } else {
-                // 	setHeader(() => "Login Failed");
-
-                // 	setMessage(
-                // 		() => "Login failed. Please check your pin and try again.",
-                // 	);
-
-                // 	setIsError(() => true);
-
-                // 	setIsActive(() => true);
-
-                // 	document.querySelector("body").style.overflow = "hidden";
-                // }
-            } else {
+                console.log(response)
+			} else {
                 setHeader(() => "Verification Failed");
-                setMessage(() => "The verification code you entered is incorrect. Please try again.");
-                setIsError(() => true);
-                setIsActive(() => true);
-                document.querySelector("body").style.overflow = "hidden";
+				setMessage(
+					() =>
+						"The verification code you entered is incorrect. Please try again.",
+				);
+				setIsError(() => true);
+				setIsActive(() => true);
+				document.querySelector("body").style.overflow = "hidden";
             }
 		} catch (error) {
 			setHeader(() => "Verification Failed");
@@ -270,9 +169,9 @@ const VerifyAccountForm = () => {
                                 id="password"
                                 className="input-form no-number-increment [-webkit-text-security:square]"
                                 placeholder="Enter OTP"
-                                pattern="[0-9]{6}"
-                                maxLength={6}
-                                minLength={6}
+                                pattern="[0-9]{4}"
+                                maxLength={4}
+                                minLength={4}
                                 onChange={handleOTPChange}
                                 value={otp}
                                 aria-label="Enter the OTP sent to your phone number"
@@ -281,10 +180,11 @@ const VerifyAccountForm = () => {
                         </label>
 
                         <button
-                            className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
+                            className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none"
                             type="submit"
+                            disabled={otp === "" ? true : false}
                         >
-                            Sign In
+                            Verify Account
                         </button>
                     </div>
                 </form>
@@ -306,6 +206,9 @@ const VerifyAccountForm = () => {
 				message={message}
 				isError={isError}
 				setIsActive={setIsActive}
+				isLink={isLink}
+				route={route}
+				buttonText={buttonText}
 			/>
 		</>
 	);
