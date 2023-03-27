@@ -8,9 +8,13 @@ const SignInForm = () => {
 	const [password, setPassword] = useState("");
 	const [keepSignin, setKeepSignin] = useState(false);
 	const [header, setHeader] = useState("");
+	const [buttonText, setButtonText] = useState("Try Again");
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [isError, setIsError] = useState(false);
+	const [isLink, setIsLink] = useState(false);
+	const [queryParams, setQueryParams] = useState({});
+	const route = "/verify-account";
 
 	const handlePhoneNumberChange = (e) => {
 		setPhoneNumber(e.target.value);
@@ -101,6 +105,12 @@ const SignInForm = () => {
 
 				setIsActive(() => true);
 
+				setButtonText(() => "Proceed to verify account");
+
+				setIsLink(() => true);
+
+				setQueryParams(() => response.data);
+
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
 				setHeader(() => "Login Failed");
@@ -184,7 +194,7 @@ const SignInForm = () => {
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={ 6 }
-							minLengt={6}
+							minLength={6}
 							onChange={ handlePasswordChange }
 							value={ password }
 							aria-label="Enter your pin. It should be six digits."
@@ -240,6 +250,10 @@ const SignInForm = () => {
 				message={ message }
 				isError={ isError }
 				setIsActive={ setIsActive }
+				isLink={isLink}
+				route={route}
+				buttonText={buttonText}
+				queryParams={queryParams}
 			/>
 		</>
 	);

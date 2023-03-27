@@ -165,8 +165,6 @@ const LockScreenForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
 			}
 		} catch (error) {
-			console.log(error)
-
 			setHeader(() => "Login Failed");
 
 			setMessage(
@@ -214,7 +212,6 @@ const LockScreenForm = () => {
 							maxLength={6}
 							minLength={6}
 							onChange={handlePasswordChange}
-							onInput={handlePasswordChange}
 							value={password}
 							aria-label="Enter your pin. It should be six digits."
 							required={true}

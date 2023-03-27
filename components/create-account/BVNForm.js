@@ -77,6 +77,7 @@ const BVNForm = () => {
 				setButtonText(() => "Continue");
 
 				setQueryParams(() => response.data);
+
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
 				setHeader(() => "BVN Verification Failed");

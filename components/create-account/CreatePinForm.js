@@ -203,8 +203,6 @@ const CreatePinForm = () => {
 			const response = await request.json();
 
 			if (response.error === false) {
-				console.log(response);
-
 				setHeader(() => "Registration Successful");
 				setMessage(
 					() => "Registration successful. Please proceed to verify your account",
@@ -213,7 +211,7 @@ const CreatePinForm = () => {
 				setIsActive(() => true);
 				setIsLink(() => true);
 				setButtonText(() => "Continue");
-				setQueryParams(() => response);
+				setQueryParams(() => response.data.login_token);
 			} else {
 				setHeader(() => "Error");
 				setMessage(() => response.message);
