@@ -163,7 +163,7 @@ const SignInForm = () => {
 							id="phone-number"
 							className="input-form"
 							placeholder="Enter your phone number"
-							onChange={ (e) => handlePhoneNumberChange(e) }
+							onChange={ handlePhoneNumberChange }
 							required={ true }
 						/>
 					</label>
@@ -184,9 +184,8 @@ const SignInForm = () => {
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={ 6 }
-							minLenght={6}
-							onChange={ (e) => handlePasswordChange(e) }
-							onInput={ (e) => handlePasswordChange(e) }
+							minLengt={6}
+							onChange={ handlePasswordChange }
 							value={ password }
 							aria-label="Enter your pin. It should be six digits."
 							required={ true }
@@ -202,7 +201,7 @@ const SignInForm = () => {
 								className="input-checkbox"
 								type="checkbox"
 								id="remember-me"
-								onChange={ (e) => handleKeepSigninChange(e) }
+								onChange={ handleKeepSigninChange }
 							/>
 							<span className="text-[#979797]">
 								Keep me signed in

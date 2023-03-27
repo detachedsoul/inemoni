@@ -59,6 +59,8 @@ const BVNForm = () => {
 			const response = await request.json();
 
 			if (response.error === false) {
+				response.data.bvn = bvn;
+
 				setHeader(() => "BVN Verified Successfully");
 
 				setMessage(
@@ -75,7 +77,6 @@ const BVNForm = () => {
 				setButtonText(() => "Continue");
 
 				setQueryParams(() => response.data);
-
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
 				setHeader(() => "BVN Verification Failed");
@@ -98,7 +99,7 @@ const BVNForm = () => {
 
 			setMessage(
 				() =>
-				"BVN verification failed. Please check your BVN and try again.",
+				"BVN verification failed. Please try again later.",
 			);
 
 			setIsError(() => true);
@@ -144,7 +145,7 @@ const BVNForm = () => {
 						maxLength={ 11 }
 						minLength={ 11 }
 						pattern="[0-9]{11}"
-						onChange={ (e) => handleBVNChange(e) }
+						onChange={ handleBVNChange }
 						value={bvn}
 						required={true}
 					/>

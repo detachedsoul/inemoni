@@ -213,8 +213,8 @@ const LockScreenForm = () => {
 							pattern="[0-9]{6}"
 							maxLength={6}
 							minLength={6}
-							onChange={(e) => handlePasswordChange(e)}
-							onInput={(e) => handlePasswordChange(e)}
+							onChange={handlePasswordChange}
+							onInput={handlePasswordChange}
 							value={password}
 							aria-label="Enter your pin. It should be six digits."
 							required={true}

@@ -1,13 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import AccountCreationSuccessfulPopup from "@components/create-account/AccountCreationSuccessfulPopup";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import AuthPopup from "@components/create-account/AuthPopup";
 
 const CreatePinForm = () => {
-    const [isActive, setIsActive] = useState(false);
+	const router = useRouter();
+	const queryParams = router.query;
 
-    useEffect(() => {
+	const [isActive, setIsActive] = useState(false);
+	const [header, setHeader] = useState("");
+	const [message, setMessage] = useState("");
+	const [isError, setIsError] = useState(false);
+	const [isLink, setIsLink] = useState(false);
+	const [buttonText, setButtonText] = useState("");
+	const [queryParameters, setQueryParams] = useState({});
+	const route = "/verify-account";
+
+	// Create 6 states to hold the 6 digits of the pin
+	const [pin1, setPin1] = useState("");
+	const [pin2, setPin2] = useState("");
+	const [pin3, setPin3] = useState("");
+	const [pin4, setPin4] = useState("");
+	const [pin5, setPin5] = useState("");
+	const [pin6, setPin6] = useState("");
+
+	// Create another 6 states to hold the 6 digits of the confirm pin
+	const [confirmPin1, setConfirmPin1] = useState("");
+	const [confirmPin2, setConfirmPin2] = useState("");
+	const [confirmPin3, setConfirmPin3] = useState("");
+	const [confirmPin4, setConfirmPin4] = useState("");
+	const [confirmPin5, setConfirmPin5] = useState("");
+	const [confirmPin6, setConfirmPin6] = useState("");
+
+	useEffect(() => {
 		if (isActive) {
 			document.querySelector("body").style.overflow = "hidden";
 		} else {
@@ -15,18 +42,208 @@ const CreatePinForm = () => {
 		}
 	}, [isActive]);
 
+	if (Object.keys(queryParams).length < 1) {
+		typeof window !== "undefined" &&
+			window.location.replace("/create-account");
+
+		return;
+	}
+
+	// Update the pin fields when the user types in the pin fields and makes sure it is a number with a length of 1
+	const handlePin1Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin1(e.target.value);
+	};
+
+	const handlePin2Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin2(e.target.value);
+	};
+
+	const handlePin3Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin3(e.target.value);
+	};
+
+	const handlePin4Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin4(e.target.value);
+	};
+
+	const handlePin5Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin5(e.target.value);
+	};
+
+	const handlePin6Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setPin6(e.target.value);
+	};
+
+	const handlePin7Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin1(e.target.value);
+	};
+
+	const handlePin8Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin2(e.target.value);
+	};
+
+	const handlePin9Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin3(e.target.value);
+	};
+
+	const handlePin10Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin4(e.target.value);
+	};
+
+	const handlePin11Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin5(e.target.value);
+	};
+
+	const handlePin12Change = (e) => {
+		if (e.target.value.length > 1 || isNaN(e.target.value)) {
+			return;
+		}
+
+		setConfirmPin6(e.target.value);
+	};
+
+	// Enable the submit button when all the pin fields are filled
+	const pins = [pin1, pin2, pin3, pin4, pin5, pin6, confirmPin1, confirmPin2, confirmPin3, confirmPin4, confirmPin5, confirmPin6];
+	const isDisabled = pins.some((pin) => pin === "");
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		// Merge all the pin to one value
+		const pin = `${pin1}${pin2}${pin3}${pin4}${pin5}${pin6}`;
+
+		// Merge all the confirm pin to one value
+		const confirmPin = `${confirmPin1}${confirmPin2}${confirmPin3}${confirmPin4}${confirmPin5}${confirmPin6}`;
+
+		// Check if both set of pins match
+		if (pin !== confirmPin) {
+			setHeader(() => "Error");
+			setMessage(() => "The pins do not match");
+			setIsError(() => true);
+			setIsActive(() => true);
+			setButtonText(() => "Try Again");
+			return;
+		}
+
+		// Structure values to be sent to the server
+		const data = {
+			id_type: "bvn",
+    		id_number: queryParams.bvn,
+			fname: queryParams.firstname,
+			lname: queryParams.lastname,
+			mname: queryParams.middlename,
+			email: queryParams.email,
+			phone: queryParams.phone,
+			dob: queryParams.dob,
+			address: queryParams.address,
+			pin: confirmPin,
+			referral_code: queryParams.referralCode,
+			hashedData: queryParams.hashedData,
+			nokFname: queryParams.nokFname,
+			nokLname: queryParams.nokLname,
+			nokMname: queryParams.nokMname,
+			nokEmail: queryParams.nokEmail,
+			nokPhone: queryParams.nokPhone,
+		};
+
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+			redirect: "follow"
+		};
+
+		try {
+			const request = await fetch(`https://www.inemoni.org/api/auth/register`, requestOptions);
+
+			const response = await request.json();
+
+			if (response.error === false) {
+				console.log(response);
+
+				setHeader(() => "Registration Successful");
+				setMessage(
+					() => "Registration successful. Please proceed to verify your account",
+				);
+				setIsError(() => false);
+				setIsActive(() => true);
+				setIsLink(() => true);
+				setButtonText(() => "Continue");
+				setQueryParams(() => response);
+			} else {
+				setHeader(() => "Error");
+				setMessage(() => response.message);
+				setIsError(() => true);
+				setButtonText(() => "Try Again");
+				setIsActive(() => true);
+			}
+		} catch (error) {
+			setHeader(() => "Error");
+			setMessage(() => "An error occured");
+			setIsError(() => true);
+			setIsActive(() => true);
+			setButtonText(() => "Try Again");
+			setIsActive(() => true);
+		}
+	};
+
     return (
 		<>
 			<form
 				className="space-y-6 rounded-md p-[5%] md:bg-white"
 				method="POST"
+				onSubmit={handleSubmit}
 			>
 				<div className="mx-auto w-[90%] space-y-2 text-center">
 					<h1 className="header text-2xl">
 						Finish Your Registration
 					</h1>
 
-					<p className="text-base mx-auto w-4/5">
+					<p className="mx-auto w-4/5 text-base">
 						Choose a secure pin for your account
 					</p>
 				</div>
@@ -40,57 +257,89 @@ const CreatePinForm = () => {
 							Create PIN
 						</span>
 
-						<div className="flex items-center gap-2 overflow-x-auto max-w-full no-scrollbar">
+						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin"
-								className="input-form border-2 border-[#34c759] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold text-[#34c759] focus:border-[#34c759]"
-								value="1"
-                                readOnly
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin1 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin1}
+								onChange={handlePin1Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin-value-2"
-								className="input-form border-2 border-[#34c759] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold text-[#34c759] focus:border-[#34c759]"
-								value="1"
-                                readOnly
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin2 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin2}
+								onChange={handlePin2Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin-value-3"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin3 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin3}
+								onChange={handlePin3Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin-value-4"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin4 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin4}
+								onChange={handlePin4Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin-value-5"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin5 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin5}
+								onChange={handlePin5Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="create-pin"
 								id="create-pin-value-6"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									pin6 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={pin6}
+								onChange={handlePin6Change}
 							/>
 						</div>
 					</label>
@@ -103,53 +352,89 @@ const CreatePinForm = () => {
 							Confirm Pin
 						</span>
 
-						<div className="flex items-center gap-2 overflow-x-auto max-w-full no-scrollbar">
+						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin1 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin1}
+								onChange={handlePin7Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin-value-2"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin2 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin2}
+								onChange={handlePin8Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin-value-3"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin3 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin3}
+								onChange={handlePin9Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin-value-4"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin4 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin4}
+								onChange={handlePin10Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin-value-5"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin5 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin5}
+								onChange={handlePin11Change}
 							/>
 
 							<input
-								type="password"
-                                maxLength="1"
+								type="number"
+								maxLength={1}
 								name="confirm-pin"
 								id="confirm-pin-value-6"
-								className="input-form border-[#979797] px-2 py-5 w-[calc(100%/6)] lg:py-6 h-[calc(100%/6)] text-center font-bold focus:border-[#979797]"
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+									confirmPin6 !== ""
+										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
+										: "border-[#979797] focus:border-[#979797]"
+								}`}
+								value={confirmPin6}
+								onChange={handlePin12Change}
 							/>
 						</div>
 					</label>
@@ -163,11 +448,9 @@ const CreatePinForm = () => {
 							rel="noopener noreferrer"
 						>
 							Terms of Use
-						</Link>
-
-                        {" "} & {" "}
-
-                        <Link
+						</Link>{" "}
+						&{" "}
+						<Link
 							className="text-brand-dark-purple"
 							href="/legal/privacy-policy/"
 							target="_blank"
@@ -179,23 +462,26 @@ const CreatePinForm = () => {
 					</p>
 
 					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:cursor-not-allowed disabled:pointer-events-none disabled:select-none"
+						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none"
 						type="submit"
-						onClick={(e) =>
-							setIsActive(() => {
-								e.preventDefault();
-
-								return true;
-							})
-						}
-                        disabled={isActive}
+						disabled={isDisabled}
 					>
 						Create Account
 					</button>
 				</div>
 			</form>
 
-			<AccountCreationSuccessfulPopup isActive={isActive} />
+			<AuthPopup
+				isActive={isActive}
+				header={header}
+				message={message}
+				isError={isError}
+				setIsActive={setIsActive}
+				isLink={isLink}
+				route={route}
+				buttonText={buttonText}
+				queryParams={queryParameters}
+			/>
 		</>
 	);
 };
