@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -71,8 +70,6 @@ const VerifyAccountForm = () => {
                 setIsLink(() => true);
 				setButtonText(() => "Login Instead");
 				document.querySelector("body").style.overflow = "hidden";
-
-                console.log(response)
 			} else {
                 setHeader(() => "Verification Failed");
 				setMessage(

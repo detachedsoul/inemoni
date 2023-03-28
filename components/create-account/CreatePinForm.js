@@ -211,7 +211,7 @@ const CreatePinForm = () => {
 				setIsActive(() => true);
 				setIsLink(() => true);
 				setButtonText(() => "Continue");
-				setQueryParams(() => response.data.login_token);
+				setQueryParams(() => response.data);
 			} else {
 				setHeader(() => "Error");
 				setMessage(() => response.message);

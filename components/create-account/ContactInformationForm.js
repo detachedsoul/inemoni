@@ -57,6 +57,14 @@ const ContactInformationForm = () => {
 			return;
 		}
 
+		if (email === "") {
+			setHeader(() => "Missing Field");
+			setMessage(() => "Please enter a valid email");
+			setIsError(() => true);
+			setIsActive(() => true);
+			return;
+		}
+
 		// Replace email and phone number in queryParams with the values gotten from the state
 		queryParams.email = email;
 		queryParams.phone = phoneNumber;

@@ -2,8 +2,11 @@ import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import validatePasswordField from "@helpers/validatePasswordField";
+import { useRouter } from "next/router";
 
 const SignInForm = () => {
+	const router = useRouter();
+
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [keepSignin, setKeepSignin] = useState(false);
@@ -86,7 +89,11 @@ const SignInForm = () => {
 				document.cookie = `session_data=${response.data.session_data};expires=${expiration.toGMTString()};path=/`;
 
 				setTimeout(() => {
-					window.location.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
+					router.prefetch(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
+
+					router.replace(
+						`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
+					);
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);

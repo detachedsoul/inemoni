@@ -3,8 +3,11 @@ import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import getCookie from "@helpers/getCookie";
 import validatePasswordField from "@helpers/validatePasswordField";
+import { useRouter } from "next/router";
 
 const LockScreenForm = () => {
+	const router = useRouter();
+
 	const [password, setPassword] = useState("");
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
@@ -99,9 +102,9 @@ const LockScreenForm = () => {
 					};expires=${expiration.toGMTString()};path=/`;
 
 					setTimeout(() => {
-						window.location.replace(
-							`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
-						);
+						router.prefetch(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
+
+						router.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
 
 						document.querySelector("body").style.overflow = "auto";
 					}, 3000);
