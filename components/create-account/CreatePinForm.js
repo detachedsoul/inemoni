@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import AuthPopup from "@components/create-account/AuthPopup";
 
 const CreatePinForm = () => {
 	const router = useRouter();
 	const queryParams = router.query;
+
+	const confirmPinRef = useRef(null);
 
 	const [isActive, setIsActive] = useState(false);
 	const [header, setHeader] = useState("");
@@ -56,6 +58,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin1(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin2Change = (e) => {
@@ -64,6 +70,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin2(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin3Change = (e) => {
@@ -72,6 +82,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin3(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin4Change = (e) => {
@@ -80,6 +94,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin4(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin5Change = (e) => {
@@ -88,6 +106,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin5(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin6Change = (e) => {
@@ -96,6 +118,10 @@ const CreatePinForm = () => {
 		}
 
 		setPin6(e.target.value);
+
+		if(confirmPinRef.current.value.length < 1 && e.target.value.length > 0) {
+			confirmPinRef.current.focus();
+		}
 	};
 
 	const handlePin7Change = (e) => {
@@ -104,6 +130,10 @@ const CreatePinForm = () => {
 		}
 
 		setConfirmPin1(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin8Change = (e) => {
@@ -112,6 +142,10 @@ const CreatePinForm = () => {
 		}
 
 		setConfirmPin2(e.target.value);
+
+		if (e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin9Change = (e) => {
@@ -120,6 +154,10 @@ const CreatePinForm = () => {
 		}
 
 		setConfirmPin3(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin10Change = (e) => {
@@ -128,6 +166,10 @@ const CreatePinForm = () => {
 		}
 
 		setConfirmPin4(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin11Change = (e) => {
@@ -136,6 +178,10 @@ const CreatePinForm = () => {
 		}
 
 		setConfirmPin5(e.target.value);
+
+		if(e.target.nextElementSibling.value.length < 1 && e.target.value.length > 0) {
+			e.target.nextElementSibling.focus();
+		}
 	};
 
 	const handlePin12Change = (e) => {
@@ -275,7 +321,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="create-pin"
+								name="create-pin-value-2"
 								id="create-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									pin2 !== ""
@@ -290,7 +336,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="create-pin"
+								name="create-pin-value-3"
 								id="create-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									pin3 !== ""
@@ -305,7 +351,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="create-pin"
+								name="create-pin-value-4"
 								id="create-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									pin4 !== ""
@@ -320,7 +366,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="create-pin"
+								name="create-pin-value-5"
 								id="create-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									pin5 !== ""
@@ -335,7 +381,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="create-pin"
+								name="create-pin-value-6"
 								id="create-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									pin6 !== ""
@@ -359,24 +405,24 @@ const CreatePinForm = () => {
 						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
 							<input
 								type="number"
-								maxLength={1}
+								maxLength={ 1 }
 								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
-									confirmPin1 !== ""
+								className={ `input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${confirmPin1 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
-								}`}
-								value={confirmPin1}
-								onChange={handlePin7Change}
+									}` }
+								value={ confirmPin1 }
+								onChange={ handlePin7Change }
+								ref={ confirmPinRef }
 							/>
 
 							<input
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="confirm-pin"
+								name="confirm-pin-value-2"
 								id="confirm-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									confirmPin2 !== ""
@@ -391,7 +437,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="confirm-pin"
+								name="confirm-pin-value-3"
 								id="confirm-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									confirmPin3 !== ""
@@ -406,7 +452,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="confirm-pin"
+								name="confirm-pin-value-4"
 								id="confirm-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									confirmPin4 !== ""
@@ -421,7 +467,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="confirm-pin"
+								name="confirm-pin-value-5"
 								id="confirm-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									confirmPin5 !== ""
@@ -436,7 +482,7 @@ const CreatePinForm = () => {
 								type="number"
 								maxLength={1}
 								pattern="[0-9]{1}"
-								name="confirm-pin"
+								name="confirm-pin-value-6"
 								id="confirm-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
 									confirmPin6 !== ""

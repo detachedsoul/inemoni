@@ -50,6 +50,15 @@ const LockScreenForm = () => {
 				response.error === false &&
 				response.message === "Login successful"
 			) {
+				setHeader(() => "Login Successful");
+				setIsError(() => false);
+				setIsActive(() => true);
+				setMessage(
+					() =>
+						"Login successful. You will be redirected to your dashboard shortly.",
+				);
+				document.querySelector("body").style.overflow = "hidden";
+
 				setTimeout(() => {
 					router.prefetch(
 						`https://www.inemoni.org/mobile`,
@@ -61,13 +70,26 @@ const LockScreenForm = () => {
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);
+			} else {
+				setHeader(() => "Login Failed");
+
+				setMessage(
+					() =>
+						"Login failed. Please check pin and try again.",
+				);
+
+				setIsError(() => true);
+
+				setIsActive(() => true);
+
+				document.querySelector("body").style.overflow = "hidden";
 			}
 		} catch (error) {
 			setHeader(() => "Login Failed");
 
 			setMessage(
 				() =>
-					"Login failed. Please check your pin and try again.",
+					"Sorry, an error occured. Please try again.",
 			);
 
 			setIsError(() => true);
