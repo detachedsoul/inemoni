@@ -42,12 +42,12 @@ const CreatePinForm = () => {
 		}
 	}, [isActive]);
 
-	if (Object.keys(queryParams).length < 1) {
-		typeof window !== "undefined" &&
-			window.location.replace("/create-account");
+	// if (Object.keys(queryParams).length < 1) {
+	// 	typeof window !== "undefined" &&
+	// 		window.location.replace("/create-account");
 
-		return;
-	}
+	// 	return;
+	// }
 
 	// Update the pin fields when the user types in the pin fields and makes sure it is a number with a length of 1
 	const handlePin1Change = (e) => {
@@ -259,6 +259,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -273,6 +274,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -287,6 +289,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -301,6 +304,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -315,6 +319,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -329,6 +334,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -354,6 +360,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -368,6 +375,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -382,6 +390,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -396,6 +405,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -410,6 +420,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
@@ -424,6 +435,7 @@ const CreatePinForm = () => {
 							<input
 								type="number"
 								maxLength={1}
+								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${

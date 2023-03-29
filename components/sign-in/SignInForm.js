@@ -17,6 +17,7 @@ const SignInForm = () => {
 	const [isError, setIsError] = useState(false);
 	const [isLink, setIsLink] = useState(false);
 	const [queryParams, setQueryParams] = useState({});
+	const [isVisible, setIsVisible] = useState(false);
 	const route = "/verify-account";
 
 	const handlePhoneNumberChange = (e) => {
@@ -81,12 +82,7 @@ const SignInForm = () => {
 					new Date(now.getTime() + (60 * 60 * 60 * 24 * 365 * 10)),
 				);
 
-				document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
-				document.cookie = `user_login_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
-				document.cookie = `phone_number=0${
-					response.data.uid
-				};expires=${expiration.toGMTString()};path=/`;
-				document.cookie = `session_data=${response.data.session_data};expires=${expiration.toGMTString()};path=/`;
+				document.cookie = `user_auth_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
 
 				setTimeout(() => {
 					router.prefetch(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
@@ -155,7 +151,7 @@ const SignInForm = () => {
 			<form
 				className="space-y-6 rounded-md p-[5%] md:bg-white"
 				method="POST"
-				onSubmit={ handleSubmit }
+				onSubmit={handleSubmit}
 			>
 				<div className="mx-auto w-[90%] space-y-2 text-center">
 					<h1 className="header text-2xl">Hi, Welcome</h1>
@@ -180,13 +176,13 @@ const SignInForm = () => {
 							id="phone-number"
 							className="input-form"
 							placeholder="Enter your phone number"
-							onChange={ handlePhoneNumberChange }
-							required={ true }
+							onChange={handlePhoneNumberChange}
+							required={true}
 						/>
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="relative grid gap-0.5"
 						htmlFor="password"
 					>
 						<span className="font-bold text-brand-dark-purple">
@@ -194,19 +190,35 @@ const SignInForm = () => {
 						</span>
 
 						<input
-							type="number"
+							type={isVisible ? "text" : "password"}
 							name="password"
 							id="password"
-							className="input-form [-webkit-text-security:square] no-number-increment"
+							className="input-form"
+							inputmode="numeric"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
-							maxLength={ 6 }
+							maxLength={6}
 							minLength={6}
-							onChange={ handlePasswordChange }
-							value={ password }
+							onChange={handlePasswordChange}
+							value={password}
 							aria-label="Enter your pin. It should be six digits."
-							required={ true }
+							required={true}
 						/>
+
+						<button
+							className="absolute top-12 right-3"
+							type="button"
+							aria-label="Toggle password field visibility"
+							onClick={() => setIsVisible(() => !isVisible)}
+						>
+							<i
+								className={`${
+									isVisible
+										? "fi-rr-eye"
+										: "fi-rr-eye-crossed"
+								} text-xl`}
+							></i>
+						</button>
 					</label>
 
 					<div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-4">
@@ -218,7 +230,7 @@ const SignInForm = () => {
 								className="input-checkbox"
 								type="checkbox"
 								id="remember-me"
-								onChange={ handleKeepSigninChange }
+								onChange={handleKeepSigninChange}
 							/>
 							<span className="text-[#979797]">
 								Keep me signed in
@@ -241,7 +253,7 @@ const SignInForm = () => {
 				</div>
 
 				<p className="text-[#979797]">
-					Don’t have an account?{ " " }
+					Don’t have an account?{" "}
 					<Link
 						className="font-medium text-brand-dark-purple"
 						href="/create-account"
@@ -252,11 +264,11 @@ const SignInForm = () => {
 			</form>
 
 			<AuthPopup
-				isActive={ isActive }
-				header={ header }
-				message={ message }
-				isError={ isError }
-				setIsActive={ setIsActive }
+				isActive={isActive}
+				header={header}
+				message={message}
+				isError={isError}
+				setIsActive={setIsActive}
 				isLink={isLink}
 				route={route}
 				buttonText={buttonText}

@@ -13,6 +13,7 @@ const LockScreenForm = () => {
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [isError, setIsError] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
 
 	const handlePasswordChange = (e) => {
 		if (!validatePasswordField(e.target.value)) {
@@ -26,7 +27,7 @@ const LockScreenForm = () => {
 		e.preventDefault();
 
 		const data = {
-			user_token: getCookie("user_login_token").sanitizedValue.toString(),
+			user_token: getCookie("user_auth_token").sanitizedValue.toString(),
 			pin: password,
 		};
 
@@ -49,123 +50,17 @@ const LockScreenForm = () => {
 				response.error === false &&
 				response.message === "Login successful"
 			) {
-				const now = new Date();
-				const expiration = new Date(
-					new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000),
-				);
-
-				const data = {
-					phone: getCookie("phone_number").sanitizedValue.toString(),
-					pin: password
-				};
-
-				const requestOptions = {
-					method: "POST",
-					body: JSON.stringify(data),
-					redirect: "follow",
-					headers: { "Content-Type": "application/json" },
-				};
-
-				const request = await fetch(
-					"https://inemoni.org/api/login",
-					requestOptions,
-				);
-
-				const response = await request.json();
-
-				if (
-					response.error === false &&
-					response.account_verified === true
-				) {
-					setHeader(() => "Login Successful");
-
-					setMessage(
-						() =>
-							"Login successful. You will be redirected to your dashboard shortly.",
+				setTimeout(() => {
+					router.prefetch(
+						`https://www.inemoni.org/mobile`,
 					);
 
-					setIsError(() => false);
-
-					setIsActive(() => true);
-
-					document.querySelector("body").style.overflow = "hidden";
-
-					document.cookie = `is_logged_in=${true};expires=${expiration.toGMTString()};path=/`;
-					document.cookie = `user_login_token=${
-						response.data.login_token
-					};expires=${expiration.toGMTString()};path=/`;
-					document.cookie = `phone_number=0${
-						response.data.uid
-					};expires=${expiration.toGMTString()};path=/`;
-					document.cookie = `session_data=${
-						response.data.session_data
-					};expires=${expiration.toGMTString()};path=/`;
-
-					setTimeout(() => {
-						router.prefetch(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
-
-						router.replace(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
-
-						document.querySelector("body").style.overflow = "auto";
-					}, 3000);
-				} else if (
-					response.error === false &&
-					response.account_verified === false
-				) {
-					setHeader(() => "Account Not Verified");
-
-					setMessage(
-						() =>
-							"Your account has not been verified. Please verify your account to continue.",
+					router.replace(
+						`https://www.inemoni.org/mobile`,
 					);
 
-					setIsError(() => true);
-
-					setIsActive(() => true);
-
-					document.querySelector("body").style.overflow = "hidden";
-				} else {
-					setHeader(() => "Login Failed");
-
-					setMessage(
-						() =>
-							"Login failed. Please check your phone number and pin and try again.",
-					);
-
-					setIsError(() => true);
-
-					setIsActive(() => true);
-
-					document.querySelector("body").style.overflow = "hidden";
-				}
-			} else if (
-				response.error === false &&
-				response.account_verified === false
-			) {
-				setHeader(() => "Account Not Verified");
-
-				setMessage(
-					() =>
-						"Your account has not been verified. Please verify your account to continue.",
-				);
-
-				setIsError(() => true);
-
-				setIsActive(() => true);
-
-				document.querySelector("body").style.overflow = "hidden";
-			} else {
-				setHeader(() => "Login Failed");
-
-				setMessage(
-					() => "Login failed. Please check your pin and try again.",
-				);
-
-				setIsError(() => true);
-
-				setIsActive(() => true);
-
-				document.querySelector("body").style.overflow = "hidden";
+					document.querySelector("body").style.overflow = "auto";
+				}, 3000);
 			}
 		} catch (error) {
 			setHeader(() => "Login Failed");
@@ -198,7 +93,7 @@ const LockScreenForm = () => {
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="relative grid gap-0.5"
 						htmlFor="password"
 					>
 						<span className="font-bold text-brand-dark-purple">
@@ -206,10 +101,11 @@ const LockScreenForm = () => {
 						</span>
 
 						<input
-							type="number"
+							type={isVisible ? 'text' : 'password'}
 							name="password"
 							id="password"
-							className="input-form no-number-increment [-webkit-text-security:square]"
+							className="input-form"
+							inputmode="numeric"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={6}
@@ -219,14 +115,29 @@ const LockScreenForm = () => {
 							aria-label="Enter your pin. It should be six digits."
 							required={true}
 						/>
+
+						<button
+							className="absolute top-12 right-3"
+							type="button"
+							aria-label="Toggle password field visibility"
+							onClick={() => setIsVisible(() => !isVisible)}
+						>
+							<i
+								className={`${
+									isVisible
+										? "fi-rr-eye"
+										: "fi-rr-eye-crossed"
+								} text-xl`}
+							></i>
+						</button>
 					</label>
 
-                    <Link
-                        className="text-brand-dark-purple"
-                        href="/password-reset"
-                    >
-                        Forgot Password
-                    </Link>
+					<Link
+						className="text-brand-dark-purple"
+						href="/password-reset"
+					>
+						Forgot Password
+					</Link>
 
 					<button
 						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"

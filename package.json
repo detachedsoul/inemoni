@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npx purgecss --config purgecss.config.js -o ./assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css && next build && next export",
+    "buildIcons": "npx purgecss --config purgecss.config.js -o ./assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css",
     "start": "next start",
     "lint": "next lint",
     "compile": "npx tailwindcss -i ./src/main.css -o ./styles/globals.css --watch --minify"
