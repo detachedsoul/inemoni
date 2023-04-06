@@ -2,11 +2,8 @@ import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import validatePasswordField from "@helpers/validatePasswordField";
-import { useRouter } from "next/router";
 
 const SignInForm = () => {
-	const router = useRouter();
-
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [keepSignin, setKeepSignin] = useState(false);
@@ -54,7 +51,7 @@ const SignInForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/login",
+				"https://www.inemoni.org/api/login",
 				requestOptions,
 			);
 
@@ -85,11 +82,7 @@ const SignInForm = () => {
 				document.cookie = `user_auth_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
 
 				setTimeout(() => {
-					router.prefetch(`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`);
-
-					router.replace(
-						`https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}`,
-					);
+					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);
@@ -194,7 +187,7 @@ const SignInForm = () => {
 							name="password"
 							id="password"
 							className="input-form"
-							inputmode="numeric"
+							inputMode="numeric"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={6}

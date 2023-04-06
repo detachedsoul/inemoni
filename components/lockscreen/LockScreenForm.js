@@ -3,11 +3,8 @@ import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import getCookie from "@helpers/getCookie";
 import validatePasswordField from "@helpers/validatePasswordField";
-import { useRouter } from "next/router";
 
 const LockScreenForm = () => {
-	const router = useRouter();
-
 	const [password, setPassword] = useState("");
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
@@ -60,13 +57,7 @@ const LockScreenForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
 
 				setTimeout(() => {
-					router.prefetch(
-						`https://www.inemoni.org/mobile`,
-					);
-
-					router.replace(
-						`https://www.inemoni.org/mobile`,
-					);
+					window.location.href = `https://www.inemoni.org/mobile`;
 
 					document.querySelector("body").style.overflow = "auto";
 				}, 3000);
@@ -127,7 +118,7 @@ const LockScreenForm = () => {
 							name="password"
 							id="password"
 							className="input-form"
-							inputmode="numeric"
+							inputMode="numeric"
 							placeholder="Enter your pin"
 							pattern="[0-9]{6}"
 							maxLength={6}

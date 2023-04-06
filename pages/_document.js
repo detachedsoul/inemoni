@@ -6,7 +6,7 @@ const Document = () => {
 			<Head>
 				<meta charSet="UTF-8" />
 				<link
-					rel="icon"
+					rel="shortcut icon"
 					type="image/x-icon"
 					href="/favicon.png"
 				/>

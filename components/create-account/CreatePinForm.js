@@ -44,14 +44,14 @@ const CreatePinForm = () => {
 		}
 	}, [isActive]);
 
-	// if (Object.keys(queryParams).length < 1) {
-	// 	typeof window !== "undefined" &&
-	// 		window.location.replace("/create-account");
+	if (Object.keys(queryParams).length < 1) {
+		typeof window !== "undefined" &&
+			window.location.replace("/create-account");
 
-	// 	return;
-	// }
+		return;
+	}
 
-	// Update the pin fields when the user types in the pin fields and makes sure it is a number with a length of 1
+	// Update the pin fields when the user types in the pin fields and makes sure it is a number with a length of 1 and focus the next field automatically
 	const handlePin1Change = (e) => {
 		if (e.target.value.length > 1 || isNaN(e.target.value)) {
 			return;
