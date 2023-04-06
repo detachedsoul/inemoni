@@ -18,7 +18,7 @@ const TrackExpenses = () => {
 
 				<Link
 					className="bg-brand-black hover:bg-brand-dark-purple text-white btn inline-block transition-colors duration-300 ease-in"
-					href="/"
+					href="/create-account"
 				>
 					Get Started
 				</Link>

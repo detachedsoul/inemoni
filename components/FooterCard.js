@@ -13,8 +13,7 @@ const FooterCard = () => {
 				<div className="flex flex-wrap items-center gap-4">
 					<Link
 						className="btn block bg-white text-brand-black"
-						href="https://www.inemoni.org/mobile"
-						target="_blank" rel="noopener noreferrer"
+						href="/create-account"
 					>
 						Get Started
 					</Link>
