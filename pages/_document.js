@@ -10,7 +10,10 @@ const Document = () => {
 					type="image/x-icon"
 					href="/favicon.png"
 				/>
-				<meta property="og:image" content="https://inemoni.org/_next/static/media/logo.846c8179.svg" />
+				<meta
+					property="og:image"
+					content="https://www.inemoni.org/img/og-image.jpg"
+				/>
 			</Head>
 
 			<body
