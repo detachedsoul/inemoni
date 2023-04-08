@@ -30,9 +30,9 @@ const HeroText = () => {
 
 					<Link
 						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
-						href="/about"
+						href="/sign-in"
 					>
-						Learn More
+						Sign In
 						<span className="sr-only">
 							Read more about who we are and what we do
 						</span>

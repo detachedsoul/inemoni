@@ -1,7 +1,7 @@
 import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
-import validatePasswordField from "@helpers/validatePasswordField";
+import validateNumberField from "@helpers/validateNumberField";
 
 const SignInForm = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,11 +18,16 @@ const SignInForm = () => {
 	const route = "/verify-account";
 
 	const handlePhoneNumberChange = (e) => {
+		// Allow only numbers with maximum lenght of 11
+		if (!validateNumberField(e.target.value, 11)) {
+			return;
+		}
+
 		setPhoneNumber(e.target.value);
 	};
 
 	const handlePasswordChange = (e) => {
-		if (!validatePasswordField(e.target.value)) {
+		if (!validateNumberField(e.target.value, 6)) {
 			return;
 		}
 
@@ -74,12 +79,24 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 
-				const now = new Date();
-				const expiration = new Date(
-					new Date(now.getTime() + (60 * 60 * 60 * 24 * 365 * 10)),
-				);
+				// Convert the fname gotten from response to lowercase and then make the first letter uppercase
+				const fname = response.data.fname.toLowerCase().split(" ");
+				const fnameCapitalized = fname.map((word) => {
+					return word.charAt(0).toUpperCase() + word.slice(1);
+				});
 
-				document.cookie = `user_auth_token=${response.data.login_token};expires=${expiration.toGMTString()};path=/`;
+				// Set expiration date of cookie to be 7 days from current time
+				const currentDate = new Date();
+				const expirationDate = new Date(
+					currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+				);
+				const expirationDateString = expirationDate.toUTCString();
+
+				document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
+
+				document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
+
+				document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
 
 				setTimeout(() => {
 					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
@@ -167,8 +184,13 @@ const SignInForm = () => {
 							type="tel"
 							name="phone-number"
 							id="phone-number"
+							inputMode="numeric"
+							pattern="[0-9]{11}"
+							maxLength={11}
+							minLength={11}
 							className="input-form"
 							placeholder="Enter your phone number"
+							value={phoneNumber}
 							onChange={handlePhoneNumberChange}
 							required={true}
 						/>

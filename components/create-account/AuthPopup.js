@@ -21,9 +21,7 @@ const AuthPopup = ({
 			}`}
 		>
 			<div
-				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-2xl bg-white p-4 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-30%)/2)] lg:w-[30%] ${
-					!isError && "py-6"
-				}`}
+				className="no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-2xl bg-white px-6 py-8 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-30%)/2)] lg:w-[30%]"
 			>
 				<div className="mx-auto text-center">
 					<Image
@@ -59,12 +57,15 @@ const AuthPopup = ({
 				{isLink && (
 					<Link
 						className="btn block w-full bg-brand-purple text-center text-white transition duration-500 ease-in-out hover:bg-brand-dark-purple"
-						href={ {
+						href={{
 							pathname: route,
-							query: {...queryParams}
-						} }
+							query: { ...queryParams },
+						}}
 						as={route}
-						onClick={() => document.querySelector("body").style.overflow = "auto"}
+						onClick={() =>
+							(document.querySelector("body").style.overflow =
+								"auto")
+						}
 					>
 						{buttonText}
 					</Link>

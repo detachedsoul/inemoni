@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
+import validateNumberField from "@helpers/validateNumberField";
 
 const NextofKinForm = () => {
 	const router = useRouter();
@@ -49,10 +50,18 @@ const NextofKinForm = () => {
 	};
 
 	const handlePhoneNumberChange = (e) => {
+		if (!validateNumberField(e.target.value, 11)) {
+			return;
+		}
+
 		setPhoneNumber(e.target.value);
 	};
 
 	const handleReferralChange = (e) => {
+		if (!validateNumberField(e.target.value, 11)) {
+			return;
+		}
+
 		setReferralCode(e.target.value);
 	};
 
@@ -209,6 +218,10 @@ const NextofKinForm = () => {
 							id="phone-number"
 							className="input-form"
 							placeholder="08105008304"
+							inputMode="numeric"
+							pattern="[0-9]{11}"
+							maxLength={11}
+							minLength={11}
 							onChange={handlePhoneNumberChange}
 							value={phoneNumber}
 						/>
@@ -247,6 +260,10 @@ const NextofKinForm = () => {
 							id="referral-code"
 							className="input-form"
 							placeholder="Enter Referral Code"
+							inputMode="numeric"
+							pattern="[0-9]{11}"
+							maxLength={11}
+							minLength={11}
 							onChange={handleReferralChange}
 							value={referralCode}
 						/>

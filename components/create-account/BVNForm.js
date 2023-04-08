@@ -6,6 +6,7 @@ import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
 import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
+import validateNumberField from "@helpers/validateNumberField";
 import Script from "next/script";
 
 const BVNForm = () => {
@@ -29,7 +30,7 @@ const BVNForm = () => {
 	}, [isActive]);
 
 	const handleBVNChange = (e) => {
-		if (/^\d{0,11}$/.test(e.target.value) === false) {
+		if (!validateNumberField(e.target.value,11)) {
 			return;
 		}
 
@@ -155,6 +156,7 @@ const BVNForm = () => {
 							placeholder="Enter BVN number"
 							maxLength={11}
 							minLength={11}
+							inputMode="numeric"
 							pattern="[0-9]{11}"
 							onChange={handleBVNChange}
 							value={bvn}

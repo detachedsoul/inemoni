@@ -15,7 +15,7 @@ const SignIn = () => {
 
 	return (
 		<>
-			{!isLoading && getCookie("user_auth_token").isValid === true ? (
+			{!isLoading && getCookie("is_logged_in").isValid === true ? (
 				<Head>
 					<title>Inemoni | Lock Screen</title>
 					<meta
@@ -37,7 +37,7 @@ const SignIn = () => {
 				<Sidebar />
 
 				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
-					{!isLoading && getCookie("user_auth_token").isValid === true ? (
+					{!isLoading && getCookie("is_logged_in").isValid === true ? (
 						<LockScreenForm />
 					) : (
 						<SignInForm />

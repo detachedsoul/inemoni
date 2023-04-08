@@ -2,7 +2,7 @@ import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
 import { useState } from "react";
 import getCookie from "@helpers/getCookie";
-import validatePasswordField from "@helpers/validatePasswordField";
+import validateNumberField from "@helpers/validateNumberField";
 
 const LockScreenForm = () => {
 	const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ const LockScreenForm = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handlePasswordChange = (e) => {
-		if (!validatePasswordField(e.target.value)) {
+		if (!validateNumberField(e.target.value, 6)) {
 			return;
 		}
 
@@ -24,7 +24,7 @@ const LockScreenForm = () => {
 		e.preventDefault();
 
 		const data = {
-			user_token: getCookie("user_auth_token").sanitizedValue.toString(),
+			user_token: getCookie("user_token").sanitizedValue,
 			pin: password,
 		};
 
@@ -99,7 +99,9 @@ const LockScreenForm = () => {
 				onSubmit={handleSubmit}
 			>
 				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Welcome back</h1>
+					<h1 className="header text-2xl">
+						Welcome back, {getCookie("user_name").sanitizedValue}
+					</h1>
 
 					<p className="text-base">Enter your pin to continue</p>
 				</div>
@@ -114,7 +116,7 @@ const LockScreenForm = () => {
 						</span>
 
 						<input
-							type={isVisible ? 'text' : 'password'}
+							type={isVisible ? "text" : "password"}
 							name="password"
 							id="password"
 							className="input-form"

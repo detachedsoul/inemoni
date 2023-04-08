@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
+import validateNumberField from "@helpers/validateNumberField";
 
 const ContactInformationForm = () => {
 	const router = useRouter();
@@ -29,6 +30,10 @@ const ContactInformationForm = () => {
 	}
 
 	const handlePhoneNumberChange = (e) => {
+		if (!validateNumberField(e.target.value, 11)) {
+			return;
+		}
+
 		setPhoneNumber(e.target.value);
 	};
 
@@ -117,11 +122,12 @@ const ContactInformationForm = () => {
 							id="phone-number"
 							className="input-form"
 							placeholder="08105008304"
-							minLength={ 11 }
-							maxLength={11}
+							inputMode="numeric"
 							pattern="[0-9]{11}"
-							defaultValue={ queryParams.phone }
+							maxLength={11}
+							minLength={11}
 							onChange={handlePhoneNumberChange}
+							value={phoneNumber}
 						/>
 					</label>
 
@@ -140,7 +146,7 @@ const ContactInformationForm = () => {
 							className="input-form"
 							placeholder="email@example.com"
 							defaultValue={queryParams.email}
-							onChange={ handleEmailChange }
+							onChange={handleEmailChange}
 						/>
 					</label>
 
