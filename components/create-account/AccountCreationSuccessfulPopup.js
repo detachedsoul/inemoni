@@ -10,7 +10,7 @@ const AccountCreationSuccessfulPopup = ({isActive}) => {
 			}`}
 		>
 			<div
-				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-md bg-white px-4 py-6 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-40%)/2)] lg:w-[40%]`}
+				className={`no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] space-y-6 overflow-y-auto rounded-md bg-white px-6 py-8 text-center min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-40%)/2)] lg:w-[40%]`}
 			>
 				<div className="mx-auto text-center">
 					<Image

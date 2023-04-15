@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
+import getCookie from "@helpers/getCookie";
 import validateNumberField from "@helpers/validateNumberField";
 
 const ContactInformationForm = () => {
@@ -102,7 +103,7 @@ const ContactInformationForm = () => {
 				onSubmit={handleSubmit}
 			>
 				<div className="space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Wisdom</h1>
+					<h1 className="header text-2xl">Hi, {typeof window !== "undefined" && getCookie("fname").sanitizedValue}</h1>
 
 					<p className="text-base">Review your contact information</p>
 				</div>

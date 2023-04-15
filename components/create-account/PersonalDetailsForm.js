@@ -37,6 +37,14 @@ const PersonalDetailsForm = () => {
 		// Replace middle name in queryParams with the values gotten from the state
 		queryParams.middlename = middleName;
 
+		// Store the firstname gotten from queryParams in a cookie
+		const fname = queryParams.firstname.toLowerCase().split(" ");
+		const fnameCapitalized = fname.map((word) => {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		});
+
+		document.cookie = `fname=${fnameCapitalized}`;
+
 		// Map through queryParams and make sure all the values are not empty but exclude email and middlename
 		for (const [key, value] of Object.entries(queryParams)) {
 			if (value === "" && key !== "email" && key !== "middlename") {
