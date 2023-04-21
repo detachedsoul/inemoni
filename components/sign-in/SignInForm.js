@@ -98,8 +98,6 @@ const SignInForm = () => {
 
 				document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
 
-				document.cookie = `user_phone_number=${phoneNumber};expires=${expirationDateString};path=/`;
-
 				setTimeout(() => {
 					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
 

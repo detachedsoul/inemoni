@@ -26,9 +26,9 @@ const HeroText = () => {
 
 					<Link
 						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
-						href="/about"
+						href="/create-account"
 					>
-						Learn More
+						Get Started
 					</Link>
 				</div>
 			</div>
