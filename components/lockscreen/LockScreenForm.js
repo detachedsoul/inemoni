@@ -1,9 +1,9 @@
-import Link from "next/link";
 import AuthPopup from "@components/create-account/AuthPopup";
-import { useState } from "react";
 import getCookie from "@helpers/getCookie";
 import validateNumberField from "@helpers/validateNumberField";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const LockScreenForm = () => {
 	const router = useRouter();
@@ -105,12 +105,11 @@ const LockScreenForm = () => {
 		}
 	};
 
-	const handleRedirect = (e) => {
+	const handleRedirect = () => {
 		// Delete all user related cookies and redirect to login page
 		document.cookie = "user_token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
 		document.cookie = "user_name=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
 		document.cookie = "is_logged_in=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
-		document.cookie = "user_phone_number=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
 
 		router.push({
 			pathname: "/sign-in",
