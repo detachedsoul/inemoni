@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
 import getCookie from "@helpers/getCookie";
 import validateNumberField from "@helpers/validateNumberField";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const ContactInformationForm = () => {
 	const router = useRouter();

@@ -46,8 +46,6 @@ const LockScreenForm = () => {
 
 			const response = await request.json();
 
-			console.log(response)
-
 			// Check if the login pin matches that of the login token
 			if (
 				response.error === false &&

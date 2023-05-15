@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const PersonalDetailsForm = () => {
 	const router = useRouter();
@@ -49,7 +49,7 @@ const PersonalDetailsForm = () => {
 		for (const [key, value] of Object.entries(queryParams)) {
 			if (value === "" && key !== "email" && key !== "middlename") {
 				setHeader(() => "Error");
-				setMessage(() => "Please fill all required fields");
+				setMessage(() => "Please fill all required fields.");
 				setIsError(() => true);
 				setIsActive(() => true);
 				return;

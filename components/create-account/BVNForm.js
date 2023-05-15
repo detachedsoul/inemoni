@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
-import { useState, useEffect } from "react";
 import AuthPopup from "@components/create-account/AuthPopup";
 import validateNumberField from "@helpers/validateNumberField";
+import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
+import { useEffect, useState } from "react";
 
 const BVNForm = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -19,7 +19,7 @@ const BVNForm = () => {
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
 	const [queryParams, setQueryParams] = useState({});
-	const route = "/create-account/personal-details";
+	const route = "/create-account/contact-information";
 
 	useEffect(() => {
 		if (isActive) {
@@ -68,6 +68,14 @@ const BVNForm = () => {
 			const response = encryptData.decrypt(encryptedResponse);
 
 			if (response.error === false) {
+                // Store the firstname gotten from response in a cookie
+                const fname = response.data.firstname.toLowerCase().split(" ");
+                const fnameCapitalized = fname.map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                });
+
+                document.cookie = `fname=${fnameCapitalized}`;
+
 				response.data.bvn = bvn;
 
 				setHeader(() => "BVN Verified Successfully");
@@ -89,8 +97,6 @@ const BVNForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
-				console.log(e, requestOptions);
-
 				setHeader(() => "BVN Verification Failed");
 
 				setMessage(
@@ -106,12 +112,12 @@ const BVNForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 			}
-		} catch (error) {
-			setHeader(() => "BVN Verification Failed");
+        } catch (error) {
+            setHeader(() => "BVN Verification Failed");
 
 			setMessage(
 				() =>
-				"BVN verification failed. Please try again later.",
+				"BVN verification failed. Please try again later."
 			);
 
 			setIsError(() => true);

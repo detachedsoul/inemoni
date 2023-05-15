@@ -1,11 +1,11 @@
-import Image from "next/image";
-import HeroText from "@components/HeroText";
-import FeatureReview from "@components/FeatureReview";
-import GetStarted from "@components/GetStarted";
-import FooterCard from "@components/FooterCard";
-import FooterBanner from "@components/FooterBanner";
 import partners from "@assets/data/partners";
+import FeatureReview from "@components/FeatureReview";
+import FooterBanner from "@components/FooterBanner";
+import FooterCard from "@components/FooterCard";
+import GetStarted from "@components/GetStarted";
+import HeroText from "@components/HeroText";
 import Head from "next/head";
+import Image from "next/image";
 import Layout from "./_layout";
 
 const Index = () => {
@@ -15,7 +15,7 @@ const Index = () => {
 				<title>Inemoni | Home</title>
 				<meta
 					name="description"
-					content="Inemoni - Bringing financial services to your doorsteps"
+					content="Inemoni is a financial technology company that offers payment solutions using innovative technology to ease financial activities for both individuals and businesses."
 				/>
 			</Head>
 
