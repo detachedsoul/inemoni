@@ -1,53 +1,76 @@
 import heroImage from "@assets/img/hero-image.svg";
 import Image from "next/image";
 import Link from "next/link";
+import previewImage from "@assets/img/feature-preview.svg";
 
 const HeroText = () => {
 	return (
-		<div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 sm:grid-cols-2 sm:gap-16 sm:pt-8 xl:px-[7%]">
-			<div className="flex flex-col gap-5">
-				<h1 className="main-header">
-					Bringing{" "}
-					<span className="text-brand-purple">
-						Financial Services
-					</span>{" "}
-					To Your Doorsteps.
-				</h1>
+        <div className="mx-4 relative">
+            <div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-12 pb-20 sm:gap-16 lg:pb-40 xl:px-[7%] bg-[#E6E6E6] rounded-t-[30px]">
+                <div className="flex flex-col gap-5">
+                    <h1 className="main-header lg:w-[70%]">
+                        Bringing Financial Services To Your Doorsteps.
+                    </h1>
 
-				<p>
-					Easy access to financial services is our watchword while
-					creating an avenue for our agents to make money using our
-					amazing services.
-				</p>
+                    <p className="sm:w-1/2 lg:w-2/5">
+                        Easy access to financial services is our watchword while creating an avenue for our agents to make money using our amazing services.
+                    </p>
 
-				<div className="flex flex-wrap items-center gap-4">
-					<Link
-						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
-					>
-						Download App
-					</Link>
+                    <div className="flex flex-wrap items-center gap-4">
+                        <Link
+                            className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
+                            href="https://play.google.com/store/apps/details?id=com.inemoni.com"
+                        >
+                            Download App
+                        </Link>
 
-					<Link
-						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
-						href="/sign-in"
-					>
-						Sign In
-						<span className="sr-only">
-							Read more about who we are and what we do
-						</span>
-					</Link>
-				</div>
-			</div>
+                        <Link
+                            className="btn block transition-colors duration-300 ease-in hover:bg-[#F2F2F2]"
+                            href="/sign-in"
+                        >
+                            Login to Web App
+                            <span className="sr-only">
+                                Login to our web app and enjoy seamless transactions.
+                            </span>
+                        </Link>
+                    </div>
+                </div>
 
-			<Image
-				className="rounded-xl"
-				src={heroImage}
-				alt="Inemoni app overview"
-				quality={100}
-				priority={true}
-			/>
-		</div>
+                <Image
+                    className="hidden rounded-xl lg:z-30 lg:block lg:absolute lg:top-[19.5%] lg:w-auto lg:right-[2.5%] h-[55%] aspect-auto object-cover"
+                    src={heroImage}
+                    alt="Inemoni app overview"
+                    quality={100}
+                    priority={true}
+                />
+            </div>
+
+            <section className="grid grid-cols-1 gap-8 py-8 px-[5%] xl:px-[10%] rounded-t-[30px] relative bg-[#F2F2F2] -top-[30px] sm:grid-cols-12 sm:place-content-center lg:grid-cols-1 -mb-[30px]">
+                <div className="space-y-4 sm:space-y-5 sm:col-span-6 lg:col-span-12 lg:w-2/5">
+                    <h2 className="header text-2xl sm:text-3xl">Bills Payments</h2>
+
+                    <p>
+                        With Inemoni, paying bills is hassle-free. Our agents make it easy to pay for power, internet, and cable TV subscriptions from the comfort of your own home.
+                    </p>
+                </div>
+
+                <div className="space-y-4 sm:space-y-5 sm:col-span-6 lg:col-span-12 lg:w-2/5">
+                    <h2 className="header text-2xl sm:text-3xl">Accept Payments</h2>
+
+                    <p>
+                        Easily receive money from anyone, anytime and anywhere in the world.
+                    </p>
+                </div>
+
+                <div className="space-y-4 sm:space-y-5 sm:col-span-12 sm:w-1/2 sm:text-center sm:mx-auto lg:mx-0 lg:text-left lg:w-2/5">
+                    <h2 className="header text-2xl sm:text-3xl">Money Transfer</h2>
+
+                    <p>
+                        Easily receive money from anyone, anytime and anywhere in the world.
+                    </p>
+                </div>
+            </section>
+        </div>
 	);
 };
 

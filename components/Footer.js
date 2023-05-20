@@ -205,18 +205,18 @@ const Footer = () => {
 
 	return (
 		<>
-			<footer className="px-[5%] pt-[10%] sm:pt-[5%] xl:px-[7%] md:pb-[5%]">
+			<footer className="px-[5%] pt-[10%] sm:pt-[5%] xl:px-[7%] md:pb-[5%] text-[#666666]">
 				<div
 					className="grid grid-cols-1 gap-6 pb-12 sm:items-start sm:grid-cols-2 sm:gap-x-8 sm:self-start lg:not-sr-only md:hidden"
 					ref={parentElement}
 				>
 					{footerLinks.map((footerLink, id) => (
 						<div
-							className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border"
+							className={`space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border ${footerLink.linkGroup === 'Social' &&  'hidden not-sr-only'}`}
 							key={id}
 						>
 							<button
-								className="flex w-full items-center justify-between gap-4 py-1"
+                                className="flex w-full items-center justify-between gap-4 py-1 text-[#262626]"
 								type="button"
 								onClick={(e) => toggleMobileFooter(e)}
 							>
@@ -234,6 +234,8 @@ const Footer = () => {
 											<Link
 												className="hover:text-brand-purple"
 												href={link.route}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
 											>
 												{link.linkName}
 											</Link>
@@ -245,6 +247,68 @@ const Footer = () => {
 							</ul>
 						</div>
 					))}
+
+                    <div
+                        className="space-y-6 border-b border-footer-border pb-1.5 sm:last:border-footer-border sm:hidden sm:not-sr-only"
+                    >
+                        <button
+                            className="flex w-full items-center justify-between gap-4 py-1 text-[#262626]"
+                            type="button"
+                            onClick={ (e) => toggleMobileFooter(e) }
+                        >
+                            <span className="text-lg font-semibold">
+                                Social
+                            </span>
+
+                            <i className="fi-rr-angle-small-down"></i>
+                        </button>
+
+                        <ul className="z-20 max-h-0 w-full space-y-6 overflow-y-hidden transition-all duration-100 ease-linear">
+                            <li>
+                                <Link
+                                    className="hover:text-brand-purple"
+                                    href="https://twitter.com/inemonihq"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Twitter
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    className="hover:text-brand-purple"
+                                    href="https://www.instagram.com/inemonihq"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Instagram
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    className="hover:text-brand-purple"
+                                    href="https://web.facebook.com/inemonihq"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Facebook
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    className="hover:text-brand-purple"
+                                    href="https://www.linkedin.com/company/inemoni/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    LinkedIn
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 				</div>
 
 				<div className="not-sr-only hidden lg:grid-cols-5 gap-4 border-b border-footer-border pb-10 md:grid md:grid-cols-3 md:gap-6 md:justify-between md:content-center lg:border-none">
@@ -254,7 +318,7 @@ const Footer = () => {
 								className="space-y-5"
 								key={id}
 							>
-								<h3 className="font-semibold">
+								<h3 className="font-semibold text-[#262626]">
 									{footerLink.linkGroup}
 								</h3>
 
@@ -279,7 +343,7 @@ const Footer = () => {
 					)}
 				</div>
 
-				<div className="flex items-center justify-between gap-4 py-6">
+				<div className="flex items-center justify-between gap-4 py-6 md:border-t-[0.2px] md:border-[#cccccc]">
 					<span className="flex items-center gap-4">
 						<Image
 							className="rounded-full"
@@ -289,7 +353,7 @@ const Footer = () => {
 						Nigeria
 					</span>
 
-					<ul className="not-sr-only hidden items-center gap-8 lg:flex">
+					<ul className="not-sr-only hidden items-center gap-8 sm:flex">
 						<li>
 							<Link
 								className="hover:text-brand-purple"
@@ -336,13 +400,44 @@ const Footer = () => {
 					</ul>
 				</div>
 
-				<div className="grid items-start justify-between gap-8 border-t border-footer-border pt-8">
-					<div className="space-y-2">
-						<span className="flex items-center gap-4">
-							&copy; 2022 Inemoni. All right reserved.
-						</span>
+				<div className="grid items-start justify-between gap-8 pt-8 border-t-[0.2px] border-[#cccccc]">
+					<div className="space-y-8">
+						<div className="flex flex-wrap items-center justify-between gap-4">
+                            <span className="flex items-center gap-4">
+                                &copy; 2022 Inemoni. All right reserved.
+                            </span>
 
-						<p className="text-[#979797]">
+                            <ul className="not-sr-only hidden items-center gap-8 md:flex">
+                                <li>
+                                    <Link
+                                        className="hover:text-brand-purple"
+                                        href="/legal/privacy-policy"
+                                    >
+                                        Privacy Policy
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link
+                                        className="hover:text-brand-purple"
+                                        href="/legal/terms-of-use"
+                                    >
+                                        Terms of Use
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link
+                                        className="hover:text-brand-purple"
+                                        href="/legal/cookie-policy"
+                                    >
+                                        Cookie Policy
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+						<p>
 							Inemoni Digital Concept LTD, operating under the
 							trademark “Inemoni”, is a financial technology
 							company and not a traditional banking institution.
@@ -355,35 +450,6 @@ const Footer = () => {
 							cards.
 						</p>
 					</div>
-
-					<ul className="not-sr-only hidden items-center gap-8 md:flex">
-						<li>
-							<Link
-								className="hover:text-brand-purple"
-								href="/legal/privacy-policy"
-							>
-								Privacy Policy
-							</Link>
-						</li>
-
-						<li>
-							<Link
-								className="hover:text-brand-purple"
-								href="/legal/terms-of-use"
-							>
-								Terms of Use
-							</Link>
-						</li>
-
-						<li>
-							<Link
-								className="hover:text-brand-purple"
-								href="/legal/cookie-policy"
-							>
-								Cookie Policy
-							</Link>
-						</li>
-					</ul>
 				</div>
 
 				<div className="flex flex-wrap gap-3 pt-8">

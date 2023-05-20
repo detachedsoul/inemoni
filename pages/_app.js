@@ -1,11 +1,28 @@
-import "@styles/globals.css";
 import "@assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css";
-import { Inter } from "@next/font/google";
+import localFont from "@next/font/local";
+import "@styles/globals.css";
 
-const inter = Inter({
+const aeonik = localFont({
 	subsets: ["latin"],
-	variable: "--font-inter",
-	display: "swap"
+	variable: "--font-aeonik",
+	display: "swap",
+    src: [
+        {
+            path: "../public/fonts/Aeonik-Regular.otf",
+            weight: "400",
+            style: "normal"
+        },
+        {
+            path: "../public/fonts/Aeonik-Bold.otf",
+            weight: "700",
+            style: "normal"
+        },
+        {
+            path: "../public/fonts/Aeonik-Medium.otf",
+            weight: "500",
+            style: "normal"
+        }
+    ]
 });
 
 const MyApp = ({ Component, pageProps }) => {
@@ -17,8 +34,8 @@ const MyApp = ({ Component, pageProps }) => {
 				jsx
 				global
 			>{`
-				:root {
-					--font-inter: ${inter.variable};
+				html  {
+					font-family: ${aeonik.style.fontFamily};
 				}
 			`}</style>
 			<Component {...pageProps} />

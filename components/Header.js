@@ -1,5 +1,3 @@
-"use client";
-
 import Logo from "@assets/img/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -86,7 +84,7 @@ const Header = () => {
 				</p>
 			</div>
 			<header
-				className={`sticky top-0 z-50 flex items-center justify-between gap-4 bg-white p-[5%] sm:py-[1.5%] xl:px-[7%]`}
+				className={`sticky top-0 z-50 flex items-center justify-between gap-4 bg-[#F2F2F2] p-[5%] sm:py-[4%] md:py-[1.5%] xl:px-[7%]`}
 			>
 				<Link href="/">
 					<Image
@@ -102,7 +100,7 @@ const Header = () => {
 						${navIsOpen ? "translate-x-0" : "-translate-x-full"}`}
 					ref={navRef}
 				>
-					<ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-white p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 md:bg-transparent md:p-0 lg:gap-12">
+                    <ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-[#F2F2F2] p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 md:bg-transparent md:p-0 lg:gap-12">
 						<li className="relative">
 							<button
 								className="btn dropdown-toggle block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"
@@ -113,7 +111,7 @@ const Header = () => {
 							</button>
 
 							<div
-								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:-left-[40%] lg:py-8 lg:px-12"
+								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-[#F2F2F2] p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:py-8 lg:px-12"
 								ref={paymentRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-12 lg:gap-8">
@@ -125,11 +123,11 @@ const Header = () => {
 										}`}
 										href="/cash-withdrawal"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Cash Withdrawal
 										</span>
 
-										<span className="inline-block">
+										<span className="inline-block text-[#666666] font-normal">
 											Withdraw cash at our agents outlet
 											closest to you.
 										</span>
@@ -142,11 +140,11 @@ const Header = () => {
 										}`}
 										href="/savings"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Savings
 										</span>
 
-										<span className="inline-block">
+										<span className="inline-block text-[#666666] font-normal">
 											Everyone can save without
 											restriction, with fast withdrawal.
 										</span>
@@ -160,11 +158,11 @@ const Header = () => {
 										}`}
 										href="/money-transfer"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Money Transfer
 										</span>
 
-										<span className="inline-block">
+										<span className="inline-block text-[#666666] font-normal">
 											Your transfer goes through
 											seamlessly with Inemoni.
 										</span>
@@ -177,46 +175,26 @@ const Header = () => {
 										}`}
 										href="/pay-bills"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Pay Bills
 										</span>
 
-										<span className="inline-block">
+										<span className="inline-block text-[#666666] font-normal">
 											Payment of bills is easily
 											accessible to everyone.
 										</span>
 									</Link>
-
-									<div className="space-y-3 md:col-span-12">
-										<span className="block font-bold">
-											Latest blog post
-										</span>
-
-										<div className="btn space-y-1.5 bg-dropdown-hover text-brand-black">
-											<span className="block font-bold">
-												We went live 🎊
-											</span>
-
-											<p>
-												Here’s an overview of how we
-												made magic happen
-											</p>
-
-											<Link
-												className="inline-block text-brand-purple"
-												href="/blog"
-											>
-												Read More
-												<span className="sr-only">
-													Read more about how we made
-													magic happen
-												</span>
-												<i className="fi-rr-arrow-right ml-2"></i>
-											</Link>
-										</div>
-									</div>
 								</div>
 							</div>
+						</li>
+
+                        <li>
+							<Link
+								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"
+								href="/blog"
+							>
+								Blog
+							</Link>
 						</li>
 
 						<li className="relative">
@@ -228,7 +206,7 @@ const Header = () => {
 							</button>
 
 							<div
-								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-white p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:-left-[40%] lg:py-8 lg:px-12"
+								className="no-scrollbar absolute top-[calc(100%+.5rem)] z-50 w-full -translate-y-[200%] rounded-xl bg-[#F2F2F2] p-4 shadow-[0px_5px_20px_10px_rgba(0,0,10,0.05)] transition-transform duration-700 ease-in-out md:fixed md:-left-[35%] md:-right-[40%] md:max-h-[calc((100vh-100%)-100%)] md:w-auto md:overflow-y-auto lg:py-8 lg:px-12"
 								ref={companyRef}
 							>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8">
@@ -239,11 +217,11 @@ const Header = () => {
 										}`}
 										href="/about"
 									>
-										<span className="block font-bold">
+                                        <span className="block font-bold text-xl text-[#262626]">
 											About Us
 										</span>
 
-										<span className="inline-block">
+                                        <span className="inline-block text-[#666666] font-normal">
 											Learn more about who we are and what
 											we do at Inemoni
 										</span>
@@ -257,11 +235,11 @@ const Header = () => {
 										}`}
 										href="/legal/terms-of-use"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Terms of Use
 										</span>
 
-										<span className="inline-block">
+                                        <span className="inline-block text-[#666666] font-normal">
 											Describing your rights on how & when
 											we handle your account.
 										</span>
@@ -274,28 +252,35 @@ const Header = () => {
 										}`}
 										href="/contact-us"
 									>
-										<span className="block font-bold">
+										<span className="block font-bold text-[#262626] text-xl">
 											Contact Us
 										</span>
 
-										<span className="inline-block">
+										<span className="inline-block text-[#666666] font-normal">
 											Have questions? Send us a message{" "}
 											<span className="text-brand-purple">
 												support@inemoni.com
 											</span>
 										</span>
 									</Link>
+
+                                    <Link
+										className={`btn space-y-2 text-brand-black hover:bg-dropdown-hover ${
+											router.pathname === "/contact-us" &&
+											"bg-dropdown-hover"
+										}`}
+										href="/contact-us"
+									>
+										<span className="block font-bold text-[#262626] text-xl">
+											Careers
+										</span>
+
+										<span className="inline-block text-[#666666] font-normal">
+                                            Ready to join our team? Explore our careers page for openings.
+										</span>
+									</Link>
 								</div>
 							</div>
-						</li>
-
-						<li>
-							<Link
-								className="btn block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"
-								href="/"
-							>
-								Careers
-							</Link>
 						</li>
 
 						<li className="md:hidden lg:not-sr-only">
@@ -311,7 +296,7 @@ const Header = () => {
 
 				<div className="flex items-center gap-4">
 					<Link
-						className="btn hidden bg-brand-gray text-brand-navlink transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white md:block"
+						className="btn hidden border-[0.5px] border-[#666666] transition-colors duration-300 ease-in hover:bg-brand-navlink hover:text-white md:block"
 						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
 					>
 						Download App

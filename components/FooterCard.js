@@ -2,24 +2,28 @@ import Link from "next/link";
 
 const FooterCard = () => {
     return (
-		<div className="my-12 mx-[5%] items-center rounded-3xl bg-[#121212] px-[10%] py-[8%] text-white shadow-[0px_5px_10px_rgba(10,14,39,0.05)] sm:rounded-[2.5rem] sm:px-[6%] xl:mx-[7%]">
-			<div className="space-y-6 sm:w-[70%] md:space-y-8">
-				<p>Effortless Finance: Speed and Savings Combined</p>
+		<div className="my-12 mx-[5%] items-center rounded-[30px] bg-white px-[10%] py-[8%] text-[#262626] sm:px-[6%] xl:mx-[7%]">
+			<div className="space-y-6 md:space-y-8">
+				<p className="rounded-full py-1 px-4 border-[0.5px] border-[#262626] inline-block break-normal whitespace-nowrap max-w-full overflow-y-auto no-scrollbar">Effortless Finance: Speed and Savings Combined</p>
 
-				<h2 className="secondary-header">
+				<h2 className="secondary-header text-[#262626]">
 					Fast, Affordable Financial Solutions, Anytime, Anywhere.
 				</h2>
 
+                <p className="sm:w-2/5">
+                    With our easy-to-use tools, you can manage your finances effortlessly, without sacrificing speed or reliability.
+                </p>
+
 				<div className="flex flex-wrap items-center gap-4">
 					<Link
-						className="btn block bg-white text-brand-black"
+						className="btn block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
 						href="/create-account"
 					>
 						Get Started
 					</Link>
 
 					<Link
-						className="btn block text-white"
+						className="btn block hover:bg-[#F2F2F2] text-[#666666] transition-colors duration-300 ease-in"
 						href="mailto:support@inemoni.com"
 						target="_blank"
 						rel="noopener noreferrer"

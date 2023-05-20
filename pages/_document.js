@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from "next/document";
 
 const Document = () => {
 	return (
@@ -17,7 +17,7 @@ const Document = () => {
 			</Head>
 
 			<body
-				className={`overscroll-contain scroll-smooth break-words bg-white font-inter text-[16px] leading-[35px] tracking-wide text-brand-black antialiased [word-break:break-word] [word-wrap:break-word] selection:bg-brand-purple selection:text-white`}
+                className={`overscroll-contain scroll-smooth break-words bg-[#F2F2F2] font-normal text-[16px] leading-relaxed tracking-wide text-[#262626] antialiased [word-break:break-word] [word-wrap:break-word] selection:bg-brand-purple selection:text-white`}
 			>
 				<Main />
 				<NextScript />

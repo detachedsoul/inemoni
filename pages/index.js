@@ -1,5 +1,4 @@
 import partners from "@assets/data/partners";
-import FeatureReview from "@components/FeatureReview";
 import FooterBanner from "@components/FooterBanner";
 import FooterCard from "@components/FooterCard";
 import GetStarted from "@components/GetStarted";
@@ -19,17 +18,17 @@ const Index = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] sm:space-y-[10%]">
+			<main className="space-y-[20%] sm:space-y-[5%]">
 				<HeroText />
-				<FeatureReview />
+
+				<GetStarted />
 
 				<div className="flex flex-col gap-8 px-[10%] xl:px-[20%]">
-					<h3 className="text-center text-xl font-medium">
-						We are trusted by{" "}
-						<span className="font-bold ">verified</span> businesses
+					<h3 className="text-center text-2xl font-bold">
+						We are trusted by verified businesses
 					</h3>
 
-					<div className="grid grid-cols-3 items-center gap-x-8 gap-y-6 sm:grid-cols-6">
+					<div className="grid grid-cols-3 items-center gap-x-8 gap-y-1 sm:grid-cols-6">
 						{partners.map((partner, id) => (
 							<Image
 								className="h-16 md:h-full"
@@ -41,8 +40,6 @@ const Index = () => {
 						))}
 					</div>
 				</div>
-
-				<GetStarted />
 			</main>
 
 			<FooterCard />

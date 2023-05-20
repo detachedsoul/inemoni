@@ -24,15 +24,15 @@
     }
 
     .header {
-        @apply font-semibold leading-[2.188rem]
+        @apply font-semibold leading-relaxed text-[#262626]
     }
 
     .main-header {
-        @apply header text-4xl leading-[3rem] lg:text-[3.125rem] sm:leading-[4.063rem]
+        @apply header text-4xl lg:text-[3.125rem] lg:leading-tight
     }
 
     .secondary-header {
-        @apply header text-2xl sm:text-[2.188rem] leading-[3rem] lg:text-[3.125rem] sm:leading-[4.063rem]
+        @apply header text-2xl leading-tight sm:text-[2.188rem] lg:text-[3.125rem]
     }
 
     .fr {
@@ -40,7 +40,7 @@
     }
 
     .btn {
-        @apply rounded-[0.625rem] font-medium py-2.5 leading-8 text-[14px] px-4 tracking-wider
+        @apply rounded-[8px] font-medium py-1.5 leading-8 text-[14px] px-6 tracking-wider
     }
 
     .no-scrollbar {
