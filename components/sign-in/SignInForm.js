@@ -221,7 +221,7 @@ const SignInForm = () => {
 						/>
 
 						<button
-							className="absolute top-12 right-3"
+                            className="absolute top-[calc((0.625rem*4))] right-3"
 							type="button"
 							aria-label="Toggle password field visibility"
 							onClick={() => setIsVisible(() => !isVisible)}

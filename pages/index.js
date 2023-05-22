@@ -28,7 +28,7 @@ const Index = () => {
 						We are trusted by verified businesses
 					</h3>
 
-					<div className="grid grid-cols-3 items-center gap-x-8 gap-y-1 sm:grid-cols-6">
+					<div className="grid grid-cols-2 items-stretch gap-x-8 gap-y-4 sm:grid-cols-6">
 						{partners.map((partner, id) => (
 							<Image
 								className="h-16 md:h-full"

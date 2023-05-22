@@ -6,7 +6,7 @@ import Link from "next/link";
 const GetStarted = () => {
 	return (
 		<section className="flex flex-col gap-8 px-[5%] xl:px-[7%]">
-			<article className="grid grid-cols-1 items-stretch justify-between gap-8 bg-[#262626] px-[10%] pt-[8%] text-[#E6E6E6] sm:grid-cols-2 sm:px-[6%] lg:gap-12 rounded-[30px]">
+			<article className="grid grid-cols-1 items-stretch justify-between gap-8 bg-[#262626] px-[10%] pt-[8%] text-[#E6E6E6] sm:grid-cols-2 sm:px-[6%] lg:gap-12 rounded-[30px] text-center md:text-left">
 				<div className="space-y-6 sm:pb-[18%] md:space-y-8">
 					<p className="rounded-full py-1 px-4 border-[0.5px] border-[#E6E6E6] inline-block">Send money to anyone</p>
 
@@ -16,7 +16,7 @@ const GetStarted = () => {
 						Cash Backs.
 					</h2>
 
-					<div className="flex flex-wrap items-center gap-4">
+                    <div className="flex flex-col place-items-center gap-4 md:flex-row">
 						<Link
 							className="btn inline-block bg-brand-purple hover:bg-brand-dark-purple transition-colors duration-300 ease-in text-white hover:text-white"
 							href="https://play.google.com/store/apps/details?id=com.inemoni.com"

@@ -1,5 +1,3 @@
-"use client";
-
 import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
 import AuthPopup from "@components/create-account/AuthPopup";
@@ -10,6 +8,8 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 
 const BVNForm = () => {
+    const [isProcessing, setIsProcessing] = useState(false);
+
 	const [isActive, setIsActive] = useState(false);
 	const [authPopup, setAuthPopup] = useState(false);
 	const [header, setHeader] = useState("");
@@ -56,6 +56,8 @@ const BVNForm = () => {
 			body: JSON.stringify(encryptedData),
 			redirect: "follow",
 		};
+
+        setIsProcessing(() => true);
 
 		try {
 			const request = await fetch(
@@ -110,6 +112,8 @@ const BVNForm = () => {
 
 				setButtonText(() => "Try Again");
 
+                setIsProcessing(() => false);
+
 				document.querySelector("body").style.overflow = "hidden";
 			}
         } catch (error) {
@@ -125,6 +129,8 @@ const BVNForm = () => {
 			setAuthPopup(() => true);
 
 			setButtonText(() => "Try Again");
+
+            setIsProcessing(() => false);
 
 			document.querySelector("body").style.overflow = "hidden";
 		}
@@ -176,10 +182,11 @@ const BVNForm = () => {
 					</p>
 
 					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
+						className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple`}
 						type="submit"
+                        disabled={isProcessing}
 					>
-						Validate Details
+                        {isProcessing ? "Processing..." : "Validate Details"}
 					</button>
 				</div>
 
