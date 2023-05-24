@@ -24,27 +24,31 @@ const SavingsFeature = () => {
                 <div className="space-y-[10%] sm:space-y-0">
                     <section className="px-[5%]">
                         <div className="grid grid-cols-1 items-center justify-between gap-8 lg:grid-cols-12 lg:gap-16 sm:gap-12 sm:grid-cols-2">
+                            <h2 className="secondary-header ont-bold text-center sm:hidden">
+                                Savings is Easier When You Use Inemoni.
+                            </h2>
+
                             <Image
                                 className="h-full w-full lg:col-span-5"
                                 src={Savings}
                                 alt="Savings is Easier When You Use Inemoni"
                             />
 
-                            <div className="space-y-5 lg:col-span-7">
-                                <h2 className="secondary-header lg:w-[90%]">
+                            <div className="sm:space-y-5 lg:col-span-7">
+                                <h2 className="secondary-header lg:w-[90%] hidden sm:block">
                                     Savings is Easier When You Use Inemoni.
                                 </h2>
 
-                                <p className="lg:w-[70%]">
+                                <p className="lg:w-[70%] sm:text-left text-center">
                                     Accelerate your savings journey with Inemoni’s Smart Saving Products - enjoy up to 15% interest returns per annum and withdraw your funds with unmatched convenience.
                                 </p>
                             </div>
                         </div>
                     </section>
 
-                    <div className="pt-10 bg-[#E6E6E6] rounded-[30px] text-center px-[5%] mx-4 xl:mx-8">
+                    <div className="pt-5 bg-[#E6E6E6] rounded-[30px] text-center px-[5%] mx-4 xl:mx-8">
                         <Image
-                            className="w-4/5 mx-auto sm:w-3/5"
+                            className="sm:w-4/5 sm:mx-auto object-cover"
                             src={SavingsBalance}
                             alt="Savings is Easier When You Use Inemoni"
                         />
