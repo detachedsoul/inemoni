@@ -32,7 +32,7 @@
     }
 
     .secondary-header {
-        @apply header text-2xl leading-tight sm:text-[2.188rem] lg:text-[3.125rem]
+        @apply header text-3xl leading-tight sm:text-[2.188rem] lg:text-[3.125rem]
     }
 
     .fr {
