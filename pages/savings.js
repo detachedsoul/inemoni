@@ -56,13 +56,13 @@ const SavingsFeature = () => {
                 </div>
 
 				<section className="px-[5%]">
-					<div className="text-center grid place-items-center gap-5 sm:w-1/2 sm:mx-auto">
-                        <h3 className="secondary-header font-bold">
+					<div className="text-center grid place-items-center gap-5 sm:w-4/5 sm:mx-auto">
+                        <h3 className="secondary-header">
                             Stash Your Money <br />
                             & Watch It Grow.
                         </h3>
 
-                        <p className="w-4/5 sm:w-[70%] mx-auto">
+                        <p className="w-4/5 sm:w-3/5 mx-auto">
                             Unleash the full potential of your savings with Inemoni’s Fixed Plan - secure lump sums and soar to financial heights with Up to 15% annual interest.
                         </p>
                     </div>
