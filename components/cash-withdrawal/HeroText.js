@@ -15,12 +15,24 @@ const HeroText = () => {
                         Effortlessly withdraw your cash, anytime, anywhere with Inemoni on your mobile app, debit, or credit card.
                     </p>
 
-                    <Link
-                        className="btn inline-block bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-                        href="https://play.google.com/store/apps/details?id=com.inemoni.com"
-                    >
-                        Download App
-                    </Link>
+                    <div className="flex flex-col place-items-center gap-4 sm:flex-wrap sm:flex-row">
+                        <Link
+                            className="btn bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
+                            href="https://play.google.com/store/apps/details?id=com.inemoni.com"
+                        >
+                            Download App
+                        </Link>
+
+                        <Link
+                            className="btn transition-colors duration-300 ease-in hover:bg-[#E6E6E6]"
+                            href="/sign-in"
+                        >
+                            Login to Web App
+                            <span className="sr-only">
+                                Login to our web app and enjoy seamless transactions.
+                            </span>
+                        </Link>
+                    </div>
                 </div>
 
                 <Image

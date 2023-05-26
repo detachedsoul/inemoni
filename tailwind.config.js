@@ -40,6 +40,9 @@ module.exports = {
 				slideUp: "slideUp 0s linear forwards",
 				slideDown: "slideDown 0s linear forwards",
 			},
+            backgroundImage: {
+                "team-bg": "url('../assets/img/team-members-bg.png')",
+            },
 		},
 	},
 	plugins: [

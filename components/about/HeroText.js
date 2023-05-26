@@ -1,45 +1,27 @@
-import aboutHeroImage from "@assets/img/about-hero-image.svg";
+import aboutHeroImage from "@assets/img/about-hero-image.png";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroText = () => {
 	return (
-		<div className="grid gap-8 pt-12 grid-cols-1 sm:grid-cols-2 items-center px-[5%] sm:pt-8 sm:gap-16 xl:px-[7%]">
-			<div className="flex flex-col gap-5">
+        <div className="mx-4 xl:mx-8 grid gap-4 sm:grid-cols-2 items-center px-[5%] pt-10 sm:pt-0">
+            <div className="flex flex-col gap-5 text-center sm:text-left">
 				<h1 className="main-header">
-					Endless{" "}
-					<span className="text-brand-purple">Possibility</span> For
-					Every <span className="text-brand-purple">Customer</span>
+                    We believe that your money deserves to be set free!
 				</h1>
 
 				<p>
-					With Inemoni, managing your finances has never been easier. Our extensive network of agents and user-friendly platform allow for seamless and secure financial transactions from the comfort of your own home. Say goodbye to the hassle of visiting banks and say hello to a faster, more convenient financial experience with Inemoni.
+                    We’re here to break free from traditional banking and empower you with unrivaled convenience where your financial freedom is the real magic. Join Inemoni today and unlock a simpler, hassle-free financial journey.
 				</p>
-
-				<div className="flex items-center gap-4 flex-wrap">
-					<Link
-						className="bg-brand-purple text-white btn block hover:bg-brand-navlink transition-colors duration-300 ease-in"
-						href="https://play.google.com/store/apps/details?id=com.inemoni.com"
-					>
-						Download App
-					</Link>
-
-					<Link
-						className="hover:bg-brand-gray btn block transition-colors duration-300 ease-in"
-						href="/create-account"
-					>
-						Get Started
-					</Link>
-				</div>
 			</div>
 
-			<Image
-				className="rounded-xl"
-				src={aboutHeroImage}
-				alt="Inemoni app overview"
-				quality={100}
-				priority={true}
-			/>
+            <Image
+                className="rounded-xl h-full object-contain sm:order-first"
+                src={ aboutHeroImage }
+                alt="We believe that your money deserves to be set free!"
+                quality={ 100 }
+                priority={ true }
+            />
 		</div>
 	);
 };
