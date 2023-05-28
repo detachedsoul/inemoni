@@ -4,6 +4,7 @@ import { useState } from "react";
 import validateNumberField from "@helpers/validateNumberField";
 
 const SignInForm = () => {
+    const [isProcessing, setIsProcessing] = useState(false);
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [keepSignin, setKeepSignin] = useState(false);
@@ -40,6 +41,8 @@ const SignInForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+        setIsProcessing(() => true);
 
 		const data = {
 			phone: phoneNumber,
@@ -98,6 +101,8 @@ const SignInForm = () => {
 
 				document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
 
+                setIsProcessing(() => false);
+
 				setTimeout(() => {
 					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
 
@@ -105,8 +110,10 @@ const SignInForm = () => {
 				}, 3000);
 			} else if (
 				response.error === false &&
-				response.identity_verified === false
+				response.account_verified === false
 			) {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Account Not Verified");
 
 				setMessage(
@@ -126,6 +133,8 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Login Failed");
 
 				setMessage(
@@ -139,7 +148,9 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 			}
-		} catch (error) {
+        } catch (error) {
+            setIsProcessing(() => false);
+
 			setHeader(() => "Login Failed");
 
 			setMessage(
@@ -154,7 +165,6 @@ const SignInForm = () => {
 			document.querySelector("body").style.overflow = "hidden";
 		}
 	};
-
 
 	return (
 		<>
@@ -259,12 +269,13 @@ const SignInForm = () => {
 						</Link>
 					</div>
 
-					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-						type="submit"
-					>
-						Sign In
-					</button>
+                    <button
+                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
+                        type="submit"
+                        disabled={ isProcessing }
+                    >
+                        { isProcessing ? "Processing..." : "Sign In" }
+                    </button>
 				</div>
 
 				<p className="text-[#979797]">

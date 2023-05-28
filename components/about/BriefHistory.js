@@ -6,7 +6,7 @@ const BriefHistory = () => {
             </h2>
 
             <p className="font-medium text-[#666666] sm:col-span-7 leading-loose">
-                Founded in 2020 by Akpan Inemesit, we’re the financial technology powerhouse that revolutionizes money management. Our cutting-edge solutions cover agency banking, loans, savings, bill payment, virtual cards, and cross-border transactions.
+                Founded in 2020 by Inemesit Akpan, we’re the financial technology powerhouse that revolutionizes money management. Our cutting-edge solutions cover agency banking, loans, savings, bill payment, virtual cards, and cross-border transactions.
             </p>
         </section>
     );

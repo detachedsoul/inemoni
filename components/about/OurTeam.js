@@ -25,11 +25,11 @@ const OurTeam = () => {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 place-content-center gap-4 sm:gap-y-6">
                 <div className="relative bg-team-bg bg-center object-contain bg-cover bg-no-repeat h-[350px] rounded-xl">
-                    <Image className="w-full h-full aspect-video rounded-xl" src={ InemesitAkpan } alt="Akpan Inemesit - CEO, Founder" />
+                    <Image className="w-full h-full aspect-video rounded-xl hidden" src={ InemesitAkpan } alt="Inemesit Akpan - CEO, Founder" />
 
                     <div className="rounded-xl p-3.5 bg-white opacity-80 absolute bottom-4 w-[calc(100%-2rem)] text-center left-4">
                         <h3 className="header text-xl">
-                            Akpan Inemesit
+                            Inemesit Akpan
                         </h3>
 
                         <p>
@@ -39,7 +39,7 @@ const OurTeam = () => {
                 </div>
 
                 <div className="relative bg-team-bg bg-center object-contain bg-cover bg-no-repeat h-[350px] rounded-xl">
-                    <Image className="w-full h-full aspect-video rounded-xl" src={ OluwaseunOke } alt="Oluwaseun Oke - CTO, Lead Engineer" />
+                    <Image className="w-full h-full aspect-video rounded-xl hidden" src={ OluwaseunOke } alt="Oluwaseun Oke - CTO, Lead Engineer" />
 
                     <div className="rounded-xl p-3.5 bg-white opacity-80 absolute bottom-4 w-[calc(100%-2rem)] text-center left-4">
                         <h3 className="header text-xl">
@@ -53,7 +53,7 @@ const OurTeam = () => {
                 </div>
 
                 <div className="relative bg-team-bg bg-center object-contain bg-cover bg-no-repeat h-[350px] rounded-xl">
-                    <Image className="w-full h-full aspect-video rounded-xl" src={ MichaelArawole } alt="Michael Arawole - Senior Backend Engineer" />
+                    <Image className="w-full h-full aspect-video rounded-xl hidden" src={ MichaelArawole } alt="Michael Arawole - Senior Backend Engineer" />
 
                     <div className="rounded-xl p-3.5 bg-white opacity-80 absolute bottom-4 w-[calc(100%-2rem)] text-center left-4">
                         <h3 className="header text-xl">
@@ -81,7 +81,7 @@ const OurTeam = () => {
                 </div>
 
                 <div className="relative bg-team-bg bg-center object-contain bg-cover bg-no-repeat h-[350px] rounded-xl">
-                    <Image className="w-full h-full aspect-video rounded-xl" src={ WisdomOjimah } alt="Wisdom Ojimah - Frontend Developer" />
+                    <Image className="w-full h-full aspect-video rounded-xl hidden" src={ WisdomOjimah } alt="Wisdom Ojimah - Frontend Developer" />
 
                     <div className="rounded-xl p-3.5 bg-white opacity-80 absolute bottom-4 w-[calc(100%-2rem)] text-center left-4">
                         <h3 className="header text-xl">
@@ -95,7 +95,7 @@ const OurTeam = () => {
                 </div>
 
                 <div className="relative bg-team-bg bg-center object-contain bg-cover bg-no-repeat h-[350px] rounded-xl">
-                    <Image className="w-full h-full aspect-video rounded-xl" src={ KosisochukwuChukwuka } alt="Kosisochukwu Chukwuka - Legal Advocate" />
+                    <Image className="w-full h-full aspect-video rounded-xl hidden" src={ KosisochukwuChukwuka } alt="Kosisochukwu Chukwuka - Legal Advocate" />
 
                     <div className="rounded-xl p-3.5 bg-white opacity-80 absolute bottom-4 w-[calc(100%-2rem)] text-center left-4">
                         <h3 className="header text-xl">

@@ -199,6 +199,8 @@ const CreatePinForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+        setIsProcessing(() => true);
+
 		// Merge all the pin to one value
 		const pin = `${pin1}${pin2}${pin3}${pin4}${pin5}${pin6}`;
 
@@ -207,6 +209,8 @@ const CreatePinForm = () => {
 
 		// Check if both set of pins match
 		if (pin !== confirmPin) {
+            setIsProcessing(() => false);
+
 			setHeader(() => "Error");
 			setMessage(() => "The pins do not match");
 			setIsError(() => true);
@@ -234,6 +238,9 @@ const CreatePinForm = () => {
 			nokMname: queryParams.nokMname,
 			nokEmail: queryParams.nokEmail,
 			nokPhone: queryParams.nokPhone,
+            city: queryParams.city,
+            zipCode: queryParams.zipCode,
+            state: queryParams.state,
 		};
 
 		const requestOptions = {
@@ -249,6 +256,8 @@ const CreatePinForm = () => {
 			const response = await request.json();
 
 			if (response.error === false) {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Registration Successful");
 				setMessage(
 					() => "Registration successful. Please proceed to verify your account",
@@ -259,6 +268,8 @@ const CreatePinForm = () => {
 				setButtonText(() => "Continue");
 				setQueryParams(() => response.data);
 			} else {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Error");
 				setMessage(() => response.message);
 				setIsError(() => true);
@@ -266,6 +277,8 @@ const CreatePinForm = () => {
 				setIsActive(() => true);
 			}
 		} catch (error) {
+            setIsProcessing(() => false);
+
 			setHeader(() => "Error");
 			setMessage(() => "An error occured");
 			setIsError(() => true);
