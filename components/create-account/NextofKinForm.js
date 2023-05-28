@@ -11,6 +11,7 @@ const NextofKinForm = () => {
 	const [message, setMessage] = useState("");
 	const [isError, setIsError] = useState(false);
 	const [isActive, setIsActive] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
 	const [firstName, setFirstName] = useState("");
 	const [middleName, setMiddleName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -67,6 +68,8 @@ const NextofKinForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+        setIsProcessing(() => true);
 
 		// List required fields
 		const requiredFields = [firstName, lastName, phoneNumber];
@@ -217,7 +220,7 @@ const NextofKinForm = () => {
 							name="phone-number"
 							id="phone-number"
 							className="input-form"
-							placeholder="08105008304"
+							placeholder="08000000000"
 							inputMode="numeric"
 							pattern="[0-9]{11}"
 							maxLength={11}
@@ -269,12 +272,13 @@ const NextofKinForm = () => {
 						/>
 					</label>
 
-					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-						type="submit"
-					>
-						Continue
-					</button>
+                    <button
+                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${(isProcessing || isActive) && isActive ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
+                        type="submit"
+                        disabled={ (isProcessing || isActive) && isActive }
+                    >
+                        { (isProcessing || isActive) && isActive ? "Processing..." : "Continue" }
+                    </button>
 				</div>
 			</form>
 

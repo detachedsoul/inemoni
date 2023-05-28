@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import FooterBanner from "@components/FooterBanner";
 import Head from "next/head";
@@ -36,7 +34,7 @@ const LegalLayout = ({ children }) => {
 
 			<main className="grid gap-8 items-start sm:grid-cols-12 p-[5%] xl:p-[7%] sm:gap-12">
 				<div
-					className={`fixed z-[1024] transiton-transform ease-in-out left-0 px-[5%] top-[10%] duration-500 sm:sticky sm:z-auto sm:w-auto sm:p-0 w-full sm:top-[15%] sm:col-span-4 md:col-span-3 bg-white py-4 ${
+					className={`fixed z-[1024] transiton-transform ease-in-out left-0 px-[5%] top-[10%] duration-500 sm:sticky sm:z-auto sm:w-auto sm:p-0 w-full sm:top-[15%] sm:col-span-4 md:col-span-3 bg-[#F2F2F2] py-4 ${
 						isActive
 							? "translate-x-0"
 							: "-translate-x-[calc(100%+6%)]"

@@ -5,8 +5,8 @@ import previewImage from "@assets/img/feature-preview.svg";
 
 const HeroText = () => {
 	return (
-        <div className="mx-4 md:relative">
-            <div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-10 pb-36 sm:gap-16 lg:pb-40 xl:px-[7%] bg-[#E6E6E6] rounded-t-[30px] text-center lg:text-left relative lg:static">
+        <div className="mx-4 md:relative xl:mx-8">
+            <div className="grid grid-cols-1 items-center gap-8 px-[5%] pt-10 pb-36 sm:gap-16 lg:pb-40 bg-[#E6E6E6] rounded-t-[30px] text-center sm:text-left relative lg:static">
                 <div className="flex flex-col gap-5">
                     <h1 className="main-header lg:w-[70%]">
                         Bringing Financial Services To Your Doorsteps.
@@ -16,7 +16,7 @@ const HeroText = () => {
                         Easy access to financial services is our watchword while creating an avenue for our agents to make money using our amazing services.
                     </p>
 
-                    <div className="flex flex-col place-items-center gap-4 lg:flex-row">
+                    <div className="flex flex-col place-items-center gap-4 sm:flex-wrap sm:flex-row">
                         <Link
                             className="btn bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
                             href="https://play.google.com/store/apps/details?id=com.inemoni.com"
@@ -37,15 +37,14 @@ const HeroText = () => {
                 </div>
 
                 <Image
-                    className="z-30 w-[calc(100%-10%)] top-[calc((19%*4)+1rem)] lg:block absolute lg:top-[19.5%] lg:w-auto left-[5%] right-[2.5%] lg:right-[2.5%] lg:left-auto lg:h-[55%] aspect-auto object-cover"
+                    className="z-30 w-[calc(100%-10%)] top-[calc((19%*4)+1rem)] sm:top-[calc((17%*4)+1rem)] absolute lg:top-[19.5%] lg:w-auto left-[5%] right-[2.5%] lg:left-auto xl:right-[5%] lg:h-[55%] aspect-auto object-cover"
                     src={heroImage}
                     alt="Inemoni app overview"
-                    quality={100}
                     priority={true}
                 />
             </div>
 
-            <section className="grid grid-cols-1 gap-8 pt-[calc(19%*4.8)] pb-8 px-[5%] xl:px-[10%] rounded-t-[30px] relative bg-[#F2F2F2] -top-[30px] sm:grid-cols-12 sm:place-content-center lg:grid-cols-1 -mb-[50px] lg:pt-8">
+            <section className="grid grid-cols-1 gap-8 pt-[calc(19%*4.8)] pb-8 px-[5%] rounded-t-[30px] relative bg-[#F2F2F2] -top-[30px] sm:grid-cols-12 sm:place-content-center lg:grid-cols-1 -mb-[50px] lg:pt-8">
                 <div className="space-y-4 sm:space-y-5 sm:col-span-6 lg:col-span-12 lg:w-2/5">
                     <h2 className="header text-2xl sm:text-3xl">Bills Payments</h2>
 
@@ -66,7 +65,7 @@ const HeroText = () => {
                     <h2 className="header text-2xl sm:text-3xl">Money Transfer</h2>
 
                     <p>
-                        Easily receive money from anyone, anytime and anywhere in the world.
+                        Make single or bulk transfers to bank accounts from your Inemoni dashboard. Your transfer goes through seamlessly with Inemoni.
                     </p>
                 </div>
             </section>

@@ -1,11 +1,10 @@
 import Head from "next/head";
 import HeroText from "@components/about/HeroText";
-import NationalReach from "@components/about/NationalReach";
-import Testimonials from "@components/about/Testimonials";
+import BriefHistory from "@components/about/BriefHistory";
+import OurAim from "@components/about/OurAim";
+import OurTeam from "@components/about/OurTeam";
 import FooterCard from "@components/FooterCard";
 import FooterBanner from "@components/FooterBanner";
-import Image from "next/image";
-import partners from "@assets/data/partners";
 import Layout from "./_layout";
 
 const About = () => {
@@ -19,29 +18,26 @@ const About = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[10%] lg:pb-[2%]">
+			<main>
 				<HeroText />
 
-				<section className="px-[10%] space-y-4 text-center sm:space-y-6 sm:text-left">
-					<h3 className="text-xl font-medium text-center">
-						We are trusted by <span className="font-bold ">verified</span> businesses
-					</h3>
+                <div className="space-y-[10%] sm:space-y-[5%]">
+                    <BriefHistory />
 
-					<div className="grid grid-cols-3 sm:grid-cols-6 items-center gap-x-12 gap-y-4">
-						{partners.map((partner, id) => (
-							<Image
-								className="h-16 md:h-full"
-								src={partner.logo}
-								alt={partner.name}
-								key={id}
-								quality={100}
-							/>
-						))}
-					</div>
-				</section>
+                    <section className="text-center space-y-4 sm:w-4/5 sm:mx-auto px-[5%] mx-4 lg:w-3/5">
+                        <h2 className="secondary-header">
+                            Imagine being stranded without access to your hard-earned cash — talk about a financial nightmare!
+                        </h2>
 
-				<NationalReach />
-				<Testimonials />
+                        <p className="w-[90%] mx-auto">
+                            We’ve been there, and that’s why Inemoni is here to save the day! We don’t just prioritize our customers – we superheroize them!
+                        </p>
+                    </section>
+
+                    <OurAim />
+
+                    <OurTeam />
+                </div>
 			</main>
 
 			<FooterCard />

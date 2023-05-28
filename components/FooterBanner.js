@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const FooterBanner = () => {
     return (
-        <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between bg-white px-[5%] py-2 z-50 shadow md:hidden">
+        <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between bg-white px-[5%] py-2 z-50 shadow sm:hidden">
             <div className="flex items-center gap-3">
                 <Image
                     className="object-cover"

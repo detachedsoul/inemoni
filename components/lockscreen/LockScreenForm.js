@@ -8,6 +8,7 @@ import { useState } from "react";
 const LockScreenForm = () => {
 	const router = useRouter();
 
+    const [isProcessing, setIsProcessing] = useState(false);
 	const [password, setPassword] = useState("");
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
@@ -25,6 +26,8 @@ const LockScreenForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+        setIsProcessing(() => true);
 
 		const data = {
 			user_token: getCookie("user_token").sanitizedValue,
@@ -51,6 +54,7 @@ const LockScreenForm = () => {
 				response.error === false &&
 				response.message === "Login successful"
 			) {
+                setIsProcessing(() => false);
 
 				setHeader(() => "Login Successful");
 
@@ -72,7 +76,9 @@ const LockScreenForm = () => {
 					document.querySelector("body").style.overflow =
 						"auto";
 				}, 3000);
-			} else {
+            } else {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Login Failed");
 
 				setMessage(
@@ -88,6 +94,8 @@ const LockScreenForm = () => {
 					"hidden";
 			}
 		} catch (error) {
+            setIsProcessing(() => false);
+
 			setHeader(() => "Login Failed");
 
 			setMessage(
@@ -177,12 +185,13 @@ const LockScreenForm = () => {
 						Forgot Password
 					</Link>
 
-					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-						type="submit"
-					>
-						Sign In
-					</button>
+                    <button
+                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
+                        type="submit"
+                        disabled={ isProcessing }
+                    >
+                        { isProcessing ? "Processing..." : "Sign In" }
+                    </button>
 				</div>
 
 				<div className="space-y-2">

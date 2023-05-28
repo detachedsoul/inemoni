@@ -18,56 +18,54 @@ const SavingsFeature = () => {
 				/>
 			</Head>
 
-			<main className="space-y-[20%] sm:space-y-[10%]">
+			<main className="space-y-[10%] sm:space-y-[5%]">
 				<HeroText />
 
-				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 lg:grid-cols-12 lg:gap-16 sm:grid-cols-2">
-						<div className="space-y-5 lg:col-span-7">
-							<h2 className="secondary-header">
-								Savings is Easier When You Use Inemoni.
-							</h2>
+                <div className="space-y-[10%] sm:space-y-0">
+                    <section className="px-[5%]">
+                        <div className="grid grid-cols-1 items-center justify-between gap-8 lg:grid-cols-12 lg:gap-16 sm:gap-12 sm:grid-cols-2">
+                            <h2 className="secondary-header ont-bold text-center sm:hidden">
+                                Savings is Easier When You Use Inemoni.
+                            </h2>
 
-							<p>
-								Accelerate your savings journey with Inemoni’s
-								Smart Saving Products - enjoy up to 15% interest
-								returns per annum and withdraw your funds with
-								unmatched convenience.
-							</p>
-						</div>
+                            <Image
+                                className="h-full w-full lg:col-span-5"
+                                src={Savings}
+                                alt="Savings is Easier When You Use Inemoni"
+                            />
 
-						<Image
-							className="h-full w-full lg:col-span-5 aspect-square"
-							src={Savings}
-							alt="Savings is Easier When You Use Inemoni"
-							quality={100}
-						/>
-					</article>
-				</section>
+                            <div className="sm:space-y-5 lg:col-span-7">
+                                <h2 className="secondary-header lg:w-[90%] hidden sm:block">
+                                    Savings is Easier When You Use Inemoni.
+                                </h2>
 
-				<section className="px-[5%] xl:px-[7%]">
-					<article className="grid grid-cols-1 items-center justify-between gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-16">
-						<div className="space-y-5 lg:col-span-7">
-							<h2 className="secondary-header">
-								Stash your money & watch it grow.
-							</h2>
+                                <p className="lg:w-[70%] sm:text-left text-center">
+                                    Accelerate your savings journey with Inemoni’s Smart Saving Products - enjoy up to 15% interest returns per annum and withdraw your funds with unmatched convenience.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
-							<p>
-								Unleash the full potential of your savings with
-								Inemoni’s Fixed Plan - secure lump sums and soar
-								to financial heights with Up to 15% annual
-								interest.
-							</p>
-						</div>
+                    <div className="pt-5 bg-[#E6E6E6] rounded-[30px] text-center px-[5%] mx-4 xl:mx-8">
+                        <Image
+                            className="sm:w-4/5 sm:mx-auto object-cover"
+                            src={SavingsBalance}
+                            alt="Savings is Easier When You Use Inemoni"
+                        />
+                    </div>
+                </div>
 
-						<Image
-							className="h-full w-full lg:col-span-5"
-							src={SavingsBalance}
-							alt="Stash your money & watch it grow"
-							quality={100}
-							priority
-						/>
-					</article>
+				<section className="px-[5%]">
+					<div className="text-center grid place-items-center gap-5 sm:w-4/5 sm:mx-auto">
+                        <h3 className="secondary-header">
+                            Stash Your Money <br />
+                            & Watch It Grow.
+                        </h3>
+
+                        <p className="w-4/5 sm:w-3/5 mx-auto">
+                            Unleash the full potential of your savings with Inemoni’s Fixed Plan - secure lump sums and soar to financial heights with Up to 15% annual interest.
+                        </p>
+                    </div>
 				</section>
 			</main>
 
