@@ -6,6 +6,7 @@ import SendMoney from "@assets/img/send-money.png";
 import SuccessfulTransaction from "@assets/img/successful-transaction.png";
 import Head from "next/head";
 import Layout from "./_layout";
+import {motion} from "framer-motion";
 
 const MoneyTransfer = () => {
 	return (
@@ -27,40 +28,87 @@ const MoneyTransfer = () => {
                             Money Transfer is easier when you use Inemoni.
                         </h2>
 
-                        <p>
+                        <motion.p
+                            initial={{
+                                opacity: 0,
+                                y: "100%"
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
+                            transition={{
+                                duration: 1
+                            }}
+                        >
                             Effortlessly connect with your loved ones and
                             business partners with Inemoni’s Quick and
                             Secure Fund Transfer. Say goodbye to checks and
                             bank visits.
-                        </p>
+                        </motion.p>
                     </div>
 
-                    <Image
-                        className="h-full w-full mx-auto sm:mx-0 lg:col-span-5 aspect-auto lg:h-full"
-                        src={SuccessfulTransaction}
-                        alt="Money Transfer is easier when you use Inemoni"
-                    />
+                    <motion.div
+                        intial={{
+                            opacity: 0,
+                            scale: 0,
+                            y: "100%"
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            scale: 1,
+                            y: 0
+                        }}
+                        layout
+                        className="mx-auto sm:mx-0 lg:col-span-5"
+                    >
+                        <Image
+                            className="h-full w-full aspect-auto"
+                            src={SuccessfulTransaction}
+                            alt="Money Transfer is easier when you use Inemoni"
+                        />
+                    </motion.div>
 				</section>
 
 				<section className="px-[5%]">
                     <div className="text-center grid place-items-center gap-5 sm:w-4/5 sm:mx-auto">
-                        <div>
+                        <div className="sapce-y-4">
                             <h3 className="secondary-header font-bold">
                                 Spare Yourself Time & <br/>
                                 Just Send in Seconds.
                             </h3>
 
-                            <p className="w-4/5 sm:w-3/5 mx-auto">
+                            <motion.p
+                                initial={{
+                                    opacity: 0,
+                                    y: "100%"
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0
+                                }}
+                                className="w-4/5 sm:w-3/5 mx-auto"
+                            >
                                 Effortlessly move your money, whenever and wherever you need it, with our hassle-free, and secure transfers. Experience the freedom of fast and free banking today!
-                            </p>
+                            </motion.p>
                         </div>
 
-                        <Image
+                        <motion.div
+                            intial={{
+                                scale: 0
+                            }}
+                            whileInView={{
+                                scale: 1
+                            }}
                             className="h-full mx-auto w-3/5 sm:w-1/2"
-                            src={SendMoney}
-                            alt="Spare Yourself Time & Just Send in Seconds"
-                            quality={100}
-                        />
+                        >
+                            <Image
+                                className="h-full w-full aspect-auto"
+                                src={SendMoney}
+                                alt="Spare Yourself Time & Just Send in Seconds"
+                                quality={100}
+                            />
+                        </motion.div>
                     </div>
 				</section>
 			</main>

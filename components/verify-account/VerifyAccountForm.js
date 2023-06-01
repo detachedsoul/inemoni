@@ -103,7 +103,7 @@ const VerifyAccountForm = () => {
 		};
 
         try {
-            const request = await fetch(`https://inemoni.org/api/send-verification-code?app=0`, requestOptions);
+            const request = await fetch(`https://www.inemoni.org/api/send-verification-code?app=0`, requestOptions);
 
             const response = await request.json();
 

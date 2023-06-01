@@ -11,6 +11,7 @@ const CreatePinForm = () => {
 
 	const confirmPinRef = useRef(null);
 
+    const [isProcessing, setIsProcessing] = useState(false);
 	const [isActive, setIsActive] = useState(false);
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
@@ -531,11 +532,11 @@ const CreatePinForm = () => {
 					</p>
 
 					<button
-						className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none"
+						className={`btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'}`}
 						type="submit"
-						disabled={isDisabled}
+						disabled={(isDisabled && !isProcessing) || isProcessing}
 					>
-						Create Account
+                        { isProcessing ? "Processing..." : "Create Account" }
 					</button>
 				</div>
 			</form>

@@ -28,6 +28,7 @@ const SignInForm = () => {
 	};
 
 	const handlePasswordChange = (e) => {
+        // Allow only numbers with maximum lenght of 6
 		if (!validateNumberField(e.target.value, 6)) {
 			return;
 		}
@@ -63,7 +64,7 @@ const SignInForm = () => {
 				requestOptions,
 			);
 
-			const response = await request.json();
+            const response = await request.json();
 
 			if (
 				response.error === false &&
@@ -103,11 +104,11 @@ const SignInForm = () => {
 
                 setIsProcessing(() => false);
 
-				setTimeout(() => {
-					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
+				// setTimeout(() => {
+				// 	window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
 
-					document.querySelector("body").style.overflow = "auto";
-				}, 3000);
+				// 	document.querySelector("body").style.overflow = "auto";
+				// }, 3000);
 			} else if (
 				response.error === false &&
 				response.account_verified === false

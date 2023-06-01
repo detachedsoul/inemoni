@@ -43,7 +43,7 @@ const LockScreenForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/verify-login",
+				"https://www.inemoni.org/api/verify-login",
 				requestOptions,
 			);
 

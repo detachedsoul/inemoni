@@ -61,7 +61,7 @@ const BVNForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/auth/validate",
+				"https://www.inemoni.org/api/auth/validate",
 				requestOptions,
 			);
 

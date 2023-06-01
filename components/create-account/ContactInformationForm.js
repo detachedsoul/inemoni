@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Get list of all states including the FCT
 const fetchStates = async () => {
     try {
-        const req = await fetch("https://inemoni.org/api/validation/getStates");
+        const req = await fetch("https://www.inemoni.org/api/validation/getStates");
 
         const res = await req.json();
 
@@ -86,6 +86,10 @@ const ContactInformationForm = () => {
     };
 
     const handleCityChange = (e) => {
+        if (e.target.value < 1 || e.target.value > 37) {
+            return;
+        }
+
         setCity(e.target.value);
     };
 
