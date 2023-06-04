@@ -47,7 +47,7 @@ const OurTeam = () => {
                         </h3>
 
                         <p>
-                            CTO, Lead Engineer
+                            Android Engineer, CTO
                         </p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const OurTeam = () => {
                         </h3>
 
                         <p>
-                            Senior Backend Engineer
+                            Senior Backend Engineer, Lead Engineer
                         </p>
                     </div>
                 </div>

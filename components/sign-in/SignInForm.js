@@ -45,6 +45,8 @@ const SignInForm = () => {
 
         setIsProcessing(() => true);
 
+        const getURLOrigin = window.location.origin;
+
 		const data = {
 			phone: phoneNumber,
 			pin: password,
@@ -60,7 +62,7 @@ const SignInForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://www.inemoni.org/api/login",
+				`${getURLOrigin}/api/login`,
 				requestOptions,
 			);
 
@@ -104,11 +106,11 @@ const SignInForm = () => {
 
                 setIsProcessing(() => false);
 
-				// setTimeout(() => {
-				// 	window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
+				setTimeout(() => {
+					window.location.href = `https://www.inemoni.org/mobile/__initSession?session_data=${response.data.session_data}&keep_signin=${keepSignin}`;
 
-				// 	document.querySelector("body").style.overflow = "auto";
-				// }, 3000);
+					document.querySelector("body").style.overflow = "auto";
+				}, 3000);
 			} else if (
 				response.error === false &&
 				response.account_verified === false
@@ -155,8 +157,7 @@ const SignInForm = () => {
 			setHeader(() => "Login Failed");
 
 			setMessage(
-				() =>
-					"Login failed. Please check your phone number and pin and try again.",
+				() => "An error occured. Please try again later",
 			);
 
 			setIsError(() => true);

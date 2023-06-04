@@ -37,8 +37,10 @@ const HeroText = () => {
                         y: 0
                     }}
                     transition={{
-                        ease: "linear"
+                        ease: "linear",
+                        duration: 1
                     }}
+                    layout
                 >
                     Unlock the power of your funds with Inemoni’s Money Transfer Solution - experience seamless access to your account, anytime, anywhere.
                 </motion.p>
@@ -72,6 +74,11 @@ const HeroText = () => {
                     opacity: 1,
                     height: "100%"
                 }}
+                transition={{
+                    ease: "linear",
+                    duration: 1
+                }}
+                layout
                 className="order-last sm:order-first "
             >
                 <Image

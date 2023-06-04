@@ -202,6 +202,8 @@ const CreatePinForm = () => {
 
         setIsProcessing(() => true);
 
+        const getURLOrigin = window.location.origin;
+
 		// Merge all the pin to one value
 		const pin = `${pin1}${pin2}${pin3}${pin4}${pin5}${pin6}`;
 
@@ -252,7 +254,7 @@ const CreatePinForm = () => {
 		};
 
 		try {
-			const request = await fetch(`https://www.inemoni.org/api/auth/register`, requestOptions);
+			const request = await fetch(`${getURLOrigin}/api/auth/register`, requestOptions);
 
 			const response = await request.json();
 

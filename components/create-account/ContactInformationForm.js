@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 
 // Get list of all states including the FCT
 const fetchStates = async () => {
+    const getURLOrigin = window.location.origin;
+
     try {
-        const req = await fetch("https://www.inemoni.org/api/validation/getStates");
+        const req = await fetch(`${getURLOrigin}/api/validation/getStates`);
 
         const res = await req.json();
 

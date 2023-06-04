@@ -19,6 +19,8 @@ const PasswordResetForm = () => {
 	const handlePasswordReset = async (e) => {
 		e.preventDefault();
 
+        const getURLOrigin = window.location.origin;
+
 		// Check if the typed string is a valid email
 		const isValidEmail = /^[^\s@]*@[^\s@]+\.[^\s@]+$/.test(email);
 		if (!isValidEmail) {
@@ -48,7 +50,7 @@ const PasswordResetForm = () => {
 
 		try {
 			const request = await fetch(
-				`https://www.inemoni.org/api/send-reset-code`,
+				`${getURLOrigin}/api/send-reset-code`,
 				requestOptions,
 			);
 

@@ -1,4 +1,5 @@
 import AuthPopup from "@components/create-account/AuthPopup";
+import validateNumberField from "@helpers/validateNumberField";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -6,6 +7,7 @@ const VerifyAccountForm = () => {
     const router = useRouter();
 	const queryParams = router.query;
 
+    const [isProcessing, setIsProcessing] = useState(false);
 	const [header, setHeader] = useState("");
 	const [message, setMessage] = useState("");
 	const [isActive, setIsActive] = useState(false);
@@ -23,11 +25,19 @@ const VerifyAccountForm = () => {
 	}
 
     const handleOTPChange = (e) => {
+        if (!validateNumberField(e.target.value, 4)) {
+			return;
+		}
+
         setOTP(e.target.value);
     };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+        setIsProcessing(() => true);
+
+        const getURLOrigin = window.location.origin;
 
 		const data = {
             user_token : queryParams.login_token,
@@ -43,13 +53,15 @@ const VerifyAccountForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/check-verification-code",
+				`${getURLOrigin}/api/check-verification-code`,
 				requestOptions,
 			);
 
 			const response = await request.json();
 
             if (response.error === false) {
+                setIsProcessing(() => false);
+
                 setHeader(() => "Account Successfully Verified");
                 setMessage(() => "Your account has been verified successfully.");
                 setIsError(() => false);
@@ -61,6 +73,8 @@ const VerifyAccountForm = () => {
 				response.error === true &&
 				response.message === "Phone number already verified"
 			) {
+                setIsProcessing(() => false);
+
 				setHeader(() => "Already Verified");
 				setMessage(
 					() => "Your phone number has already been verified.",
@@ -71,6 +85,8 @@ const VerifyAccountForm = () => {
 				setButtonText(() => "Login Instead");
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
+                setIsProcessing(() => false);
+
                 setHeader(() => "Verification Failed");
 				setMessage(
 					() =>
@@ -81,6 +97,8 @@ const VerifyAccountForm = () => {
 				document.querySelector("body").style.overflow = "hidden";
             }
 		} catch (error) {
+            setIsProcessing(() => false);
+
 			setHeader(() => "Verification Failed");
             setMessage(() => "An error occured. Please try again later");
             setIsError(() => true);
@@ -103,7 +121,7 @@ const VerifyAccountForm = () => {
 		};
 
         try {
-            const request = await fetch(`https://www.inemoni.org/api/send-verification-code?app=0`, requestOptions);
+            const request = await fetch(`${getURLOrigin}/api/send-verification-code?app=0`, requestOptions);
 
             const response = await request.json();
 
@@ -118,10 +136,10 @@ const VerifyAccountForm = () => {
                 setTimeout(() => {
                     setIsActive(() => false);
                     document.querySelector("body").style.overflow = "auto";
-                }, 5000);
+                }, 3000);
             } else {
                 setHeader(() => "OTP Not Sent");
-                setMessage(() => "An error occured. Please try again later");
+                setMessage(() => "An error occured. Please check the OTP and try again.");
                 setIsError(() => true);
                 setIsActive(() => true);
 
@@ -129,7 +147,7 @@ const VerifyAccountForm = () => {
             }
         } catch (error) {
             setHeader(() => "OTP Not Sent");
-            setMessage(() => "An error occured. Please try again later");
+            setMessage(() => "An error occured. Please try again later.");
             setIsError(() => true);
             setIsActive(() => true);
 
@@ -161,14 +179,15 @@ const VerifyAccountForm = () => {
                             </span>
 
                             <input
-                                type="number"
+                                type="passweord"
                                 name="password"
                                 id="password"
-                                className="input-form no-number-increment [-webkit-text-security:square]"
+                                className="input-form no-number-increment"
                                 placeholder="Enter OTP"
                                 pattern="[0-9]{4}"
                                 maxLength={4}
                                 minLength={4}
+                                inputMode="numeric"
                                 onChange={handleOTPChange}
                                 value={otp}
                                 aria-label="Enter the OTP sent to your phone number"
@@ -177,11 +196,11 @@ const VerifyAccountForm = () => {
                         </label>
 
                         <button
-                            className="btn block rounded-md bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none"
+                            className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink disabled:cursor-not-allowed disabled:pointer-events-none ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'}`}
                             type="submit"
-                            disabled={otp === "" ? true : false}
+                            disabled={otp === "" || isProcessing ? true : false}
                         >
-                            Verify Account
+                            {isProcessing ? "Processing..." : "Verify Account"}
                         </button>
                     </div>
                 </form>

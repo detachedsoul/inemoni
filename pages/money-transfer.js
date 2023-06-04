@@ -48,7 +48,7 @@ const MoneyTransfer = () => {
                         </motion.p>
                     </div>
 
-                    <motion.div
+                    {/* <motion.div
                         intial={{
                             opacity: 0,
                             scale: 0,
@@ -67,6 +67,31 @@ const MoneyTransfer = () => {
                             src={SuccessfulTransaction}
                             alt="Money Transfer is easier when you use Inemoni"
                         />
+                    </motion.div> */}
+
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            height: "100%",
+                            y: "50%"
+                        }}
+                        whileInView={{
+                            height: "100%",
+                            y: 0,
+                            opacity: 1,
+                        }}
+                        transition={{
+                            ease: "linear",
+                            duration: 1
+                        }}
+                        layout
+                        className="lg:col-span-5"
+                    >
+                            <Image
+                                className="mx-auto sm:mx-0 h-full w-full"
+                                src={ SuccessfulTransaction }
+                                alt="Money Transfer is easier when you use Inemoni"
+                            />
                     </motion.div>
 				</section>
 
@@ -87,6 +112,10 @@ const MoneyTransfer = () => {
                                     opacity: 1,
                                     y: 0
                                 }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: 1
+                                }}
                                 className="w-4/5 sm:w-3/5 mx-auto"
                             >
                                 Effortlessly move your money, whenever and wherever you need it, with our hassle-free, and secure transfers. Experience the freedom of fast and free banking today!
@@ -94,19 +123,24 @@ const MoneyTransfer = () => {
                         </div>
 
                         <motion.div
-                            intial={{
-                                scale: 0
+                            initial={{
+                                opacity: 0,
+                                height: 0
                             }}
                             whileInView={{
-                                scale: 1
+                                opacity: 1,
+                                height: "100%"
                             }}
-                            className="h-full mx-auto w-3/5 sm:w-1/2"
+                            transition={{
+                                ease: "linear",
+                                duration: 1
+                            }}
+                            layout
                         >
                             <Image
-                                className="h-full w-full aspect-auto"
-                                src={SendMoney}
+                                className="aspect-auto mx-auto w-3/5 sm:w-1/2"
+                                src={ SendMoney }
                                 alt="Spare Yourself Time & Just Send in Seconds"
-                                quality={100}
                             />
                         </motion.div>
                     </div>
