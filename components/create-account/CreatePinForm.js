@@ -319,12 +319,13 @@ const CreatePinForm = () => {
 
 						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin"
 								id="create-pin"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin1 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -334,12 +335,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin-value-2"
 								id="create-pin-value-2"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin2 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -349,12 +351,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin-value-3"
 								id="create-pin-value-3"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin3 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -364,12 +367,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin-value-4"
 								id="create-pin-value-4"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin4 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -379,12 +383,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin-value-5"
 								id="create-pin-value-5"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin5 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -394,12 +399,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin-value-6"
 								id="create-pin-value-6"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin6 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -420,12 +426,13 @@ const CreatePinForm = () => {
 
 						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={ 1 }
 								pattern="[0-9]{1}"
 								name="confirm-pin"
 								id="confirm-pin"
-								className={ `input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${confirmPin1 !== ""
+								className={ `input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${confirmPin1 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
 									}` }
@@ -435,12 +442,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="confirm-pin-value-2"
 								id="confirm-pin-value-2"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin2 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -450,12 +458,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="confirm-pin-value-3"
 								id="confirm-pin-value-3"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin3 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -465,12 +474,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="confirm-pin-value-4"
 								id="confirm-pin-value-4"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin4 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -480,12 +490,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="confirm-pin-value-5"
 								id="confirm-pin-value-5"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin5 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
@@ -495,12 +506,13 @@ const CreatePinForm = () => {
 							/>
 
 							<input
-								type="number"
+								type="password"
+                                inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="confirm-pin-value-6"
 								id="confirm-pin-value-6"
-								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold [-webkit-text-security:square] lg:py-6 ${
+								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin6 !== ""
 										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
 										: "border-[#979797] focus:border-[#979797]"
