@@ -29,6 +29,8 @@ const LockScreenForm = () => {
 
         setIsProcessing(() => true);
 
+        const getURLOrigin = window.location.origin;
+
 		const data = {
 			user_token: getCookie("user_token").sanitizedValue,
 			pin: password,
@@ -43,7 +45,7 @@ const LockScreenForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/verify-login",
+				`${getURLOrigin}/api/verify-login`,
 				requestOptions,
 			);
 

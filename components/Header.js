@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { MenuIcon, X } from "lucide-react";
+import { motion } from "framer-motion"
 
 const Header = () => {
 	const router = useRouter();
@@ -83,7 +85,16 @@ const Header = () => {
 					</Link>
 				</p>
 			</div>
-			<header
+            <motion.header
+                initial={{
+                    y: "-100%",
+                    opacity: 0
+                }}
+                animate={ {
+                    y: 0,
+                    opacity: 1,
+                }}
+                transition={{duration: 1}}
 				className={`sticky top-0 z-50 flex items-center justify-between gap-4 bg-[#F2F2F2] p-[5%] sm:py-[4%] md:py-[1.5%] xl:px-[7%]`}
 			>
 				<Link href="/">
@@ -308,14 +319,14 @@ const Header = () => {
 						aria-label="Navbar toggle button"
 						onClick={handleNavClick}
 					>
-						<i
-							className={`${
-								navIsOpen ? "fi-rr-cross" : "fi-rr-menu-burger "
-							} text-xl`}
-						></i>
+                        {navIsOpen ? (
+                            <X size={30} strokeWidth={1} />
+                        ) : (
+                            <MenuIcon size={30} strokeWidth={1} />
+                        )}
 					</button>
 				</div>
-			</header>
+			</motion.header>
 		</>
 	);
 };

@@ -6,11 +6,21 @@ import Link from "next/link";
 
 const BlogPost = () => {
     return (
-		<article className="space-y-4">
-			<div className="relative h-[200px] w-full rounded-lg md:h-[250px] lg:h-[300px]">
+		<article className="space-y-8">
+            <div className="space-y-3">
+                <h1 className="secondary-header leading-tight">
+                    Here’s an overview of how we made magic happen
+                </h1>
+
+                <p className="font-medium text-[#666666]">
+                    Jan 10, 2023 &bull; 6 Min Read
+                </p>
+            </div>
+
+			<div className="relative h-[200px] w-full rounded-lg sm:h-[300px] lg:h-[400px]">
 				<Image
 					className="block w-full rounded-lg object-cover object-center"
-					src="/img/blogImage.png"
+					src="/img/blog-img-1.png"
 					alt="Here’s an overview of how we made magic happen"
 					title="Here’s an overview of how we made magic happen"
 					quality={100}
@@ -20,19 +30,9 @@ const BlogPost = () => {
 			</div>
 
 			<div className="space-y-12">
-				<div className="space-y-1">
-					<p className="font-medium">
-						Jan 10, 2023 &bull; 6 Min Read
-					</p>
-
-					<h1 className="secondary-header">
-						Here’s an overview of how we made magic happen
-					</h1>
-				</div>
-
-				<div className="grid gap-8 md:grid-cols-12">
-					<div className="md:col-span-4">
-						<div className="space-y-8  lg:sticky lg:top-[18%]">
+				<div className="grid gap-8 sm:grid-cols-12">
+					<div className="sm:col-span-4">
+						<div className="sm:space-y-8 sm:sticky sm:top-[18%]">
 							<div className="flex items-center gap-4">
 								<Image
 									className="aspect-square rounded-full object-cover object-center"
@@ -48,27 +48,13 @@ const BlogPost = () => {
 									<h3 className="header leading-normal">
 										Praise Dominic
 									</h3>
-									<small className="inline-block leading-normal">
+									<small className="inline-block leading-normal text-[#666666]">
 										Finance Consultant
 									</small>
 								</div>
 							</div>
 
-							<div className="space-y-3">
-								<h3 className="header">Categories</h3>
-
-								<div className="flex flex-wrap items-center gap-4">
-									<p className="inline-block rounded-md bg-[rgba(243,135,4,0.1)] py-0.5 px-4 font-medium text-brand-orange">
-										Finance
-									</p>
-
-									<p className="inline-block rounded-md bg-[rgba(111,111,186,0.1)] py-0.5 px-4 font-medium text-brand-purple">
-										Finance
-									</p>
-								</div>
-							</div>
-
-							<div className="space-y-3">
+							<div className="hidden sm:block sm:space-y-3">
 								<h3 className="header">Share This Article</h3>
 
 								<div className="flex flex-wrap items-center gap-4">
@@ -118,8 +104,8 @@ const BlogPost = () => {
 						</div>
 					</div>
 
-					<div className="md:col-span-8">
-						<p>
+					<div className="space-y-4 sm:col-span-8">
+						<p className="text-[#666666]">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et
 							dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -131,7 +117,7 @@ const BlogPost = () => {
 							deserunt mollit anim id est laborum.
 						</p>
 
-						<p>
+						<p className="text-[#666666]">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et
 							dolore magna aliqua. Ut enim ad minim veniam, quis

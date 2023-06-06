@@ -30,7 +30,7 @@ const BVNForm = () => {
 	}, [isActive]);
 
 	const handleBVNChange = (e) => {
-		if (!validateNumberField(e.target.value,11)) {
+		if (!validateNumberField(e.target.value, 11)) {
 			return;
 		}
 
@@ -39,6 +39,8 @@ const BVNForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+        const getURLOrigin = window.location.origin;
 
 		const data = {
 			id_type: "bvn",
@@ -61,7 +63,7 @@ const BVNForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://inemoni.org/api/auth/validate",
+				`${getURLOrigin}/api/auth/validate`,
 				requestOptions,
 			);
 

@@ -28,6 +28,7 @@ const SignInForm = () => {
 	};
 
 	const handlePasswordChange = (e) => {
+        // Allow only numbers with maximum lenght of 6
 		if (!validateNumberField(e.target.value, 6)) {
 			return;
 		}
@@ -44,6 +45,8 @@ const SignInForm = () => {
 
         setIsProcessing(() => true);
 
+        const getURLOrigin = window.location.origin;
+
 		const data = {
 			phone: phoneNumber,
 			pin: password,
@@ -59,11 +62,11 @@ const SignInForm = () => {
 
 		try {
 			const request = await fetch(
-				"https://www.inemoni.org/api/login",
+				`${getURLOrigin}/api/login`,
 				requestOptions,
 			);
 
-			const response = await request.json();
+            const response = await request.json();
 
 			if (
 				response.error === false &&
@@ -154,8 +157,7 @@ const SignInForm = () => {
 			setHeader(() => "Login Failed");
 
 			setMessage(
-				() =>
-					"Login failed. Please check your phone number and pin and try again.",
+				() => "An error occured. Please try again later",
 			);
 
 			setIsError(() => true);
