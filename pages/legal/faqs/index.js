@@ -7,7 +7,7 @@ const Faq = () => {
 	return (
 		<>
 			<Head>
-				<title>Inemoni | Faq</title>
+				<title>Inemoni | FAQS</title>
 				<meta
 					name="description"
 					content="Frequently asked questions about Inemoni"

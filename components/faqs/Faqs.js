@@ -65,10 +65,10 @@ const Faqs = () => {
 	};
 
 	return (
-		<section className="grid gap-12">
+		<section className="grid gap-16">
 			<h1 className="header main-header">Frequently Asked Questions</h1>
 
-			<article className="space-y-4">
+			<article className="space-y-8">
 				<h2 className="header secondary-header">
 					Account Opening & Set-up
 				</h2>
@@ -77,7 +77,7 @@ const Faqs = () => {
 					className="grid gap-4"
 					ref={accountSetupParent}
 				>
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -85,14 +85,14 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								How long does it take to open an account?
+							<span className="text-left pl-2">
+								1. How long does it take to open an account?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								On average, it takes less than 3 minutes for you
 								to create an account and take within an hour for
@@ -104,7 +104,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -112,15 +112,15 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								What documents do I need to open a
+							<span className="text-left pl-2">
+								2. What documents do I need to open a
 								business/personal account?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 space-y-4 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear space-y-4">
 							<div className="space-y-4">
 								<p className="font-medium">
 									Once your personal account is opened, to
@@ -181,7 +181,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -189,14 +189,14 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								Why do you need my BVN?
+							<span className="text-left pl-2">
+								3. Why do you need my BVN?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								We use your BVN to verify your identity. We can
 								only retrieve your name, date of birth, and
@@ -208,7 +208,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -216,15 +216,15 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								What if I don’t know the bank connected to my
+							<span className="text-left pl-2">
+								4. What if I don’t know the bank connected to my
 								BVN?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								If you have forgotten the bank connected to your
 								BVN, you can get your BVN number by dialling
@@ -239,7 +239,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -247,15 +247,15 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								My business does not have a memorandum of
+							<span className="text-left pl-2">
+								5. My business does not have a memorandum of
 								association. Can I still create an account?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								Yes, you can still create an account without an
 								memorandum of association.
@@ -263,7 +263,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -271,15 +271,15 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								How long does it take for compliance to be
+							<span className="text-left pl-2">
+								6. How long does it take for compliance to be
 								approved?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								Your documents will be approved within one hour
 								if they are valid and credible.
@@ -287,7 +287,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -295,14 +295,14 @@ const Faqs = () => {
 								toggleAccordion(element, accountSetupParent)
 							}
 						>
-							<span className="text-left">
-								Why was my compliance rejected?
+							<span className="text-left pl-2">
+								7. Why was my compliance rejected?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								If your compliance was rejected, it’s because
 								the documents submitted were either invalid or
@@ -315,7 +315,7 @@ const Faqs = () => {
 				</div>
 			</article>
 
-			<article className="space-y-4">
+			<article className="space-y-8">
 				<h2 className="header secondary-header">
 					Payments & Transactions
 				</h2>
@@ -324,7 +324,7 @@ const Faqs = () => {
 					className="grid gap-4"
 					ref={paymentTransactionParent}
 				>
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -335,14 +335,14 @@ const Faqs = () => {
 								)
 							}
 						>
-							<span className="text-left">
-								How do I fund my account?
+							<span className="text-left pl-2">
+								1. How do I fund my account?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								You can transfer money directly from your other
 								bank accounts into your IneMoni account. On the
@@ -355,7 +355,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -366,14 +366,14 @@ const Faqs = () => {
 								)
 							}
 						>
-							<span className="text-left">
-								How do I transfer money?
+							<span className="text-left pl-2">
+								2. How do I transfer money?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 space-y-4 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear space-y-4">
 							<p>
 								Once you are logged in, click on Send Money and
 								tap on the send to bank account or send to
@@ -443,7 +443,7 @@ const Faqs = () => {
 						</div>
 					</div>
 
-					<div className="border-b border-gray-200">
+					<div className="border-b border-[#cccccc] grid gap-4 pb-2">
 						<button
 							className="flex w-full items-center justify-between gap-4"
 							type="button"
@@ -454,14 +454,14 @@ const Faqs = () => {
 								)
 							}
 						>
-							<span className="text-left">
-								Do I get an SMS alert for every transaction?
+							<span className="text-left pl-2">
+								3. Do I get an SMS alert for every transaction?
 							</span>
 
 							<i className="fi-rr-angle-down"></i>
 						</button>
 
-						<div className="max-h-0 overflow-y-hidden py-2 transition-all duration-[50ms] ease-linear">
+						<div className="max-h-0 overflow-y-hidden transition-all duration-[50ms] ease-linear">
 							<p>
 								Transaction alerts and all notifications are
 								sent to you in-app or through a dashboard
