@@ -171,16 +171,18 @@ const SignInForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0 md:pb-[20%]"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Welcome</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">
+						Hello there 👋
+					</h1>
 
-					<p className="text-base">
-						Sign in to continue to an awesome experience
-					</p>
+					<p className="text-base text-[#666666]">
+                        Sign in to continue
+                    </p>
 				</div>
 
 				<div className="grid gap-6">
@@ -188,7 +190,7 @@ const SignInForm = () => {
 						className="grid gap-0.5"
 						htmlFor="phone-number"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Phone Number
 						</span>
 
@@ -212,7 +214,7 @@ const SignInForm = () => {
 						className="relative grid gap-0.5"
 						htmlFor="password"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Pin
 						</span>
 
@@ -264,7 +266,7 @@ const SignInForm = () => {
 							</span>
 						</label>
 						<Link
-							className="text-brand-dark-purple"
+							className="text-brand-purple font-medium"
 							href="/password-reset"
 						>
 							Forgot Password
@@ -283,7 +285,7 @@ const SignInForm = () => {
 				<p className="text-[#979797]">
 					Don’t have an account?{" "}
 					<Link
-						className="font-medium text-brand-dark-purple"
+						className="font-medium text-brand-purple"
 						href="/create-account"
 					>
 						Create one
