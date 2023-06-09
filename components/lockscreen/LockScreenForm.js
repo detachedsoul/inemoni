@@ -127,24 +127,26 @@ const LockScreenForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0 md:pb-[20%]"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">
 						Welcome back, {getCookie("user_name").sanitizedValue}
 					</h1>
 
-					<p className="text-base">Enter your pin to continue</p>
+					<p className="text-base text-[#666666]">
+                        Enter your PIN to continue
+                    </p>
 				</div>
 
 				<div className="grid gap-6">
 					<label
-						className="relative grid gap-0.5"
+						className="relative grid gap-1"
 						htmlFor="password"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Pin
 						</span>
 
@@ -181,7 +183,7 @@ const LockScreenForm = () => {
 					</label>
 
 					<Link
-						className="text-brand-dark-purple"
+						className="text-brand-purple font-medium"
 						href="/password-reset"
 					>
 						Forgot Password
@@ -197,20 +199,20 @@ const LockScreenForm = () => {
 				</div>
 
 				<div className="space-y-2">
-					<p className="text-[#979797]">
+					<p className="text-[#666666]">
 						Don’t have an account?{" "}
 						<Link
-							className="font-medium text-brand-dark-purple"
+							className="font-medium text-brand-purple"
 							href="/create-account"
 						>
 							Create one
 						</Link>
 					</p>
 
-					<p className="text-[#979797]">
+					<p className="text-[#666666]">
 						Want to sign in with another account?{" "}
 						<button
-							className="font-medium text-brand-dark-purple"
+							className="font-medium text-brand-purple"
 							type="button"
 							onClick={handleRedirect}
 						>

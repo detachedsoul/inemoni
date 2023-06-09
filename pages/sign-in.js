@@ -5,6 +5,9 @@ import Layout from "./_layout";
 import Head from "next/head";
 import getCookie from "@helpers/getCookie";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Logo from "@assets/img/logo.svg";
+import Image from "next/image";
 
 const SignIn = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -34,15 +37,15 @@ const SignIn = () => {
 			)}
 
 			<main className="grid md:grid-cols-2">
-				<Sidebar />
-
-				<div className="flex flex-col place-content-center py-12 md:bg-[#fafafa] md:p-[10%] xl:px-[14%]">
+				<div className="flex flex-col place-content-center py-12 md:p-[10%] xl:px-[14%]">
 					{!isLoading && getCookie("is_logged_in").isValid === true ? (
 						<LockScreenForm />
 					) : (
 						<SignInForm />
 					)}
 				</div>
+
+                <Sidebar />
 			</main>
 		</>
 	);
@@ -51,5 +54,15 @@ const SignIn = () => {
 export default SignIn;
 
 SignIn.getLayout = (page) => {
-	return <Layout>{ page }</Layout>;
+	return (
+        <>
+            <div className="my-4">
+                <Link className="ml-4 md:ml-[5%] xl:ml-[7%] block" href="/">
+                    <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." />
+                </Link>
+
+                { page }
+            </div>
+        </>
+    );
 };

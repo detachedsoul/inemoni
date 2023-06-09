@@ -63,7 +63,7 @@
     }
 
     .input-form {
-        @apply form-input border border-[#dae1e7] focus:outline-none focus:ring-0 rounded-md py-2.5 px-3 w-full block focus:border-[#dae1e7]
+        @apply form-input border border-[#dae1e7] focus:ring-0 rounded-md py-2.5 px-3 w-full block hover:border-brand-purple focus:border-brand-purple hover:outline hover:outline-brand-purple hover:outline-1 hover:outline-offset-2 focus:outline focus:outline-brand-purple focus:outline-1 focus:outline-offset-2 transition-all duration-100 ease-in-out
     }
 
     .input-select {
