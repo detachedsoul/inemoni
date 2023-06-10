@@ -187,7 +187,7 @@ const SignInForm = () => {
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="phone-number"
 					>
 						<span className="font-bold">
@@ -211,7 +211,7 @@ const SignInForm = () => {
 					</label>
 
 					<label
-						className="relative grid gap-0.5"
+						className="relative grid gap-1"
 						htmlFor="password"
 					>
 						<span className="font-bold">
@@ -262,7 +262,7 @@ const SignInForm = () => {
 								onChange={handleKeepSigninChange}
 							/>
 							<span className="text-[#979797]">
-								Keep me signed in
+								Remember Me
 							</span>
 						</label>
 						<Link
@@ -274,7 +274,7 @@ const SignInForm = () => {
 					</div>
 
                     <button
-                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
+                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse outline-0 border-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
                         type="submit"
                         disabled={ isProcessing }
                     >

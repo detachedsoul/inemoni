@@ -37,7 +37,7 @@ const SignIn = () => {
 			)}
 
 			<main className="grid md:grid-cols-2">
-				<div className="flex flex-col place-content-center py-12 md:p-[10%] xl:px-[14%]">
+				<div className="flex flex-col place-content-center py-12 md:py-[10%] md:pl-[10%] md:pr-[5%] xl:px-[14%]">
 					{!isLoading && getCookie("is_logged_in").isValid === true ? (
 						<LockScreenForm />
 					) : (
@@ -57,7 +57,7 @@ SignIn.getLayout = (page) => {
 	return (
         <>
             <div className="my-4">
-                <Link className="ml-4 md:ml-[5%] xl:ml-[7%] block" href="/">
+                <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
                     <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." />
                 </Link>
 
