@@ -23,6 +23,10 @@
         font-size: inherit;
     }
 
+    * {
+        @apply custom-scrollbar
+    }
+
     .header {
         @apply font-semibold leading-relaxed text-[#262626]
     }
@@ -72,5 +76,27 @@
 
     .input-checkbox {
         @apply form-checkbox text-brand-purple border-[#979797] rounded p-2 xl:p-2 md:px-1 md:py-0.5 cursor-pointer ring-offset-white hover:ring-1 hover:ring-offset-2 hover:ring-brand-purple focus-within:ring-1 focus-within:ring-offset-2 focus-within:ring-brand-purple
+    }
+
+    .custom-scrollbar {
+        scrollbar-width: thin;
+        -ms-overflow-style: thin;
+        scrollbar-color: #6912aa #ffffff;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+       @apply h-[.375rem] w-[.25rem]
+    }
+
+    .custom-scrollbar::-webkit-scrollbar:vertical {
+        @apply w-[.77rem];
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        @apply rounded-[.375rem] bg-[#E6E6E6]
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply box-border rounded-[.375rem] border-8 border-black bg-clip-content bg-brand-purple
     }
 }
