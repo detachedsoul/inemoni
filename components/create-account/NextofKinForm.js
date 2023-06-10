@@ -137,12 +137,12 @@ const NextofKinForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Next of Kin</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">You’re almost there...</h1>
 
 					<p className="text-base">
 						Confirm your next of kin details
@@ -151,10 +151,10 @@ const NextofKinForm = () => {
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="first-name"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							First Name
 						</span>
 
@@ -170,10 +170,10 @@ const NextofKinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="middle-name"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Middle Name (Optional)
 						</span>
 
@@ -189,10 +189,10 @@ const NextofKinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="last-name"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Last Name
 						</span>
 
@@ -208,10 +208,10 @@ const NextofKinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="phone-name"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Phone Number
 						</span>
 
@@ -231,10 +231,10 @@ const NextofKinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="email"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Email Address (Optional)
 						</span>
 
@@ -250,10 +250,10 @@ const NextofKinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="referral-code"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Referral Code (Optional)
 						</span>
 

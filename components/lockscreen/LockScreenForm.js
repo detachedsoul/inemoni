@@ -136,7 +136,7 @@ const LockScreenForm = () => {
 						Welcome back, {getCookie("user_name").sanitizedValue}
 					</h1>
 
-					<p className="text-base text-[#666666]">
+					<p className="text-base">
                         Enter your PIN to continue
                     </p>
 				</div>

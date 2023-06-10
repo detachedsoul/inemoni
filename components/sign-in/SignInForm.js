@@ -182,7 +182,7 @@ const SignInForm = () => {
 						Hello there 👋
 					</h1>
 
-					<p className="text-base text-[#666666]">
+					<p className="text-base">
                         Sign in to continue
                     </p>
 				</div>

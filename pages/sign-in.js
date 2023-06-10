@@ -57,7 +57,7 @@ SignIn.getLayout = (page) => {
         <>
             <div className="my-4">
                 <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
-                    <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." />
+                    <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." priority />
                 </Link>
 
                 { page }

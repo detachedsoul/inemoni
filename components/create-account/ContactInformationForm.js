@@ -170,12 +170,12 @@ const ContactInformationForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, {typeof window !== "undefined" && getCookie("fname").sanitizedValue}</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">Hi, {typeof window !== "undefined" && getCookie("fname").sanitizedValue}</h1>
 
 					<p className="text-base">Review your contact information</p>
 				</div>
@@ -187,10 +187,10 @@ const ContactInformationForm = () => {
                 ) : (
                     <div className="grid gap-6">
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="phone-number"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Phone Number
                             </span>
 
@@ -211,10 +211,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="email"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Email Address
                             </span>
 
@@ -230,10 +230,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="residential-address"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Residential Address
                             </span>
 
@@ -248,10 +248,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="city"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 City
                             </span>
 
@@ -265,8 +265,8 @@ const ContactInformationForm = () => {
                             />
                         </label>
 
-                        <label className="grid gap-0.5" htmlFor="state-of-origin">
-                            <span className="font-bold text-brand-dark-purple">
+                        <label className="grid gap-1" htmlFor="state-of-origin">
+                            <span className="font-bold">
                                 State of Origin
                             </span>
 
@@ -283,10 +283,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="zip-code"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Zip Code
                             </span>
 
