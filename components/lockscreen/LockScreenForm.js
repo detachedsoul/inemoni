@@ -127,7 +127,7 @@ const LockScreenForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0 md:pb-[20%]"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
@@ -167,7 +167,7 @@ const LockScreenForm = () => {
 						/>
 
 						<button
-                            className="absolute top-[calc((0.625rem*4))] right-3"
+                            className="absolute top-[55%] right-3"
 							type="button"
 							aria-label="Toggle password field visibility"
 							onClick={() => setIsVisible(() => !isVisible)}

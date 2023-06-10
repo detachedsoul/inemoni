@@ -85,24 +85,26 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 
-				// Convert the fname gotten from response to lowercase and then make the first letter uppercase
-				const fname = response.data.fname.toLowerCase().split(" ");
-				const fnameCapitalized = fname.map((word) => {
-					return word.charAt(0).toUpperCase() + word.slice(1);
-				});
+                if (keepSignin) {
+                    // Convert the fname gotten from response to lowercase and then make the first letter uppercase
+                    const fname = response.data.fname.toLowerCase().split(" ");
+                    const fnameCapitalized = fname.map((word) => {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    });
 
-				// Set expiration date of cookie to be 7 days from current time
-				const currentDate = new Date();
-				const expirationDate = new Date(
-					currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
-				);
-				const expirationDateString = expirationDate.toUTCString();
+                    // Set expiration date of cookie to be 7 days from current time
+                    const currentDate = new Date();
+                    const expirationDate = new Date(
+                        currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+                    );
+                    const expirationDateString = expirationDate.toUTCString();
 
-				document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
+                    document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
 
-				document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
+                    document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
 
-				document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
+                    document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
+                }
 
                 setIsProcessing(() => false);
 
@@ -171,7 +173,7 @@ const SignInForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0 md:pb-[20%]"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
@@ -235,7 +237,7 @@ const SignInForm = () => {
 						/>
 
 						<button
-                            className="absolute top-[calc((0.625rem*4))] right-3"
+                            className="absolute top-[55%] right-3"
 							type="button"
 							aria-label="Toggle password field visibility"
 							onClick={() => setIsVisible(() => !isVisible)}
