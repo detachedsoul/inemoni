@@ -27,6 +27,7 @@ const FooterBanner = () => {
                             alt=""
                             quality={100}
                             height={12}
+                            priority={true}
                         />
 
                         <Image
@@ -34,6 +35,7 @@ const FooterBanner = () => {
                             alt=""
                             quality={100}
                             height={12}
+                            priority={true}
                         />
 
                         <Image
@@ -41,6 +43,7 @@ const FooterBanner = () => {
                             alt=""
                             quality={100}
                             height={12}
+                            priority={true}
                         />
 
                         <Image
@@ -48,6 +51,7 @@ const FooterBanner = () => {
                             alt=""
                             quality={100}
                             height={12}
+                            priority={true}
                         />
 
                         <Image
@@ -55,6 +59,7 @@ const FooterBanner = () => {
                             alt=""
                             quality={100}
                             height={12}
+                            priority={true}
                         />
                     </div>
                 </div>
