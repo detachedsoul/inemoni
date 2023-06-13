@@ -16,7 +16,7 @@ const Document = () => {
 				/>
 
                 <link rel="manifest" href="/manifest.json" />
-                <link rel="apple-touch-icon" href="/img/icon-512x512.png"></link>
+                <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
                 <meta name="theme-color" content="#6912aa" />
 			</Head>
 
