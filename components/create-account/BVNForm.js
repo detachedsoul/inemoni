@@ -30,11 +30,14 @@ const BVNForm = () => {
 	}, [isActive]);
 
 	const handleBVNChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setBVN(e.target.value);
+        // Allow only numbers with maximum lenght of 11
+		if (!validateNumberField(cleanedValue, 11)) {
+            return;
+		} else {
+            setBVN(cleanedValue);
+        }
 	};
 
 	const handleSubmit = async (e) => {
@@ -163,7 +166,7 @@ const BVNForm = () => {
 						</span>
 
 						<input
-							type="number"
+							type="text"
 							name="bvn"
 							id="bvn"
 							className="input-form no-number-increment"
@@ -171,7 +174,7 @@ const BVNForm = () => {
 							maxLength={11}
 							minLength={11}
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							onChange={handleBVNChange}
 							value={bvn}
 							required={true}

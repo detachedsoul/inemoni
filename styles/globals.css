@@ -1233,8 +1233,8 @@ select option {
   min-height: 100vh;
 }
 
-.min-h-\[calc\(\(100vh-12\%\)-1rem\)\] {
-  min-height: calc((100vh - 12%) - 1rem);
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-\[90\%\] {
@@ -1794,7 +1794,7 @@ select option {
 }
 
 .bg-team-bg {
-  background-image: url('../assets/img/team-members-bg.png');
+  background-image: url('../public/img/team-members-bg.png');
 }
 
 .bg-cover {

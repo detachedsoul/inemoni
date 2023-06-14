@@ -25,11 +25,14 @@ const VerifyAccountForm = () => {
 	}
 
     const handleOTPChange = (e) => {
-        if (!validateNumberField(e.target.value, 4)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-        setOTP(e.target.value);
+       // Allow only numbers with maximum lenght of 4
+		if (!validateNumberField(cleanedValue, 4)) {
+            return;
+		} else {
+            setOTP(cleanedValue);
+        }
     };
 
 	const handleSubmit = async (e) => {
@@ -179,12 +182,12 @@ const VerifyAccountForm = () => {
                             </span>
 
                             <input
-                                type="passweord"
+                                type="password"
                                 name="password"
                                 id="password"
-                                className="input-form no-number-increment"
+                                className="input-form"
                                 placeholder="Enter OTP"
-                                pattern="[0-9]{4}"
+                                pattern="\d+"
                                 maxLength={4}
                                 minLength={4}
                                 inputMode="numeric"

@@ -51,11 +51,14 @@ const NextofKinForm = () => {
 	};
 
 	const handlePhoneNumberChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPhoneNumber(e.target.value);
+        // Allow only numbers with maximum lenght of 11
+        if (!validateNumberField(cleanedValue, 11)) {
+            return;
+        } else {
+            setPhoneNumber(cleanedValue);
+        }
 	};
 
 	const handleReferralChange = (e) => {
@@ -222,7 +225,7 @@ const NextofKinForm = () => {
 							className="input-form"
 							placeholder="08000000000"
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							maxLength={11}
 							minLength={11}
 							onChange={handlePhoneNumberChange}
@@ -264,7 +267,7 @@ const NextofKinForm = () => {
 							className="input-form"
 							placeholder="Enter Referral Code"
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							maxLength={11}
 							minLength={11}
 							onChange={handleReferralChange}

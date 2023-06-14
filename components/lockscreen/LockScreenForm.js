@@ -17,11 +17,14 @@ const LockScreenForm = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handlePasswordChange = (e) => {
-		if (!validateNumberField(e.target.value, 6)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPassword(e.target.value);
+        // Allow only numbers with maximum lenght of 6
+		if (!validateNumberField(cleanedValue, 6)) {
+            return;
+		} else {
+            setPassword(cleanedValue);
+        }
 	};
 
 	const handleSubmit = async (e) => {
@@ -157,7 +160,7 @@ const LockScreenForm = () => {
 							className="input-form"
 							inputMode="numeric"
 							placeholder="Enter your pin"
-							pattern="[0-9]{6}"
+							pattern="\d+"
 							maxLength={6}
 							minLength={6}
 							onChange={handlePasswordChange}

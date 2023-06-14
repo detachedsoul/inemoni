@@ -1,7 +1,6 @@
 import partners from "@assets/data/partners";
 import FooterBanner from "@components/FooterBanner";
 import FooterCard from "@components/FooterCard";
-import PWA from "@components/PWA";
 import GetStarted from "@components/GetStarted";
 import HeroText from "@components/HeroText";
 import Head from "next/head";
@@ -46,8 +45,6 @@ const Index = () => {
 			<FooterCard />
 
 			<FooterBanner />
-
-            <PWA />
 		</>
 	);
 };

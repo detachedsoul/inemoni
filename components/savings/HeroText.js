@@ -18,9 +18,9 @@ const HeroText = () => {
                     <div className="flex flex-col place-items-center gap-4 sm:flex-wrap sm:flex-row">
                         <Link
                             className="btn bg-brand-purple text-white transition-colors duration-300 ease-in hover:bg-brand-navlink"
-                            href="https://play.google.com/store/apps/details?id=com.inemoni.com"
+                            href="/create-account"
                         >
-                            Download App
+                            Create Account
                         </Link>
 
                         <Link

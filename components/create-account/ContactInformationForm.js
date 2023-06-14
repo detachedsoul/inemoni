@@ -28,7 +28,7 @@ const ContactInformationForm = () => {
 	const [isError, setIsError] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-	const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
+    const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
     const [email, setEmail] = useState(queryParams.email);
     const [address, setAddress] = useState("");
     const [zipCode, setZipCode] = useState("");
@@ -63,20 +63,26 @@ const ContactInformationForm = () => {
         return;
     }
 
-	const handlePhoneNumberChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+    const handlePhoneNumberChange = (e) => {
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPhoneNumber(e.target.value);
-	};
+        // Allow only numbers with maximum lenght of 11
+        if (!validateNumberField(cleanedValue, 11)) {
+            return;
+        } else {
+            setPhoneNumber(cleanedValue);
+        }
+    };
 
     const handleZipCodeChange = (e) => {
-		if (!validateNumberField(e.target.value, 6)) {
-			return;
-		}
+		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setZipCode(e.target.value);
+        // Allow only numbers with maximum lenght of 6
+		if (!validateNumberField(cleanedValue, 6)) {
+            return;
+		} else {
+            setZipCode(cleanedValue);
+        }
 	};
 
 	const handleEmailChange = (e) => {
@@ -198,15 +204,16 @@ const ContactInformationForm = () => {
                                 type="tel"
                                 name="phone-number"
                                 id="phone-number"
-                                className="input-form"
-                                placeholder="08000000000"
                                 inputMode="numeric"
-                                pattern="[0-9]{11}"
-                                maxLength={11}
-                                minLength={11}
-                                onChange={handlePhoneNumberChange}
-                                value={phoneNumber}
+                                pattern="\d+"
+                                maxLength={ 11 }
+                                minLength={ 11 }
+                                className="input-form"
+                                placeholder="Enter your phone number"
+                                value={ phoneNumber }
+                                onChange={ handlePhoneNumberChange }
                                 defaultValue={ phoneNumber }
+                                required={ true }
                             />
                         </label>
 
@@ -291,7 +298,7 @@ const ContactInformationForm = () => {
                             </span>
 
                             <input
-                                type="number"
+                                type="text"
                                 name="zip-code"
                                 id="zip-code"
                                 className="input-form no-number-increment"
@@ -299,7 +306,7 @@ const ContactInformationForm = () => {
                                 onChange={handleZipCodeChange}
                                 value={zipCode}
                                 inputMode="numeric"
-                                pattern="[0-9]{6}"
+                                pattern="\d+"
                                 maxLength={6}
                                 minLength={6}
                             />

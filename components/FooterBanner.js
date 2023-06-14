@@ -2,18 +2,29 @@ import StarRating from "@assets/img/star-rating.svg";
 import FooterBannerLogo from "@assets/img/footer-banner-logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const FooterBanner = () => {
-    return (
+    const [isiOSDevice, setIsiOSDevice] = useState(false);
+
+    useEffect(() => {
+        const checkDeviceType = () => {
+            return /iPad|iPhone|iPod/i.test(navigator.userAgent) && !window.MSStream;
+        };
+
+        setIsiOSDevice(() => checkDeviceType());
+    }, []);
+
+    return isiOSDevice ? null : (
         <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between bg-white px-[5%] py-2 z-50 shadow sm:hidden">
             <div className="flex items-center gap-3">
                 <Image
                     className="object-cover"
-                    src={FooterBannerLogo}
+                    src={ FooterBannerLogo }
                     alt="Inemoni"
-                    height={50}
+                    height={ 50 }
                     quality={ 100 }
-                    priority={true}
+                    priority={ true }
                 />
 
                 <div className="space-y-1.5">
@@ -23,43 +34,43 @@ const FooterBanner = () => {
 
                     <div className="flex items-center gap-1.5">
                         <Image
-                            src={StarRating}
+                            src={ StarRating }
                             alt=""
-                            quality={100}
-                            height={12}
-                            priority={true}
+                            quality={ 100 }
+                            height={ 12 }
+                            priority={ true }
                         />
 
                         <Image
-                            src={StarRating}
+                            src={ StarRating }
                             alt=""
-                            quality={100}
-                            height={12}
-                            priority={true}
+                            quality={ 100 }
+                            height={ 12 }
+                            priority={ true }
                         />
 
                         <Image
-                            src={StarRating}
+                            src={ StarRating }
                             alt=""
-                            quality={100}
-                            height={12}
-                            priority={true}
+                            quality={ 100 }
+                            height={ 12 }
+                            priority={ true }
                         />
 
                         <Image
-                            src={StarRating}
+                            src={ StarRating }
                             alt=""
-                            quality={100}
-                            height={12}
-                            priority={true}
+                            quality={ 100 }
+                            height={ 12 }
+                            priority={ true }
                         />
 
                         <Image
-                            src={StarRating}
+                            src={ StarRating }
                             alt=""
-                            quality={100}
-                            height={12}
-                            priority={true}
+                            quality={ 100 }
+                            height={ 12 }
+                            priority={ true }
                         />
                     </div>
                 </div>
@@ -74,7 +85,7 @@ const FooterBanner = () => {
                 Get the App
             </Link>
         </div>
-	);
+    );
 };
 
 export default FooterBanner;

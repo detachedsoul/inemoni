@@ -19,21 +19,25 @@ const SignInForm = () => {
 	const route = "/verify-account";
 
 	const handlePhoneNumberChange = (e) => {
-		// Allow only numbers with maximum lenght of 11
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPhoneNumber(e.target.value);
+       // Allow only numbers with maximum lenght of 11
+		if (!validateNumberField(cleanedValue, 11)) {
+            return;
+		} else {
+            setPhoneNumber(cleanedValue);
+        }
 	};
 
 	const handlePasswordChange = (e) => {
-        // Allow only numbers with maximum lenght of 6
-		if (!validateNumberField(e.target.value, 6)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPassword(e.target.value);
+       // Allow only numbers with maximum lenght of 6
+		if (!validateNumberField(cleanedValue, 6)) {
+            return;
+		} else {
+            setPassword(cleanedValue);
+        }
 	};
 
 	const handleKeepSigninChange = (e) => {
@@ -201,7 +205,7 @@ const SignInForm = () => {
 							name="phone-number"
 							id="phone-number"
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							maxLength={11}
 							minLength={11}
 							className="input-form"
@@ -227,7 +231,7 @@ const SignInForm = () => {
 							className="input-form"
 							inputMode="numeric"
 							placeholder="Enter your pin"
-							pattern="[0-9]{6}"
+							pattern="\d+"
 							maxLength={6}
 							minLength={6}
 							onChange={handlePasswordChange}

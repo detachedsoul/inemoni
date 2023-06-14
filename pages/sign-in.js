@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@assets/img/logo.svg";
 import Image from "next/image";
+import PWA from "@components/PWA";
 
 const SignIn = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +47,8 @@ const SignIn = () => {
 
                 <Sidebar />
 			</main>
+
+            <PWA />
 		</>
 	);
 };

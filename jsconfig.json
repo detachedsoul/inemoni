@@ -6,7 +6,8 @@
                 "components/*"
             ],
             "@assets/*": [
-                "assets/*"
+                "assets/*",
+                "public/*"
             ],
             "@styles/*": [
                 "styles/*"
