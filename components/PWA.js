@@ -27,7 +27,7 @@ const PWA = () => {
         window.addEventListener("beforeinstallprompt", handler);
 
         // Close the banner once the PWA is installed
-        addEventListener("appinstalled", () => {
+        window.addEventListener("appinstalled", () => {
             setIsActive(() => false);
         });
 

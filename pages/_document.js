@@ -14,10 +14,6 @@ const Document = () => {
 					property="og:image"
 					content="https://www.inemoni.org/img/og-image.jpg"
 				/>
-
-                <link rel="manifest" href="/manifest.json" />
-                <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
-                <meta name="theme-color" content="#ffffff" />
 			</Head>
 
 			<body

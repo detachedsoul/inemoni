@@ -142,7 +142,7 @@ const VerifyAccountForm = () => {
                 }, 3000);
             } else {
                 setHeader(() => "OTP Not Sent");
-                setMessage(() => "An error occured. Please check the OTP and try again.");
+                setMessage(() => "An error occured. Please try again.");
                 setIsError(() => true);
                 setIsActive(() => true);
 

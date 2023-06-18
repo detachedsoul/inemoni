@@ -1,6 +1,5 @@
 import aboutHeroImage from "@assets/img/about-hero-image.png";
 import Image from "next/image";
-import Link from "next/link";
 
 const HeroText = () => {
 	return (

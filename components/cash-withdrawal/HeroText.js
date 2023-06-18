@@ -26,6 +26,8 @@ const HeroText = () => {
                         <Link
                             className="btn transition-colors duration-300 ease-in hover:bg-[#E6E6E6]"
                             href="/sign-in"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Login to Web App
                             <span className="sr-only">

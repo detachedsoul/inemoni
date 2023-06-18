@@ -16,6 +16,40 @@ const SignIn = () => {
 		setIsLoading(() => false);
 	}, []);
 
+    useEffect(() => {
+        const getURLOrigin = window.location.origin;
+
+        const windowFeatures = "noopener, nnoreferrer";
+
+        // Check if PWA is installed and open the installed PWA
+        window.addEventListener("load", () => {
+            if (window.matchMedia("(display-mode: standalone)").matches) {
+                // Open the PWA on the /sign-in page
+                window.open("/sign-in", "_blank", windowFeatures);
+            } else if (window.navigator.standalone === true) {
+                // Open the PWA on the /sign-in page
+                window.open("/sign-in", "_blank", windowFeatures);
+            } else if (window.navigator.msStandAlone === true) {
+                // Open the PWA on the /sign-in page
+                window.open("/sign-in", "_blank", windowFeatures);
+            } else if (window.navigator.mozApps && window.navigator.mozApps.getInstalledApps) {
+                // Check if the PWA is installed using Mozilla's API
+                const request = window.navigator.mozApps.getInstalledApps();
+                request.onsuccess = (event) => {
+                    const apps = event.target.result;
+                    const isInstalled = apps.some(app => app.manifestURL === `${getURLOrigin}/manifest.json`);
+
+                    if (isInstalled) {
+                        // Open the PWA on the /sign-in page
+                        window.open("/sign-in", "_blank", windowFeatures);
+                    }
+                };
+            } else {
+                return;
+            }
+        });
+    }, []);
+
 	return (
 		<>
 			{!isLoading && getCookie("is_logged_in").isValid === true ? (
@@ -24,7 +58,13 @@ const SignIn = () => {
 					<meta
 						name="description"
 						content="Enter your password to continue"
-					/>
+                    />
+                    <link rel="manifest" href="/manifest.json" />
+                    <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
+                    <meta name="theme-color" content="#ffffff" />
+
+                    <meta content='yes' name='apple-mobile-web-app-capable'/>
+                    <meta content='yes' name='mobile-web-app-capable'/>
 				</Head>
 			) : (
 				<Head>
@@ -33,17 +73,31 @@ const SignIn = () => {
 						name="description"
 						content="Sign in to your account"
 					/>
+                    <link rel="manifest" href="/manifest.json" />
+                    <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
+                    <meta name="theme-color" content="#ffffff" />
+
+                    <meta content='yes' name='mobile-web-app-capable'/>
+                    <meta content='yes' name='mobile-web-app-capable'/>
 				</Head>
 			)}
 
-			<main className="grid md:grid-cols-2 md:pr-4 lg:pr-0">
-				<div className="flex flex-col place-content-center py-12 md:py-[10%] md:pl-[10%] md:pr-[5%] xl:px-[14%]">
-					{!isLoading && getCookie("is_logged_in").isValid === true ? (
-						<LockScreenForm />
-					) : (
-						<SignInForm />
-					)}
-				</div>
+			<main className="grid md:grid-cols-2 md:max-h-screen md:h-screen md:overflow-y-hidden">
+                <div className="bg-[#F2F2F2]">
+                    <div className="pt-8 sticky top-0 md:pt-4 bg-[#F2F2F2]">
+                        <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
+                            <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." priority />
+                        </Link>
+                    </div>
+
+                    <div className="flex flex-col place-content-center md:block py-12 md:py-4 md:pl-[10%] md:pr-[5%] xl:px-[14%] md:h-[calc(100vh-3.5rem)] md:overflow-y-auto md:no-scrollbar sm:w-3/4 sm:mx-auto md:w-full">
+                        {!isLoading && getCookie("is_logged_in").isValid === true ? (
+                            <LockScreenForm />
+                        ) : (
+                            <SignInForm />
+                        )}
+                    </div>
+                </div>
 
                 <Sidebar />
 			</main>
@@ -58,13 +112,7 @@ export default SignIn;
 SignIn.getLayout = (page) => {
 	return (
         <>
-            <div className="my-4">
-                <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
-                    <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." priority />
-                </Link>
-
-                { page }
-            </div>
+            { page }
         </>
     );
 };

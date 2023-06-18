@@ -975,6 +975,10 @@ select option {
   position: sticky;
 }
 
+.top-0 {
+  top: 0px;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -989,10 +993,6 @@ select option {
 
 .bottom-\[15\%\] {
   bottom: 15%;
-}
-
-.top-0 {
-  top: 0px;
 }
 
 .bottom-0 {
@@ -1103,11 +1103,6 @@ select option {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .my-20 {
@@ -1797,6 +1792,10 @@ select option {
   background-image: url('../public/img/team-members-bg.png');
 }
 
+.bg-sidebar {
+  background-image: url('../public/img/sidebar-pattern-img.png');
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -1961,6 +1960,10 @@ select option {
   padding-top: 5%;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -1987,10 +1990,6 @@ select option {
 
 .pb-10 {
   padding-bottom: 2.5rem;
-}
-
-.pt-8 {
-  padding-top: 2rem;
 }
 
 .pt-\[8\%\] {
@@ -2431,13 +2430,6 @@ select option {
   background-color: rgb(105 18 170 / 0.3);
 }
 
-@media (max-width: 1023px) {
-  .max-\[1023px\]\:object-contain {
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-}
-
 @media (min-width: 400px) {
   .min-\[400px\]\:w-4\/5 {
     width: 80%;
@@ -2592,6 +2584,10 @@ select option {
 
   .sm\:w-1\/2 {
     width: 50%;
+  }
+
+  .sm\:w-3\/4 {
+    width: 75%;
   }
 
   .sm\:w-auto {
@@ -2875,12 +2871,29 @@ select option {
     margin-left: 5%;
   }
 
+  .md\:ml-auto {
+    margin-left: auto;
+  }
+
+  .md\:mr-\[5\%\] {
+    margin-right: 5%;
+  }
+
   .md\:block {
     display: block;
   }
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .md\:no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   .md\:grid {
@@ -2895,12 +2908,28 @@ select option {
     height: 100%;
   }
 
+  .md\:h-screen {
+    height: 100vh;
+  }
+
+  .md\:h-\[calc\(100vh-3\.5rem\)\] {
+    height: calc(100vh - 3.5rem);
+  }
+
+  .md\:max-h-screen {
+    max-height: 100vh;
+  }
+
   .md\:max-h-\[calc\(\(100vh-100\%\)-100\%\)\] {
     max-height: calc((100vh - 100%) - 100%);
   }
 
   .md\:min-h-0 {
     min-height: 0px;
+  }
+
+  .md\:w-full {
+    width: 100%;
   }
 
   .md\:w-auto {
@@ -2934,6 +2963,10 @@ select option {
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:place-content-center {
+    place-content: center;
   }
 
   .md\:content-center {
@@ -2971,6 +3004,10 @@ select option {
     overflow-y: auto;
   }
 
+  .md\:overflow-y-hidden {
+    overflow-y: hidden;
+  }
+
   .md\:border-t-\[0\.2px\] {
     border-top-width: 0.2px;
   }
@@ -2984,11 +3021,6 @@ select option {
     border-color: rgb(204 204 204 / var(--tw-border-opacity));
   }
 
-  .md\:bg-\[\#fafafa\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
-  }
-
   .md\:bg-transparent {
     background-color: transparent;
   }
@@ -2998,17 +3030,13 @@ select option {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
 
-  .md\:p-\[10\%\] {
-    padding: 10%;
-  }
-
   .md\:p-0 {
     padding: 0px;
   }
 
-  .md\:py-\[10\%\] {
-    padding-top: 10%;
-    padding-bottom: 10%;
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .md\:py-\[1\.5\%\] {
@@ -3016,8 +3044,8 @@ select option {
     padding-bottom: 1.5%;
   }
 
-  .md\:pr-4 {
-    padding-right: 1rem;
+  .md\:pt-4 {
+    padding-top: 1rem;
   }
 
   .md\:pl-\[10\%\] {
@@ -3034,6 +3062,10 @@ select option {
 
   .md\:text-left {
     text-align: left;
+  }
+
+  .md\:text-center {
+    text-align: center;
   }
 
   .md\:font-medium {
@@ -3092,14 +3124,6 @@ select option {
 
   .lg\:ml-\[calc\(\(100\%-30\%\)\/2\)\] {
     margin-left: calc((100% - 30%) / 2);
-  }
-
-  .lg\:mr-\[5\%\] {
-    margin-right: 5%;
-  }
-
-  .lg\:ml-auto {
-    margin-left: auto;
   }
 
   .lg\:h-\[300px\] {
@@ -3204,10 +3228,6 @@ select option {
 
   .lg\:pt-\[5\%\] {
     padding-top: 5%;
-  }
-
-  .lg\:pr-0 {
-    padding-right: 0px;
   }
 
   .lg\:pb-40 {

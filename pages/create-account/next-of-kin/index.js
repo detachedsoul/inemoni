@@ -16,10 +16,18 @@ const NextofKin = () => {
 				/>
 			</Head>
 
-			<main className="grid md:grid-cols-2 md:pr-4 lg:pr-0">
-				<div className="flex flex-col place-content-center py-12 md:py-[10%] md:pl-[10%] md:pr-[5%] xl:px-[14%]">
-					<NextofKinForm />
-				</div>
+            <main className="grid md:grid-cols-2 md:max-h-screen md:h-screen md:overflow-y-hidden">
+                <div className="bg-[#F2F2F2]">
+                    <div className="pt-8 sticky top-0 md:pt-4 bg-[#F2F2F2]">
+                        <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
+                            <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." priority />
+                        </Link>
+                    </div>
+
+                    <div className="flex flex-col place-content-center md:block py-12 md:py-4 md:pl-[10%] md:pr-[5%] xl:px-[14%] md:h-[calc(100vh-3.5rem)] md:overflow-y-auto md:no-scrollbar sm:w-3/4 sm:mx-auto md:w-full">
+                        <NextofKinForm />
+                    </div>
+                </div>
 
                 <Sidebar />
 			</main>
@@ -32,13 +40,7 @@ export default NextofKin;
 NextofKin.getLayout = (page) => {
 	return (
         <>
-            <div className="my-4">
-                <Link className="ml-4 md:ml-[5%] xl:ml-[7%] inline-block" href="/">
-                    <Image src={Logo} alt="Inemoni - Bringing Financial Services To Your Doorsteps." priority />
-                </Link>
-
-                { page }
-            </div>
+            { page }
         </>
     );
 };

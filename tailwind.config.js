@@ -42,6 +42,7 @@ module.exports = {
 			},
             backgroundImage: {
                 "team-bg": "url('../public/img/team-members-bg.png')",
+                "sidebar": "url('../public/img/sidebar-pattern-img.png')",
             },
 		},
 	},
