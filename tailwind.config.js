@@ -41,7 +41,8 @@ module.exports = {
 				slideDown: "slideDown 0s linear forwards",
 			},
             backgroundImage: {
-                "team-bg": "url('../assets/img/team-members-bg.png')",
+                "team-bg": "url('../public/img/team-members-bg.png')",
+                "sidebar": "url('../public/img/sidebar-pattern-img.png')",
             },
 		},
 	},

@@ -30,11 +30,14 @@ const BVNForm = () => {
 	}, [isActive]);
 
 	const handleBVNChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setBVN(e.target.value);
+        // Allow only numbers with maximum lenght of 11
+		if (!validateNumberField(cleanedValue, 11)) {
+            return;
+		} else {
+            setBVN(cleanedValue);
+        }
 	};
 
 	const handleSubmit = async (e) => {
@@ -141,29 +144,29 @@ const BVNForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Welcome</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">Get Started Now</h1>
 
 					<p className="text-base">
-						Create an account with us and enjoy your life 😁
+						Enter your details to create your account
 					</p>
 				</div>
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="bvn"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							BVN
 						</span>
 
 						<input
-							type="number"
+							type="text"
 							name="bvn"
 							id="bvn"
 							className="input-form no-number-increment"
@@ -171,14 +174,14 @@ const BVNForm = () => {
 							maxLength={11}
 							minLength={11}
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							onChange={handleBVNChange}
 							value={bvn}
 							required={true}
 						/>
 					</label>
 
-					<p className="text-sm font-medium text-brand-dark-purple">
+					<p className="text-sm font-medium">
 						Tip: Dial *565*0# on your registered number to get your
 						BVN
 					</p>
@@ -194,7 +197,7 @@ const BVNForm = () => {
 
 				<div className="space-y-5">
 					<p className="text-center">
-						<span className="relative -top-0.5 mr-4 inline">
+						<span className="relative -top-0.5 mr-2.5 inline">
 							<Image
 								className="inline-block"
 								src={InfoIcon}
@@ -217,7 +220,7 @@ const BVNForm = () => {
 					<p className="text-[#979797]">
 						Already have an account?{" "}
 						<Link
-							className="font-medium text-brand-dark-purple"
+							className="font-medium text-brand-purple"
 							href="/sign-in"
 						>
 							Sign In

@@ -14,7 +14,11 @@ const Status = () => {
 				/>
 			</Head>
 
-			<main className="px-[5%] pt-[10%] pb-[15%] xl:px-[7%]">
+			<main className="px-[5%] space-y-8 pt-[10%] pb-[15%] xl:px-[7%]">
+                <h1 className="header text-2xl">
+                    Inemoni Status
+                </h1>
+
 				<StatusIndicator />
 			</main>
 

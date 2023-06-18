@@ -8,7 +8,7 @@ const validateNumberField = (number, maxDigits) => {
     const convertedNumber = Number(number);
 
     // Check if the number is a valid number
-    if (isNaN(convertedNumber)) {
+    if (Number.isNaN(convertedNumber)) {
         return false;
     }
 

@@ -27,6 +27,8 @@ const GetStarted = () => {
 						<Link
 							className="btn inline-block text-[#E6E6E6] hover:bg-[#E6E6E6] transition-colors ease-in duration-300 hover:text-brand-black"
 							href="/sign-in"
+                            target="_blank"
+                            rel="noopener noreferrer"
 						>
 							Login to Web App
 						</Link>
@@ -77,6 +79,8 @@ const GetStarted = () => {
                     <Link
                         className="btn inline-block text-text-brand-black hover:bg-brand-dark-purple transition-colors ease-in duration-300 hover:text-[#E6E6E6]"
                         href="/sign-in"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         Login to Web App
                     </Link>

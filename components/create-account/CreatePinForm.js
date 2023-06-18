@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
@@ -294,41 +292,40 @@ const CreatePinForm = () => {
     return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">
 						Finish Your Registration
 					</h1>
 
-					<p className="mx-auto w-4/5 text-base">
-						Choose a secure pin for your account
+					<p className="text-base">
+						Setup secure PIN for your account
 					</p>
 				</div>
 
 				<div className="grid gap-4 md:gap-x-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="create-pin"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Create PIN
 						</span>
 
-						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
+						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto" id="create-pin">
 							<input
 								type="password"
                                 inputMode="numeric"
 								maxLength={1}
 								pattern="[0-9]{1}"
 								name="create-pin"
-								id="create-pin"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin1 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin1}
 								onChange={handlePin1Change}
@@ -343,8 +340,8 @@ const CreatePinForm = () => {
 								id="create-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin2 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin2}
 								onChange={handlePin2Change}
@@ -359,8 +356,8 @@ const CreatePinForm = () => {
 								id="create-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin3 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin3}
 								onChange={handlePin3Change}
@@ -375,8 +372,8 @@ const CreatePinForm = () => {
 								id="create-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin4 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin4}
 								onChange={handlePin4Change}
@@ -391,8 +388,8 @@ const CreatePinForm = () => {
 								id="create-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin5 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin5}
 								onChange={handlePin5Change}
@@ -407,8 +404,8 @@ const CreatePinForm = () => {
 								id="create-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									pin6 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={pin6}
 								onChange={handlePin6Change}
@@ -417,24 +414,23 @@ const CreatePinForm = () => {
 					</label>
 
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="confirm-pin"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Confirm Pin
 						</span>
 
-						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto">
+						<div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto" id="confirm-pin">
 							<input
 								type="password"
                                 inputMode="numeric"
 								maxLength={ 1 }
 								pattern="[0-9]{1}"
 								name="confirm-pin"
-								id="confirm-pin"
 								className={ `input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${confirmPin1 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 									}` }
 								value={ confirmPin1 }
 								onChange={ handlePin7Change }
@@ -450,8 +446,8 @@ const CreatePinForm = () => {
 								id="confirm-pin-value-2"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin2 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={confirmPin2}
 								onChange={handlePin8Change}
@@ -466,8 +462,8 @@ const CreatePinForm = () => {
 								id="confirm-pin-value-3"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin3 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={confirmPin3}
 								onChange={handlePin9Change}
@@ -482,8 +478,8 @@ const CreatePinForm = () => {
 								id="confirm-pin-value-4"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin4 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={confirmPin4}
 								onChange={handlePin10Change}
@@ -498,8 +494,8 @@ const CreatePinForm = () => {
 								id="confirm-pin-value-5"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin5 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={confirmPin5}
 								onChange={handlePin11Change}
@@ -514,8 +510,8 @@ const CreatePinForm = () => {
 								id="confirm-pin-value-6"
 								className={`input-form no-number-increment h-[calc(100%/6)] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6 ${
 									confirmPin6 !== ""
-										? "border-2 border-[#34c759] text-[#34c759] focus:border-[#34c759]"
-										: "border-[#979797] focus:border-[#979797]"
+										? "border-2 border-[#34c759] text-[#34c759] hover:border-[#34c759] focus:border-[#34c759] hover:outline-[#34c759] focus:outline-[#34c759]"
+										: "border-[#979797] focus:border-brand-purple"
 								}`}
 								value={confirmPin6}
 								onChange={handlePin12Change}
@@ -523,10 +519,10 @@ const CreatePinForm = () => {
 						</div>
 					</label>
 
-					<p className="text-center text-[#979797]">
+					<p className="font-medium">
 						By clicking create account, you agree to Inemoni’s{" "}
 						<Link
-							className="text-brand-dark-purple"
+							className="text-brand-purple underline underline-brand-purple underline-offset-4"
 							href="/legal/terms-of-use/"
 							target="_blank"
 							rel="noopener noreferrer"
@@ -535,7 +531,7 @@ const CreatePinForm = () => {
 						</Link>{" "}
 						&{" "}
 						<Link
-							className="text-brand-dark-purple"
+							className="text-brand-purple underline underline-brand-purple underline-offset-4"
 							href="/legal/privacy-policy/"
 							target="_blank"
 							rel="noopener noreferrer"

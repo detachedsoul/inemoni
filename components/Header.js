@@ -107,11 +107,11 @@ const Header = () => {
 				</Link>
 
 				<nav
-					className={`absolute top-full left-0 z-[1024] h-full min-h-screen w-full border-r border-brand-gray bg-white transition-transform duration-500 ease-in-out min-[400px]:w-4/5 min-[500px]:w-3/5 sm:w-1/2 md:static md:top-0 md:min-h-0 md:w-auto md:translate-x-0 md:border-none md:bg-transparent
+					className={`absolute top-full left-0 z-[1024] h-full min-h-screen w-full border-r border-brand-gray bg-[#F2F2F2] transition-transform duration-500 ease-in-out min-[400px]:w-4/5 min-[500px]:w-3/5 sm:w-1/2 md:static md:top-0 md:min-h-0 md:w-auto md:translate-x-0 md:border-none md:bg-transparent
 						${navIsOpen ? "translate-x-0" : "-translate-x-full"}`}
 					ref={navRef}
 				>
-                    <ul className="flex min-h-[calc((100vh-12%)-1rem)] flex-col gap-4 overflow-y-auto bg-[#F2F2F2] p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 md:bg-transparent md:p-0 lg:gap-12">
+                    <ul className="flex min-h-full flex-col gap-4 overflow-y-auto bg-[#F2F2F2] p-4 md:min-h-0 md:flex-row md:items-center md:justify-between md:gap-4 md:bg-transparent md:p-0 lg:gap-12">
 						<li className="relative">
 							<button
 								className="btn dropdown-toggle block w-full text-left font-bold text-brand-navlink hover:bg-dropdown-hover hover:text-brand-purple md:font-medium lg:hover:bg-transparent"

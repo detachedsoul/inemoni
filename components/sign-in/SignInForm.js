@@ -19,21 +19,25 @@ const SignInForm = () => {
 	const route = "/verify-account";
 
 	const handlePhoneNumberChange = (e) => {
-		// Allow only numbers with maximum lenght of 11
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPhoneNumber(e.target.value);
+       // Allow only numbers with maximum lenght of 11
+		if (!validateNumberField(cleanedValue, 11)) {
+            return;
+		} else {
+            setPhoneNumber(cleanedValue);
+        }
 	};
 
 	const handlePasswordChange = (e) => {
-        // Allow only numbers with maximum lenght of 6
-		if (!validateNumberField(e.target.value, 6)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPassword(e.target.value);
+       // Allow only numbers with maximum lenght of 6
+		if (!validateNumberField(cleanedValue, 6)) {
+            return;
+		} else {
+            setPassword(cleanedValue);
+        }
 	};
 
 	const handleKeepSigninChange = (e) => {
@@ -85,24 +89,26 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 
-				// Convert the fname gotten from response to lowercase and then make the first letter uppercase
-				const fname = response.data.fname.toLowerCase().split(" ");
-				const fnameCapitalized = fname.map((word) => {
-					return word.charAt(0).toUpperCase() + word.slice(1);
-				});
+                if (keepSignin) {
+                    // Convert the fname gotten from response to lowercase and then make the first letter uppercase
+                    const fname = response.data.fname.toLowerCase().split(" ");
+                    const fnameCapitalized = fname.map((word) => {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    });
 
-				// Set expiration date of cookie to be 7 days from current time
-				const currentDate = new Date();
-				const expirationDate = new Date(
-					currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
-				);
-				const expirationDateString = expirationDate.toUTCString();
+                    // Set expiration date of cookie to be 7 days from current time
+                    const currentDate = new Date();
+                    const expirationDate = new Date(
+                        currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+                    );
+                    const expirationDateString = expirationDate.toUTCString();
 
-				document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
+                    document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
 
-				document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
+                    document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
 
-				document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
+                    document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
+                }
 
                 setIsProcessing(() => false);
 
@@ -171,24 +177,26 @@ const SignInForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, Welcome</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">
+						Hello there 👋
+					</h1>
 
 					<p className="text-base">
-						Sign in to continue to an awesome experience
-					</p>
+                        Sign in to continue
+                    </p>
 				</div>
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="phone-number"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Phone Number
 						</span>
 
@@ -197,7 +205,7 @@ const SignInForm = () => {
 							name="phone-number"
 							id="phone-number"
 							inputMode="numeric"
-							pattern="[0-9]{11}"
+							pattern="\d+"
 							maxLength={11}
 							minLength={11}
 							className="input-form"
@@ -209,10 +217,10 @@ const SignInForm = () => {
 					</label>
 
 					<label
-						className="relative grid gap-0.5"
+						className="relative grid gap-1"
 						htmlFor="password"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Pin
 						</span>
 
@@ -223,7 +231,7 @@ const SignInForm = () => {
 							className="input-form"
 							inputMode="numeric"
 							placeholder="Enter your pin"
-							pattern="[0-9]{6}"
+							pattern="\d+"
 							maxLength={6}
 							minLength={6}
 							onChange={handlePasswordChange}
@@ -233,7 +241,7 @@ const SignInForm = () => {
 						/>
 
 						<button
-                            className="absolute top-[calc((0.625rem*4))] right-3"
+                            className="absolute top-[55%] right-3"
 							type="button"
 							aria-label="Toggle password field visibility"
 							onClick={() => setIsVisible(() => !isVisible)}
@@ -260,11 +268,11 @@ const SignInForm = () => {
 								onChange={handleKeepSigninChange}
 							/>
 							<span className="text-[#979797]">
-								Keep me signed in
+								Remember Me
 							</span>
 						</label>
 						<Link
-							className="text-brand-dark-purple"
+							className="text-brand-purple font-medium"
 							href="/password-reset"
 						>
 							Forgot Password
@@ -272,7 +280,7 @@ const SignInForm = () => {
 					</div>
 
                     <button
-                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
+                        className={ `btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${isProcessing ? 'bg-brand-purple/30 pointer-events-none select-none animate-pulse outline-0 border-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none disabled:animate-purple` }
                         type="submit"
                         disabled={ isProcessing }
                     >
@@ -283,7 +291,7 @@ const SignInForm = () => {
 				<p className="text-[#979797]">
 					Don’t have an account?{" "}
 					<Link
-						className="font-medium text-brand-dark-purple"
+						className="font-medium text-brand-purple"
 						href="/create-account"
 					>
 						Create one

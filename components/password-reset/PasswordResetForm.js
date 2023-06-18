@@ -108,12 +108,14 @@ const PasswordResetForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handlePasswordReset}
 			>
-				<div className="mx-auto w-[90%] space-y-2 text-center">
-					<h1 className="header text-2xl">Hi 👋</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">
+                        Reset Your Password
+                    </h1>
 
 					<p className="text-base">
 						Just enter your email address below and we’ll send you a
@@ -123,10 +125,10 @@ const PasswordResetForm = () => {
 
 				<div className="grid gap-6">
 					<label
-						className="grid gap-0.5"
+						className="grid gap-1"
 						htmlFor="email"
 					>
-						<span className="font-bold text-brand-dark-purple">
+						<span className="font-bold">
 							Email Address
 						</span>
 
@@ -152,7 +154,7 @@ const PasswordResetForm = () => {
 					<Link href="/sign-in">
 						<span>Go back to </span>
 
-						<span className="font-medium text-brand-dark-purple">
+						<span className="font-medium text-brand-purple">
 							Sign In
 						</span>
 					</Link>

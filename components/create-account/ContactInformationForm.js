@@ -28,7 +28,7 @@ const ContactInformationForm = () => {
 	const [isError, setIsError] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-	const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
+    const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
     const [email, setEmail] = useState(queryParams.email);
     const [address, setAddress] = useState("");
     const [zipCode, setZipCode] = useState("");
@@ -63,20 +63,26 @@ const ContactInformationForm = () => {
         return;
     }
 
-	const handlePhoneNumberChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
+    const handlePhoneNumberChange = (e) => {
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setPhoneNumber(e.target.value);
-	};
+        // Allow only numbers with maximum lenght of 11
+        if (!validateNumberField(cleanedValue, 11)) {
+            return;
+        } else {
+            setPhoneNumber(cleanedValue);
+        }
+    };
 
     const handleZipCodeChange = (e) => {
-		if (!validateNumberField(e.target.value, 6)) {
-			return;
-		}
+		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-		setZipCode(e.target.value);
+        // Allow only numbers with maximum lenght of 6
+		if (!validateNumberField(cleanedValue, 6)) {
+            return;
+		} else {
+            setZipCode(cleanedValue);
+        }
 	};
 
 	const handleEmailChange = (e) => {
@@ -170,12 +176,12 @@ const ContactInformationForm = () => {
 	return (
 		<>
 			<form
-				className="space-y-6 rounded-md p-[5%] md:bg-white"
+				className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<div className="space-y-2 text-center">
-					<h1 className="header text-2xl">Hi, {typeof window !== "undefined" && getCookie("fname").sanitizedValue}</h1>
+				<div className="space-y-2">
+					<h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">Hi, {typeof window !== "undefined" && getCookie("fname").sanitizedValue}</h1>
 
 					<p className="text-base">Review your contact information</p>
 				</div>
@@ -187,10 +193,10 @@ const ContactInformationForm = () => {
                 ) : (
                     <div className="grid gap-6">
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="phone-number"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Phone Number
                             </span>
 
@@ -198,23 +204,24 @@ const ContactInformationForm = () => {
                                 type="tel"
                                 name="phone-number"
                                 id="phone-number"
-                                className="input-form"
-                                placeholder="08000000000"
                                 inputMode="numeric"
-                                pattern="[0-9]{11}"
-                                maxLength={11}
-                                minLength={11}
-                                onChange={handlePhoneNumberChange}
-                                value={phoneNumber}
+                                pattern="\d+"
+                                maxLength={ 11 }
+                                minLength={ 11 }
+                                className="input-form"
+                                placeholder="Enter your phone number"
+                                value={ phoneNumber }
+                                onChange={ handlePhoneNumberChange }
                                 defaultValue={ phoneNumber }
+                                required={ true }
                             />
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="email"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Email Address
                             </span>
 
@@ -230,10 +237,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="residential-address"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Residential Address
                             </span>
 
@@ -248,10 +255,10 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="city"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 City
                             </span>
 
@@ -265,8 +272,8 @@ const ContactInformationForm = () => {
                             />
                         </label>
 
-                        <label className="grid gap-0.5" htmlFor="state-of-origin">
-                            <span className="font-bold text-brand-dark-purple">
+                        <label className="grid gap-1" htmlFor="state-of-origin">
+                            <span className="font-bold">
                                 State of Origin
                             </span>
 
@@ -283,15 +290,15 @@ const ContactInformationForm = () => {
                         </label>
 
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="zip-code"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Zip Code
                             </span>
 
                             <input
-                                type="number"
+                                type="text"
                                 name="zip-code"
                                 id="zip-code"
                                 className="input-form no-number-increment"
@@ -299,7 +306,7 @@ const ContactInformationForm = () => {
                                 onChange={handleZipCodeChange}
                                 value={zipCode}
                                 inputMode="numeric"
-                                pattern="[0-9]{6}"
+                                pattern="\d+"
                                 maxLength={6}
                                 minLength={6}
                             />

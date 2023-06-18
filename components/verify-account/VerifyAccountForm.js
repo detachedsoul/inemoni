@@ -25,11 +25,14 @@ const VerifyAccountForm = () => {
 	}
 
     const handleOTPChange = (e) => {
-        if (!validateNumberField(e.target.value, 4)) {
-			return;
-		}
+        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-        setOTP(e.target.value);
+       // Allow only numbers with maximum lenght of 4
+		if (!validateNumberField(cleanedValue, 4)) {
+            return;
+		} else {
+            setOTP(cleanedValue);
+        }
     };
 
 	const handleSubmit = async (e) => {
@@ -139,7 +142,7 @@ const VerifyAccountForm = () => {
                 }, 3000);
             } else {
                 setHeader(() => "OTP Not Sent");
-                setMessage(() => "An error occured. Please check the OTP and try again.");
+                setMessage(() => "An error occured. Please try again.");
                 setIsError(() => true);
                 setIsActive(() => true);
 
@@ -157,34 +160,34 @@ const VerifyAccountForm = () => {
 
 	return (
 		<>
-            <div className="rounded-md p-[5%] md:bg-white space-y-6">
+            <div className="space-y-6 rounded-[20px] p-[10%] bg-white shadow-[0px_10px_70px 10px_rgba(102,102,102,0.1)] text-[#666666] mx-4 md:mx-0">
                 <form
                     className="space-y-6"
                     method="POST"
                     onSubmit={handleSubmit}
                 >
-                    <div className="mx-auto w-[90%] space-y-2 text-center">
-                        <h1 className="header text-2xl">Verify OTP</h1>
+                    <div className="space-y-2">
+                        <h1 className="font-medium text-2xl sm:text-3xl text-[#262626]">Verify OTP</h1>
 
                         <p className="text-base">Enter OTP sent to your phone number</p>
                     </div>
 
                     <div className="grid gap-6">
                         <label
-                            className="grid gap-0.5"
+                            className="grid gap-1"
                             htmlFor="password"
                         >
-                            <span className="font-bold text-brand-dark-purple">
+                            <span className="font-bold">
                                 Verification Code
                             </span>
 
                             <input
-                                type="passweord"
+                                type="password"
                                 name="password"
                                 id="password"
-                                className="input-form no-number-increment"
+                                className="input-form"
                                 placeholder="Enter OTP"
-                                pattern="[0-9]{4}"
+                                pattern="\d+"
                                 maxLength={4}
                                 minLength={4}
                                 inputMode="numeric"
@@ -205,10 +208,10 @@ const VerifyAccountForm = () => {
                     </div>
                 </form>
 
-                <p className="text-[#979797]">
+                <p>
                     Did’nt any OTP?{" "}
                     <button
-                        className="font-medium text-brand-dark-purple"
+                        className="font-medium text-brand-purple"
                         onClick={generateOTP}
                     >
                         Resend OTP

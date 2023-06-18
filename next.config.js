@@ -1,3 +1,11 @@
+const withPWA = require("next-pwa")({
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+    register: true,
+    disable: false,
+    mode: 'production'
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
@@ -6,4 +14,4 @@ const nextConfig = {
 	trailingSlash: true,
 };
 
-module.exports = nextConfig
+module.exports = process.env.NODE_ENV === 'production' ? withPWA(nextConfig) : nextConfig;
