@@ -16,40 +16,6 @@ const SignIn = () => {
 		setIsLoading(() => false);
 	}, []);
 
-    useEffect(() => {
-        const getURLOrigin = window.location.origin;
-
-        const windowFeatures = "noopener, nnoreferrer";
-
-        // Check if PWA is installed and open the installed PWA
-        window.addEventListener("load", () => {
-            if (window.matchMedia("(display-mode: standalone)").matches) {
-                // Open the PWA on the /sign-in page
-                window.open("/sign-in", "_blank", windowFeatures);
-            } else if (window.navigator.standalone === true) {
-                // Open the PWA on the /sign-in page
-                window.open("/sign-in", "_blank", windowFeatures);
-            } else if (window.navigator.msStandAlone === true) {
-                // Open the PWA on the /sign-in page
-                window.open("/sign-in", "_blank", windowFeatures);
-            } else if (window.navigator.mozApps && window.navigator.mozApps.getInstalledApps) {
-                // Check if the PWA is installed using Mozilla's API
-                const request = window.navigator.mozApps.getInstalledApps();
-                request.onsuccess = (event) => {
-                    const apps = event.target.result;
-                    const isInstalled = apps.some(app => app.manifestURL === `${getURLOrigin}/manifest.json`);
-
-                    if (isInstalled) {
-                        // Open the PWA on the /sign-in page
-                        window.open("/sign-in", "_blank", windowFeatures);
-                    }
-                };
-            } else {
-                return;
-            }
-        });
-    }, []);
-
 	return (
 		<>
 			{!isLoading && getCookie("is_logged_in").isValid === true ? (
