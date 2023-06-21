@@ -7,7 +7,6 @@ import Image from "next/image";
 import PWA from "@components/PWA";
 
 const CreateAccount = () => {
-
 	return (
 		<>
 			<Head>

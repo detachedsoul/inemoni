@@ -1,5 +1,5 @@
 import "@assets/uicons-regular-rounded/css/uicons-regular-rounded.min.css";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import "@styles/globals.css";
 
 const aeonik = localFont({
