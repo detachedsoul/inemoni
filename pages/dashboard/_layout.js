@@ -34,15 +34,15 @@ const Layout = ({children}) => {
                         <ul className="flex flex-col gap-2">
                             <li>
                                 <Link className="flex items-center gap-4 font-bold btn px-4 bg-white text-[#262626]" href="/dashboard">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/home-icon.svg" alt="Home" width={20} height={20} priority />
 
                                     Home
                                 </Link>
                             </li>
 
                             <li>
-                                <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/dashboard">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold group" href="/dashboard">
+                                    <Image src="/img/send-money-icon.svg" alt="Send Money" width={20} height={20} priority />
 
                                     Send Money
                                 </Link>
@@ -50,7 +50,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/dashboard">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/cards-icon.svg" alt="Card" width={20} height={20} />
 
                                     Cards
                                 </Link>
@@ -58,7 +58,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/services">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/services-icon.svg" alt="Services" width={20} height={20} priority />
 
                                     Services
                                 </Link>
@@ -66,7 +66,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/services">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/transactions-icon.svg" alt="Transactions" width={20} height={20} priority />
 
                                     Transactions
                                 </Link>
@@ -74,7 +74,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/services">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/referrals-icon.svg" alt="Referrals" width={20} height={20} priority />
 
                                     Referrals
                                 </Link>
@@ -82,7 +82,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/services">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/support-icon.svg" alt="Support" width={20} height={20} priority />
 
                                     Support
                                 </Link>
@@ -90,7 +90,7 @@ const Layout = ({children}) => {
 
                             <li>
                                 <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold" href="/services">
-                                    <Image src="/img/home-icon.png" alt="Home" width={20} height={20} />
+                                    <Image src="/img/account-icon.svg" alt="Account" width={20} height={20} priority />
 
                                     Account
                                 </Link>
@@ -107,7 +107,7 @@ const Layout = ({children}) => {
 
                         <div className="flex items-center gap-4">
                             <Link href="/dashboard">
-                                <Image src="/img/notification-bell.png" alt="Your Notifications" width={20} height={20} />
+                                <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
                             </Link>
 
                             <span className="bg-[#D9D9D9] rounded-full px-2.5 py-3 font-medium text-black text-sm">
