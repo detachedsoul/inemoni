@@ -112,6 +112,8 @@ const VerifyAccountForm = () => {
 
     // Generate a new OTP
     const generateOTP = async () => {
+        const getURLOrigin = window.location.origin;
+
         const data = {
             user_token : queryParams.login_token
         };
@@ -124,7 +126,7 @@ const VerifyAccountForm = () => {
 		};
 
         try {
-            const request = await fetch(`${getURLOrigin}/api/send-verification-code?app=0`, requestOptions);
+            const request = await fetch(`${getURLOrigin}/api/send-verification-code?app=1`, requestOptions);
 
             const response = await request.json();
 
@@ -142,7 +144,7 @@ const VerifyAccountForm = () => {
                 }, 3000);
             } else {
                 setHeader(() => "OTP Not Sent");
-                setMessage(() => "An error occured. Please try again.");
+                setMessage(() => response.message);
                 setIsError(() => true);
                 setIsActive(() => true);
 
