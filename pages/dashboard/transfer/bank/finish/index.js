@@ -13,8 +13,8 @@ const FinishBankTransfer = () => {
                 />
             </Head>
 
-            <main className="pb-8">
-                <section className="space-y-6">
+            <main>
+                <section className="grid gap-6">
                     <h2 className="header font-medium text-2xl">
                         Send Money
                     </h2>
