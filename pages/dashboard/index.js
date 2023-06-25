@@ -10,7 +10,7 @@ import FundAccount from "@assets/img/quick-action-fund-account.svg";
 import ViewCards from "@assets/img/quick-action-view-cards.svg";
 import BankTransfer from "@assets/img/transaction-bank-transfer.svg";
 import DollarCard from "@assets/img/transaction-dollar-card.svg";
-import Wallet from "@assets/img/transaction-wallet.svg";
+import Bonus from "@assets/img/transaction-bonus.svg";
 
 const Dashboard = () => {
     const [isBalanceVisible, setBalanceIsVisible] = useState(false);
@@ -47,7 +47,7 @@ const Dashboard = () => {
                         </h2>
 
                         <div className="grid gap-4 lg:grid-cols-4">
-                            <Link className="rounded-[10px] bg-[#E7D9F2] px-4 py-8 grid place-content-center" href="/dashboard">
+                            <Link className="rounded-[10px] bg-[#E7D9F2] px-4 py-8 grid place-content-center" href="/dashboard/transfer">
                                 <div className="flex items-center gap-4">
                                     <Image className="h-12 w-12" src={MoneyTransfer} alt="Money Transfer" />
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
                     </section>
 
                     <section className="space-y-2">
-                        <h2 className="text-[#666666] font-medium text-lg">
+                        <h2 className="header text-[#666666] font-medium text-lg">
                             Recent Transactions
                         </h2>
 
@@ -187,7 +187,7 @@ const Dashboard = () => {
 
                                     <tr className="border-b border-[#979797] last:border-none">
                                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
-                                            <Image className="h-11 w-11" src={Wallet} alt="Inemoni Wallet" />
+                                            <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 
                                             <div className="">
                                                 <p className="font-medium text-sm -mb-1.5">
@@ -201,7 +201,7 @@ const Dashboard = () => {
                                         </td>
 
                                         <td className="pr-4 py-2 font-medium">
-                                            Wallet Top-Up
+                                            Bonus Top-Up
                                         </td>
 
                                         <td className="pr-4 py-2 -space-y-1.5">
@@ -289,7 +289,7 @@ const Dashboard = () => {
 
                                     <tr className="border-b border-[#979797] last:border-none">
                                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
-                                            <Image className="h-11 w-11" src={Wallet} alt="Inemoni Wallet" />
+                                            <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 
                                             <div className="">
                                                 <p className="font-medium text-sm -mb-1.5">
@@ -303,7 +303,7 @@ const Dashboard = () => {
                                         </td>
 
                                         <td className="pr-4 py-2 font-medium">
-                                            Wallet Top-Up
+                                            Bonus Top-Up
                                         </td>
 
                                         <td className="pr-4 py-2 -space-y-1.5">

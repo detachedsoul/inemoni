@@ -41,7 +41,7 @@ const Layout = ({children}) => {
                             </li>
 
                             <li>
-                                <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold group" href="/dashboard">
+                                <Link className="flex items-center gap-4 btn px-4 font-normal transition-color ease-in duration-100 hover:bg-white hover:text-[#262626] hover:font-bold group" href="/dashboard/transfer">
                                     <Image src="/img/send-money-icon.svg" alt="Send Money" width={20} height={20} priority />
 
                                     Send Money
@@ -101,7 +101,7 @@ const Layout = ({children}) => {
 
                 <div className="space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
                     <div className="flex flex-wrap items-center gap-4 justify-between sticky top-0 bg-white p-4 ml-[4px]">
-                        <h1 className="text-2xl">
+                        <h1 className="header font-normal text-2xl">
                             Welcome back, <span className="font-bold">Wisdom</span> 👋
                         </h1>
 
