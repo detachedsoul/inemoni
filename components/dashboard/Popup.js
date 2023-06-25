@@ -1,27 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
-import SuccessImage from "@assets/img/account-creation-successful-img.svg";
-import ErrorImage from "@assets/img/auth-error.svg";
+import Lottie from "lottie-react";
 import {useRouter} from "next/router";
 import {ArrowLeft, X} from "lucide-react";
 import {useEffect} from "react";
+import TransactionSuccessful from "@assets/data/lottie-files/transfer-successful";
 
 const Popup = ({
 	isActive,
 	setIsActive,
-	header = "Hello",
-	message = "Message content",
-	isError = false,
-	buttonText = "Try Again",
-	isLink = false,
-	route = null,
-	queryParams = {}
+    goBack = false,
+    children
 }) => {
     const router = useRouter();
 
     useEffect(() => {
         isActive ? document.querySelector("body").style.overflow = "hidden" : document.querySelector("body").style.overflow = "auto";
-    }, []);
+    }, [isActive]);
 
 	return (
 		<div
@@ -32,11 +26,13 @@ const Popup = ({
 			<div
 				className="no-scrollbar z-[1024] my-12 ml-[5%] w-[calc(100%-10%)] grid gap-2 overflow-y-auto rounded-[12px] bg-[#F2F2F2] text-[#666666] px-6 pb-6 min-[500px]:ml-[calc((100%-60%)/2)] min-[500px]:w-3/5 min-[600px]:ml-[calc((100%-50%)/2)] min-[600px]:w-1/2 lg:ml-[calc((100%-45%)/2)] lg:w-[45%]"
 			>
-                <div className="flex items-center justify-between pt-6 sticky top-0 bg-[#F2F2F2] text-[#666666]">
-                    <button className="flex items-center gap-2" type="button" onClick={() => router.back()}>
-                        <ArrowLeft size={20} />
-                        Back
-                    </button>
+                <div className={`flex items-center ${goBack ? 'justify-between' : 'justify-end'} pt-6 sticky top-0 bg-[#F2F2F2] text-[#666666]`}>
+                    {goBack && (
+                        <button className="flex items-center gap-2" type="button" onClick={() => router.back()}>
+                            <ArrowLeft size={20} />
+                            Back
+                        </button>
+                    )}
 
                     <button className="flex items-center justify-between gap-2" type="button" onClick={() => setIsActive(() => false)} aria-label="Close transfer details preview popup">
                         <X size={20} />
@@ -110,7 +106,7 @@ const Popup = ({
                     </div>
                 </div>
 
-                <form className="py-4 px-8 space-y-4" method="POST">
+                <form className="py-4 px-8 space-y-4 hidden" method="POST">
                     <div className="space-y-1.5">
                         <h2 className="font-medium text-lg text-[#262626]">
                             Enter your PIN
@@ -196,8 +192,36 @@ const Popup = ({
                     </button>
                 </form>
 
-                <div className="py-4 px-8 space-y-4 hidden">
+                <div className="py-4 px-8 space-y-2 text-center">
+                    <Lottie className="h-24" animationData={TransactionSuccessful} />
 
+                    <div className="space-y-6">
+                        <div className="space-y-1 w-4/5 mx-auto">
+                            <h2 className="font-medium text-lg text-[#262626]">
+                                Transfer Successful
+                            </h2>
+
+                            <p className="leading-snug">
+                                You’ve sent ₦25,420.00 to CHUKWUELOBE DANIEL EMENIKE
+                            </p>
+                        </div>
+
+                        <div className="grid gap-2">
+                            <Link
+                                className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                                href="/dashboard"
+                            >
+                                Back to Dashboard
+                            </Link>
+
+                            <button
+                                className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
+                                type="button"
+                            >
+                                View Reciept
+                            </button>
+                        </div>
+                    </div>
                 </div>
 			</div>
 		</div>
