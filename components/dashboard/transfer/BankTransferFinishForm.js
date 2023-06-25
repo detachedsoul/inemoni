@@ -1,8 +1,10 @@
 import {useRouter} from "next/router";
 import {ArrowLeft} from "lucide-react";
+import {useState} from "react";
 
-const BankTransferInitiationForm = () => {
+const BankTransferFinishForm = () => {
     const router = useRouter();
+    const [isToggled, setIsToggled] = useState(false);
 
     return (
         <div className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-4 lg:w-3/5">
@@ -23,49 +25,35 @@ const BankTransferInitiationForm = () => {
                 </div>
 
                 <div className="grid gap-6">
-                    <label className="space-y-1" htmlFor="account-number">
+                    <label className="space-y-1" htmlFor="amount">
                         <span className="font-medium">
-                            Account Number
+                            Amount
                         </span>
 
-                        <input className="dashboard-input" type="text" placeholder="Enter Account Number" id="account-number" required />
+                        <input className="dashboard-input no-number-increment" type="number" placeholder="₦0.00" id="amount" required />
                     </label>
 
-                    <label className="space-y-1" htmlFor="select-bank">
+                    <label className="space-y-1" htmlFor="narration">
                         <span className="font-medium">
-                            Select Bank
+                            Narration
                         </span>
 
-                        <select className="dashboard-select" id="select-bank">
-                            <option>
-                                Select Bank
-                            </option>
-
-                            <option>
-                                UBA
-                            </option>
-
-                            <option>
-                                First Bank
-                            </option>
-
-                            <option>
-                                Ecobank
-                            </option>
-                        </select>
+                        <input className="dashboard-input" type="text" placeholder="Narration" id="narration" required />
                     </label>
 
-                    <label className="space-y-1" htmlFor="beneficiary-name">
-                        <span className="font-medium">
-                            Beneficiary Name
-                        </span>
+                    <div className="flex flex-wrap items-center gap-2 justify-between">
+                        <p>
+                            Save as a Beneficiary
+                        </p>
 
-                        <input className="dashboard-input cursor-not-allowed" type="text" readOnly placeholder="Beneficiary Name" id="beneficiary-name" value="" required />
-                    </label>
+                        <button className="rounded-full py-1.5 px-4 bg-[#cccccc] relative" onClick={() => setIsToggled(() => !isToggled)} type="button">
+                            <span className={`inline-block rounded-full p-2 transition-all ease-in duration-300 -translate-y-1/2 absolute ${isToggled ? 'translate-x-0 bg-brand-purple' : '-translate-x-full bg-white'}`}></span>
+                        </button>
+                    </div>
 
                     <button
                         className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                        type="submit"
+                        type="button"
                         onClick={() => {
                             router.push({
                                 pathname: '/dashboard/transfer/bank/finish',
@@ -81,4 +69,4 @@ const BankTransferInitiationForm = () => {
     );
 };
 
-export default BankTransferInitiationForm;
+export default BankTransferFinishForm;
