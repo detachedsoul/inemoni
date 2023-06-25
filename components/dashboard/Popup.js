@@ -4,6 +4,7 @@ import SuccessImage from "@assets/img/account-creation-successful-img.svg";
 import ErrorImage from "@assets/img/auth-error.svg";
 import {useRouter} from "next/router";
 import {ArrowLeft, X} from "lucide-react";
+import {useEffect} from "react";
 
 const Popup = ({
 	isActive,
@@ -16,8 +17,11 @@ const Popup = ({
 	route = null,
 	queryParams = {}
 }) => {
-    console.log(isActive);
     const router = useRouter();
+
+    useEffect(() => {
+        isActive ? document.querySelector("body").style.overflow = "hidden" : document.querySelector("body").style.overflow = "auto";
+    }, []);
 
 	return (
 		<div
@@ -40,7 +44,7 @@ const Popup = ({
 
                 </div>
 
-                <div className="py-4 px-8 space-y-4">
+                <div className="py-4 px-8 space-y-4 hidden">
                     <h2 className="font-medium text-lg leading-snug text-[#262626]">
                         You are about to send money to CHUKWUELOBE DANIEL EMENIKE, Keystone Bank.
                     </h2>
@@ -93,17 +97,107 @@ const Popup = ({
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
                                 type="button"
                             >
-                                    Transfer
+                                Confirm
                             </button>
 
                             <button
                                 className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
                                 type="button"
                             >
-                                    Cancel
+                                Cancel
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <form className="py-4 px-8 space-y-4" method="POST">
+                    <div className="space-y-1.5">
+                        <h2 className="font-medium text-lg text-[#262626]">
+                            Enter your PIN
+                        </h2>
+
+                        <p className="leading-snug">
+                            Please enter your Transaction PIN to approve transaction
+                        </p>
+                    </div>
+
+                    <div className="space-y-2">
+                        <h3 className="font-medium">
+                            Pin
+                        </h3>
+
+                        <div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto" id="create-pin">
+							<input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+
+							<input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin-value-2"
+								id="create-pin-value-2"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+
+							<input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin-value-3"
+								id="create-pin-value-3"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+
+							<input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin-value-4"
+								id="create-pin-value-4"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+
+                            <input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin-value-4"
+								id="create-pin-value-4"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+
+                            <input
+								type="password"
+                                inputMode="numeric"
+								maxLength={1}
+								pattern="[0-9]{1}"
+								name="create-pin-value-4"
+								id="create-pin-value-4"
+								className={`dashboard-input no-number-increment h-4 rounded-[8px] w-[calc(100%/6)] px-2 py-5 text-center font-bold lg:py-6`}
+							/>
+                        </div>
+                    </div>
+
+                    <button
+                        className="btn block w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                        type="button"
+                    >
+                        Transfer
+                    </button>
+                </form>
+
+                <div className="py-4 px-8 space-y-4 hidden">
+
                 </div>
 			</div>
 		</div>

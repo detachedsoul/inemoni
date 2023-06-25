@@ -118,7 +118,7 @@ const Dashboard = () => {
 
                                 <tbody>
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={BankTransfer} alt="Bank Transfer" />
 
                                             <div>
@@ -152,7 +152,7 @@ const Dashboard = () => {
                                     </tr>
 
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={DollarCard} alt="Dollar Card" />
 
                                             <div className="">
@@ -186,7 +186,7 @@ const Dashboard = () => {
                                     </tr>
 
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 
                                             <div className="">
@@ -220,7 +220,7 @@ const Dashboard = () => {
                                     </tr>
 
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={BankTransfer} alt="Bank Transfer" />
 
                                             <div className="">
@@ -254,7 +254,7 @@ const Dashboard = () => {
                                     </tr>
 
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={DollarCard} alt="Dollar Card" />
 
                                             <div className="">
@@ -288,7 +288,7 @@ const Dashboard = () => {
                                     </tr>
 
                                     <tr className="border-b border-[#979797] last:border-none">
-                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full m-0">
+                                        <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                                             <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 
                                             <div className="">
