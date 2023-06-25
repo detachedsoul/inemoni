@@ -279,7 +279,7 @@ const ContactInformationForm = () => {
 
                             <select className="input-select" id="state-of-origin" onChange={handleStateChange}>
                                 <option>
-                                    Select state
+                                    Select State
                                 </option>
                                 {states?.map(state => (
                                     <option value={state.id} key={state.id}>

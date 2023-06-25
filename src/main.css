@@ -70,6 +70,14 @@
         @apply form-select input-form
     }
 
+    .dashboard-input {
+        @apply input-form border-[#cccccc] placeholder:text-[#CCCCCC] text-[#262626] bg-transparent focus:ring-0 hover:ring-0 focus:outline-0 hover:outline-0 hover:border-[#cccccc] focus:border-[#cccccc]
+    }
+
+    .dashboard-select {
+        @apply input-select dashboard-input
+    }
+
     .input-checkbox {
         @apply form-checkbox text-brand-purple border-[#979797] rounded p-2 xl:p-2 md:px-1 md:py-0.5 cursor-pointer ring-offset-white hover:ring-1 hover:ring-offset-2 hover:ring-brand-purple focus-within:ring-1 focus-within:ring-offset-2 focus-within:ring-brand-purple
     }
