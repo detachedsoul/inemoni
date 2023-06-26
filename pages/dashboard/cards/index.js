@@ -1,33 +1,33 @@
 import Head from "next/head";
 import Layout from "@pages/dashboard/_layout";
-import BankTransferFinishForm from "@components/dashboard/transfer/BankTransferFinishForm";
+import CardOverview from "@components/dashboard/cards/CardOverview";
 
-const FinishBankTransfer = () => {
+const Cards = () => {
     return (
         <>
             <Head>
-                <title>Transfer Funds | Finish Bank Transfer</title>
+                <title>Inemoni Cards</title>
                 <meta
                     name="description"
-                    content="Complete your transfer"
+                    content="Get your Inemoni Card instantly"
                 />
             </Head>
 
             <main>
                 <section className="grid gap-6">
                     <h2 className="header font-medium text-2xl">
-                        Send Money
+                        Inemoni Cards
                     </h2>
 
-                    <BankTransferFinishForm />
+                    <CardOverview />
                 </section>
             </main>
         </>
     );
 };
 
-export default FinishBankTransfer;
+export default Cards;
 
-FinishBankTransfer.getLayout = (page) => {
-	return <Layout>{page}</Layout>;
+Cards.getLayout = (page) => {
+    return <Layout>{ page }</Layout>;
 };

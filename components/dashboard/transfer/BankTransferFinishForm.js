@@ -8,12 +8,6 @@ const BankTransferFinishForm = () => {
     const [isToggled, setIsToggled] = useState(false);
     const [isTransactionPreviewModalAactive, setIsTransactionPreviewModalAactive] = useState(false);
 
-    const handleTransactionPreview = () => {
-        setIsTransactionPreviewModalAactive(() => !isTransactionPreviewModalAactive);
-    };
-
-    console.log(isTransactionPreviewModalAactive)
-
     return (
         <>
             <div className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-4 lg:w-3/5">
