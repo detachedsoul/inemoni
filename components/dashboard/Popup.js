@@ -234,7 +234,7 @@ const Popup = ({
                     </div>
                 </div>
 
-                <div className="py-4 px-8 space-y-6 hidden">
+                <div className="py-4 px-8 space-y-6">
                     <div>
                         <h2 className="font-medium text-xl text-[#262626]">
                             Choose your card
@@ -450,7 +450,7 @@ const Popup = ({
                     </div>
                 </div>
 
-                <form className="py-4 px-8 space-y-12" method="POST">
+                <form className="py-4 px-8 space-y-12 hidden" method="POST">
                     <div className="space-y-4">
                         <h2 className="font-medium text-xl text-[#262626]">
                             Add Money to your Card
@@ -464,7 +464,7 @@ const Popup = ({
                             <div className="flex gap-2 pl-4 rounded-[10px] border border-[#cccccc]">
                                 <Image src={AmericanFlag} alt="Enter amount to fund in USD ($)" />
 
-                                <input className="dashboard-input pl-0 border-none" type="number" placeholder="Amount to fund in USD ($)" id="amount" min="2.00" />
+                                <input className="dashboard-input pl-0 border-none no-number-increment" type="number" placeholder="Amount to fund in USD ($)" id="amount" min="2.00" />
                             </div>
                         </label>
                     </div>
@@ -481,8 +481,31 @@ const Popup = ({
                             Continue
                         </button>
                     </div>
-
                 </form>
+
+                <div className="py-4 px-8 space-y-2 text-center hidden">
+                    <Lottie className="h-24" animationData={TransactionSuccessful} />
+
+                    <div className="space-y-6">
+                        <div className="space-y-1 w-4/5 mx-auto">
+                            <h2 className="font-medium text-lg text-[#262626]">
+                                Card Unblocking Successful
+                            </h2>
+
+                            <p className="leading-snug">
+                                Your virtual dollar card has successfully been unblocked
+                            </p>
+                        </div>
+
+
+                        <Link
+                            className="btn block w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                            href="/dashboard"
+                        >
+                            Back to Dashboard
+                        </Link>
+                    </div>
+                </div>
 			</div>
 		</div>
 	);

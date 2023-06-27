@@ -38,7 +38,7 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#D6F5E2] px-4 py-8 grid place-content-center" href="/dashboard/cards/view-cards">
+            <Link className="rounded-[10px] bg-[#D6F5E2] px-4 py-8 grid place-content-center" href="/dashboard/cards">
                 <div className="flex items-center gap-4">
                     <Image className="h-12 w-12" src={ViewCards} alt="View your Cards" />
 

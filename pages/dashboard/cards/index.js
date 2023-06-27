@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "@pages/dashboard/_layout";
 import CardOverview from "@components/dashboard/cards/CardOverview";
+import ViewCards from "@components/dashboard/cards/ViewCards";
 
 const Cards = () => {
     return (
@@ -19,7 +20,9 @@ const Cards = () => {
                         Inemoni Cards
                     </h2>
 
-                    <CardOverview />
+                    {/* <CardOverview /> */}
+
+                    <ViewCards />
                 </section>
             </main>
         </>

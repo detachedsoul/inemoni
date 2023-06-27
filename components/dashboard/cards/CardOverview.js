@@ -1,11 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
 import CardsOverview from "@assets/img/card-overview.png";
 import { useState } from "react";
 import Popup from "@components/dashboard/Popup";
 
 const CardOverview = () => {
-    const [isPopupActive, setIsPopupActive] = useState(true);
+    const [isPopupActive, setIsPopupActive] = useState(false);
 
     return (
         <>
@@ -14,7 +13,7 @@ const CardOverview = () => {
                     <Image className="w-[70%] mx-auto -mt-20" src={CardsOverview} alt="Get your Inemoni Card instantly" />
 
                     <div className="space-y-2 text-center w-3/5 mx-auto">
-                        <h3 className="font-medium text-[#262626] text-3xl">
+                        <h3 className="font-medium text-3xl">
                             Get your Inemoni Card instantly
                         </h3>
 
