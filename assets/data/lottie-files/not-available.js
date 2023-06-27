@@ -4078,7 +4078,7 @@ const NotAvailable = {
         "ao": 0,
         "sw": 1080,
         "sh": 1080,
-        "sc": "#ffffff",
+        "sc": "transparent",
         "ip": 0,
         "op": 630.000025660426,
         "st": 0,

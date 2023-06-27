@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
                     </nav>
                 </div>
 
-                <div className="space-y-8 lg:w-3/4 lg:ml-[25%] bg-white">
+                <div className="space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
                     <div className="flex flex-wrap items-center gap-4 justify-between sticky top-0 bg-white p-4 ml-[4px] lg:px-8">
                         <h1 className="header font-normal text-2xl">
                             Welcome back, <span className="font-bold">Wisdom</span> 👋
