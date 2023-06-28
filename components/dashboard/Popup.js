@@ -14,6 +14,7 @@ import VisaCard from "@assets/img/card-visa-card.svg";
 import VisaCardPreview from "@assets/img/visacard-preview.svg";
 import MasterCardPreview from "@assets/img/mastercard-preview.svg";
 import AmericanFlag from "@assets/img/american-flag.svg";
+import Card from "@components/dashboard/Card";
 
 const Popup = ({
 	isActive,
@@ -29,12 +30,12 @@ const Popup = ({
 
 	return (
 		<div
-			className={`fixed top-0 left-0 z-[1024] flex h-full w-full flex-col place-items-center bg-black/50 backdrop-blur-[2px] transition-transform duration-500 ease-linear overflow-y-auto ${
+			className={`fixed top-0 left-0 z-[1024] grid h-full w-full place-items-center bg-black/50 backdrop-blur-[2px] transition-transform duration-500 ease-linear overflow-y-auto ${
 				isActive ? "translate-y-0" : "translate-y-full"
 			}`}
 		>
 			<div
-				className="h-auto z-[1024] my-8 w-[calc(100%-10%)] grid gap-2 rounded-[12px] bg-[#F2F2F2] text-[#666666] px-6 py-6 min-[500px]:w-3/5 min-[600px]:w-1/2 lg:w-[40%]"
+				className="h-auto z-[1024] my-8 w-[calc(100%-10%)] grid gap-2 rounded-[12px] bg-[#F2F2F2] text-[#666666] px-6 py-6 min-[500px]:w-3/5 min-[600px]:w-1/2 lg:w-[45%]"
 			>
                 <div className={`flex items-center ${goBack ? 'justify-between' : 'justify-end'} bg-[#F2F2F2] text-[#666666]`}>
                     {goBack && (
@@ -118,7 +119,7 @@ const Popup = ({
 
                 <form className="py-4 px-8 space-y-6 hidden" method="POST">
                     <div className="space-y-1.5">
-                        <h2 className="font-medium text-lg text-[#262626]">
+                        <h2 className="font-medium text-xl text-[#262626]">
                             Enter your PIN
                         </h2>
 
@@ -207,7 +208,7 @@ const Popup = ({
 
                     <div className="space-y-6">
                         <div className="space-y-1 w-4/5 mx-auto">
-                            <h2 className="font-medium text-lg text-[#262626]">
+                            <h2 className="font-medium text-xl text-[#262626]">
                                 Transfer Successful
                             </h2>
 
@@ -234,7 +235,7 @@ const Popup = ({
                     </div>
                 </div>
 
-                <div className="py-4 px-8 space-y-6">
+                <div className="py-4 px-8 space-y-6 hidden">
                     <div>
                         <h2 className="font-medium text-xl text-[#262626]">
                             Choose your card
@@ -246,7 +247,7 @@ const Popup = ({
                     </div>
 
                     <div className="space-y-4">
-                        <button className="rounded-[10px] p-2 border border-[#cccccc] hover:border-brand-purple hover:border-2 flex items-center gap-4 btn w-full" type="button">
+                        <button className="rounded-[10px] p-2 border-[0.090rem] border-[#cccccc] hover:border-brand-purple flex items-center gap-4 btn w-full" type="button">
                             <Image src={DollarCard} alt="Dollar Virtual Card" />
 
                             <p className="text-[#262626] font-medium text-lg">
@@ -254,7 +255,7 @@ const Popup = ({
                             </p>
                         </button>
 
-                        <button className="rounded-[10px] p-2 border border-[#cccccc] hover:border-brand-purple hover:border-2 flex items-center gap-4 btn w-full" type="button">
+                        <button className="rounded-[10px] p-2 border-[0.090rem] border-[#cccccc] hover:border-brand-purple flex items-center gap-4 btn w-full" type="button">
                             <Image src={NairaCard} alt="Naira Virtual Card" />
 
                             <p className="text-[#262626] font-medium text-lg">
@@ -262,7 +263,7 @@ const Popup = ({
                             </p>
                         </button>
 
-                        <button className="rounded-[10px] p-2 border border-[#cccccc] hover:border-brand-purple hover:border-2 flex items-center gap-4 btn w-full" type="button">
+                        <button className="rounded-[10px] p-2 border-[0.090rem] border-[#cccccc] hover:border-brand-purple flex items-center gap-4 btn w-full" type="button">
                             <Image src={PhysicalCard} alt="Physical Virtual Card" />
 
                             <p className="text-[#262626] font-medium text-lg">
@@ -291,7 +292,7 @@ const Popup = ({
                     </div>
 
                     <div className="space-y-4">
-                        <button className="rounded-[10px] p-2 border border-[#cccccc] hover:border-brand-purple hover:border-2 flex items-center gap-4 btn w-full" type="button">
+                        <button className="rounded-[10px] p-2 border-[0.090rem] border-[#cccccc] hover:border-brand-purple flex items-center gap-4 btn w-full" type="button">
                             <Image src={VisaCard} alt="Visa Card" />
 
                             <p className="text-[#262626] font-medium text-lg">
@@ -299,7 +300,7 @@ const Popup = ({
                             </p>
                         </button>
 
-                        <button className="rounded-[10px] p-2 border border-[#cccccc] hover:border-brand-purple hover:border-2 flex items-center gap-4 btn w-full" type="button">
+                        <button className="rounded-[10px] p-2 border-[0.090rem] border-[#cccccc] hover:border-brand-purple flex items-center gap-4 btn w-full" type="button">
                             <Image src={MasterCard} alt="Mastercard" />
 
                             <p className="text-[#262626] font-medium text-lg">
@@ -407,7 +408,7 @@ const Popup = ({
 
                     <div className="space-y-6">
                         <div className="space-y-1 w-4/5 mx-auto">
-                            <h2 className="font-medium text-lg text-[#262626]">
+                            <h2 className="font-medium text-xl text-[#262626]">
                                 Oops!
                             </h2>
 
@@ -431,7 +432,7 @@ const Popup = ({
 
                     <div className="space-y-6">
                         <div className="space-y-1 w-4/5 mx-auto">
-                            <h2 className="font-medium text-lg text-[#262626]">
+                            <h2 className="font-medium text-xl text-[#262626]">
                                 Card Creation Successful
                             </h2>
 
@@ -488,7 +489,7 @@ const Popup = ({
 
                     <div className="space-y-6">
                         <div className="space-y-1 w-4/5 mx-auto">
-                            <h2 className="font-medium text-lg text-[#262626]">
+                            <h2 className="font-medium text-xl text-[#262626]">
                                 Card Unblocking Successful
                             </h2>
 
@@ -504,6 +505,58 @@ const Popup = ({
                         >
                             Back to Dashboard
                         </Link>
+                    </div>
+                </div>
+
+                <div className="py-4 px-8 space-y-6 text-center hidden">
+                    <Card />
+
+                    <div className="space-y-6">
+                        <div className="space-y-1 w-4/5 mx-auto">
+                            <h2 className="font-medium text-xl text-[#262626]">
+                                Block your Virtual Dollar Card
+                            </h2>
+
+                            <p className="leading-snug">
+                                This will temporarily freeze your virtual card from making payments, subscriptions, etc
+                            </p>
+                        </div>
+
+
+                        <button
+                            className="btn block w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                            type="button"
+                        >
+                            Block Card
+                        </button>
+                    </div>
+                </div>
+
+                <div className="py-4 px-8 space-y-16">
+                    <div className="space-y-1.5">
+                        <h2 className="font-medium text-xl text-[#262626]">
+                            Confirmation
+                        </h2>
+
+                        <p className="leading-snug">
+                            Are you sure you want to block this card?
+                        </p>
+                    </div>
+
+                    <div className="grid gap-2">
+                        <button
+                            className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                            type="button"
+                        >
+                            Continue
+                        </button>
+
+                        <button
+                            className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
+                            type="button"
+                        >
+                            Cancel
+                        </button>
                     </div>
                 </div>
 			</div>

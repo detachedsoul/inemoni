@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "@pages/dashboard/_layout";
 import CardOverview from "@components/dashboard/cards/CardOverview";
 import ViewCards from "@components/dashboard/cards/ViewCards";
+import BlockedCard from "@components/dashboard/cards/BlockedCard";
 
 const Cards = () => {
     return (
@@ -22,7 +23,9 @@ const Cards = () => {
 
                     {/* <CardOverview /> */}
 
-                    <ViewCards />
+                    {/* <ViewCards /> */}
+
+                    <BlockedCard />
                 </section>
             </main>
         </>
