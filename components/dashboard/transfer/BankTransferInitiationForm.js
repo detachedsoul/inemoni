@@ -3,6 +3,9 @@ import { ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
+import Popup from "@components/dashboard/Popup";
+import FailedPopup from "@components/dashboard/FailedPopup";
+import LoadingIndicator from "@components/dashboard/LoadingIndicator";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -15,12 +18,20 @@ const fetcher = async (url) => {
 const BankTransferInitiationForm = () => {
     const router = useRouter();
 
+    // State to hold error messages for account details verification
+    const [validationError, setValidationError] = useState("");
+
+    // State to handle showing or hiding the popup
+    const [popup, setPopup] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
+
     // Disable proceed button until all required fields are filled
     const [isReady, setIsReady] = useState(false);
 
     // State for account number, bank, and beneficiary name
     const [accountNumber, setAccountNumber] = useState("");
-    const [bank, setBank] = useState("");
+    const [bankCode, setBankCode] = useState("");
+    const [bankName, setBankName] = useState("");
     const [beneficiaryName, setBeneficiaryName] = useState("");
 
     // Get list of banks, error if any, and set the loading state
@@ -38,17 +49,22 @@ const BankTransferInitiationForm = () => {
     };
 
     const handleBankChange = async (e) => {
-        setBank(() => e.target.value);
+        // Get the bank name and bank code
+        const bankDetails = e.target.value.split(",");
+
+        setBankCode(() => bankDetails[0]);
+        setBankName(() => bankDetails[1]);
     };
 
     useEffect(() => {
         const validateAccountDetails = async () => {
             // Get acocunt name if bank and account number has been provided
-            if (accountNumber && bank) {
+            if (accountNumber.length === 10 && bankCode.length === 6) {
+                setValidationError(() => "");
+
                 const data = {
-                    bank_code : bank,
-                    account_number : accountNumber,
-                    amount: 0
+                    bank_code: bankCode,
+                    account_number: accountNumber
                 };
 
                 const requestOptions = {
@@ -58,134 +74,188 @@ const BankTransferInitiationForm = () => {
                     redirect: "follow",
                 };
 
+                setIsProcessing(() => true);
+                setPopup(() => true);
+
                 try {
                     const request = await fetch(
-                        `https://justcors.com/tl_a74b835/https://www.inemoni.org/api/account-details`,
+                        `https://justcors.com/tl_95efa64/https://www.inemoni.org/api/account-details`,
                         requestOptions,
                     );
 
                     const response = await request.json();
 
-                    if (response.error === false) {
+                    if (response.error === false && response.data.account_name !== "default") {
+                        setIsProcessing(() => false);
+
                         setBeneficiaryName(() => response.data.account_name);
+
                         setIsReady(() => !isReady);
+
+                        setPopup(() => false);
                     } else {
-                        console.log(response.message)
+                        setIsProcessing(() => false);
+
+                        setBeneficiaryName(() => "");
+
+                        setIsReady(() => false);
+
+                        setValidationError(() => "Failed to validate account details. Please check the account number and recipient bank and try again.");
+
+                        setPopup(() => true);
                     }
                 } catch(error) {
-                    console.log(error);
+                    setIsProcessing(() => false);
+
+                    setBeneficiaryName(() => "");
+
+                    setIsReady(() => false);
+
+                    setValidationError(() => "An error occured. Please try again later.");
+
+                    setPopup(() => true);
                 }
             }
         };
 
         validateAccountDetails();
-    }, [accountNumber, bank]);
+    }, [accountNumber, bankCode]);
 
-    console.log(accountNumber, bank, beneficiaryName)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const queryParams = {
+            bank_code: bankCode,
+            account_number: accountNumber,
+            bank_name: bankName,
+            account_name: beneficiaryName
+        };
+
+        if (isReady) {
+            router.push(
+                {
+                    pathname: '/dashboard/transfer/bank/finish',
+                    query: {...queryParams},
+                },
+                "/dashboard/transfer/bank/finish"
+            );
+        }
+    };
 
     return (
-        <div className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-4 lg:w-3/5">
-            <button className="flex items-center gap-2" type="button" onClick={() => router.back()}>
-                <ArrowLeft size={20} />
-                Back
-            </button>
+        <>
+            <div className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-4 lg:w-3/5">
+                <button className="flex items-center gap-2" type="button" onClick={() => router.back()}>
+                    <ArrowLeft size={20} />
+                    Back
+                </button>
 
-            <form className="py-4 px-8 space-y-4" method="POST">
-                <div>
-                    <h2 className="font-medium text-lg leading-none text-black">
-                        Bank Transfer
-                    </h2>
+                <form
+                    className="py-4 px-8 space-y-4"
+                    method="POST"
+                    onSubmit={handleSubmit}
+                >
+                    <div>
+                        <h2 className="font-medium text-lg leading-none text-black">
+                            Bank Transfer
+                        </h2>
 
-                    <p>
-                        Send to a Local Bank Account
-                    </p>
-                </div>
+                        <p>
+                            Send to a Local Bank Account
+                        </p>
+                    </div>
 
-                <div className="grid gap-6">
-                    <label className="space-y-1" htmlFor="account-number">
-                        <span className="font-medium">
-                            Account Number
-                        </span>
+                    <div className="grid gap-6">
+                        <label className="space-y-1" htmlFor="account-number">
+                            <span className="font-medium">
+                                Account Number
+                            </span>
 
-                        <input
-                            className="dashboard-input"
-                            type="text"
-                            placeholder="Enter Account Number"
-                            id="account-number"
-                            inputMode="numeric"
-                            pattern="\d+"
-                            maxLength={10}
-							minLength={10}
-                            required
-                            value={accountNumber}
-                            onChange={handleAccountNumberChange}
-                        />
-                    </label>
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Enter Account Number"
+                                id="account-number"
+                                inputMode="numeric"
+                                pattern="\d+"
+                                maxLength={10}
+                                minLength={10}
+                                required
+                                value={accountNumber}
+                                onChange={handleAccountNumberChange}
+                            />
+                        </label>
 
-                    <label className="space-y-1" htmlFor="select-bank">
-                        <span className="font-medium">
-                            Select Bank
-                        </span>
+                        <label className="space-y-1" htmlFor="select-bank">
+                            <span className="font-medium">
+                                Select Bank
+                            </span>
 
-                        {isLoading && (
-                            <p>
-                                Fetching banks...
-                            </p>
-                        )}
+                            {isLoading && (
+                                <p>
+                                    Fetching banks...
+                                </p>
+                            )}
 
-                        {typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (
-                            <p>
-                                An error occured. Please try again later.
-                            </p>
-                        )}
+                            {typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (
+                                <p>
+                                    An error occured. Please try again later.
+                                </p>
+                            )}
 
-                        {data && (
-                            <select className="dashboard-select" id="select-bank" onChange={handleBankChange}>
-                                <option>
-                                    Select Bank
-                                </option>
-
-                                {data.map((bank) => (
-                                    <option value={bank.bank_code} key={bank.bank_code}>
-                                        {bank.bank_name}
+                            {data && (
+                                <select className="dashboard-select" id="select-bank" onChange={handleBankChange}>
+                                    <option>
+                                        Select Bank
                                     </option>
-                                ))}
-                            </select>
-                        )}
 
-                    </label>
+                                    {data.map((bank) => (
+                                        <option value={[bank.bank_code, bank.bank_name]} key={bank.bank_code}>
+                                            {bank.bank_name}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
 
-                    <label className="space-y-1" htmlFor="beneficiary-name">
-                        <span className="font-medium">
-                            Beneficiary Name
-                        </span>
+                        </label>
 
-                        <input
-                            className="dashboard-input cursor-not-allowed"
-                            type="text"
-                            readOnly
-                            placeholder="Beneficiary Name"
-                            id="beneficiary-name"
-                            defaultValue={beneficiaryName}
-                            required
-                        />
-                    </label>
+                        <label className="space-y-1" htmlFor="beneficiary-name">
+                            <span className="font-medium">
+                                Beneficiary Name
+                            </span>
 
-                    <button
-                        className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!isReady? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
-						type="submit"
-                        onClick={() => {
-                            router.push({
-                                pathname: '/dashboard/transfer/bank/finish',
-                                query: { },
-                            })
-                        }}
-                    >
+                            <input
+                                className="dashboard-input cursor-not-allowed"
+                                type="text"
+                                readOnly
+                                placeholder="Beneficiary Name"
+                                id="beneficiary-name"
+                                defaultValue={beneficiaryName}
+                                required
+                            />
+                        </label>
+
+                        <button
+                            className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!isReady ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
+                            disabled={!isReady}
+                            type="submit"
+                        >
                             Next
-                    </button>
-                </div>
-            </form>
-        </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <Popup isActive={popup} setIsActive={setPopup} goBack={!isProcessing}>
+                {isProcessing && !validationError ? (
+                    <LoadingIndicator />
+                ) : !isProcessing && !validationError ? null
+                    : (
+                        <FailedPopup header="Verification Failed" text={validationError} retryBtn={setPopup} />
+                    )
+                }
+            </Popup>
+        </>
     );
 };
 

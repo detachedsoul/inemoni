@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
                     </header>
 
-                    <nav className="space-y-4 px-4 pb-4">
+                    <nav className="space-y-4 p-4">
                         <div className="px-4 pt-4 bg-[#F2F2F2] sticky top-0">
                             <Link className="inline-block" href="/dashboard">
                                 <Image
