@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@assets/img/logo.svg";
-import Navigation from "@components/dashboard/Navigation";
+import Navigation from "@components/user/Navigation";
 
 const Layout = ({ children }) => {
     return (
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
                     <nav className="space-y-4 p-4">
                         <div className="px-4 pt-4 bg-[#F2F2F2] sticky top-0">
-                            <Link className="inline-block" href="/dashboard">
+                            <Link className="inline-block" href="/user">
                                 <Image
                                     src={Logo}
                                     alt="Inemoni"
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
                         </h1>
 
                         <div className="flex items-center gap-4">
-                            <Link href="/dashboard">
+                            <Link href="/user">
                                 <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
                             </Link>
 

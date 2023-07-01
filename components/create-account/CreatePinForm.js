@@ -16,8 +16,7 @@ const CreatePinForm = () => {
 	const [isError, setIsError] = useState(false);
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
-	const [queryParameters, setQueryParams] = useState({});
-	const route = "/verify-account";
+	const route = "/sign-in";
 
 	// Create 6 states to hold the 6 digits of the pin
 	const [pin1, setPin1] = useState("");
@@ -242,6 +241,7 @@ const CreatePinForm = () => {
             city: queryParams.city,
             zipCode: queryParams.zipCode,
             state: queryParams.state,
+            otpCode: queryParams.otp
 		};
 
 		const requestOptions = {
@@ -252,7 +252,7 @@ const CreatePinForm = () => {
 		};
 
 		try {
-			const request = await fetch(`${getURLOrigin}/api/auth/register`, requestOptions);
+            const request = await fetch(`${getURLOrigin}/api/auth/register`, requestOptions);
 
 			const response = await request.json();
 
@@ -261,13 +261,12 @@ const CreatePinForm = () => {
 
 				setHeader(() => "Registration Successful");
 				setMessage(
-					() => "Registration successful. Please proceed to verify your account",
+					() => response.message,
 				);
 				setIsError(() => false);
 				setIsActive(() => true);
 				setIsLink(() => true);
-				setButtonText(() => "Continue");
-				setQueryParams(() => response.data);
+				setButtonText(() => "Proceed to login");
 			} else {
                 setIsProcessing(() => false);
 
@@ -560,7 +559,6 @@ const CreatePinForm = () => {
 				isLink={isLink}
 				route={route}
 				buttonText={buttonText}
-				queryParams={queryParameters}
 			/>
 		</>
 	);

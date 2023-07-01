@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Popup from "@components/dashboard/Popup";
+import Popup from "@components/user/Popup";
 import CopyText from "@assets/img/copy-text.svg";
 import AddMoney from "@assets/img/card-add-money.svg";
 import BlockCard from "@assets/img/card-block-card.svg";
 import Transactions from "@assets/img/card-transactions.svg";
 import Withdraw from "@assets/img/card-withdraw.svg";
-import Card from "@components/dashboard/Card";
+import Card from "@components/user/Card";
 import { useState } from "react";
 
 const BlockedCard = () => {

@@ -2,6 +2,7 @@ import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
 import AuthPopup from "@components/create-account/AuthPopup";
 import validateNumberField from "@helpers/validateNumberField";
+import obscurePhoneNumber from "@helpers/obscurePhoneNumber";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -66,7 +67,7 @@ const BVNForm = () => {
 
 		try {
 			const request = await fetch(
-				`${getURLOrigin}/api/auth/validate`,
+                `${getURLOrigin}/api/auth/validate`,
 				requestOptions,
 			);
 
@@ -75,6 +76,9 @@ const BVNForm = () => {
 			const response = encryptData.decrypt(encryptedResponse);
 
 			if (response.error === false) {
+                // Get the phone number associated with the BVN and obscure it
+                const obscureNumber = obscurePhoneNumber(response.data.phone, 5, 4);
+
                 // Store the firstname gotten from response in a cookie
                 const fname = response.data.firstname.toLowerCase().split(" ");
                 const fnameCapitalized = fname.map((word) => {
@@ -87,10 +91,7 @@ const BVNForm = () => {
 
 				setHeader(() => "BVN Verified Successfully");
 
-				setMessage(
-					() =>
-						"BVN verification successful. Please continue to create your account.",
-				);
+                setMessage(() => `${response.message}. An OTP has been sent to ${obscureNumber}. Use it to complete your registration.`);
 
 				setIsError(() => false);
 
@@ -106,10 +107,7 @@ const BVNForm = () => {
 			} else {
 				setHeader(() => "BVN Verification Failed");
 
-				setMessage(
-					() =>
-					"BVN verification failed. Please check your BVN and try again.",
-				);
+				setMessage(() => response.message);
 
 				setIsError(() => true);
 

@@ -66,7 +66,7 @@ const SignInForm = () => {
 
 		try {
 			const request = await fetch(
-				`${getURLOrigin}/api/login`,
+                `${getURLOrigin}/api/login`,
 				requestOptions,
 			);
 
@@ -89,21 +89,21 @@ const SignInForm = () => {
 
 				document.querySelector("body").style.overflow = "hidden";
 
+                // Set expiration date of cookie to be 7 days from current time
+                const currentDate = new Date();
+                const expirationDate = new Date(
+                    currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+                );
+                const expirationDateString = expirationDate.toUTCString();
+
+                document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
+
                 if (keepSignin) {
                     // Convert the fname gotten from response to lowercase and then make the first letter uppercase
                     const fname = response.data.fname.toLowerCase().split(" ");
                     const fnameCapitalized = fname.map((word) => {
                         return word.charAt(0).toUpperCase() + word.slice(1);
                     });
-
-                    // Set expiration date of cookie to be 7 days from current time
-                    const currentDate = new Date();
-                    const expirationDate = new Date(
-                        currentDate.getTime() + 7 * 24 * 60 * 60 * 1000,
-                    );
-                    const expirationDateString = expirationDate.toUTCString();
-
-                    document.cookie = `user_token=${response.data.login_token};expires=${expirationDateString};path=/`;
 
                     document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
 

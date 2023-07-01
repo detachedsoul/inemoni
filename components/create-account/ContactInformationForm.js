@@ -1,6 +1,7 @@
 import AuthPopup from "@components/create-account/AuthPopup";
 import getCookie from "@helpers/getCookie";
 import validateNumberField from "@helpers/validateNumberField";
+import obscurePhoneNumber from "@helpers/obscurePhoneNumber";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,7 @@ const ContactInformationForm = () => {
 	const [isError, setIsError] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
+    const [otp, setOTP] = useState("");
     const [email, setEmail] = useState(queryParams.email);
     const [address, setAddress] = useState("");
     const [zipCode, setZipCode] = useState("");
@@ -36,6 +37,9 @@ const ContactInformationForm = () => {
     const [states, setStates] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedState, setSelectedState] = useState("");
+
+    // Get the number associated with the BVN
+    const phoneNumber = obscurePhoneNumber(queryParams.phone, 5, 4);
 
 	useEffect(() => {
 		if (isActive) {
@@ -63,14 +67,14 @@ const ContactInformationForm = () => {
         return;
     }
 
-    const handlePhoneNumberChange = (e) => {
+    const handleOTPChange = (e) => {
         const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-        // Allow only numbers with maximum lenght of 11
-        if (!validateNumberField(cleanedValue, 11)) {
+        // Allow only numbers with maximum lenght of 6
+        if (!validateNumberField(cleanedValue, 6)) {
             return;
         } else {
-            setPhoneNumber(cleanedValue);
+            setOTP(cleanedValue);
         }
     };
 
@@ -111,7 +115,7 @@ const ContactInformationForm = () => {
         setIsProcessing(() => true);
 
 		// Make sure the phone number is 11 digits
-		if (phoneNumber.length !== 11) {
+		if (queryParams.phone.length !== 11) {
             setIsProcessing(() => false);
 
 			setHeader(() => "Error");
@@ -145,10 +149,11 @@ const ContactInformationForm = () => {
 
 		// Replace email and phone number in queryParams with the values gotten from the state and add other necessary values
 		queryParams.email = email;
-		queryParams.phone = phoneNumber;
+		queryParams.phone = queryParams.phone;
         queryParams.zipCode = zipCode;
         queryParams.address = address;
         queryParams.city = city;
+        queryParams.otp = otp;
         queryParams.state = selectedState;
 
 		// Map through queryParams and make sure all the values are not empty but exclude middlename
@@ -205,15 +210,34 @@ const ContactInformationForm = () => {
                                 name="phone-number"
                                 id="phone-number"
                                 inputMode="numeric"
-                                pattern="\d+"
-                                maxLength={ 11 }
-                                minLength={ 11 }
-                                className="input-form"
-                                placeholder="Enter your phone number"
+                                className="input-form disabled:cursor-not-allowed"
                                 value={ phoneNumber }
-                                onChange={ handlePhoneNumberChange }
-                                defaultValue={ phoneNumber }
-                                required={ true }
+                                required
+                                disabled
+                                readOnly
+                            />
+                        </label>
+
+                        <label
+                            className="grid gap-1"
+                            htmlFor="otp"
+                        >
+                            <span className="font-bold">
+                                OTP
+                            </span>
+
+                            <input
+                                type="text"
+                                name="otp"
+                                id="otp"
+                                inputMode="numeric"
+                                className="input-form"
+                                placeholder="OTP Code"
+                                onChange={ handleOTPChange }
+                                value={ otp }
+                                pattern="\d+"
+                                maxLength={ 6 }
+                                minLength={ 6 }
                             />
                         </label>
 

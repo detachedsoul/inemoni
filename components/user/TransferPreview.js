@@ -1,4 +1,20 @@
+import useFetch from "@helpers/useFetch";
+import { useState } from "react";
+
+const fetcher = async (url) => {
+	const res = await fetch(url);
+
+	const {data} = await res.json();
+
+	return data;
+};
+
 const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup, setPreview }) => {
+    // Get list of banks, error if any, and set the loading state
+    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/service-fees`, fetcher);
+
+    // console.log(data)
+
     return (
         <div className="py-4 px-8 space-y-4">
             <h2 className="font-medium text-lg leading-snug text-[#262626]">
@@ -23,7 +39,7 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ 20
+                            ₦ { data && data.bank_transfer }
                         </span>
                     </p>
 
@@ -33,7 +49,7 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { amount + 0 }
+                            ₦ { amount + (data && Number(data.bank_transfer)) }
                         </span>
                     </p>
 

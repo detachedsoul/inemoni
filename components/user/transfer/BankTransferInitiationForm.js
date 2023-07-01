@@ -3,9 +3,9 @@ import { ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
-import Popup from "@components/dashboard/Popup";
-import FailedPopup from "@components/dashboard/FailedPopup";
-import LoadingIndicator from "@components/dashboard/LoadingIndicator";
+import Popup from "@components/user/Popup";
+import FailedPopup from "@components/user/FailedPopup";
+import LoadingIndicator from "@components/user/LoadingIndicator";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -58,6 +58,8 @@ const BankTransferInitiationForm = () => {
 
     useEffect(() => {
         const validateAccountDetails = async () => {
+            const getURLOrigin = window.location.origin;
+
             // Get acocunt name if bank and account number has been provided
             if (accountNumber.length === 10 && bankCode.length === 6) {
                 setValidationError(() => "");
@@ -79,7 +81,7 @@ const BankTransferInitiationForm = () => {
 
                 try {
                     const request = await fetch(
-                        `https://justcors.com/tl_95efa64/https://www.inemoni.org/api/account-details`,
+                        `${getURLOrigin}/api/account-details`,
                         requestOptions,
                     );
 
@@ -134,10 +136,10 @@ const BankTransferInitiationForm = () => {
         if (isReady) {
             router.push(
                 {
-                    pathname: '/dashboard/transfer/bank/finish',
+                    pathname: '/user/transfer/bank/finish',
                     query: {...queryParams},
                 },
-                "/dashboard/transfer/bank/finish"
+                "/user/transfer/bank/finish"
             );
         }
     };

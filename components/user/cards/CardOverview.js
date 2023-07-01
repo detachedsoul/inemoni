@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CardsOverview from "@assets/img/card-overview.png";
 import { useState } from "react";
-import Popup from "@components/dashboard/Popup";
+import Popup from "@components/user/Popup";
 
 const CardOverview = () => {
     const [isPopupActive, setIsPopupActive] = useState(false);

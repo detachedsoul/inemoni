@@ -1,15 +1,15 @@
 import Head from "next/head";
-import Layout from "@pages/dashboard/_layout";
-import BankTransferFinishForm from "@components/dashboard/transfer/BankTransferFinishForm";
+import Layout from "@pages/user/_layout";
+import BankTransferInitiationForm from "@components/user/transfer/BankTransferInitiationForm";
 
-const FinishBankTransfer = () => {
+const Bank = () => {
     return (
         <>
             <Head>
-                <title>Transfer Funds | Finish Bank Transfer</title>
+                <title>Transfer Funds | Bank Transfer</title>
                 <meta
                     name="description"
-                    content="Complete your transfer"
+                    content="Send funds to a local bank account"
                 />
             </Head>
 
@@ -19,15 +19,15 @@ const FinishBankTransfer = () => {
                         Send Money
                     </h2>
 
-                    <BankTransferFinishForm />
+                    <BankTransferInitiationForm />
                 </section>
             </main>
         </>
     );
 };
 
-export default FinishBankTransfer;
+export default Bank;
 
-FinishBankTransfer.getLayout = (page) => {
+Bank.getLayout = (page) => {
 	return <Layout>{page}</Layout>;
 };

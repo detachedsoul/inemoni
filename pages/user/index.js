@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Layout from "./_layout";
-import IndexQuickActions from "@components/dashboard/IndexQuickActions";
-import IndexBalance from "@components/dashboard/IndexBalance";
-import IndexTransactionHistory from "@components/dashboard/IndexTransactionHistory";
+import IndexQuickActions from "@components/user/IndexQuickActions";
+import IndexBalance from "@components/user/IndexBalance";
+import IndexTransactionHistory from "@components/user/IndexTransactionHistory";
 
 const Dashboard = () => {
     return (

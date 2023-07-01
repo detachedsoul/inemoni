@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Layout from "@pages/dashboard/_layout";
-import CardOverview from "@components/dashboard/cards/CardOverview";
-import ViewCards from "@components/dashboard/cards/ViewCards";
-import BlockedCard from "@components/dashboard/cards/BlockedCard";
+import Layout from "@pages/user/_layout";
+import CardOverview from "@components/user/cards/CardOverview";
+import ViewCards from "@components/user/cards/ViewCards";
+import BlockedCard from "@components/user/cards/BlockedCard";
 
 const Cards = () => {
     return (

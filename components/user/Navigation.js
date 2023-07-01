@@ -11,56 +11,56 @@ const Navigation = () => {
     const links = [
         {
             name: "Home",
-            route: "/dashboard",
+            route: "/user",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/home-icon-active.svg" : "/img/home-icon.svg"
             }
         },
         {
             name: "Send Money",
-            route: "/dashboard/transfer",
+            route: "/user/transfer",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/send-money-icon-active.svg" : "/img/send-money-icon.svg"
             }
         },
         {
             name: "Cards",
-            route: "/dashboard/cards",
+            route: "/user/cards",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/cards-icon-active.svg" : "/img/cards-icon.svg"
             }
         },
         {
             name: "Services",
-            route: "/dashboard/services",
+            route: "/user/services",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/services-icon-active.svg" : "/img/services-icon.svg"
             }
         },
         {
             name: "Transactions",
-            route: "/dashboard/transactions",
+            route: "/user/transactions",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/transactions-icon-active.svg" : "/img/transactions-icon.svg"
             }
         },
         {
             name: "Referrals",
-            route: "/dashboard/referrals",
+            route: "/user/referrals",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/referrals-icon-active.svg" : "/img/referrals-icon.svg"
             }
         },
         {
             name: "Support",
-            route: "/dashboard/support",
+            route: "/user/support",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/support-icon-active.svg" : "/img/support-icon.svg"
             }
         },
         {
             name: "Account",
-            route: "/dashboard/account",
+            route: "/user/account",
             get icon() {
                 return router.pathname === this.route || this.route === firstPath ? "/img/account-icon-active.svg" : "/img/account-icon.svg"
             }

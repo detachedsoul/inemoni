@@ -8,7 +8,7 @@ import ViewCards from "@assets/img/quick-action-view-cards.svg";
 const IndexQuickActions = () => {
     return (
         <div className="grid gap-4 lg:grid-cols-4">
-            <Link className="rounded-[10px] bg-[#E7D9F2] px-4 py-8 grid place-content-center" href="/dashboard/transfer">
+            <Link className="rounded-[10px] bg-[#E7D9F2] px-4 py-8 grid place-content-center" href="/user/transfer">
                 <div className="flex items-center gap-4">
                     <Image className="h-12 w-12" src={MoneyTransfer} alt="Money Transfer" />
 
@@ -18,7 +18,7 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#EFF2D9] px-4 py-8 grid place-content-center" href="/dashboard/services/pay-bills">
+            <Link className="rounded-[10px] bg-[#EFF2D9] px-4 py-8 grid place-content-center" href="/user/services/pay-bills">
                 <div className="flex items-center gap-4">
                     <Image className="h-12 w-12" src={BillPayment} alt="Bill Payment" />
 
@@ -28,7 +28,7 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#EBE0E9] px-4 py-8 grid place-content-center" href="/dashboard/transfer/fund-account">
+            <Link className="rounded-[10px] bg-[#EBE0E9] px-4 py-8 grid place-content-center" href="/user/transfer/fund-account">
                 <div className="flex items-center gap-4">
                     <Image className="h-12 w-12" src={FundAccount} alt="Fund your Account" />
 
@@ -38,7 +38,7 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#D6F5E2] px-4 py-8 grid place-content-center" href="/dashboard/cards">
+            <Link className="rounded-[10px] bg-[#D6F5E2] px-4 py-8 grid place-content-center" href="/user/cards">
                 <div className="flex items-center gap-4">
                     <Image className="h-12 w-12" src={ViewCards} alt="View your Cards" />
 

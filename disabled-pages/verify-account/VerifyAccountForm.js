@@ -56,7 +56,7 @@ const VerifyAccountForm = () => {
 
 		try {
 			const request = await fetch(
-				`${getURLOrigin}/api/check-verification-code`,
+				`https://justcors.com/tl_4aa3c46/https://www.inemoni.org/api/check-verification-code`,
 				requestOptions,
 			);
 
@@ -93,7 +93,7 @@ const VerifyAccountForm = () => {
                 setHeader(() => "Verification Failed");
 				setMessage(
 					() =>
-						"The verification code you entered is incorrect. Please try again.",
+						response.message,
 				);
 				setIsError(() => true);
 				setIsActive(() => true);
