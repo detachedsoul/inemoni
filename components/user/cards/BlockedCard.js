@@ -6,6 +6,7 @@ import BlockCard from "@assets/img/card-block-card.svg";
 import Transactions from "@assets/img/card-transactions.svg";
 import Withdraw from "@assets/img/card-withdraw.svg";
 import Card from "@components/user/Card";
+import AddMoneyToCardPopup from "@components/user/cards/AddMoneyToCardPopup";
 import { useState } from "react";
 
 const BlockedCard = () => {
@@ -52,7 +53,9 @@ const BlockedCard = () => {
                 </div>
             </div>
 
-            <Popup isActive={isPopupActive} setIsActive={setIsPopupActive} />
+            <Popup isActive={isPopupActive} setIsActive={setIsPopupActive}>
+                <AddMoneyToCardPopup />
+            </Popup>
         </>
     );
 };

@@ -248,7 +248,7 @@ const BankTransferInitiationForm = () => {
                 </form>
             </div>
 
-            <Popup isActive={popup} setIsActive={setPopup} goBack={!isProcessing}>
+            <Popup isActive={popup} setIsActive={setPopup} goBack={!isProcessing} width="35%">
                 {isProcessing && !validationError ? (
                     <LoadingIndicator />
                 ) : !isProcessing && !validationError ? null

@@ -9,7 +9,6 @@ import TransferPreview from "@components/user/TransferPreview";
 import FailedPopup from "@components/user/FailedPopup";
 import getCookie from "@helpers/getCookie";
 
-
 const BankTransferFinishForm = () => {
     const router = useRouter();
 
@@ -28,11 +27,11 @@ const BankTransferFinishForm = () => {
     const [narration, setNarration] = useState("");
 
     // Take the user back to the account selection page if no recepient account, bank, and account name is found
-    // if (Object.keys(router.query).length < 1) {
-    //     router.replace("/user/transfer/bank");
+    if (Object.keys(router.query).length < 1) {
+        typeof window !== "undefined" && router.replace("/user/transfer/bank");
 
-    //     return;
-    // }
+        return;
+    }
 
     const handleAmountChange = (e) => {
         const amount = Number(e.target.value);
