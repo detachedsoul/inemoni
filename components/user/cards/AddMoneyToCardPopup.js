@@ -27,7 +27,7 @@ const AddMoneyToCardPopup = () => {
 
                         <div className="w-4/5 mx-auto border-l border-[#cccccc] flex flex-col place-content-center gap-6 py-8 relative text-[#262626]">
                             <div className="pl-6 flex gap-4 items-center">
-                                <Image className="absolute -translate-x-[200%]" src={DollarRate} alt="Exchange rate" />
+                                <Image className="absolute -translate-x-[200%] w-4" src={DollarRate} alt="Exchange rate" />
 
                                 <p>
                                     Current Rate: $1 = ₦759.25
@@ -35,7 +35,7 @@ const AddMoneyToCardPopup = () => {
                             </div>
 
                             <div className="pl-6 flex gap-4 items-center">
-                                <Image className="absolute -translate-x-[200%]" src={FundingFee} alt="Funding fee" />
+                                <Image className="absolute -translate-x-[200%] w-4" src={FundingFee} alt="Funding fee" />
 
                                 <p>
                                     Funding Fee: $2.00
@@ -43,7 +43,7 @@ const AddMoneyToCardPopup = () => {
                             </div>
 
                             <div className="pl-6 flex gap-4 items-center">
-                                <Image className="absolute -translate-x-[200%]" src={DollarToNaira} alt="Total amount" />
+                                <Image className="absolute -translate-x-[200%] w-4" src={DollarToNaira} alt="Total amount" />
 
                                 <p>
                                     Total Amount: $1 = $40.35

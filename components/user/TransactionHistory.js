@@ -3,7 +3,7 @@ import BankTransfer from "@assets/img/transaction-bank-transfer.svg";
 import DollarCard from "@assets/img/transaction-dollar-card.svg";
 import Bonus from "@assets/img/transaction-bonus.svg";
 
-const IndexTransactionHistory = () => {
+const TransactionHistory = () => {
     return (
         <div className="rounded-[20px] bg-[#F2F2F2] px-4 pb-4 overflow-x-auto">
             <table className="w-full border-collapse table-auto whitespace-nowrap h-full">
@@ -237,4 +237,4 @@ const IndexTransactionHistory = () => {
     );
 };
 
-export default IndexTransactionHistory;
+export default TransactionHistory;
