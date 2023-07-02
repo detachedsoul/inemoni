@@ -3,7 +3,7 @@ import BankTransfer from "@assets/img/transaction-bank-transfer.svg";
 import DollarCard from "@assets/img/transaction-dollar-card.svg";
 import Bonus from "@assets/img/transaction-bonus.svg";
 
-const TransactionHistory = () => {
+const TransactionHistory = ({ isActive = false, setIsActive = null }) => {
     return (
         <div className="rounded-[20px] bg-[#F2F2F2] px-4 pb-4 overflow-x-auto">
             <table className="w-full border-collapse table-auto whitespace-nowrap h-full">
@@ -28,7 +28,7 @@ const TransactionHistory = () => {
                 </thead>
 
                 <tbody>
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={BankTransfer} alt="Bank Transfer" />
 
@@ -62,7 +62,7 @@ const TransactionHistory = () => {
                         </td>
                     </tr>
 
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={DollarCard} alt="Dollar Card" />
 
@@ -96,7 +96,7 @@ const TransactionHistory = () => {
                         </td>
                     </tr>
 
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 
@@ -130,7 +130,7 @@ const TransactionHistory = () => {
                         </td>
                     </tr>
 
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={BankTransfer} alt="Bank Transfer" />
 
@@ -164,7 +164,7 @@ const TransactionHistory = () => {
                         </td>
                     </tr>
 
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={DollarCard} alt="Dollar Card" />
 
@@ -198,7 +198,7 @@ const TransactionHistory = () => {
                         </td>
                     </tr>
 
-                    <tr className="border-b border-[#979797] last:border-none">
+                    <tr className="border-b border-[#979797] last:border-none cursor-pointer" onClick={() => setIsActive(() => true)}>
                         <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
                             <Image className="h-11 w-11" src={Bonus} alt="Inemoni Bonus" />
 

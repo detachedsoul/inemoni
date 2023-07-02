@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "./_layout";
 import IndexQuickActions from "@components/user/IndexQuickActions";
 import IndexBalance from "@components/user/IndexBalance";
-import IndexTransactionHistory from "@components/user/IndexTransactionHistory";
+import TransactionHistory from "@components/user/TransactionHistory";
 
 const Dashboard = () => {
     return (
@@ -32,7 +32,7 @@ const Dashboard = () => {
                             Recent Transactions
                         </h2>
 
-                        <IndexTransactionHistory />
+                        <TransactionHistory />
                     </section>
                 </div>
             </main>

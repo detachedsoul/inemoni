@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Layout from "@pages/user/_layout";
 import TransactionHistory from "@components/user/TransactionHistory";
+import TransactionDetails from "@components/user/transactions/TransactionDetails";
+import Popup from "@components/user/Popup";
 import { Search } from "lucide-react";
+import { useState } from "react";
 
 const Transactions = () => {
+    const [isActive, setIsActive] = useState(false);
+
     return (
         <>
             <Head>
-                <title>Transactions</title>
+                <title>Transaction History</title>
                 <meta
                     name="description"
                     content="View your transaction history"
@@ -17,7 +22,7 @@ const Transactions = () => {
             <main>
                 <section className="grid gap-8">
                     <h2 className="header font-medium text-2xl">
-                        Inemoni Transactions
+                        Transactions
                     </h2>
 
                     <div className="space-y-6">
@@ -35,7 +40,7 @@ const Transactions = () => {
                             </button>
 
                             <label className="flex items-center rounded-md gap-2 pl-4 border border-[#cccccc] grow" htmlFor="search">
-                                <Search size={25} />
+                                <Search className="text-[#666666]" size={25} />
 
                                 <input className="dashboard-input px-4 py-2.5 pl-0 border-none" type="search" placeholder="Search" id="search" />
                             </label>
@@ -45,10 +50,15 @@ const Transactions = () => {
                             </button>
                         </form>
 
-                        <TransactionHistory />
+                        <TransactionHistory isActive={isActive} setIsActive={setIsActive} />
                     </div>
                 </section>
             </main>
+
+
+            <Popup isActive={isActive} setIsActive={setIsActive}>
+                <TransactionDetails />
+            </Popup>
         </>
     );
 };
