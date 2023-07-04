@@ -55,7 +55,6 @@ const Transactions = () => {
                 </section>
             </main>
 
-
             <Popup isActive={isActive} setIsActive={setIsActive}>
                 <TransactionDetails />
             </Popup>

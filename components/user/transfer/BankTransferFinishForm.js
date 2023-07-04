@@ -27,25 +27,44 @@ const BankTransferFinishForm = () => {
     const [narration, setNarration] = useState("");
 
     // Take the user back to the account selection page if no recepient account, bank, and account name is found
-    if (Object.keys(router.query).length < 1) {
-        typeof window !== "undefined" && router.replace("/user/transfer/bank");
+    // if (Object.keys(router.query).length < 1) {
+    //     typeof window !== "undefined" && router.replace("/user/transfer/bank");
 
-        return;
-    }
+    //     return;
+    // }
 
     const handleAmountChange = (e) => {
-        const amount = Number(e.target.value);
+        // const amount = Number(e.target.value);
 
-        if (Number.isNaN(amount) || amount < 1) {
-            return;
-        }
+        // if (Number.isNaN(amount) || amount < 1) {
+        //     return;
+        // }
 
-        setAmount(() => amount);
+        const amount = e.target.value;
+
+        // Allow valid decimal values or empty input
+        // if (amount === '' || /^\d*\.?\d*$/.test(amount)) {
+        // }
+        setAmount(amount);
+    };
+
+    // Format the amount in a human readable way
+    const formatCurrency = (value) => {
+        if (value === '') return '';
+
+        const formattedValue = new Intl.NumberFormat('en-NG', {
+            style: 'currency',
+            currency: 'NGN'
+        }).format(Number(value));
+
+        return formattedValue;
     };
 
     const handleNarrationChange = (e) => {
         setNarration(() => e.target.value);
     };
+
+    console.log(amount)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -99,10 +118,11 @@ const BankTransferFinishForm = () => {
 
                             <input
                                 className="dashboard-input no-number-increment"
-                                type="number"
-                                placeholder="₦0.00"
+                                type="text"
+                                placeholder="Enter amount"
+                                inputMode="decimal"
                                 id="amount"
-                                step="0.01"
+                                value={formatCurrency(amount)}
                                 required
                                 onChange={handleAmountChange}
                             />

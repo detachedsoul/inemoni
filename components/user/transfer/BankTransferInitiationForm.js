@@ -121,7 +121,7 @@ const BankTransferInitiationForm = () => {
         };
 
         validateAccountDetails();
-    }, [accountNumber, bankCode]);
+    }, [accountNumber, bankCode, isReady]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

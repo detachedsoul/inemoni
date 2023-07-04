@@ -232,7 +232,7 @@ const CreatePinForm = () => {
 			address: queryParams.address,
 			pin: confirmPin,
 			referral_code: queryParams.referralCode,
-			hashedData: queryParams.hashedData,
+			requestId: queryParams.requestId,
 			nokFname: queryParams.nokFname,
 			nokLname: queryParams.nokLname,
 			nokMname: queryParams.nokMname,
@@ -240,8 +240,7 @@ const CreatePinForm = () => {
 			nokPhone: queryParams.nokPhone,
             city: queryParams.city,
             zipCode: queryParams.zipCode,
-            state: queryParams.state,
-            otpCode: queryParams.otp
+            state: queryParams.state
 		};
 
 		const requestOptions = {
@@ -271,7 +270,7 @@ const CreatePinForm = () => {
                 setIsProcessing(() => false);
 
 				setHeader(() => "Error");
-				setMessage(() => response.message);
+				setMessage(() =>   response.message);
 				setIsError(() => true);
 				setButtonText(() => "Try Again");
 				setIsActive(() => true);

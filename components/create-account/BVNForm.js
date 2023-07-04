@@ -20,7 +20,7 @@ const BVNForm = () => {
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
 	const [queryParams, setQueryParams] = useState({});
-	const route = "/create-account/contact-information";
+	const route = "/create-account/verify-otp";
 
 	useEffect(() => {
 		if (isActive) {
@@ -76,22 +76,14 @@ const BVNForm = () => {
 			const response = encryptData.decrypt(encryptedResponse);
 
 			if (response.error === false) {
-                // Get the phone number associated with the BVN and obscure it
-                const obscureNumber = obscurePhoneNumber(response.data.phone, 5, 4);
-
-                // Store the firstname gotten from response in a cookie
-                const fname = response.data.firstname.toLowerCase().split(" ");
-                const fnameCapitalized = fname.map((word) => {
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                });
-
-                document.cookie = `fname=${fnameCapitalized}`;
-
-				response.data.bvn = bvn;
+                const data = {
+                    ...response.data,
+                    bvn: bvn
+                };
 
 				setHeader(() => "BVN Verified Successfully");
 
-                setMessage(() => `${response.message}. An OTP has been sent to ${obscureNumber}. Use it to complete your registration.`);
+                setMessage(() => `BVN validation successful. An OTP has been sent to ${response.data.maskedPhone}. Use it to complete your registration.`);
 
 				setIsError(() => false);
 
@@ -101,7 +93,7 @@ const BVNForm = () => {
 
 				setButtonText(() => "Continue");
 
-				setQueryParams(() => response.data);
+				setQueryParams(() => data);
 
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
@@ -123,8 +115,7 @@ const BVNForm = () => {
             setHeader(() => "BVN Verification Failed");
 
 			setMessage(
-				() =>
-				"BVN verification failed. Please try again later."
+				() => error.message
 			);
 
 			setIsError(() => true);

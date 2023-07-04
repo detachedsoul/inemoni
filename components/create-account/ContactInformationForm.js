@@ -29,7 +29,6 @@ const ContactInformationForm = () => {
 	const [isError, setIsError] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-    const [otp, setOTP] = useState("");
     const [email, setEmail] = useState(queryParams.email);
     const [address, setAddress] = useState("");
     const [zipCode, setZipCode] = useState("");
@@ -62,21 +61,10 @@ const ContactInformationForm = () => {
 
     if (Object.keys(queryParams).length < 1) {
         typeof window !== "undefined" &&
-            window.location.replace("/create-account");
+            router.replace("/create-account");
 
         return;
     }
-
-    const handleOTPChange = (e) => {
-        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
-
-        // Allow only numbers with maximum lenght of 6
-        if (!validateNumberField(cleanedValue, 6)) {
-            return;
-        } else {
-            setOTP(cleanedValue);
-        }
-    };
 
     const handleZipCodeChange = (e) => {
 		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
@@ -153,7 +141,6 @@ const ContactInformationForm = () => {
         queryParams.zipCode = zipCode;
         queryParams.address = address;
         queryParams.city = city;
-        queryParams.otp = otp;
         queryParams.state = selectedState;
 
 		// Map through queryParams and make sure all the values are not empty but exclude middlename
@@ -215,29 +202,6 @@ const ContactInformationForm = () => {
                                 required
                                 disabled
                                 readOnly
-                            />
-                        </label>
-
-                        <label
-                            className="grid gap-1"
-                            htmlFor="otp"
-                        >
-                            <span className="font-bold">
-                                OTP
-                            </span>
-
-                            <input
-                                type="text"
-                                name="otp"
-                                id="otp"
-                                inputMode="numeric"
-                                className="input-form"
-                                placeholder="OTP Code"
-                                onChange={ handleOTPChange }
-                                value={ otp }
-                                pattern="\d+"
-                                maxLength={ 6 }
-                                minLength={ 6 }
                             />
                         </label>
 
