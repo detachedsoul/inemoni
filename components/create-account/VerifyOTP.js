@@ -119,7 +119,7 @@ const VerifyOTP = () => {
 			} else {
 				setHeader(() => "OTP Verification Failed");
 
-				setMessage(() => `${response.message} ${data.requestId} ${router.query.bvn}`);
+				setMessage(() => response.message);
 
 				setIsError(() => true);
 
@@ -151,8 +151,6 @@ const VerifyOTP = () => {
 	};
 
     const generateOTP = async () => {
-        console.log("Clicked")
-
         const getURLOrigin = window.location.origin;
 
         const data = {

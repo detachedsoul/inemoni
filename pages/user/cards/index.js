@@ -21,11 +21,11 @@ const Cards = () => {
                         Inemoni Cards
                     </h2>
 
-                    {/* <CardOverview /> */}
+                    <CardOverview />
 
                     {/* <ViewCards /> */}
 
-                    <BlockedCard />
+                    {/* <BlockedCard /> */}
                 </section>
             </main>
         </>

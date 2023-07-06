@@ -12,8 +12,16 @@ import getCookie from "@helpers/getCookie";
 const BankTransferFinishForm = () => {
     const router = useRouter();
 
+     // Take the user back to the account selection page if no recepient account, bank, and account name is found
+    if (Object.keys(router.query).length < 1) {
+        typeof window !== "undefined" && router.replace("/user/transfer/bank");
+
+        return;
+    }
+
     const [isToggled, setIsToggled] = useState(false);
     const [popup, setPopup] = useState(false);
+    const [isReady, setIsReady] = useState(false);
 
     // State to show either the transfer preview, transfer failed, transfer successful popups
     const [preview, setPreview] = useState(false);
@@ -23,48 +31,67 @@ const BankTransferFinishForm = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     // State to hold narration and amount to be transferred
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState("");
     const [narration, setNarration] = useState("");
 
-    // Take the user back to the account selection page if no recepient account, bank, and account name is found
-    // if (Object.keys(router.query).length < 1) {
-    //     typeof window !== "undefined" && router.replace("/user/transfer/bank");
+    // Store the formatted amount in a state
+    const [formattedAmount, setFormattedAmount] = useState("");
 
-    //     return;
-    // }
+    // Remove all characters that are not number and period (.) from the amount to anable formatting
+    const stripNonNumeric = (string) => {
+        // Remove all characters that are not numbers or periods
+        let strippedString = string.replace(/[^\d.]/g, '');
 
-    const handleAmountChange = (e) => {
-        // const amount = Number(e.target.value);
+        // Make sure there's only one period remaining
+        const periodCount = (strippedString.match(/\./g) || []).length;
+        if (periodCount > 1) {
+            strippedString = strippedString.replace(/\./g, '');
+        }
 
-        // if (Number.isNaN(amount) || amount < 1) {
-        //     return;
-        // }
-
-        const amount = e.target.value;
-
-        // Allow valid decimal values or empty input
-        // if (amount === '' || /^\d*\.?\d*$/.test(amount)) {
-        // }
-        setAmount(amount);
+        return strippedString;
     };
 
-    // Format the amount in a human readable way
-    const formatCurrency = (value) => {
-        if (value === '') return '';
-
+    // Format the amount as a number
+    const formatCurrency = (amount) => {
         const formattedValue = new Intl.NumberFormat('en-NG', {
             style: 'currency',
-            currency: 'NGN'
-        }).format(Number(value));
+            currency: 'NGN',
+        }).format(Number(amount));
 
         return formattedValue;
     };
 
-    const handleNarrationChange = (e) => {
-        setNarration(() => e.target.value);
+    const handleAmountChange = (e) => {
+        const { value } = e.target;
+
+        // Strip all characters except number and period(.)
+        const cleanedValue = stripNonNumeric(value);
+
+        // Format the value value as currency
+        const formattedValue = formatCurrency(cleanedValue);
+
+        setAmount(() => cleanedValue);
+
+        setFormattedAmount(() => formattedValue);
+
+        if (narration !== "" && amount !== "" && amount > 0) {
+            setIsReady(() => true);
+        } else {
+            setIsReady(() => false);
+        }
     };
 
-    console.log(amount)
+    const handleNarrationChange = (e) => {
+        setNarration(() => e.target.value);
+
+        if (narration !== "" && amount !== "" && amount > 0) {
+            setIsReady(() => true);
+        } else {
+            setIsReady(() => false);
+        }
+    };
+
+    console.log(isReady, amount, narration, narration !== "" && amount !== "" && amount > 0)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -111,18 +138,22 @@ const BankTransferFinishForm = () => {
                     </div>
 
                     <div className="grid gap-6">
-                        <label className="space-y-1" htmlFor="amount">
+                        <label className="grid gap-1" htmlFor="amount">
                             <span className="font-medium">
                                 Amount
+                            </span>
+
+                            <span className="text-[#262626] font-bold">
+                                {formatCurrency(amount)}
                             </span>
 
                             <input
                                 className="dashboard-input no-number-increment"
                                 type="text"
-                                placeholder="Enter amount"
                                 inputMode="decimal"
+                                placeholder="Enter amount"
                                 id="amount"
-                                value={formatCurrency(amount)}
+                                value={amount}
                                 required
                                 onChange={handleAmountChange}
                             />
@@ -139,6 +170,7 @@ const BankTransferFinishForm = () => {
                                 placeholder="Narration"
                                 id="narration"
                                 required
+                                value={narration}
                                 onChange={handleNarrationChange}
                             />
                         </label>
@@ -154,8 +186,9 @@ const BankTransferFinishForm = () => {
                         </div>
 
                         <button
-                            className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
+                            className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(narration !== "" && amount !== "" && amount > 0) ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
                             type="submit"
+                            disabled={!(narration !== "" && amount !== "" && amount > 0)}
                         >
                             Next
                         </button>
@@ -163,7 +196,7 @@ const BankTransferFinishForm = () => {
                 </form>
             </div>
 
-            <Popup isActive={popup} setIsActive={setPopup} goBack={true} width="35%">
+            <Popup isActive={popup} setIsActive={setPopup} goBack={true}>
                 {preview && (!pinPopup || pinPopup) && (
                     <TransferPreview name={ router.query.account_name } narration={ narration } bank={ router.query.bank_name } amount={ amount } setPopup={ setPopup } setPinPopup={ setPinPopup } setPreview={ setPreview } />
                 )}

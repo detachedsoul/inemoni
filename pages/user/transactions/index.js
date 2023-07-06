@@ -25,8 +25,8 @@ const Transactions = () => {
                         Transactions
                     </h2>
 
-                    <div className="space-y-6">
-                        <form className="flex flex-wrap items-center gap-2" method="POST">
+                    <div className="space-y-6 max-w-full overflow-x-auto">
+                        <form className="flex flex-wrap items-center gap-2 max-w-full" method="POST">
                             <button className="btn bg-[#E7D9F2] text-brand-purple transition-colors ease-in duration-300" type="button">
                                 All Transactions
                             </button>
@@ -52,10 +52,11 @@ const Transactions = () => {
 
                         <TransactionHistory isActive={isActive} setIsActive={setIsActive} />
                     </div>
+
                 </section>
             </main>
 
-            <Popup isActive={isActive} setIsActive={setIsActive}>
+            <Popup isActive={isActive} setIsActive={setIsActive} width="lg:w-[45%]">
                 <TransactionDetails />
             </Popup>
         </>

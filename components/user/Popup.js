@@ -6,7 +6,7 @@ const Popup = ({
 	isActive,
 	setIsActive,
     goBack = false,
-    width = "40%",
+    width = "lg:w-[40%]",
     children
 }) => {
     const router = useRouter();
@@ -22,7 +22,7 @@ const Popup = ({
 			}`}
 		>
 			<div
-				className={`h-auto z-[1024] my-8 w-[calc(100%-10%)] grid gap-2 rounded-[12px] bg-[#F2F2F2] text-[#666666] px-6 py-6 min-[500px]:w-3/5 min-[600px]:w-1/2 lg:w-[${width}]`}
+				className={`h-auto z-[1024] my-8 w-[calc(100%-10%)] grid gap-2 rounded-[12px] bg-[#F2F2F2] text-[#666666] px-6 py-6 min-[500px]:w-3/5 min-[600px]:w-1/2 ${width}`}
 			>
                 <div className={`flex items-center ${goBack ? 'justify-between' : 'justify-end'} bg-[#F2F2F2] text-[#666666]`}>
                     {goBack && (
