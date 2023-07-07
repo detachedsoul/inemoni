@@ -49,8 +49,14 @@ const BankTransferInitiationForm = () => {
     };
 
     const handleBankChange = async (e) => {
+        const { value } = e.target;
+
+        if (value === "Select Bank") {
+            return "";
+        }
+
         // Get the bank name and bank code
-        const bankDetails = e.target.value.split(",");
+        const bankDetails = value.split(",");
 
         setBankCode(() => bankDetails[0]);
         setBankName(() => bankDetails[1]);

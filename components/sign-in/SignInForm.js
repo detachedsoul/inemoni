@@ -21,7 +21,7 @@ const SignInForm = () => {
 	const handlePhoneNumberChange = (e) => {
         const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-       // Allow only numbers with maximum lenght of 11
+        // Allow only numbers with maximum lenght of 11
 		if (!validateNumberField(cleanedValue, 11)) {
             return;
 		} else {

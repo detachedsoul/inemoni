@@ -8,20 +8,14 @@ import PinPopup from "@components/user/PinPopup";
 import TransferPreview from "@components/user/TransferPreview";
 import FailedPopup from "@components/user/FailedPopup";
 import getCookie from "@helpers/getCookie";
+import formatCurrency from "@helpers/formatCurrency";
+import stripNonNumeric from "@helpers/stripNonNumeric";
 
 const BankTransferFinishForm = () => {
     const router = useRouter();
 
-     // Take the user back to the account selection page if no recepient account, bank, and account name is found
-    if (Object.keys(router.query).length < 1) {
-        typeof window !== "undefined" && router.replace("/user/transfer/bank");
-
-        return;
-    }
-
     const [isToggled, setIsToggled] = useState(false);
     const [popup, setPopup] = useState(false);
-    const [isReady, setIsReady] = useState(false);
 
     // State to show either the transfer preview, transfer failed, transfer successful popups
     const [preview, setPreview] = useState(false);
@@ -34,32 +28,12 @@ const BankTransferFinishForm = () => {
     const [amount, setAmount] = useState("");
     const [narration, setNarration] = useState("");
 
-    // Store the formatted amount in a state
-    const [formattedAmount, setFormattedAmount] = useState("");
+    // Take the user back to the account selection page if no recepient account, bank, and account name is found
+    if (Object.keys(router.query).length < 1) {
+        typeof window !== "undefined" && router.replace("/user/transfer/bank");
 
-    // Remove all characters that are not number and period (.) from the amount to anable formatting
-    const stripNonNumeric = (string) => {
-        // Remove all characters that are not numbers or periods
-        let strippedString = string.replace(/[^\d.]/g, '');
-
-        // Make sure there's only one period remaining
-        const periodCount = (strippedString.match(/\./g) || []).length;
-        if (periodCount > 1) {
-            strippedString = strippedString.replace(/\./g, '');
-        }
-
-        return strippedString;
-    };
-
-    // Format the amount as a number
-    const formatCurrency = (amount) => {
-        const formattedValue = new Intl.NumberFormat('en-NG', {
-            style: 'currency',
-            currency: 'NGN',
-        }).format(Number(amount));
-
-        return formattedValue;
-    };
+        return;
+    }
 
     const handleAmountChange = (e) => {
         const { value } = e.target;
@@ -67,31 +41,12 @@ const BankTransferFinishForm = () => {
         // Strip all characters except number and period(.)
         const cleanedValue = stripNonNumeric(value);
 
-        // Format the value value as currency
-        const formattedValue = formatCurrency(cleanedValue);
-
         setAmount(() => cleanedValue);
-
-        setFormattedAmount(() => formattedValue);
-
-        if (narration !== "" && amount !== "" && amount > 0) {
-            setIsReady(() => true);
-        } else {
-            setIsReady(() => false);
-        }
     };
 
     const handleNarrationChange = (e) => {
         setNarration(() => e.target.value);
-
-        if (narration !== "" && amount !== "" && amount > 0) {
-            setIsReady(() => true);
-        } else {
-            setIsReady(() => false);
-        }
     };
-
-    console.log(isReady, amount, narration, narration !== "" && amount !== "" && amount > 0)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -222,7 +177,7 @@ const BankTransferFinishForm = () => {
                 )}
 
                 {isFailed && !preview && errorMessage === "Invalid user pin" && (
-                    <FailedPopup header="Transfers Failedsss" text={ errorMessage }>
+                    <FailedPopup header="Transfers Faileds" text={ errorMessage }>
                         <button
                             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                             type="button"
@@ -242,7 +197,7 @@ const BankTransferFinishForm = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && pinPopup && (
-                    <PinPopup router={ router.query } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } />
+                    <PinPopup parameters={ router.query } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-airtime" />
                 )}
             </Popup>
         </>

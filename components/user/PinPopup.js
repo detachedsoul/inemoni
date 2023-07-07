@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PinPopup = ({ router, setIsSuccessful = null, setIsFailed = null, setErrorMessage = null, setPinPopup }) => {
+const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setErrorMessage = null, setPinPopup, endpoint, buttonText="Transfer" }) => {
     const [isProcessing, setIsProcessing] = useState(false);
 
     // Store the user pin in a state
@@ -67,7 +67,7 @@ const PinPopup = ({ router, setIsSuccessful = null, setIsFailed = null, setError
 
         const data = {
             pin: pin,
-            ...router
+            ...parameters
         };
 
         const requestOptions = {
@@ -81,7 +81,8 @@ const PinPopup = ({ router, setIsSuccessful = null, setIsFailed = null, setError
 
         try {
             const request = await fetch(
-                `${getURLOrigin}/api/bank-transfer`,
+                // `${getURLOrigin}/api/${endpoint}`,
+                `https://justcors.com/tl_820c1d3/https://www.inemoni.org/api/${endpoint}`,
                 requestOptions,
             );
 
@@ -189,7 +190,7 @@ const PinPopup = ({ router, setIsSuccessful = null, setIsFailed = null, setError
                 type="submit"
                 disabled={(isDisabled && !isProcessing) || isProcessing}
             >
-                { isProcessing ? "Processing..." : "Transfer" }
+                { isProcessing ? "Processing..." : buttonText }
             </button>
         </form>
     );
