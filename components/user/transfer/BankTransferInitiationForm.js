@@ -98,7 +98,7 @@ const BankTransferInitiationForm = () => {
 
                         setBeneficiaryName(() => response.data.account_name);
 
-                        setIsReady(() => !isReady);
+                        setIsReady(() => true);
 
                         setPopup(() => false);
                     } else {
@@ -127,7 +127,7 @@ const BankTransferInitiationForm = () => {
         };
 
         validateAccountDetails();
-    }, [accountNumber, bankCode, isReady]);
+    }, [accountNumber, bankCode]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

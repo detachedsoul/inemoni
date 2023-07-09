@@ -27,12 +27,12 @@ const NextofKinForm = () => {
 		}
 	}, [isActive]);
 
-	// if (Object.keys(queryParams).length < 1) {
-	// 	typeof window !== "undefined" &&
-	// 		window.location.replace("/create-account");
+	if (Object.keys(queryParams).length < 1) {
+		typeof window !== "undefined" &&
+			window.location.replace("/create-account");
 
-	// 	return;
-	// }
+		return;
+	}
 
 	const handleFirstNameChange = (e) => {
 		setFirstName(e.target.value);

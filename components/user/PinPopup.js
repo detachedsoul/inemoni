@@ -70,6 +70,8 @@ const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setE
             ...parameters
         };
 
+        console.log(data)
+
         const requestOptions = {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -82,7 +84,7 @@ const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setE
         try {
             const request = await fetch(
                 // `${getURLOrigin}/api/${endpoint}`,
-                `https://justcors.com/tl_820c1d3/https://www.inemoni.org/api/${endpoint}`,
+                `https://justcors.com/tl_436460f/https://www.inemoni.org/api/${endpoint}`,
                 requestOptions,
             );
 

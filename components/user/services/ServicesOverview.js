@@ -4,10 +4,12 @@ import Popup from "@components/user/Popup";
 import PinPopup from "@components/user/PinPopup";
 import SuccessfulPopup from "@components/user/SuccessfulPopup";
 import FailedPopup from "@components/user/FailedPopup";
+import LoadingIndicator from "@components/user/LoadingIndicator";
 import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
-import formatCurrency from "@helpers/formatCurrency";
-import getCookie from "@helpers/getCookie";
+import AirtimePurchase from "@components/user/services/airtime/AirtimePurchase";
+import ElectricityPurchase from "@components/user/services/electricity/ElectricityPurchase";
+import usePrimaryDetails from "@store/useServices";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
@@ -66,14 +68,15 @@ const ServicesOverview = () => {
     ];
 
     // Store the amount, phone number, and network in a state
-    const [phoneNumber, setPhoneNumber] = useState("");
+    // const [phoneNumber, setPhoneNumber] = useState("");
     const [amount, setAmount] = useState("");
     const [network, setNetwork] = useState("");
 
-    //
+    // Error, successful, parameters to complete a transaction, and other states to complete a transaction
     const [preview, setPreview] = useState(true);
     const [pinPopup, setPinPopup] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [isFailed, setIsFailed] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [parameters, setParameters] = useState("");
@@ -87,27 +90,18 @@ const ServicesOverview = () => {
     // Get the list of services
     const { data: servicesList, isLoading: servicesLoading, error: servicesError } = useFetch(`https://www.inemoni.org/api/services`, fetcher);
 
-    // Get list of mobile network operators, error if any, and set the loading state
-    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/all-networks/airtime`, fetcher);
+    // const handlePhoneNumberChange = (e) => {
+    //     const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-    const handlePhoneNumberChange = async (e) => {
-        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
+    //     // Allow only numbers with maximum lenght of 11
+	// 	if (!validateNumberField(cleanedValue, 11)) {
+    //         return;
+	// 	} else {
+    //         setPhoneNumber(cleanedValue);
+    //     }
+    // };
 
-        // Allow only numbers with maximum lenght of 11
-		if (!validateNumberField(cleanedValue, 11)) {
-            return;
-		} else {
-            setPhoneNumber(cleanedValue);
-        }
-
-        if (amount !== "" && amount > 0 && network !== "" && phoneNumber !== "") {
-            setIsReady(() => true);
-        } else {
-            setIsReady(() => false);
-        }
-    };
-
-    const handleAmountChange = async (e) => {
+    const handleAmountChange = (e) => {
         if (e.target.innerText !== "") {
             const cleanedValue = e.target.innerText.replace(/[^\d]/g, '');
 
@@ -131,12 +125,6 @@ const ServicesOverview = () => {
             // Set the logo of the network provider
             setNetworkImage(() => `https://www.inemoni.org/uploads/networks-logo/${value}.png`);
         }
-
-        if (amount !== "" && amount > 0 && network !== "" && phoneNumber !== "") {
-            setIsReady(() => true);
-        } else {
-            setIsReady(() => false);
-        }
     };
 
     // Show or hide the popup
@@ -150,7 +138,7 @@ const ServicesOverview = () => {
     const handleSelection = (service) => {
         // setSelectedService((service) => service);
         setPopup((popup) => !popup);
-        setPinPopup(() => true);
+        // setPinPopup(() => true);
     };
 
     if (servicesLoading) {
@@ -169,11 +157,11 @@ const ServicesOverview = () => {
         )
     }
 
-    console.log(parameters, pinPopup)
+    console.log(isLoading, preview)
 
     return (
         <>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid lg:grid-cols-3 gap-4">
                 {servicesList.filter(service => service.enabled === true).map(service => (
                     <button
                         className={`bg-[#F2F2F2] text-[#666666] rounded-[12px] w-full p-3 flex justify-between items-center gap-2.5 ${service.hoverColor} transition-colors duration-300 ease-in group`}
@@ -198,165 +186,9 @@ const ServicesOverview = () => {
 
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
-                    <div className="py-4 px-8 space-y-6">
-                        <h2 className="font-medium text-xl text-[#262626]">
-                            Buy Airtime
-                        </h2>
+                    // <AirtimePurchase handleAmountChange={ handleAmountChange } amount={ amount } phoneNumber={ phoneNumber } handlePhoneNumberChange={ handlePhoneNumberChange } network={ network } handleNetworkChange={ handleNetworkChange } networkImage={ networkImage } setParameters={ setParameters } />
 
-                        <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-4 justify-between flex-wrap">
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦50
-                            </button>
-
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦100
-                            </button>
-
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦200
-                            </button>
-
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦500
-                            </button>
-
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦1000
-                            </button>
-
-                            <button
-                                className={`rounded-[10px] p-2 text-center border-[0.090rem] btn font-medium text-[#262626] text-[1.0625rem] ${false ? 'border-brand-purple' : 'border-[#cccccc] hover:border-brand-purple'}`}
-                                type="button"
-                                onClick={ (e) => handleAmountChange(e) }
-                            >
-                                ₦2000
-                            </button>
-                        </div>
-
-                        <div className="grid gap-6">
-                            <label className="grid gap-1" htmlFor="amount">
-                                <span className="font-medium">
-                                    Amount
-                                </span>
-
-                                <span className="text-[#262626] font-bold">
-                                    {formatCurrency(amount)}
-                                </span>
-
-                                <input
-                                    className="dashboard-input no-number-increment"
-                                    type="text"
-                                    inputMode="numeric"
-                                    placeholder="Enter amount"
-                                    pattern="\d+"
-                                    id="amount"
-                                    value={amount}
-                                    required
-                                    onChange={handleAmountChange}
-                                />
-                            </label>
-
-                            <label className="grid gap-1" htmlFor="phone-number">
-                                <span className="font-medium">
-                                    Phone Number
-                                </span>
-
-                                <input
-                                    className="dashboard-input no-number-increment"
-                                    type="text"
-                                    inputMode="numeric"
-                                    placeholder="Enter Phone Number"
-                                    pattern="\d+"
-                                    id="phone-number"
-                                    value={phoneNumber}
-                                    required
-                                    onChange={handlePhoneNumberChange}
-                                />
-                            </label>
-
-                            <label className="space-y-1" htmlFor="select-bank">
-                                <span className="font-medium">
-                                    Select Network
-                                </span>
-
-                                {isLoading && (
-                                    <p>
-                                        Fetching networks...
-                                    </p>
-                                )}
-
-                                {typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (
-                                    <p>
-                                        An error occured. Please try again later.
-                                    </p>
-                                )}
-
-                                {data && (
-                                    <div className="flex items-center gap-3 border border-[#cccccc] rounded-lg pl-3">
-                                        {networkImage && (
-                                            <Image className="h-8 w-8 rounded-full" src={networkImage} alt={network} width={32} height={32} />
-                                        )}
-
-                                        <select
-                                            className="dashboard-select border-none pl-0"
-                                            id="select-network"
-                                            onChange={ handleNetworkChange }
-                                        >
-
-                                            <option>
-                                                Select Network
-                                            </option>
-
-                                            {data.map((network) => (
-                                                <option value={network.shortName} key={network.id}>
-                                                    {network.name}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                )}
-                            </label>
-                        </div>
-
-                        <button
-                            className={`btn w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(amount !== "" && amount > 0 && network !== "" && phoneNumber !== "" && phoneNumber.toString().length === 11) ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
-                            disabled={!(amount !== "" && amount > 0 && network !== "" && phoneNumber !== "" && phoneNumber.toString().length === 11)}
-                            type="button"
-                            onClick={ () => setParameters(() => {
-                                setPinPopup(() => true);
-                                setPreview(() => false);
-
-                                return {
-                                    amount: amount,
-                                    network: network,
-                                    phone: phoneNumber,
-                                    user_token: getCookie("user_token").sanitizedValue,
-                                }
-                            }) }
-                        >
-                            Continue
-                        </button>
-                    </div>
+                    <ElectricityPurchase handleAmountChange={ handleAmountChange } amount={ amount } network={ network } setNetworkImage={ setNetworkImage } setNetwork={ setNetwork } networkImage={ networkImage } setParameters={ setParameters } setIsLoading={ setIsLoading } setPreview={ setPreview } setPinPopup={ setPinPopup } />
                 )}
 
                 {isSuccessful && !preview && (
@@ -380,7 +212,7 @@ const ServicesOverview = () => {
                 )}
 
                 {isFailed && !preview && errorMessage === "Invalid user pin" && (
-                    <FailedPopup header="Airtime Purchase Failed" text={ errorMessage }>
+                    <FailedPopup header="Electricity Purchase Failed" text={ errorMessage }>
                         <button
                             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                             type="button"
@@ -396,7 +228,7 @@ const ServicesOverview = () => {
                 )}
 
                 {isFailed && !preview && errorMessage !== "Invalid user pin" && (
-                    <FailedPopup header="Airtime Purchase Failed" text={ errorMessage }>
+                    <FailedPopup header="Electricity Purchase Failed" text={ errorMessage }>
                         <button
                             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                             type="button"
@@ -415,8 +247,14 @@ const ServicesOverview = () => {
                     </FailedPopup>
                 )}
 
-                {!preview && !isFailed && !isSuccessful && pinPopup && (
-                    <PinPopup parameters={ parameters } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-airtime" buttonText="Purchase Airtime" />
+                {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
+                    // <PinPopup parameters={ parameters } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-airtime" buttonText="Purchase Airtime" />
+
+                    <PinPopup parameters={ parameters } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-electricity" buttonText="Purchase Electricity" />
+                )}
+
+                {isLoading && (
+                    <LoadingIndicator />
                 )}
             </Popup>
         </>

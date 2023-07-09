@@ -67,7 +67,7 @@
     }
 
     .input-select {
-        @apply form-select input-form
+        @apply form-select input-form cursor-pointer
     }
 
     .dashboard-input {
