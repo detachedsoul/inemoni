@@ -1,9 +1,8 @@
 import Image from "next/image";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
-import usePrimaryDetails from "@store/useServices";
+import { usePrimaryDetails, useElectricityPurchase } from "@store/useServices";
 import useFetch from "@helpers/useFetch";
-import { useState } from "react";
 
 const fetcher = async (url) => {
     const res = await fetch(url);
@@ -13,50 +12,80 @@ const fetcher = async (url) => {
     return data;
 };
 
-const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkImage, setNetwork, networkImage, setParameters, setIsLoading, setPinPopup, setPreview }) => {
+const ElectricityPurchase = () => {
     // Get list of mobile network operators, error if any, and set the loading state
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/electricity-discos`, fetcher);
 
-    // Store the account name, meter number in a state
-    const [accountName, setAccountName] = useState("");
-    const [meterNumber, setMeterNumber] = useState("");
-    const [customerInfo, setCustomerInfo] = useState("");
+    // States
+    const accountName = useElectricityPurchase((state) => state.accountName);
+    const setAccountName = useElectricityPurchase((state) => state.setAccountName);
+
+    const meterNumber = useElectricityPurchase((state) => state.meterNumber);
+    const setMeterNumber = useElectricityPurchase((state) => state.setMeterNumber);
+
+    const customerInfo = useElectricityPurchase((state) => state.customerInfo);
+    const setCustomerInfo = useElectricityPurchase((state) => state.setCustomerInfo);
+
+    const disco = useElectricityPurchase((state) => state.disco);
+    const setDisco = useElectricityPurchase((state) => state.setDisco);
+
+    const network = usePrimaryDetails((state) => state.network);
+    const setNetwork = usePrimaryDetails((state) => state.setNetwork);
+
+    const networkImage = usePrimaryDetails((state) => state.networkImage);
+    const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
+
+    const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
+    const setPhoneNumber = usePrimaryDetails((state) => state.setPhoneNumber);
+
+    const amount = usePrimaryDetails((state) => state.amount);
+    const setAmount = usePrimaryDetails((state) => state.setAmount);
+
+    const setParameters = usePrimaryDetails((state) => state.setParameters);
+    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
+    const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
 
     const handleMeterNumberChange = async (e) => {
         const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
         setMeterNumber(cleanedValue);
 
-        // if (meterNumber !== "" || network !== "") {
-        //     setAccountName(() => "");
-        // }
+        if (meterNumber !== "") {
+            setAccountName("");
+        }
     };
 
     const handleElectricityProviderChange = async (e) => {
         const { value } = e.target;
 
         if (value === "Choose a Provider") {
-            setNetwork(() => "");
-            setNetworkImage(() => "");
+            setNetwork("");
+            setNetworkImage("");
+            setAccountName("");
         } else {
             const getValues = value.split(",");
 
             const discoProvider = getValues[0];
             const discoImage = getValues[1];
+            const disco = getValues[2];
 
-            setNetwork(() => discoProvider);
-            setNetworkImage(() => discoImage);
+            setNetwork(discoProvider);
+            setNetworkImage(discoImage);
+            setDisco(disco);
         }
 
-        // if (meterNumber !== "" || network !== "") {
-        //     setAccountName(() => "");
-        // }
+        if (network !== "") {
+            setAccountName("");
+        }
     };
 
 
     const validateMeterDetails = async () => {
-        setIsLoading(() => true);
-        // setPreview(() => false);
+        setIsLoading(true);
+        setPreview(false);
 
         if (meterNumber !== "" && network !== "") {
             const getURLOrigin = window.location.origin;
@@ -75,52 +104,31 @@ const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkIm
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/${endpoint}`,
-                    `https://justcors.com/tl_436460f/https://www.inemoni.org/api/verify-electricity`,
+                    `${getURLOrigin}/api/verify-electricity`,
                     requestOptions,
                 );
 
                 const response = await request.json();
 
-                setIsLoading(() => true);
-                // setPreview(() => false);
-
                 if (response.error === false) {
-                    setIsLoading(() => false);
-                    // setPreview(() => true);
-
-                    setAccountName(() => response.data.customerName);
-                    setCustomerInfo(() => response.data.otherCustomerInfo);
-
+                    setIsLoading(false);
+                    setPreview(true);
+                    setAccountName(response.data.customerName);
+                    setCustomerInfo(response.data.otherCustomerInfo);
                 } else {
-                    console.log(response);
-
-                    setIsLoading(() => false);
-                    // setPreview(() => true);
+                    setIsLoading(false);
+                    setIsFailed(true);
+                    setErrorMessage(response.message);
+                    setMeterNumber("");
                 }
             } catch(error) {
-                // setIsProcessing(() => false);
-
-                // setIsFailed(() => true);
-
-                // setErrorMessage(() => "An error occured. Please try again later.");
-
-                // setPinPopup(() => false);
-
-                console.log(error);
-
-                setIsLoading(() => false);
-                setPreview(() => true);
+                setIsLoading(false);
+                setIsFailed(true);
+                setErrorMessage(error.message);
+                setMeterNumber("");
             }
         }
     };
-
-    // const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
-    // const setPhoneNumber = usePrimaryDetails((state) => state.setPhoneNumber(state.phoneNumber))
-
-    // console.log(network, meterNumber, accountName)
-
-    // console.log(phoneNumber)
 
     return (
         <div className="py-4 px-8 space-y-6">
@@ -157,12 +165,19 @@ const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkIm
                                 id="select-network"
                                 onChange={ handleElectricityProviderChange }
                             >
-                                <option>
+
+                                <option disabled={disco}>
                                     Choose a Provider
                                 </option>
 
-                                { data.map((network) => (
-                                    <option value={[network.id, network.image]} key={ network.id }>
+                                {disco && (
+                                    <option value={[network, networkImage, disco]}>
+                                        {disco}
+                                    </option>
+                                )}
+
+                                { data.filter(service => service.name !== disco).map((network) => (
+                                    <option value={[network.id, network.image, network.name]} key={ network.id }>
                                         { network.name }
                                     </option>
                                 )) }
@@ -236,7 +251,7 @@ const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkIm
                                 id="amount"
                                 value={ amount }
                                 required
-                                onChange={ handleAmountChange }
+                                onChange={ (e) => setAmount(e.target.innerText !== "" ? e.target.innerText.replace(/[^\d]/g, '') : e.target.value.replace(/[^\d]/g, '')) }
                             />
                         </label>
 
@@ -256,7 +271,7 @@ const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkIm
                                 id="phone-number"
                                 value={ phoneNumber }
                                 required
-                                // onChange={ (e) => setPhoneNumber(e.target.value) }
+                                onChange={ (e) => setPhoneNumber(e.target.value.replace(/[^\d]/g, '')) }
                             />
                         </label>
 
@@ -264,21 +279,20 @@ const ElectricityPurchase = ({ handleAmountChange, amount, network, setNetworkIm
                             className={ `btn w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(amount !== "" && amount > 0 && network !== "" && phoneNumber !== "" && phoneNumber.toString().length === 11) ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none` }
                             disabled={ !(amount !== "" && amount > 0 && network !== "" && phoneNumber !== "" && phoneNumber.toString().length === 11) }
                             type="button"
-                            onClick={ () => setParameters(() => {
-                                setPinPopup(() => true);
-                                setPreview(() => false);
+                            onClick={ () => {
+                                setPinPopup(true);
+                                setPreview(false);
 
-                                return {
+                                setParameters({
                                     amount: amount,
                                     disco: network,
                                     account_number: meterNumber,
                                     account_name: accountName,
                                     otherCustomerInfo: customerInfo,
                                     phone: phoneNumber,
-                                    // user_token: getCookie("user_token").sanitizedValue,
-                                    user_token: "11a688eddf02d3522340dbb7",
-                                };
-                            }) }
+                                    user_token: getCookie("user_token").sanitizedValue
+                                });
+                            }}
                         >
                             Continue
                         </button>

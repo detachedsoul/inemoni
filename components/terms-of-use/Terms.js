@@ -817,23 +817,23 @@ const Terms = () => {
                         </p>
 
                         <p>
-                            12.2 You acknowledge that you shall be solely responsible for the security of your PIN. Inemoni shall not be liable for any disclosure of your PIN to any third party and you hereby agree to hold Inemoni harmless from any losses that may result from any PIN disclosure.
+                            19.2 You acknowledge that you shall be solely responsible for the security of your PIN. Inemoni shall not be liable for any disclosure of your PIN to any third party and you hereby agree to hold Inemoni harmless from any losses that may result from any PIN disclosure.
                         </p>
 
                         <p>
-                            12.3 You are responsible for all instructions given to Inemoni in relation to your Inemoni Wallet.
+                            19.3 You are responsible for all instructions given to Inemoni in relation to your Inemoni Wallet.
                         </p>
 
                         <p>
-                            12.4 Inemoni shall deem each correct PIN entry as being performed by the legitimate owner of the Inemoni Wallet and shall regard all subsequent transactions as validly performed by you.
+                            19.4 Inemoni shall deem each correct PIN entry as being performed by the legitimate owner of the Inemoni Wallet and shall regard all subsequent transactions as validly performed by you.
                         </p>
 
                         <p>
-                            12.5 You are prohibited from using any services or facilities provided in connection with the APP to compromise security or tamper with system resources and/or Inemoni Wallets. The use of tools designed for compromising security (e.g., password guessing programs, cracking tools, or network probing tools) is strictly prohibited. If you become involved in any violation of system security, Inemoni reserves the right to release your details to system administrators in order to assist them in resolving security incidents.
+                            19.5 You are prohibited from using any services or facilities provided in connection with the APP to compromise security or tamper with system resources and/or Inemoni Wallets. The use of tools designed for compromising security (e.g., password guessing programs, cracking tools, or network probing tools) is strictly prohibited. If you become involved in any violation of system security, Inemoni reserves the right to release your details to system administrators in order to assist them in resolving security incidents.
                         </p>
 
                         <p>
-                            12.6. Inemoni reserves the right to investigate suspected violations of these terms and conditions.
+                            19.6. Inemoni reserves the right to investigate suspected violations of these terms and conditions.
                         </p>
                     </div>
                 </div>

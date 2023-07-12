@@ -1,6 +1,18 @@
+import { usePrimaryDetails } from "@store/useServices";
 import { useState } from "react";
 
-const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setErrorMessage = null, setPinPopup, endpoint, buttonText="Transfer" }) => {
+const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
+    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+
+    const preview = usePrimaryDetails((state) => state.preview);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
+
+    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
+    const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const parameters = usePrimaryDetails((state) => state.parameters);
+
     const [isProcessing, setIsProcessing] = useState(false);
 
     // Store the user pin in a state
@@ -70,8 +82,6 @@ const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setE
             ...parameters
         };
 
-        console.log(data)
-
         const requestOptions = {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -84,7 +94,7 @@ const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setE
         try {
             const request = await fetch(
                 // `${getURLOrigin}/api/${endpoint}`,
-                `https://justcors.com/tl_436460f/https://www.inemoni.org/api/${endpoint}`,
+                `https://justcors.com/tl_713a872/https://www.inemoni.org/api/${endpoint}`,
                 requestOptions,
             );
 
@@ -93,26 +103,26 @@ const PinPopup = ({ parameters, setIsSuccessful = null, setIsFailed = null, setE
             if (response.error === false) {
                 setIsProcessing(() => false);
 
-                setIsSuccessful(() => true);
+                setIsSuccessful(true);
 
-                setErrorMessage(() => response.message);
+                setErrorMessage(response.message);
             } else {
                 setIsProcessing(() => false);
 
-                setIsFailed(() => true);
+                setIsFailed(true);
 
-                setErrorMessage(() => response.message);
+                setErrorMessage(response.message);
 
-                setPinPopup(() => false);
+                setPinPopup(false);
             }
         } catch(error) {
             setIsProcessing(() => false);
 
-            setIsFailed(() => true);
+            setIsFailed(true);
 
-            setErrorMessage(() => "An error occured. Please try again later.");
+            setErrorMessage("An error occured. Please try again later.");
 
-            setPinPopup(() => false);
+            setPinPopup(false);
         }
     };
 

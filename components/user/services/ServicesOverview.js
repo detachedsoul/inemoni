@@ -9,7 +9,7 @@ import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
 import AirtimePurchase from "@components/user/services/airtime/AirtimePurchase";
 import ElectricityPurchase from "@components/user/services/electricity/ElectricityPurchase";
-import usePrimaryDetails from "@store/useServices";
+import { usePrimaryDetails, useElectricityPurchase } from "@store/useServices";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
@@ -67,65 +67,34 @@ const ServicesOverview = () => {
         },
     ];
 
-    // Store the amount, phone number, and network in a state
-    // const [phoneNumber, setPhoneNumber] = useState("");
-    const [amount, setAmount] = useState("");
-    const [network, setNetwork] = useState("");
+    // States
+    const network = usePrimaryDetails((state) => state.network);
+    const setNetwork = usePrimaryDetails((state) => state.setNetwork);
 
-    // Error, successful, parameters to complete a transaction, and other states to complete a transaction
-    const [preview, setPreview] = useState(true);
-    const [pinPopup, setPinPopup] = useState(false);
-    const [isSuccessful, setIsSuccessful] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isFailed, setIsFailed] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const [parameters, setParameters] = useState("");
+    const networkImage = usePrimaryDetails((state) => state.networkImage);
+    const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
 
-    // Set the network provider logo
-    const [networkImage, setNetworkImage] = useState("");
+    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+
+    const preview = usePrimaryDetails((state) => state.preview);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
+
+    const isFailed = usePrimaryDetails((state) => state.isFailed);
+    const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+
+    const accountName = useElectricityPurchase((state) => state.accountName);
+    const disco = useElectricityPurchase((state) => state.disco);
+    const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
+    const errorMessage = usePrimaryDetails((state) => state.errorMessage);
+    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
+    const isLoading = usePrimaryDetails((state) => state.isLoading);
 
     // Disable proceed button until all required fields are filled
     const [isReady, setIsReady] = useState(false);
 
     // Get the list of services
     const { data: servicesList, isLoading: servicesLoading, error: servicesError } = useFetch(`https://www.inemoni.org/api/services`, fetcher);
-
-    // const handlePhoneNumberChange = (e) => {
-    //     const cleanedValue = e.target.value.replace(/[^\d]/g, '');
-
-    //     // Allow only numbers with maximum lenght of 11
-	// 	if (!validateNumberField(cleanedValue, 11)) {
-    //         return;
-	// 	} else {
-    //         setPhoneNumber(cleanedValue);
-    //     }
-    // };
-
-    const handleAmountChange = (e) => {
-        if (e.target.innerText !== "") {
-            const cleanedValue = e.target.innerText.replace(/[^\d]/g, '');
-
-            setAmount(cleanedValue);
-        } else {
-            const cleanedValue = e.target.value.replace(/[^\d]/g, '');
-
-            setAmount(cleanedValue);
-        }
-    };
-
-    const handleNetworkChange = (e) => {
-        const { value } = e.target;
-
-    if (value === "Select Network") {
-            setNetwork(() => "");
-            setNetworkImage(() => "");
-        } else {
-            setNetwork(() => value);
-
-            // Set the logo of the network provider
-            setNetworkImage(() => `https://www.inemoni.org/uploads/networks-logo/${value}.png`);
-        }
-    };
 
     // Show or hide the popup
     const [popup, setPopup] = useState(false);
@@ -157,12 +126,10 @@ const ServicesOverview = () => {
         )
     }
 
-    console.log(isLoading, preview)
-
     return (
         <>
             <div className="grid lg:grid-cols-3 gap-4">
-                {servicesList.filter(service => service.enabled === true).map(service => (
+                {servicesList?.filter(service => service.enabled === true).map(service => (
                     <button
                         className={`bg-[#F2F2F2] text-[#666666] rounded-[12px] w-full p-3 flex justify-between items-center gap-2.5 ${service.hoverColor} transition-colors duration-300 ease-in group`}
                         type="button"
@@ -186,13 +153,33 @@ const ServicesOverview = () => {
 
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
-                    // <AirtimePurchase handleAmountChange={ handleAmountChange } amount={ amount } phoneNumber={ phoneNumber } handlePhoneNumberChange={ handlePhoneNumberChange } network={ network } handleNetworkChange={ handleNetworkChange } networkImage={ networkImage } setParameters={ setParameters } />
+                    <>
+                    {/* <AirtimePurchase /> */}
 
-                    <ElectricityPurchase handleAmountChange={ handleAmountChange } amount={ amount } network={ network } setNetworkImage={ setNetworkImage } setNetwork={ setNetwork } networkImage={ networkImage } setParameters={ setParameters } setIsLoading={ setIsLoading } setPreview={ setPreview } setPinPopup={ setPinPopup } />
+                    <ElectricityPurchase />
+                    </>
                 )}
 
                 {isSuccessful && !preview && (
-                    <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>
+                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>
+                    //     <div className="grid gap-2">
+                    //         <Link
+                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                    //             href="/user"
+                    //         >
+                    //             Back to Dashboard
+                    //         </Link>
+
+                    //         <Link
+                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
+                    //             href="/user"
+                    //         >
+                    //             View Reciept
+                    //         </Link>
+                    //     </div>
+                    // </SuccessfulPopup>
+
+                    <SuccessfulPopup header="Successful" message={`You’ve successfully bought electricity for ${accountName} from ${disco}`}>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -211,46 +198,42 @@ const ServicesOverview = () => {
                     </SuccessfulPopup>
                 )}
 
-                {isFailed && !preview && errorMessage === "Invalid user pin" && (
+                {isFailed && !preview && (
                     <FailedPopup header="Electricity Purchase Failed" text={ errorMessage }>
-                        <button
-                            className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
-                            type="button"
-                            onClick={() => {
-                                setIsFailed(() => false);
+                        {errorMessage === "Invalid user pin" ? (
+                            <button
+                                className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
+                                type="button"
+                                onClick={() => {
+                                    setIsFailed(false);
 
-                                setPinPopup(() => true);
-                            }}
-                        >
-                            Try Again
-                        </button>
-                    </FailedPopup>
-                )}
+                                    setPinPopup(true);
+                                }}
+                            >
+                                Try Again
+                            </button>
+                        ) : (
+                            <button
+                                className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
+                                type="button"
+                                onClick={() => {
+                                    setIsFailed(false);
 
-                {isFailed && !preview && errorMessage !== "Invalid user pin" && (
-                    <FailedPopup header="Electricity Purchase Failed" text={ errorMessage }>
-                        <button
-                            className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
-                            type="button"
-                            onClick={() => {
-                                setIsFailed(() => false);
+                                    setPreview(true);
 
-                                setPinPopup(() => false);
-
-                                setPreview(() => true);
-
-                                setNetworkImage(() => "");
-                            }}
-                        >
-                            Try Again
-                        </button>
+                                    setPinPopup(false);
+                                }}
+                            >
+                                Try Again
+                            </button>
+                        )}
                     </FailedPopup>
                 )}
 
                 {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
-                    // <PinPopup parameters={ parameters } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-airtime" buttonText="Purchase Airtime" />
+                    // <PinPopup endpoint="purchase-airtime" buttonText="Purchase Electricity" />
 
-                    <PinPopup parameters={ parameters } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-electricity" buttonText="Purchase Electricity" />
+                    <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
                 )}
 
                 {isLoading && (
