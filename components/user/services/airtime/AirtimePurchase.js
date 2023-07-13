@@ -16,7 +16,7 @@ const AirtimePurchase = () => {
     // Get list of mobile network operators, error if any, and set the loading state
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/all-networks/airtime`, fetcher);
 
-    // State to store disco provider, and disco provider image
+    // States
     const network = usePrimaryDetails((state) => state.network);
     const setNetwork = usePrimaryDetails((state) => state.setNetwork);
 
@@ -29,11 +29,9 @@ const AirtimePurchase = () => {
     const networkImage = usePrimaryDetails((state) => state.networkImage);
     const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
 
-    // State to handle phone number changes
     const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
     const setPhoneNumber = usePrimaryDetails((state) => state.setPhoneNumber);
 
-    // State to handle amount changes
     const amount = usePrimaryDetails((state) => state.amount);
     const setAmount = usePrimaryDetails((state) => state.setAmount);
 
@@ -184,14 +182,14 @@ const AirtimePurchase = () => {
                                 </option>
 
                                 {network && (
-                                    data.filter(networkProvider => networkProvider.shortName === network).map(network => (
+                                    data?.filter(networkProvider => networkProvider.shortName === network).map(network => (
                                         <option value={ network.shortName } key={ network.id }>
-                                            { network.name } { network.shortname }
+                                            { network.name }
                                         </option>
                                     ))
                                 )}
 
-                                { data.filter(networkProvider => networkProvider.shortName !== network).map((network) => (
+                                { data?.filter(networkProvider => networkProvider.shortName !== network).map((network) => (
                                     <option value={ network.shortName } key={ network.id }>
                                         { network.name }
                                     </option>

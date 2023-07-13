@@ -17,14 +17,14 @@ const ElectricityPurchase = () => {
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/electricity-discos`, fetcher);
 
     // States
-    const accountName = useElectricityPurchase((state) => state.accountName);
-    const setAccountName = useElectricityPurchase((state) => state.setAccountName);
+    const accountName = usePrimaryDetails((state) => state.accountName);
+    const setAccountName = usePrimaryDetails((state) => state.setAccountName);
 
     const meterNumber = useElectricityPurchase((state) => state.meterNumber);
     const setMeterNumber = useElectricityPurchase((state) => state.setMeterNumber);
 
-    const customerInfo = useElectricityPurchase((state) => state.customerInfo);
-    const setCustomerInfo = useElectricityPurchase((state) => state.setCustomerInfo);
+    const customerInfo = usePrimaryDetails((state) => state.customerInfo);
+    const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);
 
     const disco = useElectricityPurchase((state) => state.disco);
     const setDisco = useElectricityPurchase((state) => state.setDisco);

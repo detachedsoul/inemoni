@@ -8,6 +8,8 @@ const usePrimaryDetails = create((set) => ({
     network: "",
     networkImage: "",
     header: "",
+    accountName: "",
+    customerInfo: "",
     pinPopup: false,
     preview: true,
     isSuccessful: false,
@@ -55,27 +57,30 @@ const usePrimaryDetails = create((set) => ({
 
     setHeader: (header) => set(() => ({ header })),
 
-    setParameters: (parameters) => set({ parameters }),
-}));
-
-// const useAirtimePurchase = () => {};
-
-const useElectricityPurchase = create((set) => ({
-    accountName: "",
-    meterNumber: "",
-    customerInfo: "",
-    disco: "",
+    setCustomerInfo: (customerInfo) => set(() => ({ customerInfo })),
 
     setAccountName: (accountName) => set(() => ({ accountName })),
 
-    setMeterNumber: (meterNumber) => set(() => ({ meterNumber })),
+    setParameters: (parameters) => set({ parameters }),
+}));
 
-    setCustomerInfo: (customerInfo) => set(() => ({ customerInfo })),
+const useElectricityPurchase = create((set) => ({
+    meterNumber: "",
+    disco: "",
+
+    setMeterNumber: (meterNumber) => set(() => ({ meterNumber })),
 
     setDisco: (disco) => set(() => ({ disco })),
 }));
 
+const useDataPurchase = create((set) => ({
+    dataBundle: "",
+
+    setDataBundle: (dataBundle) => set(() => ({ dataBundle })),
+}));
+
 export {
     usePrimaryDetails,
-    useElectricityPurchase
+    useElectricityPurchase,
+    useDataPurchase
 };
