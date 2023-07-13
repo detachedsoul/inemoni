@@ -3,7 +3,6 @@ import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
 import useFetch from "@helpers/useFetch";
 import { usePrimaryDetails } from "@store/useServices";
-import { useState } from "react";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -180,11 +179,19 @@ const AirtimePurchase = () => {
                                 onChange={ handleNetworkChange }
                             >
 
-                                <option>
+                                <option disabled={ network }>
                                     Select Network
                                 </option>
 
-                                { data.map((network) => (
+                                {network && (
+                                    data.filter(networkProvider => networkProvider.shortName === network).map(network => (
+                                        <option value={ network.shortName } key={ network.id }>
+                                            { network.name } { network.shortname }
+                                        </option>
+                                    ))
+                                )}
+
+                                { data.filter(networkProvider => networkProvider.shortName !== network).map((network) => (
                                     <option value={ network.shortName } key={ network.id }>
                                         { network.name }
                                     </option>

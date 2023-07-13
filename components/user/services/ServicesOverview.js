@@ -154,32 +154,14 @@ const ServicesOverview = () => {
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
                     <>
-                    {/* <AirtimePurchase /> */}
+                    <AirtimePurchase />
 
-                    <ElectricityPurchase />
+                    {/* <ElectricityPurchase /> */}
                     </>
                 )}
 
                 {isSuccessful && !preview && (
-                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>
-                    //     <div className="grid gap-2">
-                    //         <Link
-                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                    //             href="/user"
-                    //         >
-                    //             Back to Dashboard
-                    //         </Link>
-
-                    //         <Link
-                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                    //             href="/user"
-                    //         >
-                    //             View Reciept
-                    //         </Link>
-                    //     </div>
-                    // </SuccessfulPopup>
-
-                    <SuccessfulPopup header="Successful" message={`You’ve successfully bought electricity for ${accountName} from ${disco}`}>
+                    <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -196,6 +178,24 @@ const ServicesOverview = () => {
                             </Link>
                         </div>
                     </SuccessfulPopup>
+
+                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought electricity for ${accountName} from ${disco}`}>
+                    //     <div className="grid gap-2">
+                    //         <Link
+                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                    //             href="/user"
+                    //         >
+                    //             Back to Dashboard
+                    //         </Link>
+
+                    //         <Link
+                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
+                    //             href="/user"
+                    //         >
+                    //             View Reciept
+                    //         </Link>
+                    //     </div>
+                    // </SuccessfulPopup>
                 )}
 
                 {isFailed && !preview && (
@@ -231,9 +231,9 @@ const ServicesOverview = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
-                    // <PinPopup endpoint="purchase-airtime" buttonText="Purchase Electricity" />
+                    <PinPopup endpoint="purchase-airtime" buttonText="Purchase Airtime" />
 
-                    <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
+                    // <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
                 )}
 
                 {isLoading && (
