@@ -2,6 +2,7 @@ import InfoIcon from "@assets/img/info-icon.svg";
 import whyBVNLogo from "@assets/img/why-bvn-logo.png";
 import AuthPopup from "@components/create-account/AuthPopup";
 import validateNumberField from "@helpers/validateNumberField";
+import obscurePhoneNumber from "@helpers/obscurePhoneNumber";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -19,7 +20,7 @@ const BVNForm = () => {
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
 	const [queryParams, setQueryParams] = useState({});
-	const route = "/create-account/contact-information";
+	const route = "/create-account/verify-otp";
 
 	useEffect(() => {
 		if (isActive) {
@@ -66,7 +67,7 @@ const BVNForm = () => {
 
 		try {
 			const request = await fetch(
-				`${getURLOrigin}/api/auth/validate`,
+                `${getURLOrigin}/api/auth/validate`,
 				requestOptions,
 			);
 
@@ -75,22 +76,14 @@ const BVNForm = () => {
 			const response = encryptData.decrypt(encryptedResponse);
 
 			if (response.error === false) {
-                // Store the firstname gotten from response in a cookie
-                const fname = response.data.firstname.toLowerCase().split(" ");
-                const fnameCapitalized = fname.map((word) => {
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                });
-
-                document.cookie = `fname=${fnameCapitalized}`;
-
-				response.data.bvn = bvn;
+                const data = {
+                    ...response.data,
+                    bvn: bvn
+                };
 
 				setHeader(() => "BVN Verified Successfully");
 
-				setMessage(
-					() =>
-						"BVN verification successful. Please continue to create your account.",
-				);
+                setMessage(() => `BVN validation successful. An OTP has been sent to ${response.data.maskedPhone}. Use it to complete your registration.`);
 
 				setIsError(() => false);
 
@@ -100,16 +93,13 @@ const BVNForm = () => {
 
 				setButtonText(() => "Continue");
 
-				setQueryParams(() => response.data);
+				setQueryParams(() => data);
 
 				document.querySelector("body").style.overflow = "hidden";
 			} else {
 				setHeader(() => "BVN Verification Failed");
 
-				setMessage(
-					() =>
-					"BVN verification failed. Please check your BVN and try again.",
-				);
+				setMessage(() => response.message);
 
 				setIsError(() => true);
 
@@ -125,8 +115,7 @@ const BVNForm = () => {
             setHeader(() => "BVN Verification Failed");
 
 			setMessage(
-				() =>
-				"BVN verification failed. Please try again later."
+				() => error.message
 			);
 
 			setIsError(() => true);

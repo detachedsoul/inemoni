@@ -1,6 +1,7 @@
 import AuthPopup from "@components/create-account/AuthPopup";
 import getCookie from "@helpers/getCookie";
 import validateNumberField from "@helpers/validateNumberField";
+import obscurePhoneNumber from "@helpers/obscurePhoneNumber";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,6 @@ const ContactInformationForm = () => {
 	const [isError, setIsError] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState(queryParams.phone);
     const [email, setEmail] = useState(queryParams.email);
     const [address, setAddress] = useState("");
     const [zipCode, setZipCode] = useState("");
@@ -36,6 +36,9 @@ const ContactInformationForm = () => {
     const [states, setStates] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedState, setSelectedState] = useState("");
+
+    // Get the number associated with the BVN
+    const phoneNumber = obscurePhoneNumber(queryParams.phone, 5, 4);
 
 	useEffect(() => {
 		if (isActive) {
@@ -58,21 +61,10 @@ const ContactInformationForm = () => {
 
     if (Object.keys(queryParams).length < 1) {
         typeof window !== "undefined" &&
-            window.location.replace("/create-account");
+            router.replace("/create-account");
 
         return;
     }
-
-    const handlePhoneNumberChange = (e) => {
-        const cleanedValue = e.target.value.replace(/[^\d]/g, '');
-
-        // Allow only numbers with maximum lenght of 11
-        if (!validateNumberField(cleanedValue, 11)) {
-            return;
-        } else {
-            setPhoneNumber(cleanedValue);
-        }
-    };
 
     const handleZipCodeChange = (e) => {
 		const cleanedValue = e.target.value.replace(/[^\d]/g, '');
@@ -81,8 +73,8 @@ const ContactInformationForm = () => {
 		if (!validateNumberField(cleanedValue, 6)) {
             return;
 		} else {
-            setZipCode(cleanedValue);
         }
+        setZipCode(cleanedValue);
 	};
 
 	const handleEmailChange = (e) => {
@@ -111,7 +103,7 @@ const ContactInformationForm = () => {
         setIsProcessing(() => true);
 
 		// Make sure the phone number is 11 digits
-		if (phoneNumber.length !== 11) {
+		if (queryParams.phone.length !== 11) {
             setIsProcessing(() => false);
 
 			setHeader(() => "Error");
@@ -145,7 +137,7 @@ const ContactInformationForm = () => {
 
 		// Replace email and phone number in queryParams with the values gotten from the state and add other necessary values
 		queryParams.email = email;
-		queryParams.phone = phoneNumber;
+		queryParams.phone = queryParams.phone;
         queryParams.zipCode = zipCode;
         queryParams.address = address;
         queryParams.city = city;
@@ -205,15 +197,11 @@ const ContactInformationForm = () => {
                                 name="phone-number"
                                 id="phone-number"
                                 inputMode="numeric"
-                                pattern="\d+"
-                                maxLength={ 11 }
-                                minLength={ 11 }
-                                className="input-form"
-                                placeholder="Enter your phone number"
+                                className="input-form disabled:cursor-not-allowed"
                                 value={ phoneNumber }
-                                onChange={ handlePhoneNumberChange }
-                                defaultValue={ phoneNumber }
-                                required={ true }
+                                required
+                                disabled
+                                readOnly
                             />
                         </label>
 
@@ -279,7 +267,7 @@ const ContactInformationForm = () => {
 
                             <select className="input-select" id="state-of-origin" onChange={handleStateChange}>
                                 <option>
-                                    Select state
+                                    Select State
                                 </option>
                                 {states?.map(state => (
                                     <option value={state.id} key={state.id}>

@@ -62,10 +62,6 @@ const NextofKinForm = () => {
 	};
 
 	const handleReferralChange = (e) => {
-		if (!validateNumberField(e.target.value, 11)) {
-			return;
-		}
-
 		setReferralCode(e.target.value);
 	};
 
@@ -266,10 +262,6 @@ const NextofKinForm = () => {
 							id="referral-code"
 							className="input-form"
 							placeholder="Enter Referral Code"
-							inputMode="numeric"
-							pattern="\d+"
-							maxLength={11}
-							minLength={11}
 							onChange={handleReferralChange}
 							value={referralCode}
 						/>

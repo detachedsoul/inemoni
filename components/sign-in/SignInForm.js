@@ -21,7 +21,7 @@ const SignInForm = () => {
 	const handlePhoneNumberChange = (e) => {
         const cleanedValue = e.target.value.replace(/[^\d]/g, '');
 
-       // Allow only numbers with maximum lenght of 11
+        // Allow only numbers with maximum lenght of 11
 		if (!validateNumberField(cleanedValue, 11)) {
             return;
 		} else {
@@ -66,7 +66,7 @@ const SignInForm = () => {
 
 		try {
 			const request = await fetch(
-				`${getURLOrigin}/api/login`,
+                `${getURLOrigin}/api/login`,
 				requestOptions,
 			);
 
@@ -108,6 +108,8 @@ const SignInForm = () => {
                     document.cookie = `user_name=${fnameCapitalized};expires=${expirationDateString};path=/`;
 
                     document.cookie = `is_logged_in=${true};expires=${expirationDateString};path=/`;
+                } else {
+                    document.cookie = `user_token=${response.data.login_token};path=/`;
                 }
 
                 setIsProcessing(() => false);

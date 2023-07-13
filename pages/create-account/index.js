@@ -15,12 +15,13 @@ const CreateAccount = () => {
 					name="description"
 					content="Create an account and enjoy endless financial possibilities"
                 />
-                <link rel="manifest" href="/manifest.json" />
+
+                {/* <link rel="manifest" href="/manifest.json" />
                 <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
                 <meta name="theme-color" content="#ffffff" />
 
                 <meta content='yes' name='mobile-web-app-capable'/>
-                <meta content='yes' name='mobile-web-app-capable'/>
+                <meta content='yes' name='mobile-web-app-capable'/> */}
 			</Head>
 
             <main className="grid md:grid-cols-2 md:max-h-screen md:h-screen md:overflow-y-hidden">

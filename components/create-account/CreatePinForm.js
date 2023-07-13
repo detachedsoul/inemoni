@@ -16,8 +16,7 @@ const CreatePinForm = () => {
 	const [isError, setIsError] = useState(false);
 	const [isLink, setIsLink] = useState(false);
 	const [buttonText, setButtonText] = useState("");
-	const [queryParameters, setQueryParams] = useState({});
-	const route = "/verify-account";
+	const route = "/sign-in";
 
 	// Create 6 states to hold the 6 digits of the pin
 	const [pin1, setPin1] = useState("");
@@ -233,7 +232,7 @@ const CreatePinForm = () => {
 			address: queryParams.address,
 			pin: confirmPin,
 			referral_code: queryParams.referralCode,
-			hashedData: queryParams.hashedData,
+			requestId: queryParams.requestId,
 			nokFname: queryParams.nokFname,
 			nokLname: queryParams.nokLname,
 			nokMname: queryParams.nokMname,
@@ -241,7 +240,7 @@ const CreatePinForm = () => {
 			nokPhone: queryParams.nokPhone,
             city: queryParams.city,
             zipCode: queryParams.zipCode,
-            state: queryParams.state,
+            state: queryParams.state
 		};
 
 		const requestOptions = {
@@ -252,7 +251,7 @@ const CreatePinForm = () => {
 		};
 
 		try {
-			const request = await fetch(`${getURLOrigin}/api/auth/register`, requestOptions);
+            const request = await fetch(`${getURLOrigin}/api/auth/register`, requestOptions);
 
 			const response = await request.json();
 
@@ -261,18 +260,17 @@ const CreatePinForm = () => {
 
 				setHeader(() => "Registration Successful");
 				setMessage(
-					() => "Registration successful. Please proceed to verify your account",
+					() => response.message,
 				);
 				setIsError(() => false);
 				setIsActive(() => true);
 				setIsLink(() => true);
-				setButtonText(() => "Continue");
-				setQueryParams(() => response.data);
+				setButtonText(() => "Proceed to login");
 			} else {
                 setIsProcessing(() => false);
 
 				setHeader(() => "Error");
-				setMessage(() => response.message);
+				setMessage(() =>   response.message);
 				setIsError(() => true);
 				setButtonText(() => "Try Again");
 				setIsActive(() => true);
@@ -560,7 +558,6 @@ const CreatePinForm = () => {
 				isLink={isLink}
 				route={route}
 				buttonText={buttonText}
-				queryParams={queryParameters}
 			/>
 		</>
 	);

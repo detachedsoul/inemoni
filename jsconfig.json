@@ -17,6 +17,9 @@
             ],
             "@helpers/*": [
                 "helpers/*"
+            ],
+            "@store/*": [
+                "store/*"
             ]
         }
     }

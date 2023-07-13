@@ -25,12 +25,13 @@ const SignIn = () => {
 						name="description"
 						content="Enter your password to continue"
                     />
-                    <link rel="manifest" href="/manifest.json" />
+
+                    {/* <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
                     <meta name="theme-color" content="#ffffff" />
 
                     <meta content='yes' name='apple-mobile-web-app-capable'/>
-                    <meta content='yes' name='mobile-web-app-capable'/>
+                    <meta content='yes' name='mobile-web-app-capable'/> */}
 				</Head>
 			) : (
 				<Head>
@@ -38,13 +39,14 @@ const SignIn = () => {
 					<meta
 						name="description"
 						content="Sign in to your account"
-					/>
-                    <link rel="manifest" href="/manifest.json" />
+                        />
+
+                    {/* <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/img/icon-512x512.png" />
                     <meta name="theme-color" content="#ffffff" />
 
                     <meta content='yes' name='mobile-web-app-capable'/>
-                    <meta content='yes' name='mobile-web-app-capable'/>
+                    <meta content='yes' name='mobile-web-app-capable'/> */}
 				</Head>
 			)}
 
