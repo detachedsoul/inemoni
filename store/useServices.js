@@ -88,9 +88,23 @@ const useBettingFunding = create((set) => ({
     setBettingPlatform: (bettingPlatform) => set(() => ({ bettingPlatform })),
 }));
 
+const useRechargeCardPrinting = create((set) => ({
+    quantity: "",
+    cardAmount: "",
+    availableQuantity: "",
+
+    setQuantity: (quantity) => set((state) => ({
+        quantity: (quantity <= state.availableQuantity && quantity > 0) ? quantity : ""
+    })),
+
+    setCardAmount: (cardAmount) => set(() => ({ cardAmount })),
+    setAvailableQuantity: (availableQuantity) => set(() => ({ availableQuantity })),
+}));
+
 export {
     usePrimaryDetails,
     useElectricityPurchase,
     useDataPurchase,
-    useBettingFunding
+    useBettingFunding,
+    useRechargeCardPrinting
 };

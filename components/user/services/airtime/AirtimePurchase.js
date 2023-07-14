@@ -153,13 +153,13 @@ const AirtimePurchase = () => {
                         Select Network
                     </span>
 
-                    { isLoading && (
+                    {isLoading && (
                         <p>
                             Fetching networks...
                         </p>
-                    ) }
+                    )}
 
-                    { typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (
+                    {typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (
                         <p>
                             An error occured. Please try again later.
                         </p>

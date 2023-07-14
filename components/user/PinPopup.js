@@ -120,7 +120,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
             setIsFailed(true);
 
-            setErrorMessage("An error occured. Please try again later.");
+            setErrorMessage(error.message);
 
             setPinPopup(false);
         }
