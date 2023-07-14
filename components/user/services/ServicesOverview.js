@@ -9,8 +9,9 @@ import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
 import AirtimePurchase from "@components/user/services/airtime/AirtimePurchase";
 import ElectricityPurchase from "@components/user/services/electricity/ElectricityPurchase";
+import BettingFunding from "@components/user/services/betting/BettingFunding";
 import DataPurchase from "@components/user/services/data/DataPurchase";
-import { usePrimaryDetails, useElectricityPurchase } from "@store/useServices";
+import { usePrimaryDetails, useElectricityPurchase, useBettingFunding } from "@store/useServices";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
@@ -85,6 +86,7 @@ const ServicesOverview = () => {
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
 
     const accountName = usePrimaryDetails((state) => state.accountName);
+    const bettingPlatform = useBettingFunding((state) => state.bettingPlatform);
     const disco = useElectricityPurchase((state) => state.disco);
     const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
     const errorMessage = usePrimaryDetails((state) => state.errorMessage);
@@ -154,7 +156,7 @@ const ServicesOverview = () => {
 
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
-                    <DataPurchase />
+                    <BettingFunding />
                 )}
 
                 {isSuccessful && !preview && (
@@ -176,7 +178,25 @@ const ServicesOverview = () => {
                     //     </div>
                     // </SuccessfulPopup>
 
-                    <SuccessfulPopup header="Successful" message={`You’ve successfully bought data for ${phoneNumber}`}>
+                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought data for ${phoneNumber}`}>
+                    //     <div className="grid gap-2">
+                    //         <Link
+                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
+                    //             href="/user"
+                    //         >
+                    //             Back to Dashboard
+                    //         </Link>
+
+                    //         <Link
+                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
+                    //             href="/user"
+                    //         >
+                    //             View Reciept
+                    //         </Link>
+                    //     </div>
+                    // </SuccessfulPopup>
+
+                    <SuccessfulPopup header="Successful" message={`You’ve successfully funded your ${bettingPlatform} account for ${accountName}`}>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -214,7 +234,7 @@ const ServicesOverview = () => {
                 )}
 
                 {isFailed && !preview && (
-                    <FailedPopup header="Electricity Purchase Failed" text={ errorMessage }>
+                    <FailedPopup header="Betting Account Funding Failed" text={ errorMessage }>
                         {errorMessage === "Invalid user pin" ? (
                             <button
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
@@ -246,7 +266,7 @@ const ServicesOverview = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
-                    <PinPopup endpoint="purchase-data" buttonText="Purchase Airtime" />
+                    <PinPopup endpoint="purchase-betting" buttonText="Fund Account" />
 
                     // <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
                 )}

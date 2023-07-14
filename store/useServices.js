@@ -9,6 +9,7 @@ const usePrimaryDetails = create((set) => ({
     networkImage: "",
     header: "",
     accountName: "",
+    customerID: "",
     customerInfo: "",
     pinPopup: false,
     preview: true,
@@ -57,6 +58,8 @@ const usePrimaryDetails = create((set) => ({
 
     setHeader: (header) => set(() => ({ header })),
 
+    setCustomerID: (customerID) => set(() => ({ customerID })),
+
     setCustomerInfo: (customerInfo) => set(() => ({ customerInfo })),
 
     setAccountName: (accountName) => set(() => ({ accountName })),
@@ -79,8 +82,15 @@ const useDataPurchase = create((set) => ({
     setDataBundle: (dataBundle) => set(() => ({ dataBundle })),
 }));
 
+const useBettingFunding = create((set) => ({
+    bettingPlatform: "",
+
+    setBettingPlatform: (bettingPlatform) => set(() => ({ bettingPlatform })),
+}));
+
 export {
     usePrimaryDetails,
     useElectricityPurchase,
-    useDataPurchase
+    useDataPurchase,
+    useBettingFunding
 };
