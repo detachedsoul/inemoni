@@ -95,8 +95,7 @@ const EducationPin = ({ setPopup }) => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/verify-cable`,
-                    `https://justcors.com/tl_8bd1eca/https://www.inemoni.org/api/pin-packages`,
+                    `${getURLOrigin}/api/pin-packages`,
                     requestOptions,
                 );
 

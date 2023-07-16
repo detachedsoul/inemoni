@@ -11,6 +11,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
     const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const parameters = usePrimaryDetails((state) => state.parameters);
 
     const [isProcessing, setIsProcessing] = useState(false);
@@ -90,11 +91,12 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 		};
 
         setIsProcessing(() => true);
+        setIsLoading(true);
+        setPinPopup(false);
 
         try {
             const request = await fetch(
-                // `${getURLOrigin}/api/${endpoint}`,
-                `https://justcors.com/tl_8bd1eca/https://www.inemoni.org/api/${endpoint}`,
+                `${getURLOrigin}/api/${endpoint}`,
                 requestOptions,
             );
 
@@ -103,26 +105,28 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
             if (response.error === false) {
                 setIsProcessing(() => false);
 
+                setIsLoading(false);
+
                 setIsSuccessful(true);
 
                 setErrorMessage(response.message);
             } else {
                 setIsProcessing(() => false);
 
+                setIsLoading(false);
+
                 setIsFailed(true);
 
                 setErrorMessage(response.message);
-
-                setPinPopup(false);
             }
         } catch(error) {
             setIsProcessing(() => false);
 
+            setIsLoading(false);
+
             setIsFailed(true);
 
             setErrorMessage(error.message);
-
-            setPinPopup(false);
         }
     };
 

@@ -1,4 +1,6 @@
 import useFetch from "@helpers/useFetch";
+import formatCurrency from "@helpers/formatCurrency";
+import { usePrimaryDetails } from "@store/useServices";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -8,9 +10,13 @@ const fetcher = async (url) => {
 	return data;
 };
 
-const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup, setPreview }) => {
+const TransferPreview = ({ name, bank, amount, narration, setPopup }) => {
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
+
     // Get list of banks, error if any, and set the loading state
-    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/service-fees`, fetcher);
+    const { data } = useFetch(`https://www.inemoni.org/api/service-fees`, fetcher);
+    const totalAmount = Number(amount) + (data && Number(data.bank_transfer));
 
     return (
         <div className="py-4 px-8 space-y-4">
@@ -26,7 +32,7 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { amount }
+                            { formatCurrency(amount) }
                         </span>
                     </p>
 
@@ -46,7 +52,7 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { amount + (data && Number(data.bank_transfer)) }
+                            { formatCurrency(totalAmount) }
                         </span>
                     </p>
 
@@ -66,9 +72,9 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
                         type="button"
                         onClick={() => {
-                            setPreview(() => false);
+                            setPreview(false);
 
-                            setPinPopup(() => true);
+                            setPinPopup(true);
                         }}
                     >
                         Confirm

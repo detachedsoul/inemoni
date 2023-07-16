@@ -2,27 +2,41 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { usePrimaryDetails } from "@store/useServices";
 import Popup from "@components/user/Popup";
 import SuccessfulPopup from "@components/user/SuccessfulPopup";
 import PinPopup from "@components/user/PinPopup";
 import TransferPreview from "@components/user/TransferPreview";
 import FailedPopup from "@components/user/FailedPopup";
+import LoadingIndicator from "@components/user/LoadingIndicator";
 import getCookie from "@helpers/getCookie";
 import formatCurrency from "@helpers/formatCurrency";
 import stripNonNumeric from "@helpers/stripNonNumeric";
 
 const BankTransferFinishForm = () => {
     const router = useRouter();
+    const setParameters = usePrimaryDetails((state) => state.setParameters);
 
     const [isToggled, setIsToggled] = useState(false);
     const [popup, setPopup] = useState(false);
 
     // State to show either the transfer preview, transfer failed, transfer successful popups
-    const [preview, setPreview] = useState(false);
-    const [pinPopup, setPinPopup] = useState(false);
-    const [isSuccessful, setIsSuccessful] = useState(false);
-    const [isFailed, setIsFailed] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const preview = usePrimaryDetails((state) => state.preview);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
+
+    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+
+    const errorMessage = usePrimaryDetails((state) => state.errorMessage);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+
+    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
+    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
+
+    const isFailed = usePrimaryDetails((state) => state.isFailed);
+    const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+
+    const isLoading = usePrimaryDetails((state) => state.isLoading);
 
     // State to hold narration and amount to be transferred
     const [amount, setAmount] = useState("");
@@ -58,15 +72,13 @@ const BankTransferFinishForm = () => {
             narration: narration,
         };
 
-        setPreview(() => true);
+        setPreview(true);
 
         setPopup(() => true);
 
-        setIsSuccessful(() => false);
+        setErrorMessage("");
 
-        setIsFailed(() => false);
-
-        setErrorMessage(() => "");
+        setParameters(router.query);
     };
 
     return (
@@ -153,11 +165,11 @@ const BankTransferFinishForm = () => {
 
             <Popup isActive={popup} setIsActive={setPopup} goBack={true}>
                 {preview && (!pinPopup || pinPopup) && (
-                    <TransferPreview name={ router.query.account_name } narration={ narration } bank={ router.query.bank_name } amount={ amount } setPopup={ setPopup } setPinPopup={ setPinPopup } setPreview={ setPreview } />
+                    <TransferPreview name={ router.query.account_name } narration={ narration } bank={ router.query.bank_name } amount={ amount } setPopup={ setPopup } />
                 )}
 
                 {isSuccessful && !preview && (
-                    <SuccessfulPopup header="Transfer Successful" message={`You’ve sent ₦${amount}.00 to ${router.query.account_name}`}>
+                    <SuccessfulPopup header="Transfer Successful" message={`You’ve sent ${formatCurrency(amount)} to ${router.query.account_name}`}>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -177,14 +189,14 @@ const BankTransferFinishForm = () => {
                 )}
 
                 {isFailed && !preview && errorMessage === "Invalid user pin" && (
-                    <FailedPopup header="Transfers Faileds" text={ errorMessage }>
+                    <FailedPopup header="Transfer Failed" text={ errorMessage }>
                         <button
                             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                             type="button"
                             onClick={() => {
-                                setIsFailed(() => false);
+                                setIsFailed(false);
 
-                                setPinPopup(() => true);
+                                setPinPopup(true);
                             }}
                         >
                             Try Again
@@ -197,8 +209,10 @@ const BankTransferFinishForm = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && pinPopup && (
-                    <PinPopup parameters={ router.query } setErrorMessage={ setErrorMessage } setIsFailed={ setIsFailed } setIsSuccessful={ setIsSuccessful } setPinPopup={ setPinPopup } endpoint="purchase-airtime" />
+                    <PinPopup endpoint="bank-transfer" />
                 )}
+
+                {isLoading && <LoadingIndicator />}
             </Popup>
         </>
     );
