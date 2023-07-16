@@ -267,7 +267,7 @@ const EducationPin = ({ setPopup }) => {
                             />
                         </label>
 
-            <button
+                        <button
                             className={ `btn w-full rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(phoneNumber !== "" && phoneNumber.toString().length === 11) ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none` }
                             disabled={ !(phoneNumber !== "" && phoneNumber.toString().length === 11) }
                             type="button"
@@ -280,8 +280,7 @@ const EducationPin = ({ setPopup }) => {
                                     exam: network,
                                     phone: phoneNumber,
                                     exam_type: packageName,
-                                    user_token: "7c8405057f08c4347e5e8fb1",
-                                    // user_token: getCookie("user_token").sanitizedValue,
+                                    user_token: getCookie("user_token").sanitizedValue,
                                 });
                             } }
                         >

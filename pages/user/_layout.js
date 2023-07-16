@@ -3,8 +3,50 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@assets/img/logo.svg";
 import Navigation from "@components/user/Navigation";
+import getCookie from "@helpers/getCookie";
+import useFetch from "@helpers/useFetch";
+import useUser from "@store/useUser";
+import { useEffect } from "react";
+
+const fetcher = async (url) => {
+	const res = await fetch(url);
+
+	const {data} = await res.json();
+
+	return data;
+};
 
 const Layout = ({ children }) => {
+    const userToken = useUser((state) => state.userToken);
+    const setUserToken = useUser((state) => state.setUserToken);
+
+    const userBalance = useUser((state) => state.userBalance);
+    const setUserBalance = useUser((state) => state.setUserBalance);
+
+    const userDetails = useUser((state) => state.userDetails);
+    const setUserDetails = useUser((state) => state.setUserDetails);
+
+    const { data: balance } = useFetch(userToken ? `https://www.inemoni.org/api/user-balance/${userToken}` : null, fetcher);
+
+    const { data: userData } = useFetch(userToken ? `https://www.inemoni.org/api/user-data/${userToken}` : null, fetcher);
+
+    useEffect(() => {
+        setUserToken(getCookie("user_token").sanitizedValue);
+
+        if (balance) {
+            setUserBalance(balance.balance_formatted)
+        }
+
+        if (userData) {
+            setUserDetails(userData)
+        }
+    }, [userToken, balance, userData]);
+
+    const fname = userDetails?.fname?.toLowerCase().split(" ");
+    const username = fname?.map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
     return (
         <>
             <Head>
@@ -39,7 +81,7 @@ const Layout = ({ children }) => {
                 <div className="space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
                     <div className="flex flex-wrap items-center gap-4 justify-between sticky top-0 bg-white p-4 ml-[4px] lg:px-8">
                         <h1 className="header font-normal text-2xl">
-                            Welcome back, <span className="font-bold">Wisdom</span> 👋
+                            Welcome back, <span className="font-bold">{ username }</span> 👋
                         </h1>
 
                         <div className="flex items-center gap-4">
@@ -48,7 +90,7 @@ const Layout = ({ children }) => {
                             </Link>
 
                             <span className="bg-[#D9D9D9] rounded-full px-2.5 py-3 font-medium text-black text-sm">
-                                WO
+                                {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
                             </span>
                         </div>
                     </div>

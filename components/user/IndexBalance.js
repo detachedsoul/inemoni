@@ -1,7 +1,9 @@
+import useUser from "@store/useUser";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 const IndexBalance = () => {
+    const userBalance = useUser((state) => state.userBalance);
     const [isBalanceVisible, setBalanceIsVisible] = useState(false);
 
     return (
@@ -15,7 +17,7 @@ const IndexBalance = () => {
             </p>
 
             <p className="font-bold text-2xl">
-                {isBalanceVisible ? "₦ 130,096.97" : "****"}
+                {isBalanceVisible ? userBalance : "****"}
             </p>
         </section>
     );

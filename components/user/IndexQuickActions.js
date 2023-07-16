@@ -7,9 +7,9 @@ import ViewCards from "@assets/img/quick-action-view-cards.svg";
 
 const IndexQuickActions = () => {
     return (
-        <div className="grid gap-4 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             <Link className="rounded-[10px] bg-[#E7D9F2] px-4 py-8 grid place-content-center" href="/user/transfer">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap">
                     <Image className="h-12 w-12" src={MoneyTransfer} alt="Money Transfer" />
 
                     <p className="font-medium leading-tight">
@@ -18,8 +18,8 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#EFF2D9] px-4 py-8 grid place-content-center" href="/user/services/pay-bills">
-                <div className="flex items-center gap-4">
+            <Link className="rounded-[10px] bg-[#EFF2D9] px-4 py-8 grid place-content-center" href="/user/services/">
+                <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap">
                     <Image className="h-12 w-12" src={BillPayment} alt="Bill Payment" />
 
                     <p className="font-medium leading-tight">
@@ -28,8 +28,8 @@ const IndexQuickActions = () => {
                 </div>
             </Link>
 
-            <Link className="rounded-[10px] bg-[#EBE0E9] px-4 py-8 grid place-content-center" href="/user/transfer/fund-account">
-                <div className="flex items-center gap-4">
+            <Link className="rounded-[10px] bg-[#EBE0E9] px-4 py-8 grid place-content-center" href="/user/transfer/wallet">
+                <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap">
                     <Image className="h-12 w-12" src={FundAccount} alt="Fund your Account" />
 
                     <p className="font-medium leading-tight">
@@ -39,7 +39,7 @@ const IndexQuickActions = () => {
             </Link>
 
             <Link className="rounded-[10px] bg-[#D6F5E2] px-4 py-8 grid place-content-center" href="/user/cards">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap">
                     <Image className="h-12 w-12" src={ViewCards} alt="View your Cards" />
 
                     <p className="font-medium leading-tight">
