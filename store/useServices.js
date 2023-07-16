@@ -12,6 +12,7 @@ const usePrimaryDetails = create((set) => ({
     customerID: "",
     customerInfo: "",
     accountNumber: "",
+    packageName: "",
     pinPopup: false,
     preview: true,
     isSuccessful: false,
@@ -22,10 +23,6 @@ const usePrimaryDetails = create((set) => ({
     setPhoneNumber: (phoneNumber) => set((state) => ({
         phoneNumber: validateNumberField(phoneNumber, 11) ? phoneNumber : state.phoneNumber
     })),
-
-    setAmount: (amount) => set(() => ({ amount })),
-
-    setAccountNumber: (accountNumber) => set(() => ({ accountNumber })),
 
     setPinPopup: (pinPopup) => set((state) => ({
         pinPopup: pinPopup ? pinPopup : !state.pinPopup
@@ -67,6 +64,12 @@ const usePrimaryDetails = create((set) => ({
 
     setAccountName: (accountName) => set(() => ({ accountName })),
 
+    setAmount: (amount) => set(() => ({ amount })),
+
+    setAccountNumber: (accountNumber) => set(() => ({ accountNumber })),
+
+    setPackageName: (packageName) => set(() => ({ packageName })),
+
     setParameters: (parameters) => set({ parameters }),
 }));
 
@@ -107,17 +110,21 @@ const useRechargeCardPrinting = create((set) => ({
 const useCablePurchase = create((set) => ({
     cablePackage: "",
     cableProvider: "",
-    packageName: "",
     packageOptions: "",
-    packageOption: [],
     monthsNumber: "",
 
     setCablePackage: (cablePackage) => set(() => ({ cablePackage })),
     setCableProvider: (cableProvider) => set(() => ({ cableProvider })),
-    setPackageName: (packageName) => set(() => ({ packageName })),
     setPackageOptions: (packageOptions) => set(() => ({ packageOptions })),
-    setPackageOption: (packageOption) => set(() => ({ packageOption })),
     setMonthsNumber: (monthsNumber) => set(() => ({ monthsNumber })),
+}));
+
+const useExamPin = create((set) => ({
+    exam: "",
+    paymentItem: "",
+
+    setExam: (exam) => set((state) => ({ exam })),
+    setPaymentItem: (paymentItem) => set((state) => ({ paymentItem })),
 }));
 
 export {
@@ -126,5 +133,6 @@ export {
     useDataPurchase,
     useBettingFunding,
     useRechargeCardPrinting,
-    useCablePurchase
+    useCablePurchase,
+    useExamPin
 };

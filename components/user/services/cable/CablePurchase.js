@@ -32,11 +32,11 @@ const CablePurchase = ({ setPopup }) => {
     const amount = usePrimaryDetails((state) => state.amount);
     const setAmount = usePrimaryDetails((state) => state.setAmount);
 
+    const packageName = usePrimaryDetails((state) => state.packageName);
+    const setPackageName = usePrimaryDetails((state) => state.setPackageName);
+
     const cablePackage = useCablePurchase((state) => state.cablePackage);
     const setCablePackage = useCablePurchase((state) => state.setCablePackage);
-
-    const packageName = useCablePurchase((state) => state.packageName);
-    const setPackageName = useCablePurchase((state) => state.setPackageName);
 
     const packageOptions = useCablePurchase((state) => state.packageOptions);
     const setPackageOptions = useCablePurchase((state) => state.setPackageOptions);
@@ -58,10 +58,7 @@ const CablePurchase = ({ setPopup }) => {
     const { data: cableProviders, isLoading: networkIsLoading, error: networkError } = useFetch(`https://www.inemoni.org/api/cable-providers`, fetcher);
 
     // Get list of cable packages for the specified network operator, error if any, and set the loading state only when a cable provider has been selected
-
-    // const { data: packages, isLoading: packagesIsLoading, error: packagesError } = useFetch(network ? `${getURLOrigin}/api/cable-packages/${network}` : null, fetcher);
-
-    const { data: packages, isLoading: packagesIsLoading, error: packagesError } = useFetch(network ? `https://justcors.com/tl_ac9d051/https://www.inemoni.org/api/cable-packages/${network}` : null, fetcher);
+    const { data: packages, isLoading: packagesIsLoading, error: packagesError } = useFetch(network ? `${getURLOrigin}/api/cable-packages/${network}` : null, fetcher);
 
     const handleNetworkChange = async (e) => {
         const { value } = e.target;
@@ -133,8 +130,7 @@ const CablePurchase = ({ setPopup }) => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/verify-cable`,
-                    `https://justcors.com/tl_ac9d051/https://www.inemoni.org/api/verify-cable`,
+                    `${getURLOrigin}/api/verify-cable`,
                     requestOptions,
                 );
 
@@ -370,8 +366,7 @@ const CablePurchase = ({ setPopup }) => {
                                                     package: cablePackage,
                                                     card_name: accountName,
                                                     package_option: monthsNumber,
-                                                    // user_token: getCookie("user_token").sanitizedValue
-                                                    user_token: "7c8405057f08c4347e5e8fb1"
+                                                    user_token: getCookie("user_token").sanitizedValue
                                                 });
                                             }}
                                         >

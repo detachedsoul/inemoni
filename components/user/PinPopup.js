@@ -94,7 +94,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
         try {
             const request = await fetch(
                 // `${getURLOrigin}/api/${endpoint}`,
-                `https://justcors.com/tl_ac9d051/https://www.inemoni.org/api/${endpoint}`,
+                `https://justcors.com/tl_8bd1eca/https://www.inemoni.org/api/${endpoint}`,
                 requestOptions,
             );
 
