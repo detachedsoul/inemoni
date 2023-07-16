@@ -95,7 +95,7 @@ const DataPurchase = () => {
             <div className="grid gap-6">
                 <label className="space-y-1" htmlFor="select-bank">
                     {networkIsLoading ? (
-                        <p>
+                        <p className="font-bold animate-pulse">
                             Fetching networks...
                         </p>
                     ) : (
@@ -148,7 +148,7 @@ const DataPurchase = () => {
                     <>
                         <label className="space-y-1" htmlFor="select-bank">
                             {dataBundleIsLoading ? (
-                                <p>
+                                <p className="font-bold animate-pulse">
                                     Fetching data bundles...
                                 </p>
                             ) : (
@@ -196,10 +196,6 @@ const DataPurchase = () => {
                         <label className="grid gap-1" htmlFor="amount">
                             <span className="font-medium">
                                 Amount
-                            </span>
-
-                            <span className="text-[#262626] font-bold">
-
                             </span>
 
                             <input

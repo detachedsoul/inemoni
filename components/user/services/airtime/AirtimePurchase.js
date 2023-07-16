@@ -149,14 +149,14 @@ const AirtimePurchase = () => {
                 </label>
 
                 <label className="space-y-1" htmlFor="select-bank">
-                    <span className="font-medium">
-                        Select Network
-                    </span>
-
-                    {isLoading && (
-                        <p>
+                    {isLoading ? (
+                        <p className="font-bold animate-pulse">
                             Fetching networks...
                         </p>
+                    ) : (
+                        <span className="font-medium">
+                            Select Network
+                        </span>
                     )}
 
                     {typeof error === "undefined" && typeof data === "undefined" && isLoading === false && (

@@ -1,62 +1,59 @@
-import useFetch from "@helpers/useFetch";
+import formatCurrency from "@helpers/formatCurrency";
+import { useCablePurchase, usePrimaryDetails } from "@store/useServices";
 
-const fetcher = async (url) => {
-	const res = await fetch(url);
-
-	const {data} = await res.json();
-
-	return data;
-};
-
-const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup, setPreview }) => {
-    // Get list of banks, error if any, and set the loading state
-    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/service-fees`, fetcher);
+const CablePurchasePreview = ({ setPopup }) => {
+    const packageName = useCablePurchase((state) => state.packageName);
+    const accountName = usePrimaryDetails((state) => state.accountName);
+    const amount = usePrimaryDetails((state) => state.amount);
+    const cableProvider = useCablePurchase((state) => state.cableProvider);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
 
     return (
         <div className="py-4 px-8 space-y-4">
             <h2 className="font-medium text-lg leading-snug text-[#262626]">
-                You are about to send money to { name }, { bank }.
+                You are about to pay { formatCurrency(amount) } for { cableProvider } with Account Name: { accountName }
             </h2>
 
             <div className="grid gap-6">
                 <div className="grid gap-2">
                     <p className="flex flex-wrap items-center justify-between gap-2">
                         <span>
+                            Service Provider:
+                        </span>
+
+                        <span className="text-[#262626] font-medium">
+                            { cableProvider }
+                        </span>
+                    </p>
+
+                    <p className="flex flex-wrap items-center justify-between gap-2">
+                        <span>
+                            Package:
+                        </span>
+
+                        <span className="text-[#262626] font-medium">
+                            { packageName }
+                        </span>
+                    </p>
+
+                    <p className="flex flex-wrap items-center justify-between gap-2">
+                        <span>
                             Amount:
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { amount }
+                            { formatCurrency(amount) }
                         </span>
                     </p>
 
                     <p className="flex flex-wrap items-center justify-between gap-2">
                         <span>
-                            Transfer Fee:
+                            Account Name:
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { data && data.bank_transfer }
-                        </span>
-                    </p>
-
-                    <p className="flex flex-wrap items-center justify-between gap-2">
-                        <span>
-                            Total Amount:
-                        </span>
-
-                        <span className="text-[#262626] font-medium">
-                            ₦ { amount + (data && Number(data.bank_transfer)) }
-                        </span>
-                    </p>
-
-                    <p className="flex flex-wrap items-center justify-between gap-2">
-                        <span>
-                            Narration:
-                        </span>
-
-                        <span className="text-[#262626] font-medium">
-                            { narration }
+                            { accountName }
                         </span>
                     </p>
                 </div>
@@ -66,12 +63,12 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
                         className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
                         type="button"
                         onClick={() => {
-                            setPreview(() => false);
+                            setPreview(false);
 
-                            setPinPopup(() => true);
+                            setPinPopup(true);
                         }}
                     >
-                        Confirm
+                        Recharge Cable
                     </button>
 
                     <button
@@ -87,4 +84,4 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup, setPinPopup,
     );
 };
 
-export default TransferPreview;
+export default CablePurchasePreview;

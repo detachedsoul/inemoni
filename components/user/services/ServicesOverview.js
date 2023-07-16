@@ -12,6 +12,7 @@ import ElectricityPurchase from "@components/user/services/electricity/Electrici
 import BettingFunding from "@components/user/services/betting/BettingFunding";
 import RechargeCardPrinting from "@components/user/services/recharge-card-printing/RechargeCardPrinting";
 import DataPurchase from "@components/user/services/data/DataPurchase";
+import CablePurchase from "@components/user/services/cable/CablePurchase";
 import { usePrimaryDetails, useElectricityPurchase, useBettingFunding } from "@store/useServices";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
@@ -157,7 +158,7 @@ const ServicesOverview = () => {
 
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
-                    <RechargeCardPrinting />
+                    <CablePurchase setPopup={ setPopup } />
                 )}
 
                 {isSuccessful && !preview && (
@@ -215,7 +216,7 @@ const ServicesOverview = () => {
                     //     </div>
                     // </SuccessfulPopup>
 
-                    <SuccessfulPopup header="Successful" message={ errorMessage }>
+                    <SuccessfulPopup header="Cable Subscription" message={ errorMessage }>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -253,7 +254,7 @@ const ServicesOverview = () => {
                 )}
 
                 {isFailed && !preview && (
-                    <FailedPopup header="Betting Account Funding Failed" text={ errorMessage }>
+                    <FailedPopup header="Cable Subscription Failed" text={ errorMessage }>
                         {errorMessage === "Invalid user pin" ? (
                             <button
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
@@ -285,7 +286,7 @@ const ServicesOverview = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
-                    <PinPopup endpoint="purchase-recharge-cards" buttonText="Purchase Recharge Card" />
+                    <PinPopup endpoint="purchase-cable" buttonText="Complete Transaction" />
 
                     // <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
                 )}

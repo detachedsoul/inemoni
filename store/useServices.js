@@ -11,6 +11,7 @@ const usePrimaryDetails = create((set) => ({
     accountName: "",
     customerID: "",
     customerInfo: "",
+    accountNumber: "",
     pinPopup: false,
     preview: true,
     isSuccessful: false,
@@ -23,6 +24,8 @@ const usePrimaryDetails = create((set) => ({
     })),
 
     setAmount: (amount) => set(() => ({ amount })),
+
+    setAccountNumber: (accountNumber) => set(() => ({ accountNumber })),
 
     setPinPopup: (pinPopup) => set((state) => ({
         pinPopup: pinPopup ? pinPopup : !state.pinPopup
@@ -101,10 +104,27 @@ const useRechargeCardPrinting = create((set) => ({
     setAvailableQuantity: (availableQuantity) => set(() => ({ availableQuantity })),
 }));
 
+const useCablePurchase = create((set) => ({
+    cablePackage: "",
+    cableProvider: "",
+    packageName: "",
+    packageOptions: "",
+    packageOption: [],
+    monthsNumber: "",
+
+    setCablePackage: (cablePackage) => set(() => ({ cablePackage })),
+    setCableProvider: (cableProvider) => set(() => ({ cableProvider })),
+    setPackageName: (packageName) => set(() => ({ packageName })),
+    setPackageOptions: (packageOptions) => set(() => ({ packageOptions })),
+    setPackageOption: (packageOption) => set(() => ({ packageOption })),
+    setMonthsNumber: (monthsNumber) => set(() => ({ monthsNumber })),
+}));
+
 export {
     usePrimaryDetails,
     useElectricityPurchase,
     useDataPurchase,
     useBettingFunding,
-    useRechargeCardPrinting
+    useRechargeCardPrinting,
+    useCablePurchase
 };

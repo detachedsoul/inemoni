@@ -1,5 +1,4 @@
 import Image from "next/image";
-import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
 import useFetch from "@helpers/useFetch";
 import { usePrimaryDetails, useRechargeCardPrinting } from "@store/useServices";
@@ -23,15 +22,6 @@ const RechargeCardPrinting = () => {
     const network = usePrimaryDetails((state) => state.network);
     const setNetwork = usePrimaryDetails((state) => state.setNetwork);
 
-    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
-    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
-
-    const preview = usePrimaryDetails((state) => state.preview);
-    const setPreview = usePrimaryDetails((state) => state.setPreview);
-
-    const isLoading = usePrimaryDetails((state) => state.isLoading);
-    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
-
     const networkImage = usePrimaryDetails((state) => state.networkImage);
     const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
 
@@ -50,7 +40,9 @@ const RechargeCardPrinting = () => {
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
-    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
+    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
+    const setPreview = usePrimaryDetails((state) => state.setPreview);
 
     const handleNetworkChange = async (e) => {
         const { value } = e.target;
@@ -78,8 +70,7 @@ const RechargeCardPrinting = () => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/${endpoint}`,
-                    `https://justcors.com/tl_da85250/https://www.inemoni.org/api/card-printing-amounts`,
+                    `${getURLOrigin}/api/card-printing-amounts`,
                     requestOptions,
                 );
 
@@ -132,8 +123,7 @@ const RechargeCardPrinting = () => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/${endpoint}`,
-                    `https://justcors.com/tl_da85250/https://www.inemoni.org/api/card-printing-quantity`,
+                    `${getURLOrigin}/api/card-printing-quantity`,
                     requestOptions,
                 );
 
@@ -170,7 +160,7 @@ const RechargeCardPrinting = () => {
             <div className="grid gap-6">
                 <label className="space-y-1" htmlFor="amount">
                     {networkIsLoading ? (
-                        <p>
+                        <p className="font-bold animate-pulse">
                             Fetching networks...
                         </p>
                     ) : (
@@ -187,9 +177,9 @@ const RechargeCardPrinting = () => {
 
                     { networks && (
                         <div className="flex items-center gap-3 border border-[#cccccc] rounded-lg pl-3">
-                            { networkImage && (
+                            {networkImage && (
                                 <Image className="h-8 w-8 rounded-full" src={ networkImage } alt={ network } width={ 32 } height={ 32 } />
-                            ) }
+                            )}
 
                             <select
                                 className="dashboard-select border-none pl-0"
@@ -309,9 +299,7 @@ const RechargeCardPrinting = () => {
                                     network: network,
                                     number: quantity,
                                     username: accountName,
-                                    // account_name: accountName,
-                                    // user_token: getCookie("user_token").sanitizedValue,
-                                    user_token: "7c8405057f08c4347e5e8fb1",
+                                    user_token: getCookie("user_token").sanitizedValue,
                                 });
                             } }
                         >

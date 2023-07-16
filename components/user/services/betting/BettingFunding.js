@@ -137,7 +137,7 @@ const BettingFunding = () => {
             <div className="grid gap-6">
                 <label className="space-y-1" htmlFor="select-bank">
                     {isLoading ? (
-                        <p>
+                        <p className="font-bold animate-pulse">
                             Fetching betting platforms...
                         </p>
                     ) : (

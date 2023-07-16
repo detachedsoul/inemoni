@@ -119,7 +119,7 @@ const BankTransferInitiationForm = () => {
 
                     setIsReady(() => false);
 
-                    setValidationError(() => "An error occured. Please try again later.");
+                    setValidationError(() => error.message);
 
                     setPopup(() => true);
                 }
