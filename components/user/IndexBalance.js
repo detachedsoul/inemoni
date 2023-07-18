@@ -17,7 +17,7 @@ const IndexBalance = () => {
             </p>
 
             <p className="font-bold text-2xl">
-                {isBalanceVisible ? userBalance : "****"}
+                {userBalance && isBalanceVisible ? userBalance : "****"}
             </p>
         </section>
     );

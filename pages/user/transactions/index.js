@@ -1,14 +1,9 @@
 import Head from "next/head";
 import Layout from "@pages/user/_layout";
 import TransactionHistory from "@components/user/TransactionHistory";
-import TransactionDetails from "@components/user/transactions/TransactionDetails";
-import Popup from "@components/user/Popup";
 import { Search } from "lucide-react";
-import { useState } from "react";
 
 const Transactions = () => {
-    const [isActive, setIsActive] = useState(false);
-
     return (
         <>
             <Head>
@@ -25,7 +20,7 @@ const Transactions = () => {
                         Transactions
                     </h2>
 
-                    <div className="space-y-6 max-w-full overflow-x-auto">
+                    <div className="grid gap-6 max-w-full overflow-x-auto">
                         <form className="flex flex-wrap items-center gap-2 max-w-full" method="POST">
                             <button className="btn bg-[#E7D9F2] text-brand-purple transition-colors ease-in duration-300" type="button">
                                 All Transactions
@@ -40,7 +35,7 @@ const Transactions = () => {
                             </button>
 
                             <label className="flex items-center rounded-md gap-2 pl-4 border border-[#cccccc] grow" htmlFor="search">
-                                <Search className="text-[#666666]" size={25} />
+                                <Search className="text-[#cccccc]" size={25} />
 
                                 <input className="dashboard-input px-4 py-2.5 pl-0 border-none" type="search" placeholder="Search" id="search" />
                             </label>
@@ -50,15 +45,10 @@ const Transactions = () => {
                             </button>
                         </form>
 
-                        <TransactionHistory isActive={isActive} setIsActive={setIsActive} />
+                        <TransactionHistory />
                     </div>
-
                 </section>
             </main>
-
-            <Popup isActive={isActive} setIsActive={setIsActive} width="lg:w-[45%]">
-                <TransactionDetails />
-            </Popup>
         </>
     );
 };

@@ -27,12 +27,12 @@ const Dashboard = () => {
                         <IndexQuickActions />
                     </section>
 
-                    <section className="space-y-2">
+                    <section className="grid gap-2">
                         <h2 className="text-[#666666] font-medium text-lg">
                             Recent Transactions
                         </h2>
 
-                        <TransactionHistory />
+                        <TransactionHistory showViewAll={ true } />
                     </section>
                 </div>
             </main>

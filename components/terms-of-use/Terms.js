@@ -419,7 +419,7 @@ const Terms = () => {
                         </p>
 
                         <p>
-                            9.11  13IneMoni reserves the right to suspend or terminate the User’s access to the bank transfer feature if there is reasonable suspicion of any unlawful or prohibited activities.
+                            9.11  IneMoni reserves the right to suspend or terminate the User’s access to the bank transfer feature if there is reasonable suspicion of any unlawful or prohibited activities.
                         </p>
                     </div>
                 </div>
