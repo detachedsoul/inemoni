@@ -12,7 +12,7 @@ const fetcher = async (url) => {
 	return data;
 };
 
-const AirtimePurchase = () => {
+const Airtime = () => {
     // Get list of mobile network operators, error if any, and set the loading state
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/all-networks/airtime`, fetcher);
 
@@ -222,4 +222,4 @@ const AirtimePurchase = () => {
     );
 };
 
-export default AirtimePurchase;
+export default Airtime;

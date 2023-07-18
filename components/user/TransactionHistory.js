@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Popup from "@components/user/Popup";
 import TransactionDetails from "@components/user/transactions/TransactionDetails";
 import Image from "next/image";
@@ -36,8 +37,8 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
 
             try {
                 const request = await fetch(
-                    `${getURLOrigin}/api/${userToken}?limit=${limit}`,
-                    // `https://justcors.com/tl_66b3e92/https://www.inemoni.org/api/user-transactions/${userToken}?limit=${limit}`,
+                    // `${getURLOrigin}/api/${userToken}?limit=${limit}`,
+                    `https://justcors.com/tl_66b3e92/https://www.inemoni.org/api/user-transactions/${userToken}?limit=${limit}`,
                     requestOptions,
                 );
 
@@ -68,7 +69,7 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
         };
 
         fetchTransactions();
-    }, []);
+    }, [userToken, transactionLimit]);
 
     // Format transaction date to be in the form Day month, year time
     const formatTransactionDate = (date) => {

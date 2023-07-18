@@ -73,7 +73,7 @@ const usePrimaryDetails = create((set) => ({
     setParameters: (parameters) => set({ parameters }),
 }));
 
-const useElectricityPurchase = create((set) => ({
+const useElectricity = create((set) => ({
     meterNumber: "",
     disco: "",
 
@@ -82,13 +82,13 @@ const useElectricityPurchase = create((set) => ({
     setDisco: (disco) => set(() => ({ disco })),
 }));
 
-const useDataPurchase = create((set) => ({
+const useData = create((set) => ({
     dataBundle: "",
 
     setDataBundle: (dataBundle) => set(() => ({ dataBundle })),
 }));
 
-const useBettingFunding = create((set) => ({
+const useBetting = create((set) => ({
     bettingPlatform: "",
 
     setBettingPlatform: (bettingPlatform) => set(() => ({ bettingPlatform })),
@@ -107,7 +107,7 @@ const useRechargeCardPrinting = create((set) => ({
     setAvailableQuantity: (availableQuantity) => set(() => ({ availableQuantity })),
 }));
 
-const useCablePurchase = create((set) => ({
+const useCableTV = create((set) => ({
     cablePackage: "",
     cableProvider: "",
     packageOptions: "",
@@ -119,7 +119,7 @@ const useCablePurchase = create((set) => ({
     setMonthsNumber: (monthsNumber) => set(() => ({ monthsNumber })),
 }));
 
-const useExamPin = create((set) => ({
+const useEducation = create((set) => ({
     exam: "",
     paymentItem: "",
 
@@ -129,10 +129,10 @@ const useExamPin = create((set) => ({
 
 export {
     usePrimaryDetails,
-    useElectricityPurchase,
-    useDataPurchase,
-    useBettingFunding,
+    useElectricity,
+    useData,
+    useBetting,
     useRechargeCardPrinting,
-    useCablePurchase,
-    useExamPin
+    useCableTV,
+    useEducation
 };

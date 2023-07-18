@@ -1,9 +1,8 @@
-import CablePurchasePreview from "@components/user/CablePurchasePreview";
 import Image from "next/image";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
 import useFetch from "@helpers/useFetch";
-import { useExamPin, usePrimaryDetails } from "@store/useServices";
+import { useEducation, usePrimaryDetails } from "@store/useServices";
 
 const fetcher = async (url) => {
     const res = await fetch(url);
@@ -13,7 +12,7 @@ const fetcher = async (url) => {
     return data;
 };
 
-const EducationPin = ({ setPopup }) => {
+const Education = ({ setPopup }) => {
     // States
     const accountName = usePrimaryDetails((state) => state.accountName);
     const setAccountName = usePrimaryDetails((state) => state.setAccountName);
@@ -39,11 +38,11 @@ const EducationPin = ({ setPopup }) => {
     const amount = usePrimaryDetails((state) => state.amount);
     const setAmount = usePrimaryDetails((state) => state.setAmount);
 
-    const exam = useExamPin((state) => state.exam);
-    const setExam = useExamPin((state) => state.setExam);
+    const exam = useEducation((state) => state.exam);
+    const setExam = useEducation((state) => state.setExam);
 
-    const paymentItem = useExamPin((state) => state.paymentItem);
-    const setPaymentItem = useExamPin((state) => state.setPaymentItem);
+    const paymentItem = useEducation((state) => state.paymentItem);
+    const setPaymentItem = useEducation((state) => state.setPaymentItem);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
@@ -293,4 +292,4 @@ const EducationPin = ({ setPopup }) => {
     );
 };
 
-export default EducationPin;
+export default Education;

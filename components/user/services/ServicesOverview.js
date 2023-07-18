@@ -7,14 +7,14 @@ import FailedPopup from "@components/user/FailedPopup";
 import LoadingIndicator from "@components/user/LoadingIndicator";
 import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
-import AirtimePurchase from "@components/user/services/airtime/AirtimePurchase";
-import ElectricityPurchase from "@components/user/services/electricity/ElectricityPurchase";
-import BettingFunding from "@components/user/services/betting/BettingFunding";
+import Airtime from "@components/user/services/airtime/Airtime";
+import Electricity from "@components/user/services/electricity/Electricity";
+import Betting from "@components/user/services/betting/Betting";
 import RechargeCardPrinting from "@components/user/services/recharge-card-printing/RechargeCardPrinting";
-import DataPurchase from "@components/user/services/data/DataPurchase";
-import CablePurchase from "@components/user/services/cable/CablePurchase";
-import EducationPin from "@components/user/services/education/EducationPin";
-import { usePrimaryDetails, useElectricityPurchase, useBettingFunding } from "@store/useServices";
+import Data from "@components/user/services/data/Data";
+import CableTv from "@components/user/services/cable/CableTv";
+import Education from "@components/user/services/education/Education";
+import { usePrimaryDetails, useElectricity, useBetting } from "@store/useServices";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
@@ -89,15 +89,12 @@ const ServicesOverview = () => {
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
 
     const accountName = usePrimaryDetails((state) => state.accountName);
-    const bettingPlatform = useBettingFunding((state) => state.bettingPlatform);
-    const disco = useElectricityPurchase((state) => state.disco);
+    const bettingPlatform = useBetting((state) => state.bettingPlatform);
+    const disco = useElectricity((state) => state.disco);
     const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
     const errorMessage = usePrimaryDetails((state) => state.errorMessage);
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
     const isLoading = usePrimaryDetails((state) => state.isLoading);
-
-    // Disable proceed button until all required fields are filled
-    const [isReady, setIsReady] = useState(false);
 
     // Get the list of services
     const { data: servicesList, isLoading: servicesLoading, error: servicesError } = useFetch(`https://www.inemoni.org/api/services`, fetcher);
@@ -105,15 +102,26 @@ const ServicesOverview = () => {
     // Show or hide the popup
     const [popup, setPopup] = useState(false);
 
-    const [selectedService, setSelectedService] = useState("");
+    // Set the component to be displayed based on the selected service
+    const [selectedService, setSelectedService] = useState("Airtime");
+
+    // List of all services. If new services are added you'd have to manually add it here. Please note that the component must be called the same thing as the name of the services (without whitespaces ofcourse). Whitespaces would be removed before  rendering
+    const componentMap = {
+        Airtime,
+        Electricity,
+        Betting,
+        RechargeCardPrinting,
+        Data,
+        CableTv,
+        Education
+    };
+
+    const RenderComponent = componentMap[selectedService];
 
     // Open a specific services based on the service name of the option
-
-
     const handleSelection = (service) => {
-        // setSelectedService((service) => service);
+        setSelectedService(service);
         setPopup((popup) => !popup);
-        // setPinPopup(() => true);
     };
 
     if (servicesLoading) {
@@ -139,7 +147,17 @@ const ServicesOverview = () => {
                     <button
                         className={`bg-[#F2F2F2] text-[#666666] rounded-[12px] w-full p-3 flex justify-between items-center gap-2.5 ${service.hoverColor} transition-colors duration-300 ease-in group`}
                         type="button"
-                        onClick={ handleSelection }
+                        onClick={ () => {
+                            const rawWords = service.name.toLowerCase().split(" ");
+
+                            const capitalizeFirstWord = rawWords.map((word) => {
+                                const formatWord = word.charAt(0).toUpperCase() + word.slice(1);
+
+                                return formatWord;
+                            }).join("");
+
+                            handleSelection(capitalizeFirstWord);
+                        } }
                         key={ service.id }
                     >
                         <div className="flex items-center gap-4">
@@ -159,9 +177,10 @@ const ServicesOverview = () => {
 
             <Popup isActive={ popup } setIsActive={ setPopup }>
                 {preview && (!pinPopup || pinPopup) && (
-                    // <CablePurchase setPopup={ setPopup } />
-                    <EducationPin setPopup={ setPopup } />
+                    <RenderComponent />
                 )}
+
+                {/* {preview && (!pinPopup || pinPopup) && <p>Hello</p>} */}
 
                 {isSuccessful && !preview && (
                     // <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>

@@ -2,7 +2,7 @@ import CablePurchasePreview from "@components/user/CablePurchasePreview";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
 import useFetch from "@helpers/useFetch";
-import { useCablePurchase, usePrimaryDetails } from "@store/useServices";
+import { useCableTV, usePrimaryDetails } from "@store/useServices";
 import { useState } from "react";
 
 const fetcher = async (url) => {
@@ -13,7 +13,7 @@ const fetcher = async (url) => {
 	return data;
 };
 
-const CablePurchase = ({ setPopup }) => {
+const CableTV = ({ setPopup }) => {
     const [isPreview, setIsPreview] = useState(false);
 
     // States
@@ -35,17 +35,17 @@ const CablePurchase = ({ setPopup }) => {
     const packageName = usePrimaryDetails((state) => state.packageName);
     const setPackageName = usePrimaryDetails((state) => state.setPackageName);
 
-    const cablePackage = useCablePurchase((state) => state.cablePackage);
-    const setCablePackage = useCablePurchase((state) => state.setCablePackage);
+    const cablePackage = useCableTV((state) => state.cablePackage);
+    const setCablePackage = useCableTV((state) => state.setCablePackage);
 
-    const packageOptions = useCablePurchase((state) => state.packageOptions);
-    const setPackageOptions = useCablePurchase((state) => state.setPackageOptions);
+    const packageOptions = useCableTV((state) => state.packageOptions);
+    const setPackageOptions = useCableTV((state) => state.setPackageOptions);
 
-    const monthsNumber = useCablePurchase((state) => state.monthsNumber);
-    const setMonthsNumber = useCablePurchase((state) => state.setMonthsNumber);
+    const monthsNumber = useCableTV((state) => state.monthsNumber);
+    const setMonthsNumber = useCableTV((state) => state.setMonthsNumber);
 
-    const cableProvider = useCablePurchase((state) => state.cableProvider);
-    const setCableProvider = useCablePurchase((state) => state.setCableProvider);
+    const cableProvider = useCableTV((state) => state.cableProvider);
+    const setCableProvider = useCableTV((state) => state.setCableProvider);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
@@ -396,4 +396,4 @@ const CablePurchase = ({ setPopup }) => {
     );
 };
 
-export default CablePurchase;
+export default CableTV;

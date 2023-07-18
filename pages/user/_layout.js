@@ -8,7 +8,7 @@ import useFetch from "@helpers/useFetch";
 import useUser from "@store/useUser";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { MenuIcon, X } from "lucide-react";
+import { MenuIcon, X, Bell } from "lucide-react";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -83,18 +83,28 @@ const Layout = ({ children }) => {
                             />
                         </Link>
 
-                        <button
-                            className="md:not-sr-only md:hidden"
-                            type="button"
-                            aria-label="Navbar toggle button"
-                            onClick={handleNavClick}
-                        >
-                            {navIsOpen ? (
-                                <X size={30} strokeWidth={1} />
-                            ) : (
-                                <MenuIcon size={30} strokeWidth={1} />
-                            )}
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <Link
+                                className="md:not-sr-only md:hidden"
+                                href="/user/notifications"
+                                aria-label="View notifications"
+                            >
+                                <Bell size={30} strokeWidth={1} />
+                            </Link>
+
+                            <button
+                                className="md:not-sr-only md:hidden"
+                                type="button"
+                                aria-label="Navbar toggle button"
+                                onClick={handleNavClick}
+                            >
+                                {navIsOpen ? (
+                                    <X size={30} strokeWidth={1} />
+                                ) : (
+                                    <MenuIcon size={30} strokeWidth={1} />
+                                )}
+                            </button>
+                        </div>
                     </header>
 
                     <nav className={`lg:space-y-4 p-4 absolute lg:static top-full z-50 transition-transform duration-500 ease-in-out w-full h-[calc(100vh-100%)] overflow-y-auto no-scrollbar lg:h-full lg:translate-y-0 bg-[#F2F2F2] text-[#666666] ${navIsOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
@@ -113,8 +123,8 @@ const Layout = ({ children }) => {
                     </nav>
                 </div>
 
-                <div className="space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
-                    <div className="flex flex-wrap items-center gap-4 justify-between lg:sticky lg:top-0 bg-white p-4 lg:ml-[4px] lg:px-8">
+                <div className="lg:space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
+                    <div className="hidden lg:flex flex-wrap items-center gap-4 justify-between lg:sticky lg:top-0 bg-white p-4 lg:ml-[4px] lg:px-8 z-50">
                         <h1 className="header font-normal text-2xl">
                             Welcome back, <span className="font-bold">{ username }</span> 👋
                         </h1>
@@ -130,7 +140,7 @@ const Layout = ({ children }) => {
                         </div>
                     </div>
 
-                    <div className="px-4 pb-8 lg:px-8">
+                    <div className="p-4 lg:pt-0 pb-8 lg:px-8">
                         {children}
                     </div>
                 </div>

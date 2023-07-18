@@ -2,7 +2,7 @@ import Image from "next/image";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
 import useFetch from "@helpers/useFetch";
-import { usePrimaryDetails, useDataPurchase } from "@store/useServices";
+import { usePrimaryDetails, useData } from "@store/useServices";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -41,8 +41,8 @@ const DataPurchase = () => {
     const amount = usePrimaryDetails((state) => state.amount);
     const setAmount = usePrimaryDetails((state) => state.setAmount);
 
-    const dataBundle = useDataPurchase((state) => state.dataBundle);
-    const setDataBundle = useDataPurchase((state) => state.setDataBundle);
+    const dataBundle = useData((state) => state.dataBundle);
+    const setDataBundle = useData((state) => state.setDataBundle);
 
     const customerInfo = usePrimaryDetails((state) => state.customerInfo);
     const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);

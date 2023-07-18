@@ -1,7 +1,7 @@
 import Image from "next/image";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
-import { usePrimaryDetails, useBettingFunding } from "@store/useServices";
+import { usePrimaryDetails, useBetting } from "@store/useServices";
 import useFetch from "@helpers/useFetch";
 
 const fetcher = async (url) => {
@@ -12,7 +12,7 @@ const fetcher = async (url) => {
     return data;
 };
 
-const BettingFunding = () => {
+const Betting = () => {
     // Get list of mobile network operators, error if any, and set the loading state
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/betting-sites`, fetcher);
 
@@ -26,8 +26,8 @@ const BettingFunding = () => {
     const customerInfo = usePrimaryDetails((state) => state.customerInfo);
     const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);
 
-    const bettingPlatform = useBettingFunding((state) => state.bettingPlatform);
-    const setBettingPlatform = useBettingFunding((state) => state.setBettingPlatform);
+    const bettingPlatform = useBetting((state) => state.bettingPlatform);
+    const setBettingPlatform = useBetting((state) => state.setBettingPlatform);
 
     const network = usePrimaryDetails((state) => state.network);
     const setNetwork = usePrimaryDetails((state) => state.setNetwork);
@@ -279,4 +279,4 @@ const BettingFunding = () => {
     );
 };
 
-export default BettingFunding;
+export default Betting;

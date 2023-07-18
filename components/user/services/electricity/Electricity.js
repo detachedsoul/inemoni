@@ -1,7 +1,7 @@
 import Image from "next/image";
 import formatCurrency from "@helpers/formatCurrency";
 import getCookie from "@helpers/getCookie";
-import { usePrimaryDetails, useElectricityPurchase } from "@store/useServices";
+import { usePrimaryDetails, useElectricity } from "@store/useServices";
 import useFetch from "@helpers/useFetch";
 
 const fetcher = async (url) => {
@@ -12,7 +12,7 @@ const fetcher = async (url) => {
     return data;
 };
 
-const ElectricityPurchase = () => {
+const Electricity = () => {
     // Get list of mobile network operators, error if any, and set the loading state
     const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/electricity-discos`, fetcher);
 
@@ -20,14 +20,14 @@ const ElectricityPurchase = () => {
     const accountName = usePrimaryDetails((state) => state.accountName);
     const setAccountName = usePrimaryDetails((state) => state.setAccountName);
 
-    const meterNumber = useElectricityPurchase((state) => state.meterNumber);
-    const setMeterNumber = useElectricityPurchase((state) => state.setMeterNumber);
+    const meterNumber = useElectricity((state) => state.meterNumber);
+    const setMeterNumber = useElectricity((state) => state.setMeterNumber);
 
     const customerInfo = usePrimaryDetails((state) => state.customerInfo);
     const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);
 
-    const disco = useElectricityPurchase((state) => state.disco);
-    const setDisco = useElectricityPurchase((state) => state.setDisco);
+    const disco = useElectricity((state) => state.disco);
+    const setDisco = useElectricity((state) => state.setDisco);
 
     const network = usePrimaryDetails((state) => state.network);
     const setNetwork = usePrimaryDetails((state) => state.setNetwork);
@@ -303,4 +303,4 @@ const ElectricityPurchase = () => {
     );
 };
 
-export default ElectricityPurchase;
+export default Electricity;
