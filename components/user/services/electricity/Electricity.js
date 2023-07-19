@@ -44,7 +44,10 @@ const Electricity = () => {
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
 
@@ -118,13 +121,13 @@ const Electricity = () => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
                     setMeterNumber("");
                 }
             } catch(error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setErrorMessage(error.message);
+                setMessage(error.message);
                 setMeterNumber("");
             }
         }
@@ -282,6 +285,10 @@ const Electricity = () => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
+                                setMessage(`You’ve successfully bought electricity for ${accountName} from ${disco}`);
+                                setHeader("Electricity Purchase Failed");
+                                setEndpoint("purchase-electricity");
+                                setButtonText("Purchase Electricity");
 
                                 setParameters({
                                     amount: amount,

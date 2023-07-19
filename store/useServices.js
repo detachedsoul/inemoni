@@ -4,7 +4,10 @@ import { create } from "zustand";
 const usePrimaryDetails = create((set) => ({
     phoneNumber: "",
     amount: "",
-    errorMessage: "",
+    message: "",
+    header: "",
+    endpoint: "",
+    buttonText: "",
     network: "",
     networkImage: "",
     header: "",
@@ -52,9 +55,13 @@ const usePrimaryDetails = create((set) => ({
         isLoading: isLoading ? isLoading : !state.isLoading
     })),
 
-    setErrorMessage: (errorMessage) => set((state) => ({
-        errorMessage: errorMessage ? errorMessage : !state.errorMessage
-    })),
+    setMessage: (message) => set(() => ({ message })),
+
+    setHeader: (header) => set(() => ({ header })),
+
+    setEndpoint: (endpoint) => set(() => ({ endpoint })),
+
+    setButtonText: (buttonText) => set(() => ({ buttonText })),
 
     setHeader: (header) => set(() => ({ header })),
 
@@ -71,6 +78,31 @@ const usePrimaryDetails = create((set) => ({
     setPackageName: (packageName) => set(() => ({ packageName })),
 
     setParameters: (parameters) => set({ parameters }),
+
+    resetAllStates: () => {
+        set((state) => ({
+            phoneNumber: "",
+            amount: "",
+            message: "",
+            header: "",
+            endpoint: "",
+            buttonText: "",
+            network: "",
+            networkImage: "",
+            header: "",
+            accountName: "",
+            customerID: "",
+            customerInfo: "",
+            accountNumber: "",
+            packageName: "",
+            pinPopup: false,
+            preview: true,
+            isSuccessful: false,
+            isLoading: false,
+            isFailed: false,
+            parameters: {},
+        }));
+    },
 }));
 
 const useElectricity = create((set) => ({

@@ -41,7 +41,10 @@ const Betting = () => {
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
 
@@ -101,8 +104,7 @@ const Betting = () => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/verify-betting`,
-                    `https://justcors.com/tl_da85250/https://www.inemoni.org/api/verify-betting`,
+                    `${getURLOrigin}/api/verify-betting`,
                     requestOptions,
                 );
 
@@ -116,14 +118,16 @@ const Betting = () => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
                     setCustomerID("");
+                    setHeader("Failed To Fund Account");
                 }
             } catch(error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setErrorMessage(error.message);
+                setMessage(error.message);
                 setCustomerID("");
+                setHeader("Failed To Fund Account");
             }
         }
     };
@@ -260,6 +264,10 @@ const Betting = () => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
+                                setMessage(`You’ve successfully funded your ${bettingPlatform} account for ${accountName}`);
+                                setHeader("Failed To Fund Account");
+                                setEndpoint("purchase-betting");
+                                setButtonText("Fund Account");
 
                                 setParameters({
                                     amount: amount,

@@ -14,15 +14,6 @@ const fetcher = async (url) => {
 
 const Education = ({ setPopup }) => {
     // States
-    const accountName = usePrimaryDetails((state) => state.accountName);
-    const setAccountName = usePrimaryDetails((state) => state.setAccountName);
-
-    const accountNumber = usePrimaryDetails((state) => state.accountNumber);
-    const setAccountNumber = usePrimaryDetails((state) => state.setAccountNumber);
-
-    const customerInfo = usePrimaryDetails((state) => state.customerInfo);
-    const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);
-
     const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
     const setPhoneNumber = usePrimaryDetails((state) => state.setPhoneNumber);
 
@@ -45,9 +36,11 @@ const Education = ({ setPopup }) => {
     const setPaymentItem = useEducation((state) => state.setPaymentItem);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
-    const isLoading = usePrimaryDetails((state) => state.isLoading);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
@@ -107,12 +100,12 @@ const Education = ({ setPopup }) => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
                 }
             } catch (error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setErrorMessage(error.message);
+                setMessage(error.message);
             }
         }
     };
@@ -273,6 +266,10 @@ const Education = ({ setPopup }) => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
+                                // setMessage("");
+                                setHeader(`${exam} Pin Purchase Failed`);
+                                setEndpoint("purchase-education");
+                                setButtonText(`Purchase of ${exam} Pin`);
 
                                 setParameters({
                                     amount: amount,

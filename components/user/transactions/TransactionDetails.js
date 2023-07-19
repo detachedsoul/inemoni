@@ -5,7 +5,7 @@ import ContactSupport from "@assets/img/transaction-support-icon.svg";
 
 const TransactionDetails = ({ transaction }) => {
     const showTransactionDetails = (transaction) => {
-        const notNullValues = Object.entries(transaction.details).filter(([field, value]) => value !== null && field !== 'text' && field !== 'provider' && field !== 'free_transfer' && field !== 'bank_code' && field !== 'remarks');
+        const notNullValues = Object.entries(transaction.details).filter(([field, value]) => value !== null && value !== "" && field !== 'text' && field !== 'provider' && field !== 'free_transfer' && field !== 'bank_code' && field !== 'remarks');
 
         const transactionArray = [];
 

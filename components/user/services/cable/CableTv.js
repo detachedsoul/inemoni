@@ -16,6 +16,8 @@ const fetcher = async (url) => {
 const CableTV = ({ setPopup }) => {
     const [isPreview, setIsPreview] = useState(false);
 
+    const getURLOrigin = window.location.origin;
+
     // States
     const accountName = usePrimaryDetails((state) => state.accountName);
     const setAccountName = usePrimaryDetails((state) => state.setAccountName);
@@ -48,10 +50,12 @@ const CableTV = ({ setPopup }) => {
     const setCableProvider = useCableTV((state) => state.setCableProvider);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
-    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
 
     // Get list of mobile network operators, error if any, and set the loading state
@@ -144,12 +148,12 @@ const CableTV = ({ setPopup }) => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
                 }
             } catch(error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setErrorMessage(error.message);
+                setMessage(error.message);
             }
         }
     }
@@ -359,6 +363,10 @@ const CableTV = ({ setPopup }) => {
                                             type="button"
                                             onClick={ () => {
                                                 setIsPreview(() => true);
+                                                setHeader("Cable Subscription Failed");
+                                                setMessage(`You have successfully subscribed your cable for ${accountName}`);
+                                                setEndpoint("purchase-cable");
+                                                setButtonText("Subscribe Cable")
 
                                                 setParameters({
                                                     cable: network,

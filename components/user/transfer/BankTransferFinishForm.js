@@ -27,8 +27,8 @@ const BankTransferFinishForm = () => {
     const pinPopup = usePrimaryDetails((state) => state.pinPopup);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
 
-    const errorMessage = usePrimaryDetails((state) => state.errorMessage);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const message = usePrimaryDetails((state) => state.message);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
 
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
     const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
@@ -76,7 +76,7 @@ const BankTransferFinishForm = () => {
 
         setPopup(() => true);
 
-        setErrorMessage("");
+        setMessage("");
 
         setParameters(router.query);
     };
@@ -180,7 +180,7 @@ const BankTransferFinishForm = () => {
 
                             <Link
                                 className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                                href="/user"
+                                href="/user/transactions"
                             >
                                 View Reciept
                             </Link>
@@ -188,8 +188,8 @@ const BankTransferFinishForm = () => {
                     </SuccessfulPopup>
                 )}
 
-                {isFailed && !preview && errorMessage === "Invalid user pin" && (
-                    <FailedPopup header="Transfer Failed" text={ errorMessage }>
+                {isFailed && !preview && message === "Invalid user pin" && (
+                    <FailedPopup header="Transfer Failed" text={ message }>
                         <button
                             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                             type="button"
@@ -204,8 +204,8 @@ const BankTransferFinishForm = () => {
                     </FailedPopup>
                 )}
 
-                {isFailed && !preview && errorMessage !== "Invalid user pin" && (
-                    <FailedPopup header="Transfer Failed" text={ errorMessage } retryBtn={ setPopup } />
+                {isFailed && !preview && message !== "Invalid user pin" && (
+                    <FailedPopup header="Transfer Failed" text={ message } retryBtn={ setPopup } />
                 )}
 
                 {!preview && !isFailed && !isSuccessful && pinPopup && (

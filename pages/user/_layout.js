@@ -130,11 +130,11 @@ const Layout = ({ children }) => {
                         </h1>
 
                         <div className="flex items-center gap-4">
-                            <Link href="/user">
+                            <Link href="/user/notifications">
                                 <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
                             </Link>
 
-                            <span className="bg-[#D9D9D9] rounded-full px-2.5 py-3 font-medium text-black text-sm">
+                            <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm inline-block flex items-center place-content-center font-medium text-black">
                                 {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
                             </span>
                         </div>

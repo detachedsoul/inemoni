@@ -17,20 +17,12 @@ const DataPurchase = () => {
     const { data: networks, isLoading: networkIsLoading, error: networkError } = useFetch(`https://www.inemoni.org/api/all-networks/data`, fetcher);
 
     // States
-    const accountName = usePrimaryDetails((state) => state.accountName);
-    const setAccountName = usePrimaryDetails((state) => state.setAccountName);
-
     const network = usePrimaryDetails((state) => state.network);
     const setNetwork = usePrimaryDetails((state) => state.setNetwork);
 
-    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
 
-    const preview = usePrimaryDetails((state) => state.preview);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
-
-    const isLoading = usePrimaryDetails((state) => state.isLoading);
-    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
 
     const networkImage = usePrimaryDetails((state) => state.networkImage);
     const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
@@ -44,12 +36,11 @@ const DataPurchase = () => {
     const dataBundle = useData((state) => state.dataBundle);
     const setDataBundle = useData((state) => state.setDataBundle);
 
-    const customerInfo = usePrimaryDetails((state) => state.customerInfo);
-    const setCustomerInfo = usePrimaryDetails((state) => state.setCustomerInfo);
-
     const setParameters = usePrimaryDetails((state) => state.setParameters);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
-    const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
 
     // Get list of data bundles for the specified network operator, error if any, and set the loading state only when a network has been selected
     const { data: dataPlans, isLoading: dataBundleIsLoading, error: dataBundleError } = useFetch(network ? `https://www.inemoni.org/api/data-plans/${network}` : null, fetcher);
@@ -170,7 +161,7 @@ const DataPurchase = () => {
                                     onChange={ handleDataPlanChange }
                                 >
 
-                                    <option disabled={ dataPlans }>
+                                    <option disabled={ dataBundle }>
                                         Choose a Data Plan
                                     </option>
 
@@ -237,13 +228,16 @@ const DataPurchase = () => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
+                                setHeader("Data Purchase Failed");
+                                setMessage(`You’ve successfully bought data for ${phoneNumber}`);
+                                setEndpoint("purchase-data");
+                                setButtonText("Purchase Data");
 
                                 setParameters({
                                     amount: amount,
                                     network: network,
                                     plan_id: dataBundle,
                                     phone: phoneNumber,
-                                    // account_name: accountName,
                                     user_token: getCookie("user_token").sanitizedValue,
                                 });
                             } }

@@ -73,12 +73,6 @@ const ServicesOverview = () => {
     ];
 
     // States
-    const network = usePrimaryDetails((state) => state.network);
-    const setNetwork = usePrimaryDetails((state) => state.setNetwork);
-
-    const networkImage = usePrimaryDetails((state) => state.networkImage);
-    const setNetworkImage = usePrimaryDetails((state) => state.setNetworkImage);
-
     const pinPopup = usePrimaryDetails((state) => state.pinPopup);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
 
@@ -88,13 +82,15 @@ const ServicesOverview = () => {
     const isFailed = usePrimaryDetails((state) => state.isFailed);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
 
-    const accountName = usePrimaryDetails((state) => state.accountName);
-    const bettingPlatform = useBetting((state) => state.bettingPlatform);
-    const disco = useElectricity((state) => state.disco);
-    const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
-    const errorMessage = usePrimaryDetails((state) => state.errorMessage);
+    const header = usePrimaryDetails((state) => state.header);
+    const message = usePrimaryDetails((state) => state.message);
+    const endpoint = usePrimaryDetails((state) => state.endpoint);
+    const buttonText = usePrimaryDetails((state) => state.buttonText);
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
     const isLoading = usePrimaryDetails((state) => state.isLoading);
+
+    // Reset all shared states (usePrimaryDetails)
+    const resetAllStates = usePrimaryDetails((state) => state.resetAllStates);
 
     // Get the list of services
     const { data: servicesList, isLoading: servicesLoading, error: servicesError } = useFetch(`https://www.inemoni.org/api/services`, fetcher);
@@ -116,11 +112,16 @@ const ServicesOverview = () => {
         Education
     };
 
+    // Set the component to be rendered
     const RenderComponent = componentMap[selectedService];
 
     // Open a specific services based on the service name of the option
     const handleSelection = (service) => {
-        setSelectedService(service);
+        setSelectedService(() => {
+            resetAllStates();
+
+            return service;
+        });
         setPopup((popup) => !popup);
     };
 
@@ -180,64 +181,8 @@ const ServicesOverview = () => {
                     <RenderComponent />
                 )}
 
-                {/* {preview && (!pinPopup || pinPopup) && <p>Hello</p>} */}
-
                 {isSuccessful && !preview && (
-                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought airtime for ${phoneNumber}`}>
-                    //     <div className="grid gap-2">
-                    //         <Link
-                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                    //             href="/user"
-                    //         >
-                    //             Back to Dashboard
-                    //         </Link>
-
-                    //         <Link
-                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                    //             href="/user"
-                    //         >
-                    //             View Reciept
-                    //         </Link>
-                    //     </div>
-                    // </SuccessfulPopup>
-
-                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought data for ${phoneNumber}`}>
-                    //     <div className="grid gap-2">
-                    //         <Link
-                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                    //             href="/user"
-                    //         >
-                    //             Back to Dashboard
-                    //         </Link>
-
-                    //         <Link
-                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                    //             href="/user"
-                    //         >
-                    //             View Reciept
-                    //         </Link>
-                    //     </div>
-                    // </SuccessfulPopup>
-
-                    // <SuccessfulPopup header="Successful" message={`You’ve successfully funded your ${bettingPlatform} account for ${accountName}`}>
-                    //     <div className="grid gap-2">
-                    //         <Link
-                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                    //             href="/user"
-                    //         >
-                    //             Back to Dashboard
-                    //         </Link>
-
-                    //         <Link
-                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                    //             href="/user"
-                    //         >
-                    //             View Reciept
-                    //         </Link>
-                    //     </div>
-                    // </SuccessfulPopup>
-
-                    <SuccessfulPopup header="Exam Pin Purchase Subscription" message={ errorMessage }>
+                    <SuccessfulPopup header="Successful" message={ message }>
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -248,35 +193,17 @@ const ServicesOverview = () => {
 
                             <Link
                                 className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                                href="/user"
+                                href="/user/transactions"
                             >
                                 View Reciept
                             </Link>
                         </div>
                     </SuccessfulPopup>
-
-                    // <SuccessfulPopup header="Successful" message={`You’ve successfully bought electricity for ${accountName} from ${disco}`}>
-                    //     <div className="grid gap-2">
-                    //         <Link
-                    //             className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                    //             href="/user"
-                    //         >
-                    //             Back to Dashboard
-                    //         </Link>
-
-                    //         <Link
-                    //             className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
-                    //             href="/user"
-                    //         >
-                    //             View Reciept
-                    //         </Link>
-                    //     </div>
-                    // </SuccessfulPopup>
                 )}
 
                 {isFailed && !preview && (
-                    <FailedPopup header="Exam Pin Purchase Failed" text={ errorMessage }>
-                        {errorMessage === "Invalid user pin" ? (
+                    <FailedPopup header={ header } text={ message }>
+                        {message === "Invalid user pin" ? (
                             <button
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                                 type="button"
@@ -307,9 +234,7 @@ const ServicesOverview = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && !isLoading && pinPopup && (
-                    <PinPopup endpoint="purchase-education" buttonText="Complete Transaction" />
-
-                    // <PinPopup endpoint="purchase-electricity" buttonText="Purchase Electricity" />
+                    <PinPopup endpoint={ endpoint } buttonText={ buttonText } />
                 )}
 
                 {isLoading && (

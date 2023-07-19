@@ -37,8 +37,7 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/${userToken}?limit=${limit}`,
-                    `https://justcors.com/tl_66b3e92/https://www.inemoni.org/api/user-transactions/${userToken}?limit=${limit}`,
+                    `${getURLOrigin}/api/${userToken}?limit=${limit}`,
                     requestOptions,
                 );
 

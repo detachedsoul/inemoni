@@ -36,6 +36,10 @@ const Airtime = () => {
     const setAmount = usePrimaryDetails((state) => state.setAmount);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
 
     const handleNetworkChange = (e) => {
         const { value } = e.target;
@@ -207,6 +211,10 @@ const Airtime = () => {
                 onClick={ () => {
                     setPinPopup(true);
                     setPreview(false);
+                    setMessage(`You’ve successfully bought airtime for ${phoneNumber}`);
+                    setHeader("Airtime Purchase Failed");
+                    setEndpoint("purchase-airtime");
+                    setButtonText("Puchase Airtime");
 
                     setParameters({
                         amount: amount,

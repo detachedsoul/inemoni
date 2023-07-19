@@ -2,16 +2,13 @@ import { usePrimaryDetails } from "@store/useServices";
 import { useState } from "react";
 
 const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
-    const pinPopup = usePrimaryDetails((state) => state.pinPopup);
-    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
-
-    const preview = usePrimaryDetails((state) => state.preview);
-    const setPreview = usePrimaryDetails((state) => state.setPreview);
+    const message = usePrimaryDetails((state) => state.message);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
 
     const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
+    const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const parameters = usePrimaryDetails((state) => state.parameters);
 
     const [isProcessing, setIsProcessing] = useState(false);
@@ -109,7 +106,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
                 setIsSuccessful(true);
 
-                setErrorMessage(response.message);
+                setMessage(message ? message : response.message);
             } else {
                 setIsProcessing(() => false);
 
@@ -117,7 +114,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
                 setIsFailed(true);
 
-                setErrorMessage(response.message);
+                setMessage(response.message);
             }
         } catch(error) {
             setIsProcessing(() => false);
@@ -126,7 +123,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
             setIsFailed(true);
 
-            setErrorMessage(error.message);
+            setMessage(error.message);
         }
     };
 

@@ -38,7 +38,9 @@ const RechargeCardPrinting = () => {
     const setAvailableQuantity = useRechargeCardPrinting((state) => state.setAvailableQuantity);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
-    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
+    const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
+    const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
@@ -293,6 +295,9 @@ const RechargeCardPrinting = () => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
+                                setHeader("Recharge Card Generation Failed");
+                                setButtonText("Generate Recharge Card");
+                                setEndpoint("purchase-recharge-cards");
 
                                 setParameters({
                                     amount: amount,
