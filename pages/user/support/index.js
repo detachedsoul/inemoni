@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Layout from "@pages/user/_layout";
-import ServicesOverview from "@components/user/services/ServicesOverview";
+import AccountManager from "@components/user/support/AccountManager";
 
-const Services = () => {
+const Support = () => {
     return (
         <>
             <Head>
@@ -16,18 +16,18 @@ const Services = () => {
             <main>
                 <section>
                     <h2 className="header font-medium text-2xl mb-6">
-                        Services
+                        Support
                     </h2>
 
-                    <ServicesOverview />
+                    <AccountManager />
                 </section>
             </main>
         </>
     );
 };
 
-export default Services;
+export default Support;
 
-Services.getLayout = (page) => {
+Support.getLayout = (page) => {
     return <Layout>{ page }</Layout>;
 };

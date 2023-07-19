@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 const TransactionHistory = ({ showViewAll = false, children }) => {
     const [isActive, setIsActive] = useState(false);
     const [transactionDetails, setTransactionDetails] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const isLoading = usePrimaryDetails((state) => state.isLoading);
     const setIsLoading =  usePrimaryDetails((state) => state.setIsLoading);
@@ -37,7 +38,7 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
 
             try {
                 const request = await fetch(
-                    `${getURLOrigin}/api/${userToken}?limit=${limit}`,
+                    `${getURLOrigin}/api/user-transactions/${userToken}?limit=${limit}`,
                     requestOptions,
                 );
 
@@ -50,12 +51,12 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
                 } else {
                     setIsLoading(false);
 
-                    console.log(response.message)
+                    setErrorMessage("There was an error fetching your transaction history. Please try again later or contact support.");
                 }
             } catch(error) {
                 setIsLoading(false);
 
-                console.log(error.message)
+                setErrorMessage("There was an error fetching your transaction history. Please try again later or contact support.");
             }
         }
     };
@@ -89,7 +90,11 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
         }
     };
 
-    return (
+    return errorMessage ? (
+            <p className="font-medium text-lg">
+                { errorMessage }
+            </p>
+        ) : (
         <>
             <div className="rounded-[20px] bg-[#F2F2F2] px-4 pb-4 overflow-x-hidden">
                 <div className="overflow-x-auto">
@@ -171,7 +176,7 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
 
             { children }
 
-             <Popup isActive={isActive} setIsActive={setIsActive} width="lg:w-[45%]">
+            <Popup isActive={isActive} setIsActive={setIsActive} width="lg:w-[45%]">
                 {transactionDetails && <TransactionDetails transaction={ transactionDetails } />}
             </Popup>
         </>

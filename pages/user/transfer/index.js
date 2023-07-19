@@ -6,7 +6,7 @@ const Transfer = () => {
     return (
         <>
             <Head>
-                <title>Transfer Funds</title>
+                <title>Dashboard | Transfer Funds</title>
                 <meta
                     name="description"
                     content="Select transfer method"

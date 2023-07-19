@@ -1,11 +1,11 @@
 import formatCurrency from "@helpers/formatCurrency";
-import { useCablePurchase, usePrimaryDetails } from "@store/useServices";
+import { useCableTV, usePrimaryDetails } from "@store/useServices";
 
 const CablePurchasePreview = ({ setPopup }) => {
-    const packageName = useCablePurchase((state) => state.packageName);
+    const packageName = useCableTV((state) => state.packageName);
     const accountName = usePrimaryDetails((state) => state.accountName);
     const amount = usePrimaryDetails((state) => state.amount);
-    const cableProvider = useCablePurchase((state) => state.cableProvider);
+    const cableProvider = useCableTV((state) => state.cableProvider);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
 

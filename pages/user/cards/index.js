@@ -8,7 +8,7 @@ const Cards = () => {
     return (
         <>
             <Head>
-                <title>Inemoni Cards</title>
+                <title>Dashboard | Inemoni Cards</title>
                 <meta
                     name="description"
                     content="Get your Inemoni Card instantly"

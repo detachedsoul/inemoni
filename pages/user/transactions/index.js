@@ -7,7 +7,7 @@ const Transactions = () => {
     return (
         <>
             <Head>
-                <title>Transaction History</title>
+                <title>Dashboard | Transaction History</title>
                 <meta
                     name="description"
                     content="View your transaction history"
