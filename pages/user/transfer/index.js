@@ -15,7 +15,7 @@ const Transfer = () => {
 
             <main>
                 <section className="space-y-6">
-                    <h2 className="header font-medium text-2xl">
+                    <h2 className="header font-normal text-2xl">
                         Send Money
                     </h2>
 

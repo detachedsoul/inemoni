@@ -17,7 +17,7 @@ const Cards = () => {
 
             <main>
                 <section className="grid gap-6">
-                    <h2 className="header font-medium text-2xl">
+                    <h2 className="header font-normal text-2xl">
                         Inemoni Cards
                     </h2>
 

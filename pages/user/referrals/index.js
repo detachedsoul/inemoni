@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Layout from "@pages/user/_layout";
-import ServicesOverview from "@components/user/services/ServicesOverview";
+import Referrals from "@components/user/referrals/Referrals";
 
-const Services = () => {
+const UserReferrals = () => {
     return (
         <>
             <Head>
-                <title>Dashboard | Services</title>
+                <title>Dashboard | Referrals</title>
                 <meta
                     name="description"
                     content="Choose one of the servies offered by Inemoni"
@@ -14,20 +14,20 @@ const Services = () => {
             </Head>
 
             <main>
-                <section>
+                <>
                     <h2 className="header font-normal text-2xl mb-6">
-                        Services
+                        Referrals
                     </h2>
 
-                    <ServicesOverview />
-                </section>
+                    <Referrals />
+                </>
             </main>
         </>
     );
 };
 
-export default Services;
+export default UserReferrals;
 
-Services.getLayout = (page) => {
+UserReferrals.getLayout = (page) => {
     return <Layout>{ page }</Layout>;
 };

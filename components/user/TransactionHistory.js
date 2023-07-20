@@ -2,9 +2,7 @@
 import Popup from "@components/user/Popup";
 import TransactionDetails from "@components/user/transactions/TransactionDetails";
 import Image from "next/image";
-import BankTransfer from "@assets/img/transaction-bank-transfer.svg";
-import DollarCard from "@assets/img/transaction-dollar-card.svg";
-import Bonus from "@assets/img/transaction-bonus.svg";
+import NoTransaction from "@assets/img/no-transaction.svg";
 import useUser from "@store/useUser";
 import Link from "next/link";
 import { usePrimaryDetails } from "@store/useServices";
@@ -91,10 +89,10 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
     };
 
     return errorMessage ? (
-            <p className="font-medium text-lg">
-                { errorMessage }
-            </p>
-        ) : (
+        <p className="font-medium text-lg">
+            { errorMessage }
+        </p>
+    ) : transactions?.length > 0 ? (
         <>
             <div className="rounded-[20px] bg-[#F2F2F2] px-4 pb-4 overflow-x-hidden">
                 <div className="overflow-x-auto">
@@ -180,6 +178,14 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
                 {transactionDetails && <TransactionDetails transaction={ transactionDetails } />}
             </Popup>
         </>
+    ) : (
+        <div className="bg-[#F2F2F2] grid place-content-center gap-4 p-8 h-[500px] rounded-[1.25rem] text-[#666666]">
+            <Image className="mx-auto" src={ NoTransaction } alt="" />
+
+            <p className="text-lg">
+                You haven’t made any transactions yet
+            </p>
+        </div>
     );
 };
 

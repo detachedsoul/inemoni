@@ -6,16 +6,16 @@ const Support = () => {
     return (
         <>
             <Head>
-                <title>Dashboard | Services</title>
+                <title>Dashboard | Customer Support</title>
                 <meta
                     name="description"
-                    content="Choose one of the servies offered by Inemoni"
+                    content="Get in touch with your manager for any assistance"
                 />
             </Head>
 
             <main>
                 <section>
-                    <h2 className="header font-medium text-2xl mb-6">
+                    <h2 className="header font-normal text-2xl mb-6">
                         Support
                     </h2>
 

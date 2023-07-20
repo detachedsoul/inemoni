@@ -1,5 +1,6 @@
 import Popup from "@components/user/Popup";
 import Image from "next/image";
+import Link from "next/link";
 import ContactSupport from "@assets/img/contact-support.svg";
 import useUser from "@store/useUser";
 import { useState } from "react";
@@ -37,20 +38,20 @@ const AccountManager = () => {
                         </p>
                     </div>
 
-                    <Image className="rounded-full h-[150px] w-[150px] mx-auto object-center" src={ userDetails.account_manager.profilepic } alt={ userDetails.account_manager.name } width={ 100 } height={ 100 } quality={ 100 } />
+                    <Image className="rounded-full h-[150px] w-[150px] mx-auto object-center" src={ userDetails?.account_manager?.profilepic } alt={ userDetails?.account_manager?.name } width={ 100 } height={ 100 } quality={ 100 } />
 
                     <div className="text-center space-y-3">
                         <h2 className="font-medium text-xl leading-none text-[#262626]">
-                            { userDetails.account_manager.name }
+                            { userDetails?.account_manager?.name }
                         </h2>
 
-                        <p className="leading-none text-[1.0625rem]">
-                            { userDetails.account_manager.phone }
-                        </p>
+                        <Link className="leading-none text-[1.0625rem] block" href={`tel:${ userDetails?.account_manager?.phone }`} target="_blank" rel="noopener noreferrer">
+                            { userDetails?.account_manager?.phone }
+                        </Link>
 
-                        <p className="leading-none text-[1.0625rem]">
-                            { userDetails.account_manager.email }
-                        </p>
+                        <Link className="leading-none text-[1.0625rem] block" href={`mailto:${ userDetails?.account_manager?.email }`} target="_blank" rel="noopener noreferrer">
+                            { userDetails?.account_manager?.email }
+                        </Link>
                     </div>
                 </div>
             </Popup>

@@ -16,7 +16,7 @@ const Transactions = () => {
 
             <main>
                 <section className="grid gap-8">
-                    <h2 className="header font-medium text-2xl">
+                    <h2 className="header font-normal text-2xl">
                         Transactions
                     </h2>
 
