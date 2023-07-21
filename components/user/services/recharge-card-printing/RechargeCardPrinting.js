@@ -39,12 +39,15 @@ const RechargeCardPrinting = () => {
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setMessage = usePrimaryDetails((state) => state.setMessage);
     const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
     const setButtonText = usePrimaryDetails((state) => state.setButtonText);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
+
+    const getURLOrigin = window.location.origin;
 
     const handleNetworkChange = async (e) => {
         const { value } = e.target;
@@ -88,14 +91,18 @@ const RechargeCardPrinting = () => {
 
                     setIsFailed(true);
 
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
+
+                    setHeader("Recharge Card Generation Failed");
                 }
             } catch(error) {
                 setIsLoading(false);
 
                 setIsFailed(true);
 
-                setErrorMessage(error.message);
+                setMessage(error.message);
+
+                setHeader("Recharge Card Generation Failed");
             }
         }
     };
@@ -141,14 +148,18 @@ const RechargeCardPrinting = () => {
 
                     setIsFailed(true);
 
-                    setErrorMessage(response.message);
+                    setMessage(response.message);
+
+                    setHeader("Recharge Card Generation Failed");
                 }
             } catch(error) {
                 setIsLoading(false);
 
                 setIsFailed(true);
 
-                setErrorMessage(error.message);
+                setMessage(error.message);
+
+                setHeader("Recharge Card Generation Failed");
             }
         }
     };

@@ -12,7 +12,7 @@ const fetcher = async (url) => {
     return data;
 };
 
-const Education = ({ setPopup }) => {
+const Education = () => {
     // States
     const phoneNumber = usePrimaryDetails((state) => state.phoneNumber);
     const setPhoneNumber = usePrimaryDetails((state) => state.setPhoneNumber);
@@ -166,14 +166,14 @@ const Education = ({ setPopup }) => {
                                 </option>
 
                                 {examBodies && (
-                                    examBodies?.filter(networkProvider => networkProvider.shortName === network).map(network => (
+                                    examBodies?.filter(networkProvider => networkProvider.name === exam).map(network => (
                                         <option value={[network.name, network.id, network.image]} key={ network.id }>
                                             { network.name }
                                         </option>
                                     ))
                                 )}
 
-                                { examBodies?.filter(networkProvider => networkProvider.shortName !== network).map((network) => (
+                                { examBodies?.filter(networkProvider => networkProvider.name !== exam).map((network) => (
                                     <option value={[network.name, network.id, network.image]} key={ network.id }>
                                         { network.name }
                                     </option>
@@ -266,7 +266,6 @@ const Education = ({ setPopup }) => {
                             onClick={ () => {
                                 setPinPopup(true);
                                 setPreview(false);
-                                // setMessage("");
                                 setHeader(`${exam} Pin Purchase Failed`);
                                 setEndpoint("purchase-education");
                                 setButtonText(`Purchase of ${exam} Pin`);

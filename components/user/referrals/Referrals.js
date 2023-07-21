@@ -13,7 +13,6 @@ const Referrals = () => {
     const userDetails = useUser((state) => state.userDetails);
     const userToken = useUser((state) => state.userToken);
 
-    const isLoading = usePrimaryDetails((state) => state.isLoading);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
 
     const message = usePrimaryDetails((state) => state.message);
@@ -153,6 +152,8 @@ const Referrals = () => {
                                             key={ referral.id }
                                         >
                                             <td className="pr-4 py-2 flex items-center gap-2.5 min-w-max h-full w-max">
+                                                <Image className="h-11 w-11" src="https://www.inemoni.org/mobile/assets/img/referral.png" alt="" width={ 44 } height={ 44 } />
+
                                                 { referral.fname }
                                             </td>
 

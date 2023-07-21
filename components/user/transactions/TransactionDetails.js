@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import BankTransfer from "@assets/img/transaction-bank-transfer.svg";
 import ContactSupport from "@assets/img/transaction-support-icon.svg";
 
 const TransactionDetails = ({ transaction }) => {
@@ -154,12 +153,14 @@ const TransactionDetails = ({ transaction }) => {
                 </Link>
             </div>
 
-            <button
+            <Link
                 className="btn block w-auto mx-auto rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
-                type="submit"
+                href={ transaction.receipt_url }
+                target="_blank"
+                rel="noreferrer noopener"
             >
                 Download Receipt
-            </button>
+            </Link>
         </div>
     );
 };

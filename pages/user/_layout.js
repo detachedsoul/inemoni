@@ -134,7 +134,7 @@ const Layout = ({ children }) => {
                                 <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
                             </Link>
 
-                            <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm inline-block flex items-center place-content-center font-medium text-black">
+                            <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm flex items-center place-content-center font-medium text-black">
                                 {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
                             </span>
                         </div>

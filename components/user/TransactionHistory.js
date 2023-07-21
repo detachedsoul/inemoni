@@ -13,7 +13,6 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
     const [transactionDetails, setTransactionDetails] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const isLoading = usePrimaryDetails((state) => state.isLoading);
     const setIsLoading =  usePrimaryDetails((state) => state.setIsLoading);
 
     const transactions = useUser((state) => state.transactions);
