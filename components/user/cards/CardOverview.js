@@ -51,15 +51,17 @@ const CardOverview = () => {
     return (
         <>
             <div className="bg-[#F2F2F2] rounded-[12px] px-4 grid place-content-center min-h-screen pb-8">
-                <div className="text-center -space-y-20">
-                    <Image className="w-[70%] mx-auto -mt-20" src={CardsOverview} alt="Get your Inemoni Card instantly" />
+                <div className="text-center lg:-space-y-20">
+                    <div className="bg-red-500">
+                        <Image className="lg:w-[70%] mx-auto lg:-mt-20 h-full w-full object-cover" src={CardsOverview} alt="Get your Inemoni Card instantly" />
+                    </div>
 
-                    <div className="space-y-2 text-center w-3/5 mx-auto">
+                    <div className="space-y-2 text-center lg:w-3/5 mx-auto">
                         <h3 className="font-medium text-3xl">
                             Get your Inemoni Card instantly
                         </h3>
 
-                        <div className="w-2/3 mx-auto space-y-4">
+                        <div className="lg:w-2/3 mx-auto space-y-4">
                             <p>
                                 With your Inemoni cards, you can shop with ease both in the real world and in the digital world
                             </p>

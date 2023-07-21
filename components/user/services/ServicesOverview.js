@@ -5,7 +5,6 @@ import PinPopup from "@components/user/PinPopup";
 import SuccessfulPopup from "@components/user/SuccessfulPopup";
 import FailedPopup from "@components/user/FailedPopup";
 import LoadingIndicator from "@components/user/LoadingIndicator";
-import validateNumberField from "@helpers/validateNumberField";
 import useFetch from "@helpers/useFetch";
 import Airtime from "@components/user/services/airtime/Airtime";
 import Electricity from "@components/user/services/electricity/Electricity";

@@ -15,11 +15,11 @@ const Dashboard = () => {
                 />
             </Head>
 
-            <main className="space-y-12 pb-8">
+            <main className="grid gap-12 pb-8">
                 <IndexBalance />
 
-                <div className="space-y-10">
-                    <section className="space-y-2">
+                <div className="grid gap-10">
+                    <section className="grid gap-2">
                         <h2 className="text-[#666666] font-medium text-lg">
                             Quick Actions
                         </h2>
