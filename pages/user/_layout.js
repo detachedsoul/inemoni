@@ -9,6 +9,7 @@ import useUser from "@store/useUser";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MenuIcon, X, Bell } from "lucide-react";
+import { usePrimaryDetails } from "@store/useServices";
 
 const fetcher = async (url) => {
 	const res = await fetch(url);
@@ -27,6 +28,8 @@ const Layout = ({ children }) => {
     const userDetails = useUser((state) => state.userDetails);
     const setUserDetails = useUser((state) => state.setUserDetails);
 
+    const setUserCards = useUser((state) => state.setUserCards);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setUserBalance = useUser((state) => state.setUserBalance);
 
     const { data: balance } = useFetch(userToken ? `https://www.inemoni.org/api/user-balance/${userToken}` : null, fetcher);
@@ -47,6 +50,48 @@ const Layout = ({ children }) => {
         }
 
     }, [balance, userData, userToken, setUserToken, setUserBalance, setUserDetails]);
+
+    useEffect(() => {
+        if (userToken) {
+            // const cards = [];
+
+            const fetchUserCards = async () => {
+                const getURLOrigin = window.location.origin;
+
+                const data = {
+                    user_token: userToken
+                };
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                    redirect: "follow",
+                };
+
+                try {
+                    const request = await fetch(
+                        // `${getURLOrigin}/api/virtual-cards/my-cards`,
+                        `https://justcors.com/tl_763c4ef/https://www.inemoni.org/api/virtual-cards/my-cards`,
+                        requestOptions,
+                    );
+
+                    const response = await request.json();
+
+                    if (response.error === false) {
+                        setUserCards(response.data);
+                    } else {
+                        setErrorMessage("There was an error getting your card details. Please try again or contact support if the issue persists.");
+                    }
+                } catch(error) {
+                    setErrorMessage("There was an error getting your card details. Please try again or contact support if the issue persists.");
+                }
+
+            };
+
+            fetchUserCards();
+        }
+    }, [userToken, setUserCards, setErrorMessage]);
 
     useEffect(() => {
         setNavIsOpen(() => false);

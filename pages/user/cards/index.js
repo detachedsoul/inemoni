@@ -3,8 +3,11 @@ import Layout from "@pages/user/_layout";
 import CardOverview from "@components/user/cards/CardOverview";
 import ViewCards from "@components/user/cards/ViewCards";
 import BlockedCard from "@components/user/cards/BlockedCard";
+import useUser from "@store/useUser";
 
 const Cards = () => {
+    const userDetails = useUser((state) => state.userDetails);
+
     return (
         <>
             <Head>
@@ -21,9 +24,9 @@ const Cards = () => {
                         Inemoni Cards
                     </h2>
 
-                    <CardOverview />
+                    {userDetails.hasVirtualCard && <ViewCards />}
 
-                    {/* <ViewCards /> */}
+                    {!userDetails.hasVirtualCard && <CardOverview />}
 
                     {/* <BlockedCard /> */}
                 </section>

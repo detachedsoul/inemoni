@@ -178,10 +178,10 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
             </Popup>
         </>
     ) : (
-        <div className="bg-[#F2F2F2] grid place-content-center gap-4 p-8 h-[500px] rounded-[1.25rem] text-[#666666]">
+        <div className="bg-[#F2F2F2] grid text-center place-content-center gap-4 p-8 h-[500px] rounded-[1.25rem] text-[#666666]">
             <Image className="mx-auto" src={ NoTransaction } alt="" />
 
-            <p className="text-lg">
+            <p className="text-lg text-center">
                 You haven’t made any transactions yet
             </p>
         </div>

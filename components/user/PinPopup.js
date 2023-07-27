@@ -5,6 +5,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
     const message = usePrimaryDetails((state) => state.message);
     const setMessage = usePrimaryDetails((state) => state.setMessage);
 
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
     const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
@@ -114,7 +115,7 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
                 setIsFailed(true);
 
-                setMessage(response.message);
+                setErrorMessage(response.message);
             }
         } catch(error) {
             setIsProcessing(() => false);
@@ -123,13 +124,13 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
             setIsFailed(true);
 
-            setMessage(error.message);
+            setErrorMessage(error.message);
         }
     };
 
     return (
         <form
-            className="py-4 px-8 space-y-6"
+            className="p-4 lg:px-8 space-y-6"
             method="POST"
             onSubmit={handleSubmit}
         >

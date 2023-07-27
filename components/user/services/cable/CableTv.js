@@ -50,6 +50,7 @@ const CableTV = ({ setPopup }) => {
     const setCableProvider = useCableTV((state) => state.setCableProvider);
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setMessage = usePrimaryDetails((state) => state.setMessage);
     const setHeader = usePrimaryDetails((state) => state.setHeader);
     const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
@@ -148,12 +149,12 @@ const CableTV = ({ setPopup }) => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setMessage(response.message);
+                    setErrorMessage(response.message);
                 }
             } catch(error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setMessage(error.message);
+                setErrorMessage(error.message);
             }
         }
     }
@@ -161,7 +162,7 @@ const CableTV = ({ setPopup }) => {
     return (
         <>
             {!isPreview && (
-                <div className="py-4 px-8 space-y-6">
+                <div className="p-4 lg:px-8 space-y-6">
                     <h2 className="font-medium text-xl text-[#262626]">
                         Pay for TV
                     </h2>

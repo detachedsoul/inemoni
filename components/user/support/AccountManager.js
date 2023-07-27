@@ -27,7 +27,7 @@ const AccountManager = () => {
             </button>
 
             <Popup isActive={popup} setIsActive={setPopup}>
-                <div className="py-4 px-8 space-y-6 text-center">
+                <div className="p-4 lg:px-8 space-y-6 text-center">
                     <div>
                         <h2 className="font-medium text-2xl leading-snug text-[#262626]">
                             Account Manager

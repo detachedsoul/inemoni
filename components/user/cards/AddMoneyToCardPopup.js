@@ -7,7 +7,7 @@ import FundingFee from "@assets/img/funding-fee-icon.svg";
 
 const AddMoneyToCardPopup = () => {
     return (
-        <form className="py-4 px-8 space-y-12" method="POST">
+        <form className="p-4 lg:px-8 space-y-12" method="POST">
             <div className="space-y-4">
                 <h2 className="font-medium text-xl text-[#262626]">
                     Add Money to your Card

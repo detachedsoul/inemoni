@@ -3,7 +3,7 @@ import NotAvailable from "@assets/data/lottie-files/not-available";
 
 const FailedPopup = ({ header, text, retryBtn=null, children }) => {
     return (
-        <div className="py-4 px-8 space-y-2 text-center">
+        <div className="p-4 lg:px-8 space-y-2 text-center">
             <Lottie className="h-24" animationData={NotAvailable} />
 
             <div className="space-y-6">

@@ -1009,12 +1009,36 @@ const Terms = () => {
                             27.
                         </span>
 
+                        Service Availability and Disclaimer
+                    </h2>
+
+                    <div className="space-y-3">
+                        <p>
+                            27.1 Inemoni is committed to providing you with a secure and seamless digital banking and financial service, but we cannot guarantee that our service will always operate without errors, delays or disruptions. Sometimes, our service may be affected by factors beyond our reasonable control, such as network issues, maintenance, security breaches, or third-party services. We are not liable for any loss or damage that you may incur as a result of such events.
+                        </p>
+
+                        <p>
+                            27.2 If our service is unavailable or impaired for any reason, we will endeavour to restore the service as soon as possible. However, we do not offer any compensation or refunds for any downtime or reduced functionality. You use our service at your own risk and discretion.
+                        </p>
+
+                        <p>
+                            27.3 By using our service, you agree to release us and our partners from any claims for any loss or damage that may arise from service unavailability or impairment. You also agree to indemnify us and our partners from any liability that may result from your use of our service during such events.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="space-y-4">
+                    <h2 className="pl-2 header secondary-header">
+                        <span className="mr-4">
+                            28.
+                        </span>
+
                         Miscellaneous
                     </h2>
 
                     <div className="space-y-3">
                         <p>
-                            27.1 In using the APP, you agree you will comply with all
+                            28.1 In using the APP, you agree you will comply with all
                             applicable laws and regulations. Inemoni may revise
                             these Terms and Conditions of Use at any time by
                             updating this posting.

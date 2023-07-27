@@ -4,6 +4,7 @@ import { create } from "zustand";
 const usePrimaryDetails = create((set) => ({
     phoneNumber: "",
     amount: "",
+    errorMessage: "",
     message: "",
     header: "",
     endpoint: "",
@@ -57,6 +58,8 @@ const usePrimaryDetails = create((set) => ({
 
     setMessage: (message) => set(() => ({ message })),
 
+    setErrorMessage: (errorMessage) => set(() => ({ errorMessage })),
+
     setHeader: (header) => set(() => ({ header })),
 
     setEndpoint: (endpoint) => set(() => ({ endpoint })),
@@ -80,9 +83,10 @@ const usePrimaryDetails = create((set) => ({
     setParameters: (parameters) => set({ parameters }),
 
     resetAllStates: () => {
-        set((state) => ({
+        set(() => ({
             phoneNumber: "",
             amount: "",
+            errorMessage: "",
             message: "",
             header: "",
             endpoint: "",

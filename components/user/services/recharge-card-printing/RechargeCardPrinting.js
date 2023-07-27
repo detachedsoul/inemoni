@@ -39,6 +39,7 @@ const RechargeCardPrinting = () => {
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setHeader = usePrimaryDetails((state) => state.setHeader);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setMessage = usePrimaryDetails((state) => state.setMessage);
     const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
     const setButtonText = usePrimaryDetails((state) => state.setButtonText);
@@ -91,7 +92,7 @@ const RechargeCardPrinting = () => {
 
                     setIsFailed(true);
 
-                    setMessage(response.message);
+                    setErrorMessage(response.message);
 
                     setHeader("Recharge Card Generation Failed");
                 }
@@ -100,7 +101,7 @@ const RechargeCardPrinting = () => {
 
                 setIsFailed(true);
 
-                setMessage(error.message);
+                setErrorMessage(error.message);
 
                 setHeader("Recharge Card Generation Failed");
             }
@@ -148,7 +149,7 @@ const RechargeCardPrinting = () => {
 
                     setIsFailed(true);
 
-                    setMessage(response.message);
+                    setErrorMessage(response.message);
 
                     setHeader("Recharge Card Generation Failed");
                 }
@@ -157,7 +158,7 @@ const RechargeCardPrinting = () => {
 
                 setIsFailed(true);
 
-                setMessage(error.message);
+                setErrorMessage(error.message);
 
                 setHeader("Recharge Card Generation Failed");
             }
@@ -165,7 +166,7 @@ const RechargeCardPrinting = () => {
     };
 
     return (
-        <div className="py-4 px-8 space-y-6">
+        <div className="p-4 lg:px-8 space-y-6">
             <h2 className="font-medium text-xl text-[#262626]">
                 Recharge Card Printing
             </h2>

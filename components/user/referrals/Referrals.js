@@ -4,6 +4,7 @@ import useUser from "@store/useUser";
 import ReferralIcon from "@assets/img/referrals-section-icon.svg";
 import CopyText from "@assets/img/copy-text.svg";
 import NoTransaction from "@assets/img/no-transaction.svg";
+import copyText from "@helpers/copyText";
 import { usePrimaryDetails } from "@store/useServices";
 import { useEffect, useState } from "react";
 
@@ -17,6 +18,8 @@ const Referrals = () => {
 
     const message = usePrimaryDetails((state) => state.message);
     const setMessage = usePrimaryDetails((state) => state.setMessage);
+
+    const [isCopied, setIsCopied] = useState(false);
 
     useEffect(() =>  {
         if(userToken) {
@@ -60,6 +63,16 @@ const Referrals = () => {
 
     }, [userToken]);
 
+    useEffect(() => {
+        if (isCopied) {
+            setTimeout(() => {
+                setIsCopied(() => false);
+            }, 3000);
+        }
+    }, [isCopied]);
+
+    console.log(isCopied)
+
     return (
         <>
             <section className="bg-[#F2F2F2] rounded-[0.75rem] text-[#666666] p-4 grid items-center lg:grid-cols-12 mb-12">
@@ -85,7 +98,7 @@ const Referrals = () => {
                                     { userDetails?.uid }
                                 </p>
 
-                                <button className="h-8" type="button" aria-label="Copy referral code">
+                                <button className="h-8" type="button" aria-label="Copy referral code" onClick={ () => copyText(userDetails?.uid, setIsCopied) }>
                                     <Image className="w-full h-full" src={ CopyText } alt="" />
                                 </button>
                             </div>
@@ -101,7 +114,7 @@ const Referrals = () => {
                                     { userDetails?.referral_link }
                                 </p>
 
-                                <button className="h-8" type="button" aria-label="Copy referral code">
+                                <button className="h-8" type="button" aria-label="Copy referral link" onClick={ () => copyText(userDetails?.referral_link, setIsCopied) }>
                                     <Image className="w-full h-full" src={ CopyText } alt="" />
                                 </button>
                             </div>
@@ -175,15 +188,19 @@ const Referrals = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-[#F2F2F2] grid place-content-center gap-4 p-8 h-[500px] rounded-[1.25rem] text-[#666666]">
+                    <div className="bg-[#F2F2F2] grid place-content-center text-center gap-4 p-8 h-[500px] rounded-[1.25rem] text-[#666666]">
                         <Image className="mx-auto" src={ NoTransaction } alt="" />
 
-                        <p className="text-lg">
+                        <p className="text-lg text-center">
                             You have no referral yet
                         </p>
                     </div>
                 )}
             </section>
+
+            <p className={`text-successful bg-successful-bg fixed ${isCopied ? 'top-4' : '-top-12'} z-50 ease-in duration-300 font-medium py-2 px-4 left-[calc(25%)] lg:left-[calc(45%-2rem)] text-center`}>
+                Copied to clipboard
+            </p>
         </>
     );
 };

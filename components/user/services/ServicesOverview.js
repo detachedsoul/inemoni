@@ -84,6 +84,7 @@ const ServicesOverview = () => {
     const header = usePrimaryDetails((state) => state.header);
     const message = usePrimaryDetails((state) => state.message);
     const endpoint = usePrimaryDetails((state) => state.endpoint);
+    const errorMessage = usePrimaryDetails((state) => state.errorMessage);
     const buttonText = usePrimaryDetails((state) => state.buttonText);
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
     const isLoading = usePrimaryDetails((state) => state.isLoading);
@@ -163,7 +164,7 @@ const ServicesOverview = () => {
                         <div className="flex items-center gap-4">
                             <Image className="h-10 w-10" src={service.image} alt={service.name} width={40} height={40} />
 
-                            <p className="text-black font-medium leading-none group-hover:text-inherit">
+                            <p className="text-black text-left font-medium leading-none group-hover:text-inherit">
                                 {
                                     service.name
                                 }
@@ -201,8 +202,8 @@ const ServicesOverview = () => {
                 )}
 
                 {isFailed && !preview && (
-                    <FailedPopup header={ header } text={ message }>
-                        {message === "Invalid user pin" ? (
+                    <FailedPopup header={ header } text={ errorMessage }>
+                        {errorMessage === "Invalid user pin" ? (
                             <button
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
                                 type="button"

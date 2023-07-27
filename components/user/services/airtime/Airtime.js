@@ -54,7 +54,7 @@ const Airtime = () => {
     };
 
     return (
-        <div className="py-4 px-8 space-y-6">
+        <div className="p-4 lg:px-8 space-y-6">
             <h2 className="font-medium text-xl text-[#262626]">
                 Buy Airtime
             </h2>

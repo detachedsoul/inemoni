@@ -37,6 +37,7 @@ const Education = () => {
 
     const setParameters = usePrimaryDetails((state) => state.setParameters);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
+    const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setMessage = usePrimaryDetails((state) => state.setMessage);
     const setHeader = usePrimaryDetails((state) => state.setHeader);
     const setEndpoint = usePrimaryDetails((state) => state.setEndpoint);
@@ -100,12 +101,12 @@ const Education = () => {
                 } else {
                     setIsLoading(false);
                     setIsFailed(true);
-                    setMessage(response.message);
+                    setErrorMessage(response.message);
                 }
             } catch (error) {
                 setIsLoading(false);
                 setIsFailed(true);
-                setMessage(error.message);
+                setErrorMessage(error.message);
             }
         }
     };
@@ -126,7 +127,7 @@ const Education = () => {
     };
 
     return (
-        <div className="py-4 px-8 space-y-6">
+        <div className="p-4 lg:px-8 space-y-6">
             <h2 className="font-medium text-xl text-[#262626]">
                 Education
             </h2>
