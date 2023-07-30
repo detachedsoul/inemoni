@@ -1,7 +1,6 @@
 import AddCard from "@components/user/cards/AddCard";
 import Popup from "@components/user/Popup";
 import Image from "next/image";
-import Link from "next/link";
 import CardsOverview from "@assets/img/card-overview.png";
 import { useState } from "react";
 

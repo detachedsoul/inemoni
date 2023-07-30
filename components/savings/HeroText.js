@@ -41,7 +41,7 @@ const HeroText = () => {
                     className="z-30 sm:w-1/2 sm:mx-auto md:absolute md:bottom-0 md:w-[calc(28%-2.25rem)] lg:w-[calc(28%-0.25rem)] md:right-[2.5%] md:left-auto object-center object-cover"
                     src={heroImage}
                     alt="Inemoni app overview"
-                    priority={true}
+                    priority
                 />
             </div>
         </div>

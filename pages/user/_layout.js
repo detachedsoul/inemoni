@@ -69,7 +69,8 @@ const Layout = ({ children }) => {
 
                 try {
                     const request = await fetch(
-                        `${getURLOrigin}/api/virtual-cards/my-cards`,
+                        // `${getURLOrigin}/api/virtual-cards/my-cards`,
+                        `https://justcors.com/tl_aed50ef/https://www.inemoni.org/api/virtual-cards/my-cards`,
                         requestOptions,
                     );
 
@@ -131,7 +132,7 @@ const Layout = ({ children }) => {
                                 src={Logo}
                                 alt="Inemoni"
                                 quality={100}
-                                priority={true}
+                                priority
                             />
                         </Link>
 
@@ -166,7 +167,7 @@ const Layout = ({ children }) => {
                                     src={Logo}
                                     alt="Inemoni"
                                     quality={100}
-                                    priority={true}
+                                    priority
                                 />
                             </Link>
                         </div>

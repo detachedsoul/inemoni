@@ -44,7 +44,7 @@ const HeroText = () => {
 				src={aboutHeroImage}
 				alt="Inemoni app overview"
 				quality={100}
-				priority={true}
+				priority
 			/>
 		</div>
 	);

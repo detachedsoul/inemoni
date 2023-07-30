@@ -38,7 +38,7 @@ const HeroText = () => {
 				src={apiDocs}
 				alt="API documentation"
 				quality={100}
-				priority={true}
+				priority
 			/>
 		</div>
 	);

@@ -3,10 +3,11 @@ import Popup from "@components/user/Popup";
 import AddCard from "@components/user/cards/AddCard";
 import CopyText from "@assets/img/copy-text.svg";
 import AddMoney from "@assets/img/card-add-money.svg";
-import BlockCard from "@assets/img/card-block-card.svg";
+import BlockCardLogo from "@assets/img/card-block-card.svg";
 import Transactions from "@assets/img/card-transactions.svg";
 import Withdraw from "@assets/img/card-withdraw.svg";
 import Card from "@components/user/Card";
+import BlockCard from "@components/user/cards/BlockCard";
 import copyText from "@helpers/copyText";
 import useUser from "@store/useUser";
 import { useState, useEffect, useRef} from "react";
@@ -19,6 +20,14 @@ const ViewCard = () => {
     const [isPopupActive, setIsPopupActive] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(1);
+    const [cardDetails, setCardDetails] = useState(null);
+
+    // Know which of the different card actions to show
+    const [isAddCard, setIsAddCard] = useState(false);
+    const [isAddMoney, setIsAddMoney] = useState(false);
+    const [isWithdraw, setIsWithdraw] = useState(false);
+    const [isTransactions, setIsTransactions] = useState(false);
+    const [isBlock, setIsBlock] = useState(false);
 
     const container = useRef(null);
 
@@ -95,8 +104,12 @@ const ViewCard = () => {
 		}
     };
 
-    return errorMessage ? (
-        <p className="font-medium text-lg">{ errorMessage }</p>
+    console.log(isAddMoney)
+
+    return !userCards ? (
+        <p className="font-medium text-lg">
+            There was an error getting your card details. Please try again or contact support if the issue persists.
+        </p>
     ) : (
         <>
             <div className="bg-[#F2F2F2] rounded-[12px] flex flex-col place-content-center min-h-screen py-8">
@@ -117,14 +130,22 @@ const ViewCard = () => {
                         <button
                             className="btn block w-auto mx-auto rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-brand-navlink border border-[#666666] lg:mx-0"
                             type="button"
-                            onClick={() => setIsPopupActive(() => true)}
+                            onClick={() => {
+                                setIsPopupActive(() => true);
+                                setIsAddCard(() => true);
+
+                                setIsBlock(() => false);
+                                setIsTransactions(() => false);
+                                setIsWithdraw(() => false);
+                                setIsAddMoney(() => false);
+                            }}
                         >
                             Add Card
                         </button>
                     </div>
 
                     <div className="flex px-4 lg:px-0 gap-12 overflow-y-auto no-scrollbar snap-x snap-mandatory scroll-smooth min-w-full" ref={container}>
-                        {userCards.map((cardDetails, index) => (
+                        {userCards.map(cardDetails => (
                             <div className="min-w-full lg:min-w-[50%] lg:first:ml-[25%] lg:last:mr-[25%] space-y-4 snap-center" key={ cardDetails.id }>
                                 <Card cardDetails={ cardDetails } />
 
@@ -153,8 +174,16 @@ const ViewCard = () => {
                                         </span>
                                     </button>
 
-                                    <button className="text-sm space-y-1" type="button">
-                                        <Image className="w-10 mx-auto" src={BlockCard} alt="" width={40} />
+                                    <button className="text-sm space-y-1" type="button" onClick={() => {
+                                        setCardDetails(() => cardDetails);
+                                        setIsBlock(() => true);
+                                        setIsAddCard(() => false);
+                                        setIsTransactions(() => false);
+                                        setIsWithdraw(() => false);
+                                        setIsAddMoney(() => false);
+                                        setIsPopupActive(() => true);
+                                    }}>
+                                        <Image className="w-10 mx-auto" src={BlockCardLogo} alt="" width={40} />
 
                                         <span className="inline-block">
                                             Block Card
@@ -287,8 +316,9 @@ const ViewCard = () => {
                 </div>
             </div>
 
-            <Popup isActive={isPopupActive} setIsActive={setIsPopupActive}>
-                <AddCard />
+            <Popup isActive={isPopupActive} setIsActive={setIsPopupActive} width={cardDetails ? 'lg:w-[45%]' : 'lg:w-[40%]'}>
+                {isAddCard && <AddCard /> }
+                {isBlock && <BlockCard cardDetails={ cardDetails } closeModal={ setIsPopupActive } />}
             </Popup>
 
             <p className={`text-successful bg-successful-bg fixed z-50 ${isCopied ? '-translate-y-20' : '-translate-y-[500%]'} transition-transform ease-in duration-300 font-medium py-2 px-4 left-[calc(25%)] lg:left-[calc(50%-2rem)] text-center`}>

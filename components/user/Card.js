@@ -33,16 +33,16 @@ const Card = ({ cardDetails }) => {
     return (
         <div className={`${cardDetails.card_type === "MASTERCARD" ? "bg-mastercard-bg text-white" : "bg-visacard-bg backdrop-blur-[4.681672096252441px] border-b-[2px] border-white border-l-[2px] text-[#1c1c1c] bg-repeat"} bg-cover rounded-[25.928px] p-4 lg:p-8 space-y-10`}>
             <div className="flex items-center justify-between gap-4">
-                <Image src={cardDetails.card_type === "MASTERCARD" ? Logo : LogoDark} alt="Inemoni Logo" />
+                <Image src={cardDetails.card_type === "MASTERCARD" ? Logo : LogoDark} alt="Inemoni Logo" priority />
 
                 <span className={`${cardDetails.card_type === "MASTERCARD" ? 'bg-white text-[#262626]' : 'bg-[#262626] text-white'} py-1 px-3 text-xs rounded-full inline-block`}>
                     VIRTUAL CARD
                 </span>
             </div>
 
-            <p className={`font-bold flex gap-2 justify-between text-sm lg:text-[1.35038rem] ${neutralFace.className}`}>
+            <p className={`font-bold flex shrink-0 gap-2 justify-between text-sm lg:text-[1.35038rem] ${neutralFace.className}`}>
                 { splitNumberAfterFourDigits(cardDetails.masked_number).map((numberGroup, index) => (
-                    <span className="tracking-[0.4rem]" key={index}>{ numberGroup }</span>
+                    <span className="tracking-[0.2rem]" key={index}>{ numberGroup }</span>
                 )) }
             </p>
 
@@ -57,7 +57,7 @@ const Card = ({ cardDetails }) => {
                     </span>
                 </div>
 
-                <Image className="w-10 h-10 lg:w-16 lg:h-16" src={ cardDetails.card_type === 'MASTERCARD' ? MasterCardLogo : VisaCardLogo } alt="Mastercard Logo" />
+                <Image className="w-10 h-10 lg:w-16 lg:h-16" src={ cardDetails.card_type === 'MASTERCARD' ? MasterCardLogo : VisaCardLogo } alt="Mastercard Logo" priority />
             </div>
         </div>
     );

@@ -102,7 +102,7 @@ const Header = () => {
 						src={Logo}
 						alt="Inemoni"
 						quality={100}
-						priority={true}
+						priority
 					/>
 				</Link>
 

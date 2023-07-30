@@ -24,11 +24,9 @@ const Cards = () => {
                         Inemoni Cards
                     </h2>
 
-                    {/* {userDetails.hasVirtualCard && <ViewCards />} */}
+                    {userDetails.hasVirtualCard && <ViewCards />}
 
-                    {/* {!userDetails.hasVirtualCard && <CardOverview />} */}
-
-                    <CardOverview />
+                    {!userDetails.hasVirtualCard && <CardOverview />}
 
                     {/* <BlockedCard /> */}
                 </section>
