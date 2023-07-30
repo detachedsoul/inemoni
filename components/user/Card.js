@@ -30,10 +30,8 @@ const Card = ({ cardDetails }) => {
         return splitString || [];
     };
 
-    console.log(cardDetails)
-
     return (
-        <div className={`${cardDetails.card_type === "MASTERCARD" ? "bg-mastercard-bg text-white" : "bg-[rgba(255,255,255,0.22)] backdrop-blur-[4.681672096252441px] border-b-[2.881px] border-white border-l-[2.881px] text-[#1c1c1c]"} bg-cover rounded-[25.928px] p-4 lg:p-8 space-y-10`}>
+        <div className={`${cardDetails.card_type === "MASTERCARD" ? "bg-mastercard-bg text-white" : "bg-visacard-bg backdrop-blur-[4.681672096252441px] border-b-[2px] border-white border-l-[2px] text-[#1c1c1c] bg-repeat"} bg-cover rounded-[25.928px] p-4 lg:p-8 space-y-10`}>
             <div className="flex items-center justify-between gap-4">
                 <Image src={cardDetails.card_type === "MASTERCARD" ? Logo : LogoDark} alt="Inemoni Logo" />
 

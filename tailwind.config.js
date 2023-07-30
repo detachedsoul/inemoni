@@ -50,7 +50,7 @@ module.exports = {
                 "team-bg": "url('../public/img/team-members-bg.png')",
                 "sidebar": "url('../public/img/sidebar-pattern-img.png')",
                 "mastercard-bg": "linear-gradient(105deg, rgba(75,34,146,1) 0%, rgba(143,105,208,1) 100%)",
-                "visacard-bg": "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(255,255,255,1) 12%, rgba(255,255,255,1) 91%)",
+                "visacard-bg": "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../public/img/visa-card-bg-pattern.png')",
 
             },
 		},

@@ -72,7 +72,7 @@ const Layout = ({ children }) => {
                 try {
                     const request = await fetch(
                         // `${getURLOrigin}/api/virtual-cards/my-cards`,
-                        `https://justcors.com/tl_763c4ef/https://www.inemoni.org/api/virtual-cards/my-cards`,
+                        `https://justcors.com/tl_aed50ef/https://www.inemoni.org/api/virtual-cards/my-cards`,
                         requestOptions,
                     );
 
