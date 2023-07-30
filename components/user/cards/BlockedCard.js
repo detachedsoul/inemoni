@@ -25,7 +25,7 @@ const BlockedCard = () => {
                     </button>
 
                     <div className="w-3/5 mx-auto space-y-8">
-                        <Card />
+                        {/* <Card /> */}
 
                         <div className="text-center">
                             <p className="bg-[#FFD6D6] text-[#FF0000] text-center inline-block font-bold rounded-full py-1 px-4 text-sm">

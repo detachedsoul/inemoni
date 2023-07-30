@@ -53,8 +53,6 @@ const Layout = ({ children }) => {
 
     useEffect(() => {
         if (userToken) {
-            // const cards = [];
-
             const fetchUserCards = async () => {
                 const getURLOrigin = window.location.origin;
 
@@ -71,8 +69,7 @@ const Layout = ({ children }) => {
 
                 try {
                     const request = await fetch(
-                        // `${getURLOrigin}/api/virtual-cards/my-cards`,
-                        `https://justcors.com/tl_aed50ef/https://www.inemoni.org/api/virtual-cards/my-cards`,
+                        `${getURLOrigin}/api/virtual-cards/my-cards`,
                         requestOptions,
                     );
 
@@ -114,6 +111,16 @@ const Layout = ({ children }) => {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
+
+                <link
+					rel="shortcut icon"
+					type="image/x-icon"
+					href="/favicon.png"
+				/>
+				<meta
+					property="og:image"
+					content="https://www.inemoni.org/img/og-image.jpg"
+				/>
             </Head>
 
             <div className="min-h-screen">

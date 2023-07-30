@@ -28,13 +28,9 @@ const usePrimaryDetails = create((set) => ({
         phoneNumber: validateNumberField(phoneNumber, 11) ? phoneNumber : state.phoneNumber
     })),
 
-    setPinPopup: (pinPopup) => set((state) => ({
-        pinPopup: pinPopup ? pinPopup : !state.pinPopup
-    })),
+    setPinPopup: (pinPopup) => set(() => ({ pinPopup })),
 
-    setPreview: (preview) => set((state) => ({
-        preview: preview ? preview : !state.preview
-    })),
+    setPreview: (preview) => set(() => ({ preview })),
 
     setNetwork: (network) => set(() => ({
         network: network ? network : ""
@@ -44,17 +40,11 @@ const usePrimaryDetails = create((set) => ({
         networkImage: networkImage ? networkImage : ""
     })),
 
-    setIsFailed: (isFailed) => set((state) => ({
-        isFailed: isFailed ? isFailed : !state.isFailed
-    })),
+    setIsFailed: (isFailed) => set((state) => ({ isFailed })),
 
-    setIsSuccessful: (isSuccessful) => set((state) => ({
-        isSuccessful: isSuccessful ? isSuccessful : !state.isSuccessful
-    })),
+    setIsSuccessful: (isSuccessful) => set(() => ({ isSuccessful })),
 
-    setIsLoading: (isLoading) => set((state) => ({
-        isLoading: isLoading ? isLoading : !state.isLoading
-    })),
+    setIsLoading: (isLoading) => set(() => ({ isLoading })),
 
     setMessage: (message) => set(() => ({ message })),
 

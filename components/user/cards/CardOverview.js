@@ -12,7 +12,7 @@ const CardOverview = () => {
         <>
             <div className="bg-[#F2F2F2] rounded-[12px] px-4 grid place-content-center min-h-screen pb-8">
                 <div className="text-center -space-y-16 lg:-space-y-20">
-                    <Image className="lg:w-[70%] mx-auto -mt-16 lg:-mt-20" src={CardsOverview} alt="Get your Inemoni Card instantly" />
+                    <Image className="lg:w-[70%] mx-auto -mt-16 lg:-mt-20" src={CardsOverview} alt="Get your Inemoni Card instantly" priority />
 
                     <div className="space-y-2 text-center lg:w-3/5 mx-auto">
                         <h3 className="font-medium text-3xl">

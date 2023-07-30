@@ -31,6 +31,7 @@ const ViewCard = () => {
     }, [isCopied]);
 
     const handleScroll = (slideIndex) => {
+        // Do nothing if the current slide equals the index gotten from the button
         if (slideIndex === currentSlide) {
             return;
         }
@@ -127,7 +128,7 @@ const ViewCard = () => {
                             <div className="min-w-full lg:min-w-[50%] lg:first:ml-[25%] lg:last:mr-[25%] space-y-4 snap-center" key={ cardDetails.id }>
                                 <Card cardDetails={ cardDetails } />
 
-                                <div className="grid grid-cols-2 px-2 gap-4 lg:grid-cols-4 lg:px-4">
+                                <div className="grid grid-cols-2 px-2 gap-4 lg:grid-cols-4">
                                     <button className="text-sm space-y-1" type="button">
                                         <Image className="w-10 mx-auto" src={AddMoney} alt="" width={40} />
 
