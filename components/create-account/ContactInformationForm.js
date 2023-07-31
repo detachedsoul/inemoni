@@ -73,8 +73,8 @@ const ContactInformationForm = () => {
 		if (!validateNumberField(cleanedValue, 6)) {
             return;
 		} else {
+            setZipCode(cleanedValue);
         }
-        setZipCode(cleanedValue);
 	};
 
 	const handleEmailChange = (e) => {

@@ -4,7 +4,6 @@ import LogoDark from "@assets/img/virtual-card-logo-dark.svg";
 import MasterCardLogo from "@assets/img/mastercard-logo.svg";
 import VisaCardLogo from "@assets/img/visa-logo.svg";
 import localFont from "next/font/local";
-import CardFormatter from "creditcardutils";
 
 const neutralFace = localFont({
 	subsets: ["latin"],
