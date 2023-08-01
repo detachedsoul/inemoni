@@ -8,18 +8,20 @@ import Link from "next/link";
 import { usePrimaryDetails } from "@store/useServices";
 import { useEffect, useState } from "react";
 
-const TransactionHistory = ({ showViewAll = false, children }) => {
+const TransactionHistory = ({ showViewAll = false, filteredTransactions = null, children }) => {
     const [isActive, setIsActive] = useState(false);
     const [transactionDetails, setTransactionDetails] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const setIsLoading =  usePrimaryDetails((state) => state.setIsLoading);
 
-    const transactions = useUser((state) => state.transactions);
+    const getTransactions = useUser((state) => state.transactions);
     const setTransactions = useUser((state) => state.setTransactions);
 
     const userToken = useUser((state) => state.userToken);
     const transactionLimit = useUser((state) => state.transactionLimit);
+
+    const transactions = filteredTransactions ? filteredTransactions : getTransactions;
 
     const fetchUserTransactions = async (limit) => {
         const getURLOrigin = window.location.origin;
@@ -35,7 +37,8 @@ const TransactionHistory = ({ showViewAll = false, children }) => {
 
             try {
                 const request = await fetch(
-                    `${getURLOrigin}/api/user-transactions/${userToken}?limit=${limit}`,
+                    // `${getURLOrigin}/api/user-transactions/${userToken}?limit=${limit}`,
+                    `https://justcors.com/tl_282b79d/https://www.inemoni.org/api/user-transactions/${userToken}?limit=${limit}`,
                     requestOptions,
                 );
 

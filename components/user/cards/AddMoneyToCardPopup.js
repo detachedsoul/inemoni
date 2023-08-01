@@ -10,7 +10,6 @@ import DollarToNaira from "@assets/img/dollar-to-naira-amount-icon.svg";
 import DollarRate from "@assets/img/dollar-rate-icon.svg";
 import FundingFee from "@assets/img/funding-fee-icon.svg";
 import formatCurrency from "@helpers/formatCurrency";
-import useFetch from "@helpers/useFetch";
 import useUser from "@store/useUser";
 import { usePrimaryDetails } from "@store/useServices";
 import { useState } from "react";
@@ -29,9 +28,8 @@ const AddMoneyToCardPopup = ({ rate, features, cardID }) => {
     }
 
     const [amount, setAmount] = useState("");
-    const [totalAmount, setTotalAmount] = useState((calculatePercent(amount, features.funding_fee.split("%")[0])) + 1);
+    const [totalAmount, setTotalAmount] = useState(0);
 
-    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
 
     const isFailed = usePrimaryDetails((state) => state.isFailed);

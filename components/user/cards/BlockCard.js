@@ -2,7 +2,6 @@ import FailedPopup from "@components/user/FailedPopup";
 import SuccessfulPopup from "@components/user/SuccessfulPopup";
 import LoadingIndicator from "@components/user/LoadingIndicator";
 import PinPopup from "@components/user/PinPopup";
-import Image from "next/image";
 import Link from "next/link";
 import Card from "@components/user/Card";
 import useUser from "@store/useUser";
@@ -14,8 +13,6 @@ const BlockCard = ({ cardDetails, closeModal }) => {
     const isLoading = usePrimaryDetails((state) => state.isLoading);
     const errorMessage = usePrimaryDetails((state) => state.errorMessage);
     const setParameters = usePrimaryDetails((state) => state.setParameters);
-
-    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
     const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
 
     const isFailed = usePrimaryDetails((state) => state.isFailed);
@@ -66,7 +63,7 @@ const BlockCard = ({ cardDetails, closeModal }) => {
                     <button
                         className="btn block rounded-md hover:text-white transition-colors duration-300 ease-in hover:bg-[#666666]"
                         type="button"
-                        onClick={() => clodeModal(() => false)}
+                        onClick={() => closeModal(() => false)}
                     >
                         Cancel
                     </button>
