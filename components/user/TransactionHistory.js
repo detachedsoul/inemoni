@@ -13,6 +13,7 @@ const TransactionHistory = ({ showViewAll = false, filteredTransactions = null, 
     const [transactionDetails, setTransactionDetails] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+    const isLoading =  usePrimaryDetails((state) => state.isLoading);
     const setIsLoading =  usePrimaryDetails((state) => state.setIsLoading);
 
     const getTransactions = useUser((state) => state.transactions);
@@ -37,8 +38,7 @@ const TransactionHistory = ({ showViewAll = false, filteredTransactions = null, 
 
             try {
                 const request = await fetch(
-                    // `${getURLOrigin}/api/user-transactions/${userToken}?limit=${limit}`,
-                    `https://justcors.com/tl_282b79d/https://www.inemoni.org/api/user-transactions/${userToken}?limit=${limit}`,
+                    `${getURLOrigin}/api/user-transactions/${userToken}?limit=${limit}`,
                     requestOptions,
                 );
 
@@ -89,6 +89,12 @@ const TransactionHistory = ({ showViewAll = false, filteredTransactions = null, 
             time
         }
     };
+
+    if (isLoading) {
+        return (
+            <div className="bg-[#D9D9D9] p-3 h-[300px] rounded-[20px] animate-pulse lg:h-[350px]"></div>
+        );
+    }
 
     return errorMessage ? (
         <p className="font-medium text-lg">

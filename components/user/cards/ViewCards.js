@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Popup from "@components/user/Popup";
 import AddMoneyToCardPopup from "@components/user/cards/AddMoneyToCardPopup";
+import TerminateCard from "@components/user/cards/TerminateCard";
+import WithdrawCard from "@components/user/cards/WithdrawCard";
+import CardTransactions from "@components/user/cards/CardTransactions";
 import BlockedCard from "@components/user/cards/BlockedCard";
 import AddCard from "@components/user/cards/AddCard";
 import CopyText from "@assets/img/copy-text.svg";
@@ -41,6 +44,7 @@ const ViewCard = () => {
     const [isAddMoney, setIsAddMoney] = useState(false);
     const [isWithdraw, setIsWithdraw] = useState(false);
     const [isTransactions, setIsTransactions] = useState(false);
+    const [isTerminate, setIsTerminate] = useState(false);
     const [isBlock, setIsBlock] = useState(false);
 
     const container = useRef(null);
@@ -183,7 +187,18 @@ const ViewCard = () => {
                                                 </span>
                                             </button>
 
-                                            <button className="text-sm space-y-1" type="button">
+                                            <button className="text-sm space-y-1"
+                                                type="button"
+                                                onClick={() => {
+                                                    setIsPopupActive(() => true);
+                                                    setIsTransactions(() => true);
+
+                                                    setIsAddCard(() => false);
+                                                    setIsBlock(() => false);
+                                                    setIsWithdraw(() => false);
+                                                    setIsAddMoney(() => false);
+                                                }}
+                                            >
                                                 <Image className="w-10 mx-auto" src={Withdraw} alt="" width={40} />
 
                                                 <span className="inline-block">
@@ -191,7 +206,18 @@ const ViewCard = () => {
                                                 </span>
                                             </button>
 
-                                            <button className="text-sm space-y-1" type="button">
+                                            <button className="text-sm space-y-1"
+                                                type="button"
+                                                onClick={() => {
+                                                    setIsPopupActive(() => true);
+                                                    setIsWithdraw(() => true);
+
+                                                    setIsTransactions(() => false);
+                                                    setIsAddCard(() => false);
+                                                    setIsBlock(() => false);
+                                                    setIsAddMoney(() => false);
+                                                }}
+                                            >
                                                 <Image className="w-10 mx-auto" src={Transactions} alt="" width={40} />
 
                                                 <span className="inline-block">
@@ -349,6 +375,12 @@ const ViewCard = () => {
                 {isBlock && <BlockCard cardDetails={ cardDetails } closeModal={ setIsPopupActive } />}
 
                 {isAddMoney && <AddMoneyToCardPopup rate={ rates } features={ features } cardID={ cardID } />}
+
+                {isTerminate && <TerminateCard setIsPopupActive={ setIsPopupActive } />}
+
+                {isWithdraw && <WithdrawCard setIsPopupActive={ setIsPopupActive } />}
+
+                {isTransactions && <CardTransactions setIsPopupActive={ setIsPopupActive } />}
             </Popup>
 
             <p className={`text-successful bg-successful-bg fixed z-50 ${isCopied ? '-translate-y-20' : '-translate-y-[500%]'} transition-transform ease-in duration-300 font-medium py-2 px-4 left-[calc(25%)] lg:left-[calc(50%-2rem)] text-center`}>

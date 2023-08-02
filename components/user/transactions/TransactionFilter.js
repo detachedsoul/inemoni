@@ -11,11 +11,21 @@ const TransactionFilter = () => {
     const [searchValue, setSearchValue] = useState("");
 
     const filterCredit = () => {
+        // Do not filter if there is no transaction available
+        if(Object.keys(transactions).length < 1) {
+            return;
+        }
+
         const creditTransactions = transactions.filter(transaction => transaction.transType === 'credit');
         setFilteredTransactions(creditTransactions);
     };
 
     const filterDebit = () => {
+        // Do not filter if there is no transaction available
+        if(Object.keys(transactions).length < 1) {
+            return;
+        }
+
         const debitTransactions = transactions.filter(transaction => transaction.transType === 'debit');
         setFilteredTransactions(debitTransactions);
     };
@@ -29,15 +39,20 @@ const TransactionFilter = () => {
 
         setSearchValue(value);
 
-        const filteredTransaction = transactions.filter((transaction) => {
-            const keys = Object.keys(transaction);
+        // Do not filter if there is no transaction available
+        if(Object.keys(transactions).length < 1) {
+            return;
+        }
+
+        const filteredTransaction = transactions?.filter((transaction) => {
+            const keys = Object.keys(transactions);
             for (const key of keys) {
-            if (
-                String(transaction[key]).toLowerCase().includes(value.toLowerCase()) ||
-                (transaction.details && String(transaction.details[key]).toLowerCase().includes(value.toLowerCase()))
-            ) {
-                return true;
-            }
+                if (
+                    String(transaction[key]).toLowerCase().includes(value.toLowerCase()) ||
+                    (transaction.details && String(transaction.details[key]).toLowerCase().includes(value.toLowerCase()))
+                ) {
+                    return true;
+                }
             }
             return false;
         });

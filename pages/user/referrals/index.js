@@ -9,7 +9,7 @@ const UserReferrals = () => {
                 <title>Dashboard | Referrals</title>
                 <meta
                     name="description"
-                    content="Choose one of the servies offered by Inemoni"
+                    content="View your referrals"
                 />
             </Head>
 

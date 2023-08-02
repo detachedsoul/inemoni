@@ -28,6 +28,9 @@ const Layout = ({ children }) => {
     const userDetails = useUser((state) => state.userDetails);
     const setUserDetails = useUser((state) => state.setUserDetails);
 
+    const isLoading = usePrimaryDetails((state) => state.isLoading);
+    const setIsLoading = usePrimaryDetails((state) => state.setIsLoading);
+
     const setUserCards = useUser((state) => state.setUserCards);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
     const setUserBalance = useUser((state) => state.setUserBalance);
@@ -83,7 +86,6 @@ const Layout = ({ children }) => {
                 } catch(error) {
                     setErrorMessage("There was an error getting your card details. Please try again or contact support if the issue persists.");
                 }
-
             };
 
             fetchUserCards();
@@ -176,21 +178,35 @@ const Layout = ({ children }) => {
                 </div>
 
                 <div className="lg:space-y-8 lg:w-3/4 lg:ml-[25%] bg-white min-h-screen">
-                    <div className="hidden lg:flex flex-wrap items-center gap-4 justify-between lg:sticky lg:top-0 bg-white p-4 lg:ml-[4px] lg:px-8 z-50">
-                        <h1 className="header font-normal text-2xl">
-                            Welcome back, <span className="font-bold">{ username }</span> 👋
-                        </h1>
+                    {userToken && balance && userData ? (
+                        <div className="hidden lg:flex flex-wrap items-center gap-4 justify-between lg:sticky lg:top-0 bg-white p-4 lg:ml-[4px] lg:px-8 z-50">
+                            <h1 className="header font-normal text-2xl">
+                                Welcome back, <span className="font-bold">{ username }</span> 👋
+                            </h1>
 
-                        <div className="flex items-center gap-4">
-                            <Link href="/user/notifications">
-                                <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
-                            </Link>
+                            <div className="flex items-center gap-4">
+                                <Link href="/user/notifications">
+                                    <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
+                                </Link>
 
-                            <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm flex items-center place-content-center font-medium text-black">
-                                {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
-                            </span>
+                                <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm flex items-center place-content-center font-medium text-black">
+                                    {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="hidden lg:block lg:sticky lg:top-0 bg-white p-4 lg:ml-[4px] lg:px-8 z-50">
+                            <div className="flex items-center gap-4 justify-between">
+                                <div className="bg-[#D9D9D9] p-2 rounded-lg animate-pulse w-[35%]"></div>
+
+                                <div className="flex items-center gap-2 justify-between">
+                                    <div className="bg-[#D9D9D9] p-3 rounded-full animate-pulse"></div>
+
+                                    <div className="bg-[#D9D9D9] p-6 rounded-full animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="p-4 lg:pt-0 pb-8 lg:px-8">
                         {children}

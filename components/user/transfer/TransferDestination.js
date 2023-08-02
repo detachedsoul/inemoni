@@ -36,7 +36,7 @@ const TransferDestination = () => {
                 </div>
             </Link>
 
-            <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#22111F]/90 hover:text-[#F2F2F2]" href="/user/transfer/wallet">
+            <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#22111F]/90 hover:text-[#F2F2F2]" href="/user/transfer/dom">
                 <Image className="h-12 w-12" src={ DomAccount } alt="Send to DOM Account" />
 
                 <div className="space-y-0.5">
@@ -50,7 +50,7 @@ const TransferDestination = () => {
                 </div>
             </Link>
 
-            <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#2A2E05]/90 hover:text-[#F2F2F2]" href="/user/transfer/wallet">
+            <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#2A2E05]/90 hover:text-[#F2F2F2]" href="/user/transfer/mobile-money">
                 <Image className="h-12 w-12" src={ MobileMoney } alt="Send to Mobile Money" />
 
                 <div className="space-y-0.5">

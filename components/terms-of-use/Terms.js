@@ -1033,12 +1033,65 @@ const Terms = () => {
                             28.
                         </span>
 
+                        Disputes And Dispute Resolution
+                    </h2>
+
+                    <div className="space-y-3">
+                        <p>
+                            28.1 Inemoni shall not be involved in any disputes that may arise between the Merchant and any of its Customers unless such dispute specifically relates to transaction settlement.
+                        </p>
+
+                        <p>
+                            28.2 In the event of a dispute between Parties with respect to any issue arising out of or relating to this Agreement in any manner, including but not limited to the breach thereof, resolution of which cannot be resolved amicably by the Parties through negotiation within thirty (30) days shall be resolved by arbitration at the Lagos Court of Arbitration (LCA) before a single arbitrator in accordance with the Arbitration and Conciliation Act, Cap A18, Laws of the Federation of Nigeria.
+                        </p>
+
+                        <p>
+                            28.3 The Parties shall be entitled to require the appointment of an arbitrator by the Chairperson of Chartered Institute of Arbitrators (UK), Nigeria Branch, where the Parties fail to reach an amicable decision of the arbitrator.
+                        </p>
+
+                        <p>
+                            28.4 The arbitration shall be held in Lagos, Nigeria, and conducted in English language.
+                            The decision of the arbitrator shall be final and binding on the Parties and Parties agree to be bound by it. Such decision shall be rendered within thirty (30) days of the closing of the hearing record.
+                        </p>
+
+                        <p>
+                            28.5 The cost of arbitration shall be borne equally by the Parties.
+                        </p>
+
+                        <p>
+                            28.6 The Arbitral award rendered by the arbitrator shall be entered in any court of competent jurisdiction as judgment. No award of punitive damages by the arbitrator may be enforced.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="space-y-4">
+                    <h2 className="pl-2 header secondary-header">
+                        <span className="mr-4">
+                            29.
+                        </span>
+
+                         Compliance with Laws and Regulations:
+                    </h2>
+
+                    <div className="space-y-3">
+                        <p>
+                            29.1 You agree to comply with all applicable laws and regulations in Nigeria and any other jurisdiction where you access or use our services. You also agree not to use our services for any illegal or fraudulent purpose, or in any manner that could harm, interfere with, or disrupt our services or other users. We reserve the right to cooperate with any law enforcement authorities or court order requesting or directing us to disclose the identity or other information of anyone using our services.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="space-y-4">
+                    <h2 className="pl-2 header secondary-header">
+                        <span className="mr-4">
+                            30.
+                        </span>
+
                         Miscellaneous
                     </h2>
 
                     <div className="space-y-3">
                         <p>
-                            28.1 In using the APP, you agree you will comply with all
+                            30.1 In using the APP, you agree you will comply with all
                             applicable laws and regulations. Inemoni may revise
                             these Terms and Conditions of Use at any time by
                             updating this posting.

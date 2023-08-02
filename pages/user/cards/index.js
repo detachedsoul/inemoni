@@ -2,7 +2,6 @@ import Head from "next/head";
 import Layout from "@pages/user/_layout";
 import CardOverview from "@components/user/cards/CardOverview";
 import ViewCards from "@components/user/cards/ViewCards";
-import BlockedCard from "@components/user/cards/BlockedCard";
 import useUser from "@store/useUser";
 
 const Cards = () => {
@@ -24,11 +23,15 @@ const Cards = () => {
                         Inemoni Cards
                     </h2>
 
-                    {userDetails.hasVirtualCard && <ViewCards />}
+                    {userDetails && Object.keys(userDetails).length < 1 ? (
+                        <div className="bg-[#D9D9D9] p-3 h-[300px] rounded-[20px] animate-pulse lg:h-[350px]"></div>
+                    ) : (
+                        <>
+                            {userDetails.hasVirtualCard && <ViewCards />}
 
-                    {!userDetails.hasVirtualCard && <CardOverview />}
-
-                    {/* <BlockedCard /> */}
+                            {!userDetails.hasVirtualCard && <CardOverview />}
+                        </>
+                    )}
                 </section>
             </main>
         </>
