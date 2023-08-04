@@ -30,13 +30,11 @@ const BankTransferFinishForm = () => {
     const errorMessage = usePrimaryDetails((state) => state.errorMessage);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
 
-    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
-    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
-
     const isFailed = usePrimaryDetails((state) => state.isFailed);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
 
     const isLoading = usePrimaryDetails((state) => state.isLoading);
+    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
 
     // State to hold narration and amount to be transferred
     const [amount, setAmount] = useState("");
@@ -72,13 +70,9 @@ const BankTransferFinishForm = () => {
             narration: narration,
         };
 
-        console.log(router.query)
-
         setPreview(true);
 
         setPopup(() => true);
-
-        setMessage("");
 
         setParameters(router.query);
     };

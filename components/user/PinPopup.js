@@ -76,6 +76,8 @@ const PinPopup = ({ endpoint, buttonText="Transfer" }) => {
 
         const getURLOrigin = window.location.origin;
 
+        console.log(parameters)
+
         const data = {
             pin: pin,
             ...parameters

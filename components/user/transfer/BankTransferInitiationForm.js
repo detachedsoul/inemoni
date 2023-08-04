@@ -87,8 +87,7 @@ const BankTransferInitiationForm = () => {
 
                 try {
                     const request = await fetch(
-                        // `${getURLOrigin}/api/account-details`,
-                        `https://justcors.com/tl_34078c2/https://www.inemoni.org/api/domTransfer/resolveAccount`,
+                        `${getURLOrigin}/api/account-details`,
                         requestOptions,
                     );
 
