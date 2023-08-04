@@ -1,3 +1,5 @@
+import FailedPopup from "@components/user/FailedPopup";
+import Popup from "@components/user/Popup";
 import TransactionHistory from "@components/user/TransactionHistory";
 import useUser from "@store/useUser";
 import { useState } from "react";
@@ -9,6 +11,9 @@ const TransactionFilter = () => {
     const [filterOption, setFilterOption] = useState("All Transactions");
     const [filteredTransactions, setFilteredTransactions] = useState(transactions);
     const [searchValue, setSearchValue] = useState("");
+
+    // Remove when the account statemenet feature is completed
+    const [isPopupActive, setIsPopupActive] = useState(false);
 
     const filterCredit = () => {
         // Do not filter if there is no transaction available
@@ -39,13 +44,15 @@ const TransactionFilter = () => {
 
         setSearchValue(value);
 
-        // Do not filter if there is no transaction available
-        if(Object.keys(transactions).length < 1) {
+        // Do not filter if there are no transactions available
+        if (Object.keys(transactions).length < 1) {
+            setFilteredTransactions([]);
             return;
         }
 
-        const filteredTransaction = transactions?.filter((transaction) => {
-            const keys = Object.keys(transactions);
+        const filteredTransaction = transactions.filter((transaction) => {
+            const keys = Object.keys(transaction);
+
             for (const key of keys) {
                 if (
                     String(transaction[key]).toLowerCase().includes(value.toLowerCase()) ||
@@ -59,6 +66,7 @@ const TransactionFilter = () => {
 
         setFilteredTransactions(filteredTransaction);
     };
+
 
     return (
         <>
@@ -90,12 +98,24 @@ const TransactionFilter = () => {
                     <input className="dashboard-input px-4 py-2.5 pl-0 border-none" type="search" placeholder="Search" id="search" value={ searchValue } onChange={(e) => searchFilter(e) } />
                 </label>
 
-                <button className="btn bg-brand-purple text-white transition-colors ease-in duration-300 hover:bg-brand-dark-purple" type="submit">
+                <button className="btn bg-brand-purple text-white transition-colors ease-in duration-300 hover:bg-brand-dark-purple" type="button" onClick={() => setIsPopupActive(() => true)}>
                     Request Statement
                 </button>
             </form>
 
             <TransactionHistory filteredTransactions={ filteredTransactions } />
+
+            <Popup isActive={isPopupActive} setIsActive={setIsPopupActive}>
+                <FailedPopup header="Coming Soon" text={`This feature is currently being developed. Stay tuned!`}>
+                    <button
+                        className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-dark-purple bg-brand-purple"
+                        type="button"
+                        onClick={() => setIsPopupActive(() => false)}
+                    >
+                        Close
+                    </button>
+                </FailedPopup>
+            </Popup>
         </>
     );
 };

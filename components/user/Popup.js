@@ -17,8 +17,8 @@ const Popup = ({
 
 	return (
 		<div
-			className={`fixed top-0 left-0 z-[1024] grid h-full w-full place-items-center bg-black/50 backdrop-blur-[2px] transition-transform duration-500 ease-linear overflow-y-auto ${
-				isActive ? "translate-y-0" : "translate-y-full"
+			className={`fixed top-0 left-0 z-[1024] h-full w-full place-items-center bg-black/50 backdrop-blur-[2px] duration-500 ease-linear overflow-y-auto ${
+				isActive ? "animate-scale-in grid" : "animate-scale-out hidden"
 			}`}
 		>
 			<div

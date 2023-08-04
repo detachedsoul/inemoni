@@ -41,10 +41,34 @@ module.exports = {
 						"overflow-y": "hidden"
 					},
 				},
+
+                "scale-in": {
+					from: {
+						"opacity": "0",
+						"display": "none"
+					},
+					to: {
+						"opacity": "1",
+						"display": "grid"
+					},
+				},
+
+                "scale-out": {
+					from: {
+						"opacity": "1",
+						"display": "grid"
+					},
+					to: {
+						"opacity": "0",
+						"display": "none"
+					},
+				},
 			},
 			animation: {
 				slideUp: "slideUp 0s linear forwards",
 				slideDown: "slideDown 0s linear forwards",
+                "scale-in": "scale-in .15s linear forwards",
+                "scale-out": "scale-out .15s linear forwards",
 			},
             backgroundImage: {
                 "team-bg": "url('../public/img/team-members-bg.png')",

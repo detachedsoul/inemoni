@@ -20,12 +20,15 @@ const TransactionHistory = ({ showViewAll = false, filteredTransactions = null, 
     const setTransactions = useUser((state) => state.setTransactions);
 
     const userToken = useUser((state) => state.userToken);
+
+    const setTransactionLimit = useUser((state) => state.setTransactionLimit);
     const transactionLimit = useUser((state) => state.transactionLimit);
 
     const transactions = filteredTransactions ? filteredTransactions : getTransactions;
 
     const fetchUserTransactions = async (limit) => {
         const getURLOrigin = window.location.origin;
+        setTransactionLimit(20);
 
         const requestOptions = {
 			method: "POST",

@@ -42,7 +42,8 @@ const Referrals = () => {
 
                 try {
                     const request = await fetch(
-                        `${getURLOrigin}/api/user-referrals`,
+                        // `${getURLOrigin}/api/user-referrals`,
+                        `https://justcors.com/tl_8071682/https://www.inemoni.org/api/user-referrals`,
                         requestOptions,
                     );
 
@@ -81,9 +82,9 @@ const Referrals = () => {
     // }
 
     return (
-        <div className="grid gap-12">
+        <>
             {Object.keys(userDetails).length > 0 && (referrals || message) && userToken ? (
-                <section className="bg-[#F2F2F2] rounded-[0.75rem] text-[#666666] p-4 grid items-center lg:grid-cols-12">
+                <section className="bg-[#F2F2F2] rounded-[0.75rem] text-[#666666] p-4 grid items-center lg:grid-cols-12 mb-12">
                     <div className="space-y-6 lg:col-span-8">
                         <div>
                             <h2 className="font-medium text-3xl leading-snug text-[#262626]">
@@ -133,7 +134,7 @@ const Referrals = () => {
                     <Image className="lg:col-span-4" src={ ReferralIcon } alt="" priority />
                 </section>
             ) : (
-                <div className="bg-[#D9D9D9] p-3 h-[300px] rounded-[20px] animate-pulse lg:h-[350px]"></div>
+                <div className="bg-[#D9D9D9] p-3 h-[300px] rounded-[20px] animate-pulse lg:h-[350px] mb-12"></div>
             )}
 
             {isLoading ? (
@@ -216,7 +217,7 @@ const Referrals = () => {
             <p className={`text-successful bg-successful-bg fixed ${isCopied ? 'top-4' : '-top-12'} z-50 ease-in duration-300 font-medium py-2 px-4 left-[calc(25%)] lg:left-[calc(45%-2rem)] text-center`}>
                 Copied to clipboard
             </p>
-        </div>
+        </>
     );
 };
 
