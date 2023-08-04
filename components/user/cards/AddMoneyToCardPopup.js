@@ -14,14 +14,6 @@ import useUser from "@store/useUser";
 import { usePrimaryDetails } from "@store/useServices";
 import { useState } from "react";
 
-const fetcher = async (url) => {
-	const res = await fetch(url);
-
-	const {data} = await res.json();
-
-	return data;
-};
-
 const AddMoneyToCardPopup = ({ rate, features, cardID }) => {
     const calculatePercent = (number, percent) => {
         return (percent / 100) * number;

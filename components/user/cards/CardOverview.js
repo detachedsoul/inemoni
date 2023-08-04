@@ -9,7 +9,7 @@ const CardOverview = () => {
 
     return (
         <>
-            <div className="bg-[#F2F2F2] rounded-[12px] px-4 grid place-content-center min-h-screen pb-8">
+            <div className="bg-[#F2F2F2] rounded-[12px] px-4 grid place-content-center min-h-[70vh] lg:min-h-screen pb-8">
                 <div className="text-center -space-y-16 lg:-space-y-20">
                     <Image className="lg:w-[70%] mx-auto -mt-16 lg:-mt-20" src={CardsOverview} alt="Get your Inemoni Card instantly" priority />
 

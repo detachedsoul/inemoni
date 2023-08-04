@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import NotAvailable from "@assets/data/lottie-files/not-available";
 
-const FailedPopup = ({ header, text, retryBtn=null, children }) => {
+const FailedPopup = ({ header, text, retryBtn = null, children }) => {
     return (
         <div className="p-4 lg:px-8 space-y-2 text-center">
             <Lottie className="h-24" animationData={NotAvailable} />

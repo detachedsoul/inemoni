@@ -10,7 +10,7 @@ const fetcher = async (url) => {
 	return data;
 };
 
-const TransferPreview = ({ name, bank, amount, narration, setPopup }) => {
+const TransferPreview = ({ name, bank, amount, narration, setPopup, isDollar = false }) => {
     const setPinPopup = usePrimaryDetails((state) => state.setPinPopup);
     const setPreview = usePrimaryDetails((state) => state.setPreview);
 
@@ -32,7 +32,14 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup }) => {
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            { formatCurrency(amount) }
+                            { isDollar ?
+                                new Intl.NumberFormat("en-US", {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                }).format(amount)
+                                :
+                                formatCurrency(amount)
+                            }
                         </span>
                     </p>
 
@@ -42,7 +49,14 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup }) => {
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            ₦ { data && data.bank_transfer }
+                            { data && isDollar ?
+                                new Intl.NumberFormat("en-US", {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                }).format(data?.dom_bank_transfer)
+                                :
+                                formatCurrency(data?.bank_transfer)
+                            }
                         </span>
                     </p>
 
@@ -52,7 +66,14 @@ const TransferPreview = ({ name, bank, amount, narration, setPopup }) => {
                         </span>
 
                         <span className="text-[#262626] font-medium">
-                            { formatCurrency(totalAmount) }
+                            { isDollar ?
+                                new Intl.NumberFormat("en-US", {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                }).format(Number(amount) + Number(data?.dom_bank_transfer))
+                                :
+                                formatCurrency(totalAmount)
+                            }
                         </span>
                     </p>
 

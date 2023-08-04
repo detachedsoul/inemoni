@@ -15,7 +15,7 @@ const fetcher = async (url) => {
 	return data;
 };
 
-const BankTransferInitiationForm = () => {
+const DOMTransferInitiation = () => {
     const router = useRouter();
 
     // State to hold error messages for account details verification
@@ -32,10 +32,11 @@ const BankTransferInitiationForm = () => {
     const [accountNumber, setAccountNumber] = useState("");
     const [bankCode, setBankCode] = useState("");
     const [bankName, setBankName] = useState("");
+    const [narration, setNarration] = useState("");
     const [beneficiaryName, setBeneficiaryName] = useState("");
 
     // Get list of banks, error if any, and set the loading state
-    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/all-banks`, fetcher);
+    const { data, isLoading, error } = useFetch(`https://www.inemoni.org/api/domTransfer/getBanks`, fetcher);
 
     const handleAccountNumberChange = async (e) => {
         const cleanedValue = e.target.value.replace(/[^\d]/g, '');
@@ -62,12 +63,16 @@ const BankTransferInitiationForm = () => {
         setBankName(() => bankDetails[1]);
     };
 
+    const handleNarrationChange = (e) => {
+        setNarration(() => e.target.value);
+    };
+
     useEffect(() => {
         const validateAccountDetails = async () => {
             const getURLOrigin = window.location.origin;
 
             // Get acocunt name if bank and account number has been provided
-            if (accountNumber.length === 10 && bankCode.length === 6) {
+            if (accountNumber.length === 10 && bankCode.length === 3) {
                 setValidationError(() => "");
 
                 const data = {
@@ -87,8 +92,7 @@ const BankTransferInitiationForm = () => {
 
                 try {
                     const request = await fetch(
-                        // `${getURLOrigin}/api/account-details`,
-                        `https://justcors.com/tl_34078c2/https://www.inemoni.org/api/domTransfer/resolveAccount`,
+                        `${getURLOrigin}/api/domTransfer/resolveAccount`,
                         requestOptions,
                     );
 
@@ -137,16 +141,17 @@ const BankTransferInitiationForm = () => {
             bank_code: bankCode,
             account_number: accountNumber,
             bank_name: bankName,
-            account_name: beneficiaryName
+            account_name: beneficiaryName,
+            narration: narration,
         };
 
         if (isReady) {
             router.push(
                 {
-                    pathname: '/user/transfer/bank/finish',
+                    pathname: '/user/transfer/dom/amount',
                     query: {...queryParams},
                 },
-                "/user/transfer/bank/finish"
+                "/user/transfer/dom/amount"
             );
         }
     };
@@ -166,11 +171,11 @@ const BankTransferInitiationForm = () => {
                 >
                     <div>
                         <h2 className="font-medium text-lg leading-none text-black">
-                            Bank Transfer
+                            Send to DOM Account
                         </h2>
 
                         <p>
-                            Send to a Local Bank Account
+                            Send to any Domiciliary account in Nigeria
                         </p>
                     </div>
 
@@ -243,6 +248,22 @@ const BankTransferInitiationForm = () => {
                             />
                         </label>
 
+                        <label className="space-y-1" htmlFor="narration">
+                            <span className="font-medium">
+                                Narration
+                            </span>
+
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Narration"
+                                id="narration"
+                                required
+                                value={narration}
+                                onChange={handleNarrationChange}
+                            />
+                        </label>
+
                         <button
                             className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!isReady ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
                             disabled={!isReady}
@@ -267,4 +288,4 @@ const BankTransferInitiationForm = () => {
     );
 };
 
-export default BankTransferInitiationForm;
+export default DOMTransferInitiation;

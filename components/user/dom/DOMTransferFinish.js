@@ -13,11 +13,11 @@ import getCookie from "@helpers/getCookie";
 import formatCurrency from "@helpers/formatCurrency";
 import stripNonNumeric from "@helpers/stripNonNumeric";
 
-const BankTransferFinishForm = () => {
+const DOMTransferFinish = () => {
     const router = useRouter();
+
     const setParameters = usePrimaryDetails((state) => state.setParameters);
 
-    const [isToggled, setIsToggled] = useState(false);
     const [popup, setPopup] = useState(false);
 
     // State to show either the transfer preview, transfer failed, transfer successful popups
@@ -30,37 +30,17 @@ const BankTransferFinishForm = () => {
     const errorMessage = usePrimaryDetails((state) => state.errorMessage);
     const setErrorMessage = usePrimaryDetails((state) => state.setErrorMessage);
 
-    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
-    const setIsSuccessful = usePrimaryDetails((state) => state.setIsSuccessful);
-
     const isFailed = usePrimaryDetails((state) => state.isFailed);
     const setIsFailed = usePrimaryDetails((state) => state.setIsFailed);
 
     const isLoading = usePrimaryDetails((state) => state.isLoading);
+    const isSuccessful = usePrimaryDetails((state) => state.isSuccessful);
 
-    // State to hold narration and amount to be transferred
-    const [amount, setAmount] = useState("");
-    const [narration, setNarration] = useState("");
-
-    // Take the user back to the account selection page if no recepient account, bank, and account name is found
-    if (Object.keys(router.query).length < 1) {
-        typeof window !== "undefined" && router.replace("/user/transfer/bank");
-
-        return;
-    }
-
-    const handleAmountChange = (e) => {
-        const { value } = e.target;
-
-        // Strip all characters except number and period(.)
-        const cleanedValue = stripNonNumeric(value);
-
-        setAmount(() => cleanedValue);
-    };
-
-    const handleNarrationChange = (e) => {
-        setNarration(() => e.target.value);
-    };
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [country, setCountry] = useState("");
+    const [address, setAddress] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -68,20 +48,30 @@ const BankTransferFinishForm = () => {
         router.query = {
             ...router.query,
             user_token: getCookie("user_token").sanitizedValue,
-            amount: amount,
-            narration: narration,
+            receiver: {
+                first_name: firstName,
+                last_name: lastName,
+                phone: phoneNumber,
+                country: country,
+                address: address
+            },
         };
-
-        console.log(router.query)
 
         setPreview(true);
 
         setPopup(() => true);
 
-        setMessage("");
+        setErrorMessage("");
 
         setParameters(router.query);
     };
+
+    // Take the user back to the account selection page if no the need params are missing
+    if (Object.keys(router.query).length < 1) {
+        typeof window !== "undefined" && router.replace("/user/transfer/dom");
+
+        return;
+    }
 
     return (
         <>
@@ -98,66 +88,99 @@ const BankTransferFinishForm = () => {
                 >
                     <div>
                         <h2 className="font-medium text-lg leading-none text-black">
-                            Bank Transfer
+                            Send to DOM Account
                         </h2>
 
                         <p>
-                            Send to a Local Bank Account
+                            Send to any Domiciliary account in Nigeria
                         </p>
                     </div>
 
                     <div className="grid gap-6">
-                        <label className="grid gap-1" htmlFor="amount">
+                        <label className="space-y-1" htmlFor="first-name">
                             <span className="font-medium">
-                                Amount
-                            </span>
-
-                            <span className="text-[#262626] font-bold">
-                                {formatCurrency(amount)}
-                            </span>
-
-                            <input
-                                className="dashboard-input no-number-increment"
-                                type="text"
-                                inputMode="decimal"
-                                placeholder="Enter amount"
-                                id="amount"
-                                value={amount}
-                                required
-                                onChange={handleAmountChange}
-                            />
-                        </label>
-
-                        <label className="space-y-1" htmlFor="narration">
-                            <span className="font-medium">
-                                Narration
+                                Receiver’s First Name
                             </span>
 
                             <input
                                 className="dashboard-input"
                                 type="text"
-                                placeholder="Narration"
-                                id="narration"
+                                placeholder="Enter First Name"
+                                id="first-name"
                                 required
-                                value={narration}
-                                onChange={handleNarrationChange}
+                                value={ firstName }
+                                onChange={(e) => setFirstName(e.target.value)}
                             />
                         </label>
 
-                        <div className="flex flex-wrap items-center gap-2 justify-between">
-                            <p>
-                                Save as a Beneficiary
-                            </p>
+                        <label className="space-y-1" htmlFor="last-name">
+                            <span className="font-medium">
+                                Receiver’s Last Name
+                            </span>
 
-                            <button className="rounded-full py-1.5 px-4 bg-[#cccccc] relative" onClick={() => setIsToggled(() => !isToggled)} type="button">
-                                <span className={`inline-block rounded-full p-2 transition-all ease-in duration-300 -translate-y-1/2 absolute ${isToggled ? 'translate-x-0 bg-brand-purple' : '-translate-x-full bg-white'}`}></span>
-                            </button>
-                        </div>
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Enter Last Name"
+                                id="last-name"
+                                required
+                                value={ lastName }
+                                onChange={(e) => setLastName(e.target.value)}
+                            />
+                        </label>
+
+                        <label className="space-y-1" htmlFor="phone-number">
+                            <span className="font-medium">
+                                Receiver’s Phone Number
+                            </span>
+
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Enter Phone Number"
+                                id="phone-number"
+                                required
+                                value={ phoneNumber }
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+                        </label>
+
+                        <label className="space-y-1" htmlFor="address">
+                            <span className="font-medium">
+                                Receiver’s Address
+                            </span>
+
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Enter Address"
+                                id="address"
+                                required
+                                value={ address }
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
+                        </label>
+
+                        <label className="space-y-1" htmlFor="country">
+                            <span className="font-medium">
+                                Receiver’s Country
+                            </span>
+
+                            <input
+                                className="dashboard-input"
+                                type="text"
+                                placeholder="Enter Country"
+                                id="country"
+                                required
+                                value={ country }
+                                onChange={(e) => setCountry(e.target.value)}
+                            />
+                        </label>
 
                         <button
-                            className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(narration !== "" && amount !== "" && amount > 0) ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
+                            className={`btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink ${!(firstName !== "" && lastName !== "" && phoneNumber !== "" && address !== "" && country !== "") ? 'bg-brand-purple/30 pointer-events-none select-none' : 'bg-brand-purple'} disabled:bg-brand-purple/30 disabled:pointer-events-none disabled:select-none`}
                             type="submit"
-                            disabled={!(narration !== "" && amount !== "" && amount > 0)}
+                            disabled={!(firstName !== "" && lastName !== "" && phoneNumber !== "" && address !== "" && country !== "")}
                         >
                             Next
                         </button>
@@ -167,11 +190,17 @@ const BankTransferFinishForm = () => {
 
             <Popup isActive={popup} setIsActive={setPopup} goBack={true}>
                 {preview && (!pinPopup || pinPopup) && (
-                    <TransferPreview name={ router.query.account_name } narration={ narration } bank={ router.query.bank_name } amount={ amount } setPopup={ setPopup } />
+                    <TransferPreview name={`${firstName} ${lastName}`} narration={ router.query.narration } bank={ router.query.bank_name } amount={ router.query.amount } setPopup={ setPopup } isDollar={ true } />
                 )}
 
                 {isSuccessful && !preview && (
-                    <SuccessfulPopup header="Transfer Successful" message={`You’ve sent ${formatCurrency(amount)} to ${router.query.account_name}`}>
+                    <SuccessfulPopup
+                        header="Transfer Successful"
+                        message={ `You’ve sent ${new Intl.NumberFormat("en-US", {
+                            style: 'currency',
+                            currency: 'USD',
+                        }).format(Number(router.query.amount))} to ${firstName} ${lastName}` }
+                    >
                         <div className="grid gap-2">
                             <Link
                                 className="btn block rounded-md text-white transition-colors duration-300 ease-in hover:bg-brand-navlink bg-brand-purple"
@@ -229,7 +258,7 @@ const BankTransferFinishForm = () => {
                 )}
 
                 {!preview && !isFailed && !isSuccessful && pinPopup && (
-                    <PinPopup endpoint="bank-transfer" />
+                    <PinPopup endpoint="domTransfer/transfer" />
                 )}
 
                 {isLoading && <LoadingIndicator />}
@@ -238,4 +267,4 @@ const BankTransferFinishForm = () => {
     );
 };
 
-export default BankTransferFinishForm;
+export default DOMTransferFinish;
