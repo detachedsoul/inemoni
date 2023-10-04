@@ -42,8 +42,7 @@ const Referrals = () => {
 
                 try {
                     const request = await fetch(
-                        // `${getURLOrigin}/api/user-referrals`,
-                        `https://justcors.com/tl_8071682/https://www.inemoni.org/api/user-referrals`,
+                        `${getURLOrigin}/api/user-referrals`,
                         requestOptions,
                     );
 
@@ -74,12 +73,6 @@ const Referrals = () => {
             }, 3000);
         }
     }, [isCopied]);
-
-    // if (isLoading && userDetails) {
-    //     return (
-    //         <div className="bg-[#D9D9D9] p-3 h-[300px] rounded-[20px] animate-pulse lg:h-[350px]"></div>
-    //     );
-    // }
 
     return (
         <>

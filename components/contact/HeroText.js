@@ -32,7 +32,7 @@ const HeroText = () => {
 
 					<Link
 						className="btn block transition-colors duration-300 ease-in hover:bg-brand-gray"
-						href="mailto:support@inemoni.org"
+						href="mailto:support@inemoni.com"
 					>
 						Send an Email
 					</Link>

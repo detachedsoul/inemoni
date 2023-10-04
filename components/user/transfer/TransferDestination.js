@@ -29,7 +29,7 @@ const TransferDestination = () => {
                     </div>
                 </Link>
 
-                <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#003314]/90 hover:text-[#F2F2F2]" href="/user/transfer/wallet">
+                <button className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#003314]/90 hover:text-[#F2F2F2]" type="button" onClick={ () => setIsPopupActive(() => true) }>
                     <Image className="h-12 w-12" src={Wallet} alt="Send to any Inemoni account" />
 
                     <div className="space-y-0.5 text-left">
@@ -41,7 +41,7 @@ const TransferDestination = () => {
                             Send to any Inemoni Account
                         </p>
                     </div>
-                </Link>
+                </button>
 
                 <Link className="bg-[#F2F2F2] text-[#666666] rounded-[12px] p-3 flex items-center gap-2.5 group hover:bg-[#22111F]/90 hover:text-[#F2F2F2]" href="/user/transfer/dom">
                     <Image className="h-12 w-12" src={ DomAccount } alt="Send to DOM Account" />

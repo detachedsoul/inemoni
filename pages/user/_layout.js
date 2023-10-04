@@ -138,13 +138,13 @@ const Layout = ({ children }) => {
                         </Link>
 
                         <div className="flex items-center gap-3">
-                            <Link
+                            {/* <Link
                                 className="md:not-sr-only md:hidden"
                                 href="/user/notifications"
                                 aria-label="View notifications"
                             >
                                 <Bell size={30} strokeWidth={1} />
-                            </Link>
+                            </Link> */}
 
                             <button
                                 className="md:not-sr-only md:hidden"
@@ -185,9 +185,9 @@ const Layout = ({ children }) => {
                             </h1>
 
                             <div className="flex items-center gap-4">
-                                <Link href="/user/notifications">
-                                    <Image src="/img/notification-bell.svg" alt="Your Notifications" width={20} height={20} />
-                                </Link>
+                                {/* <Link href="/user/notifications">
+                                    <Image src="/img/notification-bell.svg" alt="View notifications" width={20} height={20} />
+                                </Link> */}
 
                                 <span className="bg-[#D9D9D9] rounded-full w-11 h-11 px-2 pb-2 py-1.5 text-center text-sm flex items-center place-content-center font-medium text-black">
                                     {`${userDetails?.fname?.split("")[0]}${userDetails?.lname?.split("")[0]}`}
